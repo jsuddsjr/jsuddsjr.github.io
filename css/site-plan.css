@@ -1,11 +1,12 @@
-﻿@import url("https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC|Lato");
+﻿@import url('https://fonts.googleapis.com/css?family=Domine|IM+Fell+French+Canon&display=swap');
+
 :root {
-  --primary-color: #396e94;
-  --secondary-color: #e7c24f;
-  --accent1-color: #a43312;
-  --accent2-color: white;
-  --heading-font: "IM Fell French Canon SC";
-  --paragraph-font: Lato, Helvetica, sans-serif;
+  --primary-color: #57585A;
+  --secondary-color: #EEEEEE;
+  --accent1-color: #6f1a07;
+  --accent2-color: #F0E5D5;
+  --heading-font: "IM Fell French Canon";
+  --paragraph-font: Domine, serif;
 }
 html {
   background-color: var(--primary-color);
@@ -14,8 +15,8 @@ body {
   max-width: 900px;
   margin: 0 auto;
   font-family: var(--paragraph-font);
-  background-color: var(--accent2-color);
-  padding: 1em;
+  background-color: var(--secondary-color);
+  padding: 0 2em;
 }
 img {
   max-width: 100%;
@@ -27,21 +28,40 @@ h4,
 h5,
 h6 {
   font-family: var(--heading-font);
-  color: var(--primary-color);
+  color: var(--accent1-color);
+}
+h2 {
+  font-size: 2.5em;
+  padding-bottom: 3px;
+  border-bottom: 2px solid;
+}
+li {
+  padding-bottom: 1em;
 }
 header {
   padding: 1em;
   text-align: center;
+  font-size: x-large;
   color: var(--primary-color);
-  background-color: var(--secondary-color);
+  background: radial-gradient(var(--accent2-color), var(--secondary-color))
 }
 header > h1 {
-  color: var(--primary-color);
+  color: var(--accent1-color);
+}
+footer {
+  font-size: x-small;
+  padding-bottom: 2em;
 }
 p {
   font-family: var(--paragraph-font);
   color: var(--primary-color);
-  padding: 1em;
+  line-height: 1.8em;
+  margin: 2em;
+  margin-top: 0;
+}
+p.colored {
+  color: var(--accent1-color);
+  background: radial-gradient(var(--accent2-color), var(--secondary-color));
 }
 .colors {
   width: 100%;
@@ -78,15 +98,18 @@ nav > ul {
   list-style-type: none;
   display: flex;
 }
+nav li {
+  padding: 0;
+}
 nav a {
   padding: 1em;
   min-width: 70px;
+  text-decoration: none;
 }
 nav a:link,
 nav a:visited {
   color: var(--accent2-color);
 }
 nav a:hover {
-  color: var(--accent2-color);
-  background-color: var(--accent1-color);
+  background-color: var(--primary-color);
 }
