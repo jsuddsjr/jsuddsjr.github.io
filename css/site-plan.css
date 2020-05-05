@@ -71,7 +71,7 @@ p.colored {
   text-align: center;
 }
 .colors th {
-  background-color: #999;
+  background-color: var(--secondary-color);
 }
 .colors td {
   width: 25%;
