@@ -6,7 +6,7 @@
   --accent1-color: #6f1a07;
   --accent2-color: #f0e5d5;
   --heading-font: "IM Fell French Canon";
-  --paragraph-font: Domine, serif;
+  --paragraph-font: "Domine", serif;
 }
 html {
   background-color: var(--primary-color);
