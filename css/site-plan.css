@@ -1,10 +1,10 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Domine|IM+Fell+French+Canon&display=swap');
+﻿@import url("https://fonts.googleapis.com/css?family=Domine|IM+Fell+French+Canon&display=swap");
 
 :root {
-  --primary-color: #57585A;
-  --secondary-color: #EEEEEE;
+  --primary-color: #57585a;
+  --secondary-color: #eeeeee;
   --accent1-color: #6f1a07;
-  --accent2-color: #F0E5D5;
+  --accent2-color: #f0e5d5;
   --heading-font: "IM Fell French Canon";
   --paragraph-font: Domine, serif;
 }
@@ -44,7 +44,7 @@ header {
   text-align: center;
   font-size: x-large;
   color: var(--primary-color);
-  background: radial-gradient(var(--accent2-color), var(--secondary-color))
+  background: radial-gradient(var(--accent2-color), var(--secondary-color));
 }
 header > h1 {
   color: var(--accent1-color);
