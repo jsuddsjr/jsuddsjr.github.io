@@ -3,8 +3,10 @@
 :root {
   --primary-color: #57585a;
   --secondary-color: #eeeeee;
+  --tertiary-color: #a3a3a4;
   --accent1-color: #6f1a07;
   --accent2-color: #f0e5d5;
+  --accent3-color: #b0806e;
   --heading-font: "IM Fell French Canon";
   --paragraph-font: "Domine", serif;
 }
@@ -70,7 +72,6 @@ p.colored {
 }
 .colors {
   width: 100%;
-  min-width: 350px;
   margin: auto;
   text-align: center;
 }
@@ -78,7 +79,6 @@ p.colored {
   background-color: var(--secondary-color);
 }
 .colors td {
-  width: 25%;
   height: 3em;
 }
 .primary {
@@ -87,11 +87,17 @@ p.colored {
 .secondary {
   background-color: var(--secondary-color);
 }
+.tertiary {
+  background-color: var(--tertiary-color);
+}
 .accent1 {
   background-color: var(--accent1-color);
 }
 .accent2 {
   background-color: var(--accent2-color);
+}
+.accent3 {
+  background-color: var(--accent3-color);
 }
 nav {
   background-color: var(--accent1-color);
