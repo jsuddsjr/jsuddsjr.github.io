@@ -1,0 +1,221 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Domine|IM+Fell+French+Canon&display=swap");
+
+:root {
+  --primary-color: #57585a;
+  --secondary-color: #eeeeee;
+  --tertiary-color: #a3a3a4;
+  --accent1-color: #6f1a07;
+  --accent2-color: #f0e5d5;
+  --accent3-color: #b0806e;
+  --heading-font: "IM Fell French Canon";
+  --paragraph-font: "Domine", serif;
+}
+.primary {
+  background-color: var(--primary-color);
+}
+.secondary {
+  background-color: var(--secondary-color);
+}
+.tertiary {
+  background-color: var(--tertiary-color);
+}
+.accent1 {
+  background-color: var(--accent1-color);
+}
+.accent2 {
+  background-color: var(--accent2-color);
+}
+.accent3 {
+  background-color: var(--accent3-color);
+}
+
+body {
+  background-color: var(--tertiary-color);
+  font-family: var(--paragraph-font);
+  margin: 0;
+  padding: 0;
+}
+header,
+main,
+footer {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5em;
+}
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: var(--accent1-color);
+}
+a:hover {
+  color: var(--accent3-color);
+}
+img {
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  color: var(--accent1-color);
+}
+h2 {
+  font-size: 2em;
+  padding-bottom: 3px;
+  border-bottom: 2px solid;
+  text-align: center;
+}
+li {
+  padding-bottom: 1em;
+}
+
+header {
+  font-size: large;
+  background-color: var(--accent1-color);
+  display: flex;
+}
+header img {
+  margin: 9px;
+  display: block;
+  min-width: 75px;
+  height: 75px;
+}
+header h1 {
+  color: var(--accent3-color);
+  margin: 0;
+  padding: 0.4em 0;
+  margin-left: 0.5em;
+  white-space: nowrap;
+}
+@media screen and (max-width: 800px) {
+  header h1 {
+    display: none;
+  }
+}
+nav {
+  margin: 0;
+  line-height: 3em;
+  text-align: center;
+  font-size: 0.8em;
+}
+nav > ul {
+  list-style-type: none;
+  display: flex;
+}
+nav a {
+  padding: 1em;
+  min-width: 70px;
+  text-decoration: none;
+}
+nav a:link,
+nav a:visited {
+  color: var(--accent2-color);
+}
+nav a:hover {
+  background-color: var(--primary-color);
+}
+
+section:nth-child(odd) img {
+  float: right;
+  margin-left: 2em;
+}
+section:nth-child(even) img {
+  float: left;
+  margin-right: 2em;
+}
+main {
+  background-color: var(--secondary-color);
+}
+p {
+  font-family: var(--paragraph-font);
+  color: var(--primary-color);
+  line-height: 1.8em;
+  margin: 2em;
+  margin-top: 0;
+}
+p.colored {
+  color: var(--accent1-color);
+  background: radial-gradient(var(--accent2-color), var(--secondary-color));
+}
+.colors {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.colors th {
+  background-color: var(--secondary-color);
+}
+.colors td {
+  height: 3em;
+}
+
+footer {
+  position: relative;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  margin-bottom: 4em;
+}
+footer a:link,
+footer a:visited {
+  color: var(--accent3-color);
+}
+footer a:hover {
+  color: var(--secondary-color);
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent1-color);
+}
+footer p {
+  color: var(--secondary-color);
+  text-align: center;
+  margin-top: 15px;
+  font-size: small;
+}
+footer .info {
+  font-size: 14pt;
+  line-height: 32px;
+}
+footer .email {
+  padding-left: 36px;
+  transform: ;
+  background-image: url("https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/mail-64.png");
+  background-size: 32px auto;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+footer .address {
+  padding-left: 36px;
+  background-image: url("https://cdn0.iconfinder.com/data/icons/map-location-solid-style/91/Map_-_Location_Solid_Style_07-64.png");
+  background-size: 32px auto;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+footer .phone {
+  padding-left: 36px;
+  background-image: url("https://cdn2.iconfinder.com/data/icons/line-hero-essentials/32/Essentials_phone_telephone_vintage-64.png");
+  background-size: 32px auto;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+footer .social {
+  display: flex;
+  flex-direction: row-reverse;
+  min-width: 210px;
+  width: 210px;
+  float: right;
+}
+footer .social img {
+  display: block;
+  float: left;
+  width: 64px;
+  margin-left: 5px;
+}
