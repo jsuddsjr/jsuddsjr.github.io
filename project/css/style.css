@@ -207,18 +207,15 @@ footer .phone {
 }
 footer .social {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   min-width: 210px;
-  width: 210px;
   float: right;
 }
 footer .social img {
   display: block;
-  float: left;
   width: 64px;
-  margin-left: 5px;
-}
-footer .social img:hover {
+  margin-right: 15px;
   border-radius: 32px;
   box-shadow: 2px 2px 5px black;
 }
+
