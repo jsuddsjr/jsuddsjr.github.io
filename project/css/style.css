@@ -186,10 +186,9 @@ footer .info {
 }
 footer .email {
   padding-left: 36px;
-  transform: ;
-  background-image: url("https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/mail-64.png");
-  background-size: 32px auto;
-  background-position: left top;
+  background-image: url("https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/439/aiga_mail-64.png");
+  background-size: 24px auto;
+  background-position: 4px 50%;
   background-repeat: no-repeat;
 }
 footer .address {
@@ -218,4 +217,8 @@ footer .social img {
   float: left;
   width: 64px;
   margin-left: 5px;
+}
+footer .social img:hover {
+  border-radius: 32px;
+  box-shadow: 2px 2px 5px black;
 }
