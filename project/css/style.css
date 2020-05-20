@@ -130,14 +130,10 @@ nav a:visited {
 }
 nav a:hover {
   border-bottom: 4px solid var(--secondary-color);
-  transform: scale(1.1);
-  transform-origin: center;
   transition: 200ms ease-in;
 }
 nav a.active {
-  transform: scale(1.1);
-  transform-origin: center;
-  border-bottom: 5px solid var(--accent3-color);
+  border-bottom: 4px solid var(--accent3-color);
 }
 
 section:nth-child(odd) img {
