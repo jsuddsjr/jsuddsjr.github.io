@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="zxx">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Temple Inn & Suites | Your Home Away From Home | 215-529-9999</title>
     <link type="text/css" rel="stylesheet" href="css/style.css" />
@@ -12,16 +12,14 @@
   </head>
   <body>
     <header>
-      <a href="#"
-        ><img src="images/temple_inn_logo.png" alt="Temple Inn Logo"
-      /></a>
+      <a class="logo" href="#" title="Homepage"></a>
       <h1>Temple Inn & Suites</h1>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Amenities</a></li>
-          <li><a href="#">Temple Spotlight</a></li>
-          <li><a href="#">Reservations</a></li>
+          <li><a class="active" href="#">Home</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="spotlight.html">Temple Spotlight</a></li>
+          <li><a href="reservations.html">Reservations</a></li>
         </ul>
       </nav>
     </header>
@@ -91,19 +89,19 @@
     <footer>
       <div class="content">
         <div class="social">
-          <a href="www.facebook.com">
+          <a href="https://facebook.com">
             <img
               src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-64.png"
               alt="Facebook"
             />
           </a>
-          <a href="www.twitter.com">
+          <a href="https://twitter.com">
             <img
               src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/twitter-64.png"
               alt="Twitter"
             />
           </a>
-          <a href="www.instagram.com">
+          <a href="https://instagram.com">
             <img
               src="https://cdn1.iconfinder.com/data/icons/smallicons-logotypes/32/instagram-64.png"
               alt="Instagram"
@@ -125,10 +123,11 @@
         </div>
 
         <p>
-          Copyright &copy; 2020 Temple Inn & Suites | All rights reserved |
+          Copyright &copy; <span id="copyright-year">9999</span> Temple Inn & Suites | All rights reserved |
           <a href="#">Privacy and Cookie Statement</a> | John Sudds
         </p>
       </div>
     </footer>
+    <script src="scripts/copyright.js"></script>
   </body>
 </html>
