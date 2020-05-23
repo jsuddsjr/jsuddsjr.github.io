@@ -29,7 +29,7 @@
 
 body {
   background-color: var(--tertiary-color);
-  font-family: 'Domine', Georgia, serif;
+  font-family: "Domine", Georgia, serif;
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'IM Fell French Canon', Palatino, serif;
+  font-family: "IM Fell French Canon", Palatino, serif;
   color: var(--accent1-color);
 }
 h2 {
@@ -84,7 +84,7 @@ header {
 }
 header a.logo {
   display: block;
-  background: url('../images/Sunstone-transparent.png');
+  background: url("../images/Sunstone-transparent.png");
   background-size: 90px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -187,12 +187,6 @@ footer a:visited {
 footer a:hover {
   color: var(--secondary-color);
 }
-footer p {
-  color: var(--secondary-color);
-  text-align: center;
-  margin-top: 15px;
-  font-size: small;
-}
 footer .info {
   font-size: 14pt;
   line-height: 32px;
@@ -234,4 +228,10 @@ footer .social img {
 footer .social a:hover {
   transform: scale(1.1);
   transition: 200ms ease-in;
+}
+footer .copyright {
+  color: var(--secondary-color);
+  text-align: center;
+  margin: 2rem auto 0;
+  font-size: small;
 }
