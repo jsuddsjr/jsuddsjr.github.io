@@ -139,9 +139,15 @@ div.hero img {
   width: 100%;
   height: auto;
 }
+section img {
+  box-shadow: .5rem .5rem 1rem .1rem var(--tertiary-color);
+  margin-bottom: 1rem;
+  background-color: white;
+  padding: 10px;
+}
 section:nth-child(odd) img {
   float: right;
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 section:nth-child(even) img {
   float: left;
