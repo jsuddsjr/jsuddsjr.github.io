@@ -135,7 +135,10 @@ nav a:hover {
 nav a.active {
   border-bottom: 4px solid var(--accent3-color);
 }
-
+div.hero img {
+  width: 100%;
+  height: auto;
+}
 section:nth-child(odd) img {
   float: right;
   margin-left: 2rem;
@@ -175,6 +178,7 @@ footer {
   color: var(--secondary-color);
   background: linear-gradient(var(--primary-color), var(--accent1-color));
   margin-bottom: 4rem;
+  border-radius: 0 0 3rem 3rem;
 }
 footer a:link,
 footer a:visited {
