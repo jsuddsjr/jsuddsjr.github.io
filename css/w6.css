@@ -1,0 +1,188 @@
+body {
+  font-size: 16px;
+  background-color: #fff;
+  margin: 30px;
+  margin-bottom: 150px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+div[class^="red"] {
+    background-color: red;
+}
+
+div[class^="green"] {
+    background-color: green;
+}
+
+div[class^="gold"] {
+    background-color: gold;
+}
+
+div[class^="blue"] {
+    background-color: blue;
+}
+
+
+/* Activity 1 styles */
+.content1 {
+  width: 550px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  grid-gap: 20px;
+}
+
+.red1 {
+  width: 100%;
+  height: 100px;
+  grid-column: 1 / 3;
+}
+
+.green1 {
+  width: 200px;
+  height: 200px;
+}
+
+.gold1 {
+  width: 200px;
+  height: 200px;
+}
+
+.blue1 {
+  width: 100%;
+  height: 100px;
+  grid-column: 1 / 3;
+}
+
+/* Layout 2 styles */
+.content2 {
+    height: 300px;
+    position: relative;
+}
+
+.content2 > div {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+}
+
+.green2 {
+    top: 40px;
+    left: 40px;
+    z-index: 1;
+}
+
+.gold2 {
+    top: 80px;
+    left: 80px;
+    z-index: 2;
+}
+
+.blue2 {
+    top: 120px;
+    left: 120px;
+    z-index: 3;
+}
+
+/* Layout 3 styles */
+.content3 {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.red3 {
+    height: 100px;
+    grid-column: 1 / -1;
+}
+
+.green3 {
+    width: 270px;
+    height: 200px;
+}
+
+.gold3 {
+    width: 270px;
+    height: 200px;
+    justify-self: right;
+}
+
+.blue3 {
+    height: 100px;
+    grid-column: 1 / -1;
+}
+
+/* Layout 4 styles */
+.content4 {
+    width: 600px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.red4 {
+    grid-row: 1 / 4;
+}
+
+/* Layout 5 styles */
+.content5 {
+    width: 600px;
+}
+
+.red5 {
+    width: 100%;
+    height: 100px;
+}
+
+.green5 {
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin: 0 15px 15px 0;
+}
+
+.gold5 {
+    width: 100%;
+    height: 350px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.blue5 {
+    width:100%;
+    height: 100px;
+}
+
+/* Layout 6 styles */
+.content6 {
+    width: 600px;
+    display: grid;
+    grid-template: 
+        "a a a a . ."
+        "a a a a . ."
+        ". . . . c c"
+        "b b . . c c"
+        "b b . . c c";
+}
+
+.red6 {
+    height: 200px;
+    grid-area: a;
+}
+
+.green6 {
+    height: 200px;
+    grid-area: b;
+    z-index: 1;
+}
+
+.gold6 {
+    height: 400px;
+    grid-area: c;
+    z-index: 1;
+}
+
+.blue6 {
+    grid-column: 2 / 6;
+    grid-row: 2 / 5;
+}
