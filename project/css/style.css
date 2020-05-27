@@ -45,13 +45,11 @@ footer {
   margin: 0 auto;
   padding: 1.5rem;
 }
-a {
-  text-decoration: none;
-}
 
 a:link,
 a:visited {
   color: var(--accent1-color);
+
 }
 a:hover {
   color: var(--accent3-color);
@@ -123,14 +121,15 @@ nav a {
   margin: 0 0.5rem;
   min-width: 80px;
   text-decoration: none;
+  border-bottom: 4px solid transparent;
 }
 nav a:link,
 nav a:visited {
   color: var(--accent2-color);
 }
 nav a:hover {
-  border-bottom: 4px solid var(--secondary-color);
-  transition: 200ms ease-in;
+  transition: 500ms ease;
+  border-bottom-color: var(--accent2-color);
 }
 nav a.active {
   border-bottom: 4px solid var(--accent3-color);
