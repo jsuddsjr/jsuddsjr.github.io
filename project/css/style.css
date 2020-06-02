@@ -85,7 +85,7 @@ footer {
 }
 
 header {
-  font-size: large;
+  font-size: 1.2rem;
   background: linear-gradient(var(--primary-color), var(--accent1-color));
   display: flex;
   align-items: center;
@@ -115,12 +115,25 @@ header h1 {
   }
 }
 @media screen and (max-width: 550px) {
+  body {
+    font-size: 14px;
+  }
   header a {
     margin: 0 auto; 
   }
   header nav > ul {
     display: inline-block;
     margin-right: 1.2rem;
+  }
+  .action {
+    margin: 0 auto !important;
+    padding: 0 5% !important;
+  }
+  section img {
+    display: block;
+    -float: none !important;
+    width: 40%;
+    padding: 5px;
   }
   footer {
     padding: 1rem 1.5rem !important;
@@ -167,20 +180,21 @@ main {
   background-color: var(--secondary-color);
   padding-bottom: 2.5rem;
 }
-main .banner-box {
+.banner-box {
   display: grid;
   margin-bottom: 2rem;
   background: center no-repeat url('../images/hero.jpg');
   height: 240px;
 }
-main .action {
+.action {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 3rem 3rem;
+  padding: 1rem 2rem;
   background-color: rgba(235, 236, 230, .5);
 }
-main .action button {
+.action button {
   font-size: 1.2rem;
   line-height: 2rem;
   width: 10em;
@@ -188,12 +202,12 @@ main .action button {
   background-color: var(--accent1-color);
   color: var(--accent2-color);
 }
-main .action button:hover {
+.action button:hover {
   background-color: var(--accent2-color);
   color: var(--accent1-color);
 }
-main .action button:active,
-main .action button:focus {
+.action button:active,
+.action button:focus {
   border: 1px solid white;
 }
 
@@ -202,7 +216,7 @@ main section {
   margin: 0 auto;
 }
 main section h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding-bottom: 3px;
   border-bottom: 2px solid;
   margin: .8rem 0;
@@ -214,16 +228,16 @@ main section img {
   box-shadow: .5rem .5rem 1rem .1rem var(--tertiary-color);
   margin-bottom: 1rem;
   background-color: white;
-  padding: 10px;
+  padding: 12px;
 }
 section:nth-child(even) img {
   float: right;
-  margin-left: 1rem;
+  margin-left: 2%;
   transform: rotate(2deg);
 }
 section:nth-child(odd) img {
   float: left;
-  margin-right: 2rem;
+  margin-right: 4%;
   transform: rotate(-1deg);
 }
 
@@ -247,7 +261,7 @@ footer a:hover {
 }
 
 footer .info {
-  font-size: 14pt;
+  font-size: 1.1rem;
   line-height: 32px;
   margin-bottom: 1.5rem;
 }
