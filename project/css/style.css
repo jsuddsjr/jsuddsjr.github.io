@@ -183,7 +183,7 @@ main {
 .banner-box {
   display: grid;
   margin-bottom: 2rem;
-  background: center no-repeat url('../images/hero.jpg');
+  background: center no-repeat url('../images/hero-edited.jpg');
   height: 240px;
 }
 .action {
