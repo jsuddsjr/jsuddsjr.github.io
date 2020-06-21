@@ -1,0 +1,129 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Poppins:ital,wght@0,200;1,200&display=swap");
+
+:root {
+  --primary-color: #c8cce5;
+  --secondary-color: #2d94c8;
+  --tertiary-color: #fae9b2;
+  --accent1-color: #0a2239;
+  --accent2-color: #f0e5d5;
+  --accent3-color: #a664a5;
+  --heading-font: "Gochi Hand", cursive;
+  --paragraph-font: "Poppins", sans-serif;
+}
+html {
+  background-color: var(--primary-color);
+}
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: var(--paragraph-font);
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  padding: 0 2em;
+}
+img {
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  color: var(--accent1-color);
+}
+h2 {
+  font-size: 2.5em;
+  padding-bottom: 3px;
+  border-bottom: 2px solid;
+}
+li {
+  padding-bottom: 1em;
+}
+header {
+  padding: 1em;
+  text-align: center;
+  font-size: x-large;
+  color: var(--primary-color);
+  background: radial-gradient(var(--accent2-color), var(--secondary-color));
+}
+header > h1 {
+  color: var(--accent1-color);
+}
+footer {
+  font-size: x-small;
+  padding-bottom: 2rem;
+}
+footer > p {
+  color: var(--secondary-color);
+}
+p {
+  font-family: var(--paragraph-font);
+  color: var(--primary-color);
+  line-height: 1.8em;
+  margin: 2em;
+  margin-top: 0;
+}
+p.colored {
+  color: var(--accent1-color);
+  background: radial-gradient(var(--accent2-color), var(--secondary-color));
+}
+.colors {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.colors th {
+  background-color: var(--secondary-color);
+}
+.colors td {
+  height: 3em;
+}
+.primary {
+  background-color: var(--primary-color);
+}
+.secondary {
+  background-color: var(--secondary-color);
+}
+.tertiary {
+  background-color: var(--tertiary-color);
+}
+.accent1 {
+  background-color: var(--accent1-color);
+}
+.accent2 {
+  background-color: var(--accent2-color);
+}
+.accent3 {
+  background-color: var(--accent3-color);
+}
+nav {
+  background-color: var(--accent1-color);
+  line-height: 3em;
+  text-align: center;
+  font-size: 1.2em;
+}
+nav > ul {
+  list-style-type: none;
+  display: flex;
+}
+nav li {
+  padding: 0;
+}
+a {
+  color: var(--tertiary-color)
+}
+nav a {
+  padding: 1em;
+  min-width: 70px;
+  text-decoration: none;
+
+}
+nav a:link,
+nav a:visited {
+  color: var(--accent2-color);
+}
+nav a:hover {
+  background-color: var(--primary-color);
+}
