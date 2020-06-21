@@ -125,5 +125,7 @@ nav a:visited {
   color: var(--accent2-color);
 }
 nav a:hover {
+  color: var(--accent1-color);
+  font-weight: bolder;
   background-color: var(--primary-color);
 }
