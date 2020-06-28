@@ -351,14 +351,14 @@ section .gallery img {
   border-radius: 1rem;
 }
 .gallery li {
-  width: 49px;
+  width: 76px;
   height: 599px;
   float: left;
   transition: all 0.7s;
   box-shadow: -2px 0 15px 2px var(--primary-color);
 }
 .gallery ul:hover li {
-  width: 50px;
+  width: 78px;;
 }
 .gallery ul li:hover {
   width: 380px;
