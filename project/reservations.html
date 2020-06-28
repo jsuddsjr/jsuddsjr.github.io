@@ -29,8 +29,8 @@
         <div id="reservationForm">
           <form action="javascript:void(0)">
             <label for="Location">Select a location</label>
-            <select name="Location" required>
-              <option></option>
+            <select id="Location" name="Location" required>
+              <option label="Select a location"></option>
               <option value="SaltLake">Salt Lake City, UT</option>
               <option value="Maryland">Bethesda, MD</option>
               <option value="Seattle">Seattle, WA</option>
@@ -41,7 +41,6 @@
               type="date"
               id="CheckIn"
               name="CheckIn"
-              placeholder="Check-in date"
               required
             />
 
@@ -50,7 +49,6 @@
               type="date"
               id="CheckOut"
               name="CheckOut"
-              placeholder="Check-out date"
               disabled
               required
             />
@@ -58,6 +56,7 @@
             <label for="Adults">Number of adults</label>
             <input
               type="number"
+              id="Adults"
               name="Adults"
               placeholder="Number of adult guests"
               min="1"
@@ -68,6 +67,7 @@
             <label for="Children">Number of children</label>
             <input
               type="number"
+              id="Children"
               name="Children"
               placeholder="Number of child guests"
               max="10"

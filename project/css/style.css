@@ -367,7 +367,7 @@ select,
 button[type="submit"] {
   padding: 0.5rem;
   display: block;
-  margin-bottom: 1rem;
+  margin: .5rem 0;
   width: 20rem;
   box-shadow: 2px 2px 3px inset var(--primary-color);
   border-radius: 4px;
@@ -378,18 +378,15 @@ select:focus {
   background-color: var(--accent2-color);
 }
 
-input[required]::after,
-select[required]::after {
-  content: "*";
-  color: red;
-  font-size: 1.2rem;
-}
-
 input[type="radio"],
 input[type="checkbox"] {
   display: inline-block;
   box-shadow: none;
   width: auto;
+}
+
+label {
+  color: var(--primary-color)
 }
 
 label > img {
