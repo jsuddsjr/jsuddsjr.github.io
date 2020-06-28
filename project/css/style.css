@@ -396,6 +396,7 @@ label > img {
   vertical-align: middle;
   display: inline-block;
   height: 24px;
+  border: 2px solid var(--accent1-color)
 }
 
 /* SMALLER SCREEN WIDTHS */

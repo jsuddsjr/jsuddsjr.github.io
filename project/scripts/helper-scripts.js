@@ -19,18 +19,10 @@
             endInput.setAttribute("min", toDateOnly(dt))
             endInput.disabled = false;
         });
-        startInput.addEventListener('keypress', (e) => {
-            e.preventDefault();
-            return false;
-        })
         endInput.addEventListener('input', (e) => {
             let dt = new Date(e.target.value);
             dt.setDate(dt.getDate() - 1);
             startInput.setAttribute("max", toDateOnly(dt))
-        })
-        endInput.addEventListener('keypress', (e) => {
-            e.preventDefault();
-            return false;
         })
     }
 
