@@ -319,8 +319,8 @@ aside a:hover {
   color: var(--secondary-color);
   background: var(--accent1-color);
   border-radius: 0 0 3rem 0;
-  float: left;
-  margin-right: 1.5rem;
+  float: right;
+  margin-left: 1.5rem;
 }
 .aside.info {
   font-size: 0.8rem;
