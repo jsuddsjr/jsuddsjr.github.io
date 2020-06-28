@@ -338,6 +338,9 @@ p.info {
 }
 
 /* GALLERY */
+section .gallery img {
+  padding: 0;
+}
 .gallery ul {
   margin: 0;
   padding: 0;
