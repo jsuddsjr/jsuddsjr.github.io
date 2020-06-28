@@ -195,7 +195,8 @@ main {
 }
 
 /* MAIN */
-main section {
+main section,
+.gallery {
   max-width: 800px;
   margin: 0 auto;
 }
@@ -223,23 +224,7 @@ section:nth-child(odd) > img {
   transform: rotate(-1deg);
 }
 .shadow {
-  box-shadow: 0.5rem 0.5rem 2rem var(--primary-color);
-}
-
-/* ASIDE */
-aside {
-  box-sizing: border-box;
-  padding: 1rem 1rem;
-  width: 30%;
-  color: var(--secondary-color);
-  background: var(--accent1-color);
-  border-radius: 0 0 3rem 0;
-  float: left;
-  margin-right: 1.5rem;
-}
-aside.info {
-  font-size: 0.8rem;
-  line-height: 1.2rem;
+  box-shadow: 0.5rem 0.5rem 1.5rem var(--primary-color);
 }
 
 /* FOOTER */
@@ -298,7 +283,7 @@ aside a:hover {
   padding-left: 36px;
   background-image: url("https://cdn3.iconfinder.com/data/icons/wpzoom-developer-icon-set/500/105-512.png");
   background-size: 24px auto;
-  background-position: 2% top;
+  background-position: left top;
   background-repeat: no-repeat;
 }
 
@@ -326,18 +311,35 @@ aside a:hover {
   font-size: small;
 }
 
+/* ASIDE */
+.aside {
+  display:block;
+  padding: 1rem .5rem;
+  width: 30%;
+  color: var(--secondary-color);
+  background: var(--accent1-color);
+  border-radius: 0 0 3rem 0;
+  float: left;
+  margin-right: 1.5rem;
+}
+.aside.info {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+}
+
 /* GALLERY */
 .gallery ul {
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 800px;
+  width: 780px;
   overflow: hidden;
   box-shadow: 10px 10px 40px var(--primary-color);
+  border-radius: 1rem;
 }
 .gallery li {
   width: 49px;
-  height: 623px;
+  height: 599px;
   float: left;
   transition: all 0.7s;
   box-shadow: -2px 0 15px 2px var(--primary-color);
