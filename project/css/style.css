@@ -177,15 +177,16 @@ main {
   padding: 1rem 2rem;
   background-color: rgba(235, 236, 230, 0.5);
 }
-.action button {
+.action button,
+button[type="submit"] {
   font-size: 1.2rem;
   line-height: 2rem;
   width: 10em;
-  margin-left: 1.5rem;
   background-color: var(--accent1-color);
   color: var(--accent2-color);
 }
-.action button:hover {
+.action button:hover,
+button[type="submit"]:hover {
   background-color: var(--accent2-color);
   color: var(--accent1-color);
 }
@@ -196,7 +197,8 @@ main {
 
 /* MAIN */
 main section,
-.gallery {
+.gallery,
+#reservationForm {
   max-width: 800px;
   margin: 0 auto;
 }
@@ -313,8 +315,8 @@ aside a:hover {
 
 /* ASIDE */
 .aside {
-  display:block;
-  padding: 1rem .5rem;
+  display: block;
+  padding: 1rem 0.5rem;
   width: 30%;
   color: var(--secondary-color);
   background: var(--accent1-color);
@@ -349,6 +351,43 @@ aside a:hover {
 }
 .gallery ul li:hover {
   width: 380px;
+}
+
+/* RESERVATION FORM */
+input,
+select,
+button[type="submit"] {
+  padding: 0.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  width: 20rem;
+  box-shadow: 2px 2px 3px inset var(--primary-color);
+  border-radius: 4px;
+}
+
+input:focus,
+select:focus {
+  background-color: var(--accent2-color);
+}
+
+input[required]::after,
+select[required]::after {
+  content: "*";
+  color: red;
+  font-size: 1.2rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: inline-block;
+  box-shadow: none;
+  width: auto;
+}
+
+label > img {
+  vertical-align: middle;
+  display: inline-block;
+  height: 24px;
 }
 
 /* SMALLER SCREEN WIDTHS */
