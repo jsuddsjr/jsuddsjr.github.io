@@ -166,6 +166,7 @@ main {
 }
 .seattle-spotlight {
   background-image: url("../images/seattle_washington_temple_exterior.jpeg");
+  background-position: bottom 40% left 0;
 }
 .breakfast-buffet {
   background-image: url("../images/breakfast-buffet.jpg");
@@ -358,7 +359,7 @@ section .gallery img {
   box-shadow: -2px 0 15px 2px var(--primary-color);
 }
 .gallery ul:hover li {
-  width: 78px;;
+  width: 78px;
 }
 .gallery ul li:hover {
   width: 380px;
@@ -370,7 +371,7 @@ select,
 button[type="submit"] {
   padding: 0.5rem;
   display: block;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   width: 20rem;
   box-shadow: 2px 2px 3px inset var(--primary-color);
   border-radius: 4px;
@@ -389,14 +390,14 @@ input[type="checkbox"] {
 }
 
 label {
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 label > img {
   vertical-align: middle;
   display: inline-block;
   height: 24px;
-  border: 2px solid var(--accent1-color)
+  border: 2px solid var(--accent1-color);
 }
 
 /* SMALLER SCREEN WIDTHS */
