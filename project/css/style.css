@@ -93,7 +93,7 @@ header {
 }
 header a.logo {
   display: block;
-  background: url("../images/Sunstone-transparent.png");
+  background: url("../images/Sunstone-transparent.webp");
   background-size: 90px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -165,8 +165,8 @@ main {
   background-image: url("../images/hero-edited.webp");
 }
 .seattle-spotlight {
-  background-image: url("../images/seattle_washington_temple_exterior.webp");
-  background-position: bottom 40% left 0;
+  background-image: url("../images/seattle_washington_temple_exterior-short.webp");
+  background-position: top;
 }
 .breakfast-buffet {
   background-image: url("../images/breakfast-buffet-hero.webp");
@@ -305,14 +305,24 @@ p.info {
 .social a {
   display: inline-block;
   margin-left: 15px;
-}
-.social img {
   border-radius: 32px;
   box-shadow: 2px 2px 5px black;
+  height: 64px;
+  width: 64px;
 }
 .social a:hover {
   transform: scale(1.1);
   transition: 200ms ease-in;
+}
+
+.social > a[href*=twitter] {
+  background-image: url('https://cdn3.iconfinder.com/data/icons/capsocial-round/500/twitter-64.png');
+}
+.social > a[href*=facebook] {
+  background-image: url('https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-64.png');
+}
+.social > a[href*=instagram] {
+  background-image: url('https://cdn1.iconfinder.com/data/icons/smallicons-logotypes/32/instagram-64.png');
 }
 
 .copyright {
@@ -349,11 +359,11 @@ section .gallery img {
   width: 780px;
   overflow: hidden;
   box-shadow: 10px 10px 40px var(--primary-color);
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 .gallery li {
   width: 76px;
-  height: 599px;
+  height: 597px;
   float: left;
   transition: all 0.7s;
   box-shadow: -2px 0 15px 2px var(--primary-color);
