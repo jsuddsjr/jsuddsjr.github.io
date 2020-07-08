@@ -162,14 +162,14 @@ main {
   background-size: 100%;
 }
 .hero-img {
-  background-image: url("../images/hero-edited.jpg");
+  background-image: url("../images/hero-edited.webp");
 }
 .seattle-spotlight {
-  background-image: url("../images/seattle_washington_temple_exterior.jpeg");
+  background-image: url("../images/seattle_washington_temple_exterior.webp");
   background-position: bottom 40% left 0;
 }
 .breakfast-buffet {
-  background-image: url("../images/breakfast-buffet-hero.jpg");
+  background-image: url("../images/breakfast-buffet-hero.webp");
 }
 
 /* CALL TO ACTION */
