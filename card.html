@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta
+      name="description"
+      content="This activity is an opportunity to pull together many of the things you have learned this semester by writing the HTML and CSS to build a simple media card UI."
+    />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11pt;
+      }
+      img {
+        max-width: 100%;
+      }
+      .card {
+        position: relative;
+        width: 320px;
+        box-shadow: 1px 1px 4px 1px #888;
+        border-radius: 3px;
+        background-color: white;
+        overflow: hidden;
+      }
+      .card h2 {
+        position: absolute;
+        width: 320px;
+        text-align: center;
+        top: 120px;
+        margin: 0 auto;
+        color: white;
+      }
+      .card p {
+          padding: 0 20px;
+      }
+      .card footer {
+          display: flex;
+          align-items: baseline;
+          padding: 0 20px 20px 20px;
+          font-size: smaller;
+      }
+      .card footer button {
+          padding: 5px 8px;
+          border: 1px solid black;
+          background-color: white;
+          color: #888;
+      }
+      .card footer button:first-of-type {
+          border-radius: 3px 0 0 3px;
+      }
+      .card footer button:last-of-type {
+          border-radius: 0 3px 3px 0;
+          margin-left: -1px;
+      }
+      .card footer span.time {
+          flex-grow: 2;
+          text-align: right;
+          color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="card">
+      <h2>Thumbnail</h2>
+      <img
+        src="https://picsum.photos/320/240"
+        alt="Random 320 by 240 placeholder image"
+      />
+      <p>
+        This is a wider card with supporting text below as a natural lead-in to
+        additional content. This content is a little bit longer.
+      </p>
+      <footer>
+        <button class="viewButton" onclick="javascript:alert(this.className)">View</button>
+        <button class="editButton" onclick="javascript:alert(this.className)">Edit</button>
+        <span class="time">9 mins</span>
+      </footer>
+    </article>
+  </body>
+</html>
