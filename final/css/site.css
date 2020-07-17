@@ -19,6 +19,9 @@ body {
   font-size: 16px;
   background-color: white;
   padding: 0 2em;
+  border-radius: 0 0 3rem 3rem;
+  margin-bottom: 1rem;
+  box-shadow: 3px 3px 10px black;
 }
 h1,
 h2,
@@ -164,7 +167,7 @@ main > section:nth-child(1) > img {
 /* Footer */
 footer {
   font-size: x-small;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   border-top: 1px dotted;
 }
 footer > p {
@@ -204,7 +207,7 @@ input:focus {
 }
 
 @media screen and (max-width: 700px) {
-  section.heading img {
+  main > section:nth-child(1) > img {
     width: 40%;
   }
   h2 {
@@ -236,5 +239,8 @@ input:focus {
   nav ul {
     padding: 0;
     justify-content: center;
+  }
+  main > section:nth-child(1) {
+    min-height: 180px;
   }
 }
