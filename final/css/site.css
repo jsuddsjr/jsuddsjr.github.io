@@ -23,6 +23,7 @@ body {
   max-width: 900px;
   margin: 0 auto;
   font-family: var(--paragraph-font);
+  font-size: 16px;
   color: var(--accent1-color);
   background-color: white;
   padding: 0 2em;
@@ -109,15 +110,52 @@ nav a.active {
   box-shadow: 3px 3px 10px var(--van-dyke-brown);
 }
 
-section:nth-child(1) h2 {
-  text-align: right;
+/* Section headings */
+section {
+    min-height: 260px;
 }
-section:nth-child(1) img {
+section:nth-child(1) > h2 {
+  text-align: right;
+  padding-right: 1rem;
+}
+section:nth-child(1) > img {
   float: left;
   box-shadow: 3px 3px 10px var(--accent1-color);
   width: 320px;
   margin-right: 1.2rem;
-  transform: rotate(-4deg);
+}
+
+/* Gallery Cards */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    position: relative;
+    border: 1px solid var(--accent3-color);
+    min-width: 120px;
+    width: 240px;
+    height: 320px;
+    margin: 0 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 3px 3px 10px var(--accent3-color);
+}
+.card h3 {
+    text-align: center;
+}
+.card img {
+    height: 190px;
+    display: block;
+    margin: 0 auto;
+}
+.card footer {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    padding-left: 12px;
+    top: 300px;
 }
 
 /* Footer */
@@ -127,7 +165,7 @@ footer {
   border-top: 1px dotted;
 }
 footer > p {
-  color: var(--secondary-color);
+  color: var(--accent3-color);
   text-align: center;
 }
 
@@ -137,6 +175,7 @@ footer > p {
   }
   h2 {
     font-size: 1.6rem;
+    height: 1.4rem;
   }
 }
 
