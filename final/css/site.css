@@ -3,28 +3,19 @@
 :root {
   --antique-brass: hsla(24, 31%, 58%, 1);
   --van-dyke-brown: hsla(26, 35%, 27%, 1);
-  --blue-sapphire: hsla(200, 73%, 27%, 1);
-  --pacific-blue: hsla(187, 46%, 49%, 1);
-  --white: hsla(0, 0%, 99%, 1);
-
-  --primary-color: var(--white);
-  --secondary-color: var(--antique-brass);
-  --accent1-color: var(--blue-sapphire);
-  --accent2-color: var(--van-dyke-brown);
-  --accent3-color: var(--pacific-blue);
+  --blue-sapphire: hsla(200, 73%, 28%, 1);
 
   --heading-font: "Gochi Hand", cursive;
   --paragraph-font: "Poppins", sans-serif;
 }
 html {
-  background-color: var(--accent2-color);
+  background-color: black;
 }
 body {
   max-width: 900px;
   margin: 0 auto;
   font-family: var(--paragraph-font);
   font-size: 16px;
-  color: var(--accent1-color);
   background-color: white;
   padding: 0 2em;
 }
@@ -35,7 +26,7 @@ h4,
 h5,
 h6 {
   font-family: var(--heading-font);
-  color: var(--van-dyke-brown);
+  color: var(--blue-sapphire);
   white-space: nowrap;
 }
 h2 {
@@ -48,10 +39,13 @@ li {
 }
 p {
   font-family: var(--paragraph-font);
-  color: var(--accent3-color);
+  color: black;
   line-height: 1.8em;
   margin: 2em;
   margin-top: 0;
+}
+a {
+  color: var(--blue-sapphire);
 }
 
 /* Header */
@@ -62,8 +56,6 @@ header {
   align-items: baseline;
   align-content: space-around;
   padding: 0 0.5rem;
-  color: var(--accent1-color);
-  background-color: white;
 }
 header > h1 {
   margin: 0;
@@ -76,7 +68,6 @@ nav {
   border-left-width: 0;
   margin-left: 1rem;
   flex-grow: 5;
-  color: var(--accent1-color);
 }
 nav > ul {
   margin: 0;
@@ -88,74 +79,70 @@ nav li {
   padding: 0;
   margin: 0;
 }
-a {
-  color: var(--secondary-color);
-}
 nav a {
   padding: 0.5rem;
   min-width: 70px;
   text-decoration: none;
-  background-color: var(--tertiary-color);
 }
 nav a:link,
 nav a:visited {
-  color: var(--accent1-color);
+  color: var(--blue-sapphire);
 }
 nav a:hover,
 nav a.active {
   transition: all 0.3s ease-in;
   border-radius: 35px;
   color: white;
-  background-color: var(--accent2-color);
-  box-shadow: 3px 3px 10px var(--van-dyke-brown);
+  background-color: var(--van-dyke-brown);
+  box-shadow: 3px 3px 10px var(--antique-brass);
 }
 
 /* Section headings */
 section {
-    min-height: 260px;
+  min-height: 260px;
 }
-section:nth-child(1) > h2 {
+section.heading > h2 {
   text-align: right;
   padding-right: 1rem;
 }
-section:nth-child(1) > img {
+section.heading > img {
   float: left;
-  box-shadow: 3px 3px 10px var(--accent1-color);
+  box-shadow: 3px 3px 10px black;
   width: 320px;
   margin-right: 1.2rem;
 }
 
 /* Gallery Cards */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .card {
-    position: relative;
-    border: 1px solid var(--accent3-color);
-    min-width: 120px;
-    width: 240px;
-    height: 320px;
-    margin: 0 12px;
-    margin-bottom: 24px;
-    overflow: hidden;
-    box-shadow: 3px 3px 10px var(--accent3-color);
+  position: relative;
+  border: 1px solid var(--van-dyke-brown);
+  min-width: 120px;
+  width: 240px;
+  height: 320px;
+  margin: 0 12px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px var(--antique-brass);
 }
 .card h3 {
-    text-align: center;
+  text-align: center;
 }
 .card img {
-    height: 190px;
-    display: block;
-    margin: 0 auto;
+  height: 190px;
+  display: block;
+  margin: 0 auto;
 }
 .card footer {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    padding-left: 12px;
-    top: 300px;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  padding-left: 12px;
+  top: 300px;
 }
 
 /* Footer */
@@ -167,6 +154,14 @@ footer {
 footer > p {
   color: var(--accent3-color);
   text-align: center;
+}
+
+/* Forms */
+button {
+    background-color: var(--blue-sapphire);
+    padding: .4rem .8rem;
+    color: white;
+    border-radius: 7px;
 }
 
 @media screen and (max-width: 700px) {
@@ -197,7 +192,7 @@ footer > p {
     display: none;
   }
   nav {
-      border-left-width: 1px;
+    border-left-width: 1px;
   }
   nav ul {
     padding: 0;
