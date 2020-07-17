@@ -9,7 +9,7 @@
   --paragraph-font: "Poppins", sans-serif;
 }
 html {
-  background-color: black;
+  background-color: var(--blue-sapphire);
 }
 body {
   max-width: 900px;
