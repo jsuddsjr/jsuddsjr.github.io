@@ -1,12 +1,15 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Poppins:ital,wght@0,200;1,200&display=swap");
 
 :root {
-  --primary-color: #c8cce5;
-  --secondary-color: #2d94c8;
-  --tertiary-color: #fae9b2;
-  --accent1-color: #0a2239;
-  --accent2-color: #f0e5d5;
-  --accent3-color: #a664a5;
+  --antique-brass: hsla(24, 31%, 58%, 1);
+  --van-dyke-brown: hsla(26, 35%, 27%, 1);
+  --blue-sapphire: hsla(200, 73%, 28%, 1);
+  --light-blue: hsla(200, 73%, 72%, 0.5);
+
+  --primary-color: var(--blue-sapphire);
+  --secondary-color: white;
+  --accent1-color: var(--van-dyke-brown);
+  --accent2-color: var(--antique-brass);
   --heading-font: "Gochi Hand", cursive;
   --paragraph-font: "Poppins", sans-serif;
 }
@@ -79,12 +82,15 @@ p.colored {
 }
 .colors td {
   height: 3em;
+  color: white;
+  font-weight: bold;
 }
 .primary {
   background-color: var(--primary-color);
 }
 .secondary {
   background-color: var(--secondary-color);
+  color: black !important;
 }
 .tertiary {
   background-color: var(--tertiary-color);
@@ -112,13 +118,12 @@ nav li {
   padding: 0;
 }
 a {
-  color: var(--tertiary-color)
+  color: var(--tertiary-color);
 }
 nav a {
   padding: 1em;
   min-width: 70px;
   text-decoration: none;
-
 }
 nav a:link,
 nav a:visited {

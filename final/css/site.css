@@ -4,7 +4,7 @@
   --antique-brass: hsla(24, 31%, 58%, 1);
   --van-dyke-brown: hsla(26, 35%, 27%, 1);
   --blue-sapphire: hsla(200, 73%, 28%, 1);
-  --light-blue: hsla(200, 73%, 72%, .5);
+  --light-blue: hsla(200, 73%, 72%, 0.5);
 
   --heading-font: "Gochi Hand", cursive;
   --paragraph-font: "Poppins", sans-serif;
@@ -48,12 +48,14 @@ p {
   margin: 2em;
   margin-top: 0;
 }
-a:link, a:visited {
+a:link,
+a:visited {
   color: var(--blue-sapphire);
 }
-a:hover, a:active {
- color: white;
- background-color: var(--blue-sapphire);
+a:hover,
+a:active {
+  color: white;
+  background-color: var(--blue-sapphire);
 }
 
 /* Header */
@@ -142,8 +144,8 @@ main > section:nth-child(1) > img {
   transition: all 200ms ease-out;
 }
 .card:hover {
-    transform: scale(1.1);
-    transition: all 300ms ease-in;
+  transform: scale(1.1);
+  transition: all 300ms ease-in;
 }
 .card h3 {
   text-align: center;
@@ -161,7 +163,7 @@ main > section:nth-child(1) > img {
   top: 300px;
 }
 .next-page {
-    text-align: center;
+  text-align: center;
 }
 
 /* Footer */
@@ -180,15 +182,21 @@ form {
   margin-bottom: 2rem;
 }
 button {
-    background-color: var(--blue-sapphire);
-    padding: .4rem .8rem;
-    color: white;
-    border-radius: 7px;
-    font-size: 1.1rem;
+  background-color: var(--blue-sapphire);
+  padding: 0.4rem 0.8rem;
+  color: white;
+  border-radius: 7px;
+  font-size: 1.1rem;
+}
+input + button {
+  position: absolute;
+  border: 0;
+  background-color: transparent;
 }
 fieldset {
   position: relative;
   border: 0;
+  margin-bottom: 0.5rem;
 }
 label {
   position: absolute;
@@ -199,11 +207,24 @@ input {
   padding: 1.3rem 1rem 0;
   font-size: 1.1rem;
   border-radius: 5px;
-  margin-bottom: .5rem;
-  width: 20rem;
+  width: 18rem;
 }
 input:focus {
   background-color: var(--light-blue) !important;
+}
+
+/* Search results */
+table {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+th {
+  text-align: left;
+}
+img.preview {
+  height: 24px;
+  display: block;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 700px) {

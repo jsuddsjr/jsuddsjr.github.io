@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search - Spinners</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <meta
+      name="description"
+      content="Browse colorful, exclusive, hand-made scarves and
+    blankets, along with knitting and spinning advice."
+    />
+  </head>
+  <body>
+    <header>
+      <img src="images/spinners-logo-60x60.jpg" alt="Spinners logo" />
+      <h1>Spinners</h1>
+      <nav>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="#" class="active">Search</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="subscribe.html">Subscribe</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h2>Pattern Library</h2>
+        <form action="javascript:alert('Have you tried Google?')">
+          <fieldset>
+            <label for="q">Search</label>
+            <input type="text" name="q" id="q" required />
+            <button type="submit">🔍</button>
+          </fieldset>
+          <fieldset></fieldset>
+        </form>
+      </section>
+      <section>
+        <h2>Results</h2>
+        <table>
+          <tr>
+            <th>&nbsp;</th>
+            <th>Pattern name</th>
+            <th>Difficulty</th>
+            <th>Estimated time</th>
+            <th>Artist</th>
+            <th>Cost</th>
+          </tr>
+          <tr>
+            <td>
+              <img class="lazyload preview" data-src="images/yarn-project-1-preview.jpg" alt=""/>
+            </td>
+            <td>
+              <a href="#">Mandala</a>
+            </td>
+            <td>
+              Easy
+            </td>
+            <td>
+              30 min
+            </td>
+            <td>
+              <a href="artists.html">Knitting Shed</a> 
+            </td>
+            <td>
+              free
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="lazyload preview" data-src="images/yarn-project-2-preview.jpg" alt=""/>
+            </td>
+            <td>
+              <a href="#">Octobaby</a>
+            </td>
+            <td>
+              Medium
+            </td>
+            <td>
+              1 hour
+            </td>
+            <td>
+              <a href="artists.html">The Worst</a>
+            </td>
+            <td>
+              $0.99 USD
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="lazyload preview" data-src="images/yarn-project-6-preview.jpg" alt=""/>
+            </td>
+            <td>
+              <a href="#">Variegated Shawl</a>
+            </td>
+            <td>
+              Hard
+            </td>
+            <td>
+              6 hours
+            </td>
+            <td>
+              <a href="artists.html">Yarn Guys</a> 
+            </td>
+            <td>
+              $1.29 USD
+            </td>
+          </tr>
+
+        </table>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Copyright © 2020 Spinners | All rights reserved |
+        <a href="#privacy">Privacy and Cookie Statement</a> | John Sudds
+      </p>
+    </footer>
+    <script src="script/index.js" async></script>
+  </body>
+</html>
