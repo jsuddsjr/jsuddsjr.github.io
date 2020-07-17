@@ -4,6 +4,7 @@
   --antique-brass: hsla(24, 31%, 58%, 1);
   --van-dyke-brown: hsla(26, 35%, 27%, 1);
   --blue-sapphire: hsla(200, 73%, 28%, 1);
+  --light-blue: hsla(200, 73%, 72%, .5);
 
   --heading-font: "Gochi Hand", cursive;
   --paragraph-font: "Poppins", sans-serif;
@@ -105,14 +106,14 @@ nav a.active {
 }
 
 /* Section headings */
-section {
+main > section:nth-child(1) {
   min-height: 260px;
 }
-section.heading > h2 {
+main > section:nth-child(1) > h2 {
   text-align: right;
   padding-right: 1rem;
 }
-section.heading > img {
+main > section:nth-child(1) > img {
   float: left;
   box-shadow: 3px 3px 10px black;
   width: 320px;
@@ -172,11 +173,34 @@ footer > p {
 }
 
 /* Forms */
+form {
+  margin-bottom: 2rem;
+}
 button {
     background-color: var(--blue-sapphire);
     padding: .4rem .8rem;
     color: white;
     border-radius: 7px;
+    font-size: 1.1rem;
+}
+fieldset {
+  position: relative;
+  border: 0;
+}
+label {
+  position: absolute;
+  left: 1.5rem;
+}
+input {
+  color: var(--blue-sapphire);
+  padding: 1.3rem 1rem 0;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  margin-bottom: .5rem;
+  width: 20rem;
+}
+input:focus {
+  background-color: var(--light-blue) !important;
 }
 
 @media screen and (max-width: 700px) {
