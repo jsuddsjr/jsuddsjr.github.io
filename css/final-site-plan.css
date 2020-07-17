@@ -104,33 +104,44 @@ p.colored {
 .accent3 {
   background-color: var(--accent3-color);
 }
-nav {
-  background-color: var(--accent1-color);
-  line-height: 3em;
-  text-align: center;
-  font-size: 1.2em;
-}
-nav > ul {
-  list-style-type: none;
-  display: flex;
-}
-nav li {
-  padding: 0;
-}
 a {
   color: var(--tertiary-color);
 }
+
+
+/* Navigation */
+nav {
+  border: 1px solid var(--antique-brass);
+  border-left-width: 0;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  flex-grow: 5;
+}
+nav > ul {
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+}
+nav li {
+  padding: 0;
+  margin: 0;
+}
 nav a {
-  padding: 1em;
+  padding: 0.5rem;
   min-width: 70px;
   text-decoration: none;
 }
 nav a:link,
 nav a:visited {
-  color: var(--accent2-color);
+  color: var(--blue-sapphire);
+  transition: all 0.2s ease-out;
 }
-nav a:hover {
-  color: var(--accent1-color);
-  font-weight: bolder;
-  background-color: var(--primary-color);
+nav a:hover,
+nav a.active {
+  transition: all 0.3s ease-in;
+  border-radius: 35px;
+  color: white;
+  background-color: var(--van-dyke-brown);
+  box-shadow: 3px 3px 10px var(--antique-brass);
 }
