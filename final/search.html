@@ -25,20 +25,21 @@
       </nav>
     </header>
     <main>
-      <section>
+      <section class="no-img">
         <h2>Pattern Library</h2>
-        <form action="javascript:alert('Have you tried Google?')">
-          <fieldset>
-            <label for="q">Search</label>
-            <input type="text" name="q" id="q" required />
-            <button type="submit">🔍</button>
-          </fieldset>
-          <fieldset></fieldset>
-        </form>
+        <section class="search">
+          <form action="javascript:alert('Have you tried Google?')">
+            <fieldset>
+              <label for="q">Search</label>
+              <input type="text" name="q" id="q" required />
+              <button type="submit">🔍</button>
+            </fieldset>
+          </form>
+        </section>
       </section>
       <section>
         <h2>Results</h2>
-        <table>
+        <table class="results">
           <tr>
             <th>&nbsp;</th>
             <th>Pattern name</th>
@@ -49,7 +50,11 @@
           </tr>
           <tr>
             <td>
-              <img class="lazyload preview" data-src="images/yarn-project-1-preview.jpg" alt=""/>
+              <img
+                class="lazyload preview"
+                data-src="images/yarn-project-1-preview.jpg"
+                alt=""
+              />
             </td>
             <td>
               <a href="#">Mandala</a>
@@ -61,7 +66,7 @@
               30 min
             </td>
             <td>
-              <a href="artists.html">Knitting Shed</a> 
+              <a href="artists.html">Knitting Shed</a>
             </td>
             <td>
               free
@@ -69,7 +74,11 @@
           </tr>
           <tr>
             <td>
-              <img class="lazyload preview" data-src="images/yarn-project-2-preview.jpg" alt=""/>
+              <img
+                class="lazyload preview"
+                data-src="images/yarn-project-2-preview.jpg"
+                alt=""
+              />
             </td>
             <td>
               <a href="#">Octobaby</a>
@@ -89,7 +98,11 @@
           </tr>
           <tr>
             <td>
-              <img class="lazyload preview" data-src="images/yarn-project-6-preview.jpg" alt=""/>
+              <img
+                class="lazyload preview"
+                data-src="images/yarn-project-6-preview.jpg"
+                alt=""
+              />
             </td>
             <td>
               <a href="#">Variegated Shawl</a>
@@ -101,13 +114,12 @@
               6 hours
             </td>
             <td>
-              <a href="artists.html">Yarn Guys</a> 
+              <a href="artists.html">Yarn Guys</a>
             </td>
             <td>
               $1.29 USD
             </td>
           </tr>
-
         </table>
       </section>
     </main>
@@ -115,6 +127,7 @@
       <p>
         Copyright © 2020 Spinners | All rights reserved |
         <a href="#privacy">Privacy and Cookie Statement</a> | John Sudds
+        (BYU-Idaho/WDD 130)
       </p>
     </footer>
     <script src="script/index.js" async></script>

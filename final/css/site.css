@@ -37,6 +37,7 @@ h2 {
   font-size: 2.5rem;
   height: 2.1rem;
   border-bottom: 2px dashed;
+  margin-bottom: 1rem;
 }
 li {
   padding-bottom: 1em;
@@ -45,17 +46,21 @@ p {
   font-family: var(--paragraph-font);
   color: black;
   line-height: 1.8em;
-  margin: 2em;
   margin-top: 0;
+}
+a {
+  text-decoration: none;
+  border-radius: 3px;
 }
 a:link,
 a:visited {
-  color: var(--blue-sapphire);
+  font-weight: bolder;
+  color: var(--van-dyke-brown);
 }
 a:hover,
 a:active {
   color: white;
-  background-color: var(--blue-sapphire);
+  background-color: var(--antique-brass);
 }
 
 /* Header */
@@ -95,19 +100,20 @@ nav a {
   padding: 0.5rem;
   min-width: 70px;
   text-decoration: none;
+  border-radius: 35px;
+  transition-timing-function: ease-in-out;
 }
 nav a:link,
 nav a:visited {
   color: var(--blue-sapphire);
-  transition: all 0.2s ease-out;
+  transition: all 200ms;
 }
 nav a:hover,
 nav a.active {
-  transition: all 0.3s ease-in;
-  border-radius: 35px;
   color: white;
   background-color: var(--van-dyke-brown);
   box-shadow: 3px 3px 10px var(--antique-brass);
+  transition: color 1s, background-color 400ms;
 }
 
 /* Section headings */
@@ -123,6 +129,9 @@ main > section:nth-child(1) > img {
   box-shadow: 3px 3px 10px black;
   width: 320px;
   margin-right: 1.2rem;
+}
+main > section.no-img {
+  min-height: 0;
 }
 
 /* Gallery Cards */
@@ -141,11 +150,11 @@ main > section:nth-child(1) > img {
   margin-bottom: 24px;
   overflow: hidden;
   box-shadow: 3px 3px 10px var(--antique-brass);
-  transition: all 200ms ease-out;
+  transition: transform 200ms ease-out;
 }
 .card:hover {
   transform: scale(1.1);
-  transition: all 300ms ease-in;
+  transition: transform 300ms ease-in;
 }
 .card h3 {
   text-align: center;
@@ -154,6 +163,9 @@ main > section:nth-child(1) > img {
   height: 190px;
   display: block;
   margin: 0 auto;
+}
+.card p {
+  text-align: center;
 }
 .card footer {
   position: absolute;
@@ -165,6 +177,64 @@ main > section:nth-child(1) > img {
 .next-page {
   text-align: center;
 }
+
+/* Artist Page */
+.portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+}
+.portfolio > * {
+  margin: 12px 0 0 12px;
+}
+.portfolio img {
+  box-shadow: 3px 3px 10px var(--antique-brass);
+  padding: 3px;
+}
+.videos {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+  justify-items: stretch;
+  align-items: stretch;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.videos iframe {
+  background-color: var(--antique-brass);
+  box-shadow: 3px 3px 10px var(--antique-brass);
+}
+.videos iframe:nth-of-type(1) {
+  grid-row: 1 / 3;
+  grid-column: 1 / 3;
+}
+
+.bio a {
+  padding: 0 5px 0 32px;
+  margin-bottom: .2rem;
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: contain;
+  border-radius: 3px;
+  transition: all 200ms ease-in-out;
+}
+.bio a:hover, .bio a:active {
+  padding: 3px 5px 3px 32px;
+  background-color: var(--antique-brass);
+  transition: all 500ms ease-in-out;
+}
+a[title=website] {
+  background-image: url('../images/website-icon.png');
+}
+a[title=Facebook] {
+  background-image: url('../images/facebook-icon.png');
+}
+a[title=Instagram] {
+  background-image: url('../images/instagram-icon.png');
+}
+
 
 /* Footer */
 footer {
@@ -188,10 +258,13 @@ button {
   border-radius: 7px;
   font-size: 1.1rem;
 }
-input + button {
-  position: absolute;
+input[name=q] {
+  padding-right: 48px;
+}
+input[name=q] + button {
   border: 0;
   background-color: transparent;
+  margin-left: -48px;
 }
 fieldset {
   position: relative;
@@ -214,12 +287,29 @@ input:focus {
 }
 
 /* Search results */
-table {
+.search {
+  display: flex;
+  justify-content: center;
+}
+table.results {
   width: 100%;
   margin-bottom: 2rem;
 }
+table.results tr {
+  display: grid;
+  grid-template-columns: 48px 3fr 1fr 2fr 2fr 1fr;
+  grid-gap: .5rem;
+  padding: .2rem;
+}
+table.results tr:nth-child(2n + 3) {
+  background-color: hsla(24, 31%, 58%, .2);
+}
 th {
   text-align: left;
+  border-bottom: 2px solid var(--antique-brass)
+}
+th:first-child {
+  border: 0;
 }
 img.preview {
   height: 24px;
@@ -245,6 +335,14 @@ img.preview {
   header h1 {
     display: none;
   }
+  .videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .videos iframe {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -263,5 +361,8 @@ img.preview {
   }
   main > section:nth-child(1) {
     min-height: 180px;
+  }
+  input {
+    width: 60%
   }
 }
