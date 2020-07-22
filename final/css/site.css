@@ -153,7 +153,7 @@ main > section.no-img {
   transition: transform 200ms ease-out;
 }
 .card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   transition: transform 300ms ease-in;
 }
 .card h3 {
