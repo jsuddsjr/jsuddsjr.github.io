@@ -205,6 +205,7 @@ main > section.no-img {
 .videos iframe {
   background-color: var(--antique-brass);
   box-shadow: 3px 3px 10px var(--antique-brass);
+  border: 0;
 }
 .videos iframe:nth-of-type(1) {
   grid-row: 1 / 3;
