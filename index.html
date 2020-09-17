@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home page | WDD 230 Course Portal | BYU Idaho</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" />
     <meta
       name="description"
       content="Assignment portal updated throughout the semester with links to lesson assignments and projects."
@@ -12,10 +12,7 @@
   </head>
   <body>
     <header>
-      <img
-        src="images/John+Keys_Blurred.jpg"
-        alt="Photo of John Sudds"
-      />
+      <img src="images/John+Keys_Blurred.jpg" alt="Photo of John Sudds" />
       <h1>John W. Sudds Jr</h1>
     </header>
     <main>
@@ -28,12 +25,11 @@
     </main>
     <footer>
       <p>
-        &copy; 2020 | John W Sudds Jr | Seattle, WA |
+        &copy; <span id="year"></span> | John W Sudds Jr | Seattle, WA |
         <a href="https://www.byui.edu/online">BYUI Online Learning</a>
       </p>
-      <p id="updated">
-        Last updated <span class="time">09/16/2020 09:07 PM</span>
-      </p>
+      <p id="updated">Last updated <span id="time"></span></p>
     </footer>
+    <script src="scripts/index.js"></script>
   </body>
 </html>
