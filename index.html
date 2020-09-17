@@ -17,10 +17,7 @@
   </head>
   <body>
     <header>
-      <img
-        src="images/John+Keys_Blurred.jpg"
-        alt="Photo of John Sudds playing the piano"
-      />
+      <img src="images/john.jpg" alt="Photo of me playing the piano" />
       <h1>John W. Sudds Jr</h1>
     </header>
     <main>
@@ -38,15 +35,6 @@
       </p>
       <p id="updated">Last updated <span id="time"></span></p>
     </footer>
-    <script>
-      // Critical script loaded inline for perf.
-      document.body.onload = (e) => {
-        const d = new Date();
-        document.getElementById("year").innerHTML = d.getFullYear();
-        document.getElementById("time").innerHTML =
-          d.toLocaleDateString() + " " + d.toLocaleTimeString();
-        console.log(d);
-      };
-    </script>
+    <script src="js/index.js"></script>
   </body>
 </html>
