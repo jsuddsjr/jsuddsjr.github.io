@@ -9,11 +9,18 @@ html {
 
 body {
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 16px;
+  font-size: 16pt;
   color: #1c0221;
   background-color: white;
   margin: 0;
   padding: 0;
+  background-image: url(https://source.unsplash.com/Q7PclNhVRI0);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 400px;
+  width: 100%;
 }
 
 header,
@@ -23,12 +30,11 @@ footer {
   padding: 10px 25px;
   max-width: 760px;
   min-width: 320px;
-  background-color: white;
 }
 
 header {
   border-radius: 1rem;
-  background-color: #DEC278;
+  background-color: #dec278;
 }
 
 h1,
@@ -50,6 +56,12 @@ header > img {
   width: 160px;
 }
 
+main {
+  background-color: white;
+  margin-top: 2rem;
+  border-radius: 1rem;
+}
+
 h2 {
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -61,23 +73,25 @@ ul {
 }
 
 a {
-  color: #885053;
+  color: #138A36;
   transition: color 0.2s;
 }
 
 a:focus,
 a:hover {
-  color: #FF1B1C;
+  color: #6F1A07;
   transition: color 0.2s;
 }
 
 footer {
   clear: both;
   text-align: center;
-  background-color: #DEC278;
+  background-color: #dec278;
+  opacity: 0.8;
   border-radius: 1rem;
   font-size: 0.8rem;
   margin-top: 2rem;
+  backdrop-filter: blur(2px);
 }
 
 footer > p {
@@ -86,14 +100,20 @@ footer > p {
 
 footer a:focus,
 footer a:hover {
-  color: #406E8E;
+  color: #6F1A07;
 }
 
 #updated {
-  color: #885053;
+  color: #138A36;
 }
 
 @media screen and (max-width: 550px) {
+  body {
+    font-size: 12pt;
+  }
+  header > h1 {
+    font-size: 2rem;
+  }
   header > img {
     display: none;
   }
