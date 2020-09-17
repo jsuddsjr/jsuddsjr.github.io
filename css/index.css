@@ -1,3 +1,5 @@
+/* https://coolors.co/ff1b1c-406e8e-ffffff-dec278-1c0221 */
+
 html {
   width: 100%;
   height: 100%;
@@ -8,7 +10,7 @@ html {
 body {
   font-family: "Noto Sans JP", sans-serif;
   font-size: 16px;
-  color: #333;
+  color: #1c0221;
   background-color: white;
   margin: 0;
   padding: 0;
@@ -26,7 +28,7 @@ footer {
 
 header {
   border-radius: 1rem;
-  background-color: tan;
+  background-color: #DEC278;
 }
 
 h1,
@@ -39,7 +41,7 @@ h3 {
 header > h1 {
   text-align: center;
   font-size: 2.5rem;
-  letter-spacing: 2px;
+  letter-spacing: 0.2rem;
 }
 
 header > img {
@@ -49,13 +51,30 @@ header > img {
 }
 
 h2 {
-  border-bottom: 1px solid #333;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  letter-spacing: 0.1rem;
+}
+
+ul {
+  list-style-type: square;
+}
+
+a {
+  color: #885053;
+  transition: color 0.2s;
+}
+
+a:focus,
+a:hover {
+  color: #FF1B1C;
+  transition: color 0.2s;
 }
 
 footer {
   clear: both;
   text-align: center;
-  background-color: tan;
+  background-color: #DEC278;
   border-radius: 1rem;
   font-size: 0.8rem;
   margin-top: 2rem;
@@ -65,8 +84,13 @@ footer > p {
   margin: 0;
 }
 
+footer a:focus,
+footer a:hover {
+  color: #406E8E;
+}
+
 #updated {
-  color: darkred;
+  color: #885053;
 }
 
 @media screen and (max-width: 550px) {
