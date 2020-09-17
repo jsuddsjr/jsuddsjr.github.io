@@ -73,13 +73,13 @@ ul {
 }
 
 a {
-  color: #138A36;
+  color: #21834a;
   transition: color 0.2s;
 }
 
 a:focus,
 a:hover {
-  color: #6F1A07;
+  color: #dec278;
   transition: color 0.2s;
 }
 
@@ -100,11 +100,11 @@ footer > p {
 
 footer a:focus,
 footer a:hover {
-  color: #6F1A07;
+  color: white;
 }
 
 #updated {
-  color: #138A36;
+  color: #218380;
 }
 
 @media screen and (max-width: 550px) {
