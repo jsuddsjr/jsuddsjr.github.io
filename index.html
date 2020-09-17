@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home page | WDD 230 Course Portal | BYU Idaho</title>
-    <link rel="preload">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@100&display=swap">
+    <link rel="preload" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@100&display=swap"
+    />
     <link rel="stylesheet" href="css/index.css" />
     <meta
       name="description"
@@ -35,6 +38,15 @@
       </p>
       <p id="updated">Last updated <span id="time"></span></p>
     </footer>
-    <script src="scripts/index.js"></script>
+    <script>
+      // Critical script loaded inline for perf.
+      document.body.onload = (e) => {
+        const d = new Date();
+        document.getElementById("year").innerHTML = d.getFullYear();
+        document.getElementById("time").innerHTML =
+          d.toLocaleDateString() + " " + d.toLocaleTimeString();
+        console.log(d);
+      };
+    </script>
   </body>
 </html>
