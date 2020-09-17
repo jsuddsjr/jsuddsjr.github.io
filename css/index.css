@@ -9,9 +9,11 @@ html {
 
 body {
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
 header,
@@ -19,7 +21,8 @@ main,
 footer {
   margin: 0 auto;
   padding: 10px 25px;
-  width: 960px;
+  max-width: 960px;
+  min-width: 600px;
   background-color: white;
 }
 
@@ -56,4 +59,14 @@ footer {
   text-align: center;
   background-color: tan;
   border-radius: 1rem;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+
+footer > p {
+    margin: 0;
+}
+
+#updated {
+  color: darkred;
 }
