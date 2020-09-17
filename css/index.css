@@ -14,12 +14,12 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  background-image: url(https://source.unsplash.com/Q7PclNhVRI0);
+  background-image: url(../images/pineapples.jpg);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  min-height: 400px;
+  min-height: 25vh;
   width: 100%;
 }
 
