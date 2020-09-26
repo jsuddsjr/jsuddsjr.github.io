@@ -1,16 +1,69 @@
+:root {
+  --body-text: #605856;
+  --background-color: #fbfcff;
+  --footer-background: #d0ccd0;
+  --header-color: #274156;
+  --link-color: #274156;
+  --link-hover: #1c6e8c;
+}
+
 body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 0.8em;
   line-height: 1.1rem;
+  color: var(--body-text);
+  background-color: var(--background-color);
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  margin-top: 2rem;
+  color: var(--header-color);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid var(--footer-background);
   padding: 0.2rem;
   margin-bottom: 0.2rem;
+}
+p {
+  padding: 0.2rem;
+}
+a:link,
+a:visited {
+  color: var(--link-color);
+}
+a:active,
+a:focus,
+a:hover {
+  color: var(--link-hover);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+p.company {
+  font-size: 0.5rem;
+  font-style: italic;
+  display: block;
+}
+
+footer {
+  background-color: var(--footer-background);
+  color: var(--header-color);
+  line-height: 0.6rem;
+  padding: 0.5rem;
+  margin-top: 2rem;
+}
+
+footer > p {
+  margin: 0;
+  font-size: 0.8rem;
+  text-align: center;
+  font-style: italic;
 }
