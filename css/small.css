@@ -81,7 +81,7 @@ header > h1 {
 
 header > picture {
   margin: 0.1rem auto;
-  width: 240px;
+  width: 100%;
   height: auto;
 }
 
