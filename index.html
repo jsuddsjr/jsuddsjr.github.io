@@ -2,18 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Home page | WDD 230 Course Portal | BYU Idaho</title>
-    <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" -->
-    <link rel="stylesheet" href="css/normalize.css" />
-    <!-- Load fonts asynchronously. -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Load Google fonts asynchronously. -->
     <link
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Montez&family=Open+Sans&display=swap"
       onload="this.onload=null; this.rel='stylesheet'"
     />
-    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <!-- <link rel="stylesheet" href="css/normalize.css" /> -->
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
     <meta
       name="description"
       content="Assignment portal updated throughout the semester with links to lesson assignments and projects."
@@ -46,6 +54,6 @@
       </p>
       <p id="updated">Last updated <span id="time"></span></p>
     </footer>
-    <script src="js/index.js"></script>
+    <script src="js/updateTime.js"></script>
   </body>
 </html>
