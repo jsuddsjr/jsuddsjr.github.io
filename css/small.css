@@ -80,9 +80,8 @@ header > h1 {
 }
 
 header > picture {
-  margin: 0.1rem auto;
-  width: 100%;
-  height: auto;
+  margin: 0.5rem auto;
+  max-width: 100%;
 }
 
 header > picture > img {
