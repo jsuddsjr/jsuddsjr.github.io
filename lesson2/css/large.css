@@ -3,7 +3,7 @@
     max-width: 82em;
   }
   main {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
   main > section {
     margin-right: 25px;
