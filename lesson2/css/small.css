@@ -4,15 +4,17 @@
   --footer-background: #d0ccd0;
   --header-color: #274156;
   --link-color: #274156;
-  --link-hover: #1c6e8c;
+  --link-hover: #3190b3;
 }
 
 body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 0.8em;
-  line-height: 1.1rem;
+  line-height: 1.4rem;
   color: var(--body-text);
   background-color: var(--background-color);
+  max-width: 350px;
+  margin: 0 auto;
 }
 
 h1,
@@ -24,17 +26,23 @@ h6 {
   margin-top: 2rem;
   color: var(--header-color);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  border-bottom: 1px solid var(--footer-background);
   padding: 0.2rem;
   margin-bottom: 0.2rem;
 }
+
+h2 {
+  border-bottom: 1px solid var(--footer-background);
+}
+
 p {
   padding: 0.2rem;
 }
+
 a:link,
 a:visited {
   color: var(--link-color);
 }
+
 a:active,
 a:focus,
 a:hover {
@@ -42,21 +50,24 @@ a:hover {
 }
 
 main {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
 }
 
-p.company {
-  font-size: 0.5rem;
-  font-style: italic;
-  display: block;
+main > section {
+  width: 310px;
+  margin-right: 15px;
+}
+
+img {
+  width: 80%;
 }
 
 footer {
   background-color: var(--footer-background);
   color: var(--header-color);
-  line-height: 0.6rem;
+  line-height: 0.8rem;
   padding: 0.5rem;
   margin-top: 2rem;
 }
