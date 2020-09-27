@@ -56,11 +56,6 @@ main {
   flex-grow: 1;
 }
 
-main > section {
-  width: 310px;
-  margin-right: 15px;
-}
-
 img {
   width: 100%;
 }

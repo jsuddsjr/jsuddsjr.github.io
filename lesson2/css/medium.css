@@ -2,4 +2,8 @@
   body {
     max-width: 650px;
   }
+  main > section {
+    width: 310px;
+    margin-right: 15px;
+  }
 }
