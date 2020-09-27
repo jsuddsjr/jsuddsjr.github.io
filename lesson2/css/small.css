@@ -1,7 +1,7 @@
 :root {
   --body-text: #605856;
   --background-color: #fbfcff;
-  --footer-background: #d0ccd0;
+  --footer-background: #fbfcff;
   --header-color: #274156;
   --link-color: #274156;
   --link-hover: #3190b3;
@@ -61,20 +61,18 @@ main > section {
 }
 
 img {
-  width: 80%;
+  width: 100%;
 }
 
 footer {
   background-color: var(--footer-background);
   color: var(--header-color);
-  line-height: 0.8rem;
-  padding: 0.5rem;
+  line-height: 1rem;
   margin-top: 2rem;
 }
 
 footer > p {
   margin: 0;
   font-size: 0.8rem;
-  text-align: center;
   font-style: italic;
 }
