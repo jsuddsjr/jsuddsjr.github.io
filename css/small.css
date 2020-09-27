@@ -85,7 +85,7 @@ header > picture {
   height: auto;
 }
 
-picture > img {
+header > picture > img {
   border-style: none;
   box-shadow: 0 0 30px #444;
   border-radius: 15px;

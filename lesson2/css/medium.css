@@ -1,15 +1,16 @@
-@media only screen and (min-width: 660px) {
+@media only screen and (min-width: 32.5em) {
   body {
-    max-width: 660px;
-  }
-  main > section {
-    width: 310px;
-    margin-right: 30px;
-  }
-  section:nth-child(2) {
-    margin-right: 0;
+    width: auto;
   }
   img {
+    width: auto;
+    max-width: 100%;
     box-shadow: 10px 10px 10px var(--body-text);
+  }
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+  main > section {
+    margin-right: 30px;
   }
 }

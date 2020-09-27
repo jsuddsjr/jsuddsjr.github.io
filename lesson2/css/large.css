@@ -1,12 +1,11 @@
-@media only screen and (min-width: 990px) {
+@media only screen and (min-width: 50em) {
   body {
-    max-width: 990px;
+    max-width: 82em;
   }
-  main > section,
-  section:nth-child(2) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  main > section {
     margin-right: 25px;
-  }
-  section:nth-child(3) {
-    margin-right: 0;
   }
 }
