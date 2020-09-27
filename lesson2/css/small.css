@@ -31,7 +31,8 @@ h6 {
 }
 
 h2 {
-  border-bottom: 1px solid var(--footer-background);
+  border-bottom: 1px solid var(--header-color);
+  margin-bottom: -0.5rem;
 }
 
 p {
