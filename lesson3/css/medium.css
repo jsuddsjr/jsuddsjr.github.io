@@ -1,6 +1,7 @@
 /* Medium screen styles */
 @media only screen and (min-width: 32.5em) {
-  div[itemtype='http://schema.org/Weather'] {
+  div[itemtype='http://schema.org/Weather']
+  {
     grid-template-columns: minmax(200px, 1fr) 1fr;
     justify-items: start;
   }
@@ -15,11 +16,13 @@
     font-size: 32px;
     text-align: left;
   }
-  [itemprop="conditions"], #range {
+  [itemprop="conditions"],
+  #range {
     text-align: left;
   }
   body {
     font-size: 1em;
+    line-height: 1.5rem;
   }
   header {
     border-radius: 0 0 1rem 1rem;
@@ -27,10 +30,25 @@
   header > h1 {
     font-size: 2.5rem;
   }
-  header > picture {
-    float: right;
+  nav > ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
   }
-  main, footer {
+  nav li {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 5em;
+  }
+  nav a {
+    border: 1px solid black;
+    border-bottom: 0;
+    border-radius: 12px 0 0 0;
+    padding: 5px 5px 5px 12px;
+  }
+  main,
+  footer {
     margin-top: 1.5rem;
     border-radius: 1rem;
   }
