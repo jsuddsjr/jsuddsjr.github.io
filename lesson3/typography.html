@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Home page | WDD 230 Site Plan | BYU Idaho</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/large.css" />
+    <meta
+      name="description"
+      content="Website planning document with site map and target audience analysis."
+    />
+  </head>
+  <body>
+    <header>
+      <h1>
+        WeatherCat
+        <img
+          src="images/weathercat-small.svg"
+          alt="WeatherCat logo"
+          height="36"
+        />
+      </h1>
+      <p>It's raining cats.</p>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Site Description</a></li>
+        <li><a href="target-audience.html">Target Audience</a></li>
+        <li><a href="color-scheme.html">Color Scheme</a></li>
+        <li><a href="#">Typography</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section>
+        <h2>Header font</h2>
+        <p>
+          <a href="https://fonts.google.com/specimen/Sansita+Swashed"
+            >Sansita Swashed</a
+          >
+          adds a whimsical, tail-like appearance to headers on the site.
+        </p>
+        <h1 class="sample">Lorem Ipsum</h1>
+      </section>
+      <section>
+        <h2>Paragraph Font</h2>
+        <p>
+          The smooth curves of
+          <a href="https://fonts.google.com/specimen/Montserrat">Montserrat</a>
+          provide a calm and simple appearance to the text on the site.
+        </p>
+        <p class="sample">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+          magnam assumenda voluptate. Optio corporis saepe earum error,
+          similique quia ex dolores iure delectus quaerat aut dignissimos est,
+          fugit maxime atque?
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>Current date: <span id="date"></span></p>
+      <p>
+        &copy; <span id="year"></span> | John W Sudds Jr | Seattle, WA |
+        <a href="https://www.byui.edu/online">Terms of Use</a> | Last updated
+        <span id="time"></span>
+      </p>
+    </footer>
+    <script src="js/updateTime.js"></script>
+    <script src="js/colorTemp.js"></script>
+  </body>
+</html>
