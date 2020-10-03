@@ -33,15 +33,15 @@
         <h2>Site purpose</h2>
 
         <!-- microdata -->
-        <div itemscope itemtype="http://schema.org/Weather">
-          <h3 itemprop="temperature">72°</h3>
+        <div itemscope itemtype="http://schema.org/Weather" id="weather">
+          <h3 itemprop="temperature" id="temperature">72°</h3>
           <div>
-            <div itemprop="city" itemscope itemtype="http://schema.org/Location">
+            <div itemprop="city" id="city" itemscope itemtype="http://schema.org/Location">
               Chicago
             </div>
-            <div itemprop="conditions">Cloudy</div>
-            <div>
-              <span itemprop="high">76°</span> <span itemprop="low">62°</span>
+            <div itemprop="conditions" id="conditions">Cloudy</div>
+            <div id="range">
+              <span itemprop="high" id="high">76°</span> <span itemprop="low" id="low">62°</span>
             </div>
           </div>
         </div>
@@ -61,5 +61,6 @@
       </p>
     </footer>
     <script src="js/updateTime.js"></script>
+    <script src="js/colorTemp.js"></script>
   </body>
 </html>

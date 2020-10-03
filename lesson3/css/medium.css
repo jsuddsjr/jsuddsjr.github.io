@@ -1,5 +1,23 @@
 /* Medium screen styles */
 @media only screen and (min-width: 32.5em) {
+  div[itemtype='http://schema.org/Weather'] {
+    grid-template-columns: minmax(200px, 1fr) 1fr;
+    justify-items: start;
+  }
+  [itemprop="temperature"] {
+    text-align: right;
+    margin-right: 0.8rem;
+    justify-self: end;
+    line-height: 3rem;
+    padding-bottom: 1rem;
+  }
+  [itemprop="city"] {
+    font-size: 32px;
+    text-align: left;
+  }
+  [itemprop="conditions"], #range {
+    text-align: left;
+  }
   body {
     font-size: 1em;
   }
