@@ -1,0 +1,144 @@
+/* Color scheme */
+:root {
+  --body-text: #1c0221;
+  --section-background: #dec278;
+  --main-background: white;
+  --link: #21834a;
+  --hover-link: #dec278;
+}
+
+/* microdata */
+div[itemtype='http://schema.org/Weather']
+{
+  font-family: "Sansita Swashed", sans-serif;
+  display: grid;
+  padding: 12px 20px;
+  grid-template-columns: 120px auto;
+  align-items: center;
+}
+
+[itemprop="temperature"] {
+  font-family: "Sansita Swashed", sans-serif;
+  font-size: 72px;
+  padding-bottom: 16px;
+  color: lightgray;
+  text-shadow: 2px 2px 3px black;
+}
+
+[itemprop="city"] {
+  font-size: 32px;
+}
+
+[itemprop="conditions"] {
+  margin-bottom: -5px;
+}
+
+[itemprop="high"]::before {
+  content: "↑";
+}
+
+[itemprop="low"]::before {
+  content: "↓";
+}
+
+
+
+/* Basic styles */
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  line-height: 1.5rem;
+  color: var(--body-text);
+  background-color: var(--main-background);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Sansita Swashed", sans-serif;
+}
+
+ul {
+  list-style-type: square;
+}
+
+a {
+  color: var(--link);
+  transition: color 0.3s;
+}
+
+a:focus,
+a:hover {
+  color: var(--hover-link);
+  transition: color 0.3s;
+}
+
+/* Section styles */
+header,
+main,
+footer {
+  margin: 0 auto;
+  padding: 10px 25px;
+  max-width: 760px;
+}
+
+header {
+  background-color: var(--section-background);
+  text-align: center;
+}
+
+header > h1 {
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  line-height: 2.1rem;
+}
+
+header > picture {
+  margin: 0.5rem auto;
+  max-width: 100%;
+}
+
+header > picture > img {
+  border-style: none;
+  box-shadow: 0 0 30px #444;
+  border-radius: 15px;
+}
+
+main {
+  background-color: var(--main-background);
+}
+
+footer {
+  clear: both;
+  text-align: center;
+  background-color: var(--section-background);
+  opacity: 0.8;
+  font-size: 0.8rem;
+  line-height: 1.3em;
+  /* Blur when background is underneath */
+  backdrop-filter: blur(2px);
+  margin-bottom: 12rem;
+}
+
+footer > p {
+  margin: 0;
+}
+
+footer a:focus,
+footer a:hover {
+  color: white;
+}
+
+#updated {
+  color: var(--link);
+}

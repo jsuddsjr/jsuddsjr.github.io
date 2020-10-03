@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Home page | WDD 230 Site Plan | BYU Idaho</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
+    <meta
+      name="description"
+      content="Website planning document with site map and target audience analysis."
+    />
+  </head>
+  <body>
+    <header><h1>WeatherCat 🐱‍👤</h1></header>
+    <main>
+      <section>
+        <h2>Site name</h2>
+      </section>
+      <section>
+        <h2>Site purpose</h2>
+
+        <!-- microdata -->
+        <div itemscope itemtype="http://schema.org/Weather">
+          <h3 itemprop="temperature">72°</h3>
+          <div>
+            <div itemprop="city" itemscope itemtype="http://schema.org/Location">
+              Chicago
+            </div>
+            <div itemprop="conditions">Cloudy</div>
+            <div>
+              <span itemprop="high">76°</span> <span itemprop="low">62°</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Target audience and scenarios</h2>
+      </section>
+      <section>
+        <h2>Site map</h2>
+      </section>
+    </main>
+    <footer>
+      <p>
+        &copy; <span id="year"></span> | John W Sudds Jr | Seattle, WA |
+        <a href="https://www.byui.edu/online">BYUI Online Learning</a> | Last
+        updated <span id="time"></span>
+      </p>
+    </footer>
+    <script src="js/updateTime.js"></script>
+  </body>
+</html>
