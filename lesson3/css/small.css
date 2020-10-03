@@ -3,7 +3,7 @@
   --body-text: #1c0221;
   --section-background: #dec278;
   --main-background: white;
-  --link: #21834a;
+  --link: #75005c;
   --hover-link: #dec278;
 }
 
@@ -60,6 +60,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  min-width: 280px;
 }
 
 h1,
@@ -93,7 +94,8 @@ footer {
 }
 
 header {
-  background-color: var(--section-background);
+  background: center no-repeat url(../images/dark-skies-and-lightning-storm.jpg);
+  background-size: 100% auto;
   text-align: center;
 }
 
@@ -101,6 +103,8 @@ header > h1 {
   font-size: 2rem;
   letter-spacing: 0.2rem;
   line-height: 2.1rem;
+  color: white;
+  white-space: nowrap;
 }
 
 header > picture {
@@ -119,14 +123,8 @@ main {
 }
 
 footer {
-  clear: both;
-  text-align: center;
-  background-color: var(--section-background);
-  opacity: 0.8;
   font-size: 0.8rem;
   line-height: 1.3em;
-  /* Blur when background is underneath */
-  backdrop-filter: blur(2px);
   margin-bottom: 12rem;
 }
 
