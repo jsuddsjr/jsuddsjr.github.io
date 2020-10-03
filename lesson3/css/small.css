@@ -57,18 +57,19 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  color: var(--body-text);
+  background-attachment: fixed;
+  background-color: var(--background-top);
+  background-image: linear-gradient(
+    var(--background-top),
+    var(--background-bottom)
+  );
 }
 
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
   line-height: 1.3rem;
-  color: var(--body-text);
-  background-color: var(--background-top);
-  background-image: linear-gradient(
-    var(--background-top),
-    var(--background-bottom)
-  );
   margin: 0;
   padding: 0;
   width: 100%;
@@ -216,6 +217,19 @@ footer {
 
 footer > p {
   margin: 0;
+}
+
+/* Cat photos */
+
+p.cats {
+  text-align: center;
+}
+
+p.cats img {
+  padding: 9px;
+  background: white;
+  box-shadow: 4px 4px 10px var(--body-text);
+  width: 180px;
 }
 
 /* Color table */

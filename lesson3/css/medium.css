@@ -52,4 +52,7 @@
     margin-top: 1.5rem;
     border-radius: 1rem;
   }
+  p.cats img {
+    width: 25%;
+  }
 }
