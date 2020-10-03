@@ -13,6 +13,7 @@
     const weather = [
         "Stormy", 
         "Rain",
+        "Light rain",
         "Windy",
         "Foggy",
         "Partly cloudy",
@@ -22,6 +23,8 @@
         "Overcast",
         "Hurricane",
         "Tornados",
+        "Snow flurries",
+        "Heavy snow",
         "Smog"
     ];
 

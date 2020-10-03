@@ -24,10 +24,28 @@
     />
   </head>
   <body>
-    <header><h1>WeatherCat 🐱‍👤</h1></header>
+    <header>
+      <h1>
+        WeatherCat
+        <img
+          src="images/weathercat-small.svg"
+          alt="WeatherCat logo"
+          height="36px"
+        />
+      </h1>
+    </header>
     <main>
       <section>
         <h2>Site name</h2>
+        <p>
+          WeatherCat, because why not get a cute kitten with your weather
+          report?
+        </p>
+        <img
+          src="images/weathercat-small.svg"
+          alt="WeatherCat logo"
+          width="100"
+        />
       </section>
       <section>
         <h2>Site purpose</h2>
@@ -36,12 +54,18 @@
         <div itemscope itemtype="http://schema.org/Weather" id="weather">
           <h3 itemprop="temperature" id="temperature">72°</h3>
           <div>
-            <div itemprop="city" id="city" itemscope itemtype="http://schema.org/Location">
+            <div
+              itemprop="city"
+              id="city"
+              itemscope
+              itemtype="http://schema.org/Location"
+            >
               Chicago
             </div>
             <div itemprop="conditions" id="conditions">Cloudy</div>
             <div id="range">
-              <span itemprop="high" id="high">76°</span> <span itemprop="low" id="low">62°</span>
+              <span itemprop="high" id="high">76°</span>
+              <span itemprop="low" id="low">62°</span>
             </div>
           </div>
         </div>
