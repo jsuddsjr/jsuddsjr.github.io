@@ -1,6 +1,6 @@
 /* Medium screen styles */
 @media only screen and (min-width: 32.5em) {
-  div[itemtype='http://schema.org/Weather']
+  [itemtype='http://schema.org/Weather']
   {
     grid-template-columns: minmax(200px, 1fr) 1fr;
     justify-items: start;

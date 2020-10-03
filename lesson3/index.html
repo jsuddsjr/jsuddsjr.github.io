@@ -31,7 +31,7 @@
         <img
           src="images/weathercat-small.svg"
           alt="WeatherCat logo"
-          height="36px"
+          height="36"
         />
       </h1>
       <p>Cats and weather.</p>
@@ -60,46 +60,67 @@
             alt="WeatherCat logo"
             width="100"
           />
-          <figcaption>
-            WeatherCat logo
-          </figcaption>
+          <figcaption>WeatherCat logo</figcaption>
         </figure>
       </section>
       <section>
         <h2>Site purpose</h2>
+        <p>
+          In addition to reporting weather conditions, WeatherCat is designed as
+          a regional, community-based website that includes events, relevant
+          news, and other creative content... plus cats.
+        </p>
 
-        <!-- microdata -->
-        <div itemscope itemtype="http://schema.org/Weather" id="weather">
-          <h3 itemprop="temperature" id="temperature">72°</h3>
-          <div>
-            <div
-              itemprop="city"
-              id="city"
-              itemscope
-              itemtype="http://schema.org/Location"
-            >
-              Chicago
-            </div>
-            <div itemprop="conditions" id="conditions">Cloudy</div>
-            <div id="range">
-              <span itemprop="high" id="high">76°</span>
-              <span itemprop="low" id="low">62°</span>
+        <figure>
+          <figcaption>Click to randomly select new values</figcaption>
+          <!-- microdata -->
+          <div itemscope itemtype="http://schema.org/Weather" id="weather">
+            <h3 itemprop="temperature" id="temperature">72°</h3>
+            <div>
+              <div
+                id="city"
+                itemscope
+                itemtype="http://schema.org/Location"
+                itemprop="city"
+              >
+                Chicago
+              </div>
+              <div itemprop="conditions" id="conditions">Cloudy</div>
+              <div id="range">
+                <span itemprop="high" id="high">76°</span>
+                <span itemprop="low" id="low">62°</span>
+              </div>
             </div>
           </div>
-        </div>
+        </figure>
       </section>
       <section>
         <h2>Target audience and scenarios</h2>
+        <ul>
+          <li>
+            <strong>Cat lovers</strong> &mdash; Firstly, we want to celebrate
+            our local cats and the people who care for them.
+          </li>
+          <li>
+            <strong>Local events</strong> &mdash; WeatherCat aggregates local
+            news and events for our communities.
+          </li>
+          <li>
+            <strong>Fund raising</strong> &mdash; Sales of WeatherCat
+            merchandise benefits local pet shelters and adoption agencies.
+          </li>
+        </ul>
       </section>
       <section>
         <h2>Site map</h2>
       </section>
     </main>
     <footer>
+      <p>Current date: <span id="date"></span></p>
       <p>
         &copy; <span id="year"></span> | John W Sudds Jr | Seattle, WA |
-        <a href="https://www.byui.edu/online">BYUI Online Learning</a> | Last
-        updated <span id="time"></span>
+        <a href="https://www.byui.edu/online">Terms of Use</a> | Last updated
+        <span id="time"></span>
       </p>
     </footer>
     <script src="js/updateTime.js"></script>

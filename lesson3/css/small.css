@@ -10,7 +10,7 @@
 
 /* microdata */
 
-div[itemtype='http://schema.org/Weather']
+[itemtype='http://schema.org/Weather']
 {
   display: inline-grid;
   grid-template-columns: 1fr;
