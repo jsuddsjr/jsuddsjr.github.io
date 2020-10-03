@@ -100,18 +100,19 @@ footer {
 }
 
 header {
+  background-color: black;
   background: center no-repeat url(../images/dark-skies-and-lightning-storm.jpg);
   background-size: 100% auto;
   text-align: center;
 }
 
 header > h1 {
+  margin-bottom: 0;
   font-size: 2rem;
   letter-spacing: 0.2rem;
   line-height: 2.1rem;
   color: white;
   white-space: nowrap;
-  padding-bottom: 0.5rem;
   display: inline-grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -122,9 +123,9 @@ header > h1 > img {
   height: 36px;
 }
 
-header > picture {
-  margin: 0.5rem auto;
-  max-width: 100%;
+header > p {
+  margin: 0;
+  color: white;
 }
 
 header > picture > img {
