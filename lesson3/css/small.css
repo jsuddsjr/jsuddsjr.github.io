@@ -4,8 +4,8 @@
 
 :root {
   --body-text: black;
-  --background-top: #bad2f2;
-  --background-bottom: #f8ae8b;
+  --fade-top: #bad2f2;
+  --fade-bottom: #f8ae8b;
   --link: #40408c;
   --hover-link: #4182dc;
 }
@@ -57,16 +57,11 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
-  color: var(--body-text);
-  background-attachment: fixed;
-  background-color: var(--background-top);
-  background-image: linear-gradient(
-    var(--background-top),
-    var(--background-bottom)
-  );
 }
 
 body {
+  background: fixed linear-gradient(var(--fade-top), var(--fade-bottom));
+  color: var(--body-text);
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
   line-height: 1.3rem;
@@ -82,7 +77,7 @@ h3 {
   font-family: "Sansita Swashed", sans-serif;
 }
 
-h1.sample {
+h3.sample {
   font-size: 2.5rem;
   text-align: center;
 }
@@ -120,7 +115,8 @@ footer {
 
 header {
   background-color: black;
-  background: center no-repeat url(../images/dark-skies-and-lightning-storm.jpg);
+  background: center no-repeat
+    url("../images/dark-skies-and-lightning-storm.jpg");
   background-size: 100% auto;
   text-align: center;
 }
@@ -249,11 +245,11 @@ td[class] {
 }
 
 td.top-fade {
-  background-color: var(--background-top);
+  background-color: var(--fade-top);
 }
 
 td.bottom-fade {
-  background-color: var(--background-bottom);
+  background-color: var(--fade-bottom);
 }
 
 td.link-text {
