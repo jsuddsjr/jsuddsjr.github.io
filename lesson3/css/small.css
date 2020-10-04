@@ -241,7 +241,10 @@ table.colors {
 
 table.colors td,
 table.colors th {
-  padding: 5px 8px;
+  padding: 5px 12px;
+}
+
+td[class] {
   font-family: monospace;
 }
 
