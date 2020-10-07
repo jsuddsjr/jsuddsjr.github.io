@@ -1,0 +1,298 @@
+/* Color scheme */
+
+/* https://coolors.co/4182dc-f8ae8b-212147-ffffff-000000 */
+
+:root {
+  --body-text: black;
+  --fade-top: #bad2f2;
+  --fade-bottom: #f8ae8b;
+  --link: #40408c;
+  --hover-link: #4182dc;
+}
+
+/* hamburger menu (small screen) */
+
+/* Hide Hamburger */
+#hamburger {
+  display: none;
+}
+
+#hamburger + label {
+  display: block;
+  color: black;
+  background-color: white;
+  font-style: normal;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+#hamburger + label::before {
+  content: "☰";
+}
+
+#hamburger:checked ~ label::before {
+  content: "⛌";
+}
+
+/* Wrapper */
+nav {
+  padding: 0;
+  background: transparent !important;
+}
+
+/* Break down menu items into vertical */
+nav a {
+  display: block;
+  text-decoration: none;
+  line-height: 0.8rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  padding: 8px 8px;
+  text-align: center;
+}
+
+nav a:link,
+nav a:visited {
+  background-color: white;
+  color: var(--body-text);
+  transition: all 300ms;
+}
+
+nav a:hover,
+nav a:focus,
+nav a[href="#"] {
+  background-color: var(--body-text);
+  color: white;
+  transition: all 600ms;
+}
+
+/* Toggle Show/Hide Menu */
+nav ul {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav input:checked ~ ul {
+  display: block;
+}
+
+/* microdata */
+
+[itemtype='http://schema.org/Weather']
+{
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+[itemprop="temperature"] {
+  display: inline;
+  font-family: "Sansita Swashed", sans-serif;
+  font-size: 72px;
+  margin: 0;
+  line-height: 82px;
+  color: #aaa;
+  text-shadow: 2px 2px 4px black;
+}
+
+[itemprop="city"] {
+  font-size: 28px;
+  text-align: center;
+}
+
+[itemprop="conditions"],
+#range {
+  margin-bottom: -5px;
+  text-align: center;
+}
+
+[itemprop="high"]::before {
+  content: "↑";
+}
+
+[itemprop="low"]::before {
+  content: "↓";
+}
+
+/* Basic styles */
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: fixed linear-gradient(var(--fade-top), var(--fade-bottom));
+  color: var(--body-text);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  line-height: 1.3rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 280px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Sansita Swashed", sans-serif;
+}
+
+h3.sample {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+p.sample {
+  margin: auto 30px;
+}
+
+ul {
+  list-style-type: square;
+}
+
+a {
+  color: var(--link);
+  transition: color 0.3s;
+}
+
+a:focus,
+a:hover {
+  color: var(--hover-link);
+  transition: color 0.3s;
+}
+
+/* Section styles */
+
+header,
+nav,
+main,
+footer {
+  background-color: white;
+  margin: 0 auto;
+  padding: 10px 25px;
+  max-width: 760px;
+}
+
+header {
+  background-color: black;
+  background: center no-repeat
+    url("../images/dark-skies-and-lightning-storm.jpg");
+  background-size: 100% auto;
+  text-align: center;
+}
+
+header > h1 {
+  margin-bottom: 0;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  line-height: 2.1rem;
+  color: white;
+  white-space: nowrap;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+header > h1 > img {
+  padding-top: 0.5rem;
+  height: 36px;
+}
+
+header > p {
+  margin: 0;
+  color: white;
+}
+
+main {
+  background-color: var(--main-background);
+}
+
+figure {
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+}
+
+figure img {
+  margin: 0 auto;
+}
+
+figcaption {
+  display: inline-block;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+footer {
+  font-size: 0.8rem;
+  line-height: 1.3em;
+  margin-bottom: 12rem;
+}
+
+footer > p {
+  margin: 0;
+}
+
+/* Cat photos */
+
+p.cats {
+  text-align: center;
+}
+
+p.cats img {
+  padding: 9px;
+  background: white;
+  box-shadow: 4px 4px 10px var(--body-text);
+  width: 180px;
+}
+
+/* Color table */
+
+table.colors {
+  border-collapse: separate;
+  border-spacing: 0 0.5em;
+}
+
+table.colors td,
+table.colors th {
+  padding: 5px 12px;
+}
+
+td[class] {
+  font-family: monospace;
+}
+
+td.top-fade {
+  background-color: var(--fade-top);
+}
+
+td.bottom-fade {
+  background-color: var(--fade-bottom);
+}
+
+td.link-text {
+  background-color: var(--link);
+  color: white;
+}
+
+td.hover-link {
+  background-color: var(--hover-link);
+  color: white;
+}
+
+td.inverse {
+  background-color: white;
+}
+
+td.text {
+  background-color: black;
+  color: white;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 244 241" style="enable-background:new 0 0 244 241;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#000000;stroke-width:10;stroke-miterlimit:10;}
+	.st1{stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#000000;stroke-width:8;stroke-miterlimit:10;}
+	.st3{stroke:#FFFFFF;stroke-width:8;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+	.st5{fill:#212147;stroke:#FFFFFF;stroke-width:8;stroke-miterlimit:10;}
+	.st6{stroke:#FFFFFF;stroke-width:10;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1">
+	<g>
+		<path class="st0" d="M212.94,96.19c8.57,12.6,13.46,27.16,13.46,42.67c0,47.85-46.52,86.63-103.9,86.63s-103.9-38.79-103.9-86.63
+			c0-14.69,4.38-28.53,12.12-40.65l-0.42,0.22L14.79,19.1l77.19,36.93c9.65-2.47,19.9-3.8,30.52-3.8c10.07,0,19.82,1.2,29.03,3.43
+			L228,19.06L212.94,96.19z"/>
+	</g>
+	<circle class="st1" cx="61.06" cy="135.59" r="39.3"/>
+	<circle class="st1" cx="185.5" cy="135.59" r="39.3"/>
+	<g>
+		<path class="st2" d="M121.99,173.7v13.69l-22.03,16.67c0,0-30.92,11.24-33.94-27.99"/>
+		<path class="st2" d="M123.48,188.29l21.44,14.89c0,0,30.37,7.15,36.32-22.03"/>
+		<path class="st2" d="M91.33,178.16l-63.71,30.37"/>
+		<path class="st2" d="M91.33,185.9c0,0-46.16,21.44-56.57,32.75"/>
+		<path class="st2" d="M157.42,178.16c0,0,53.59,26.2,57.76,32.15"/>
+		<path class="st2" d="M158.01,190.07c0,0,32.15,16.67,42.87,33.34"/>
+		<path class="st3" d="M113.7,170.12L113.7,170.12c-8.48-8.25-2.64-22.62,9.19-22.62h0c11.83,0,17.67,14.38,9.19,22.62l0,0
+			C126.96,175.1,118.81,175.1,113.7,170.12z"/>
+	</g>
+	<path class="st4" d="M387,1709"/>
+	<g>
+		<path class="st5" d="M171.8,72.18H65.83c0.15-29.13,23.82-52.7,52.99-52.7S171.65,43.05,171.8,72.18z"/>
+		<ellipse class="st6" cx="87.26" cy="20.67" rx="39.6" ry="11.61"/>
+		<ellipse class="st6" cx="159.31" cy="20.08" rx="39.6" ry="11.61"/>
+		<path class="st5" d="M143.07,72.18H97.54c1.35-25.99,11.03-46.15,22.76-46.15S141.72,46.19,143.07,72.18z"/>
+	</g>
+	<path class="st2" d="M94.7,126.85c0,0,23.88-16.18,57.16,0"/>
+</g>
+</svg>
