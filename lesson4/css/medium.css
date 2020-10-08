@@ -35,11 +35,14 @@
   }
   nav ul {
     display: flex !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
     display: grid;
-    height: auto;
   }
   nav li {
     text-align: center;

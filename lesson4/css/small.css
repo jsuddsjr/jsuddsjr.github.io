@@ -12,7 +12,9 @@
 
 /* Menu navigation */
 nav {
-  padding: 0;
+  position: sticky;
+  top: 0;
+  padding: 0 !important;
   background: transparent !important;
 }
 
@@ -20,7 +22,6 @@ nav {
 nav a {
   display: block;
   text-decoration: none;
-  line-height: 0.8rem;
   font-size: 0.8rem;
   white-space: nowrap;
   padding: 8px 8px;
@@ -44,13 +45,17 @@ nav a[href="#"] {
 
 /* Toggle Show/Hide Menu */
 nav ul {
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
   box-shadow: 4px 4px 3px var(--body-text);
   height: 0;
-  overflow-y: hidden;
-  transition: height 1.2s ease;
+  overflow: hidden;
+  opacity: 0;
+  transition: visibility 1ms, opacity 1s, height 1.2s ease;
 }
 
 /* hamburger menu (small screen) */
@@ -68,6 +73,7 @@ nav ul {
   font-size: 1.2em;
   text-align: center;
   cursor: pointer;
+  padding: 5px 0;
 }
 
 #hamburger ~ label::before {
@@ -79,7 +85,9 @@ nav ul {
 }
 
 #hamburger:checked ~ ul {
-  height: 170px;
+  visibility: visible;
+  height: 218px;
+  opacity: 1;
 }
 
 /* microdata */
