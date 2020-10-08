@@ -39,7 +39,7 @@
     flex-wrap: wrap;
     align-items: stretch;
     display: grid;
-    box-shadow: 4px 4px 3px var(--body-text);
+    height: auto;
   }
   nav li {
     text-align: center;

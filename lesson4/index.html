@@ -35,27 +35,49 @@
       </h1>
       <p>It's raining cats.</p>
     </header>
-    <nav>
+    <nav aria-label="Main navigation">
       <!-- [THE HAMBURGER] -->
       <input type="checkbox" id="hamburger" />
-      <label for="hamburger" title="Menu"></label>
-      <ul>
-        <li><a href="javascript:void(0);" class="active">🏠 Home</a></li>
-        <li><a href="preston.html">😼 Preston</a></li>
-        <li><a href="soda-springs.html">🌲 Soda Springs</a></li>
-        <li><a href="fish-haven.html">🐟 Fish Haven</a></li>
-        <li><a href="storm-center.html">🌧 Storm Center</a></li>
-        <li><a href="gallery.html">🎨 Gallery</a></li>
+      <label
+        id="menu-state"
+        role="button"
+        for="hamburger"
+        aria-expanded="false"
+        tabindex="0"
+      ></label>
+      <ul role="menu">
+        <li>
+          <a role="menuitem" href="#"
+            ><span aria-hidden="true">🏠</span> Home</a
+          >
+        </li>
+        <li>
+          <a role="menuitem" href="preston.html"
+            ><span aria-hidden="true">😼</span> Preston</a
+          >
+        </li>
+        <li>
+          <a role="menuitem" href="soda-springs.html"
+            ><span aria-hidden="true">🌲</span> Soda Springs</a
+          >
+        </li>
+        <li>
+          <a role="menuitem" href="fish-haven.html"
+            ><span aria-hidden="true">🐟</span> Fish Haven</a
+          >
+        </li>
+        <li>
+          <a role="menuitem" href="storm-center.html"
+            ><span aria-hidden="true">🌧</span> Storm Center</a
+          >
+        </li>
+        <li>
+          <a role="menuitem" href="gallery.html"
+            ><span aria-hidden="true">🎨</span> Gallery</a
+          >
+        </li>
       </ul>
     </nav>
-    <!-- <nav>
-      <ul>
-        <li><a href="#">Site Description</a></li>
-        <li><a href="target-audience.html">Target Audience</a></li>
-        <li><a href="color-scheme.html">Color Scheme</a></li>
-        <li><a href="typography.html">Typography</a></li>
-      </ul>
-    </nav> -->
     <main>
       <section>
         <h2>Site name</h2>
@@ -93,7 +115,13 @@
         <figure>
           <figcaption>Click to randomly select new values</figcaption>
           <!-- microdata -->
-          <div itemscope itemtype="http://schema.org/Weather" id="weather">
+          <div
+            itemscope
+            itemtype="http://schema.org/Weather"
+            id="weather"
+            role="button"
+            tabindex="0"
+          >
             <h3 itemprop="temperature" id="temperature">72°</h3>
             <div>
               <div
