@@ -13,11 +13,21 @@
     });
   });
 
-  // Collapse menu if focus leaves.
+  // Add label to current menu item. (No Narrator support.)
+  document
+    .querySelector("nav a[href='#']")
+    .setAttribute("aria-current", "location");
+
+  // Collapse menu if focus moves elsewhere.
   document.body.addEventListener("focusin", (e) => {
     if (!nav.contains(e.target)) {
       hamburger.checked = false;
     }
+  });
+
+  // Collapse the menu if the window is resized.
+  window.addEventListener("resize", (e) => {
+    hamburger.checked = false;
   });
 
   // Keyboard support for expand/collapse.

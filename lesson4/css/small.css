@@ -222,7 +222,7 @@ nav ul {
 
 #hamburger:checked ~ ul {
   visibility: visible;
-  height: 218px;
+  height: 216px;
   opacity: 1;
 }
 

@@ -23,12 +23,16 @@
         fullDateOptions
       );
 
+      // Get date elements from Intl object, and convert array to object keys.
+      const p = new Intl.DateTimeFormat("default", dateOptions)
+        .formatToParts()
+        .reduce((p, c) => ((p[c.type] = c.value), p), {});
+
+      // Format date according to homework requirements.
       document.getElementById(
         "date"
-      ).textContent = new Date().toLocaleDateString(
-        undefined, // Varies according to browser locale.
-        dateOptions
-      );
+      ).textContent = `${p.weekday}, ${p.day} ${p.month}, ${p.year}`;
+
     } catch (err) {
       alert(err);
     }
