@@ -1,13 +1,36 @@
 (function () {
   document.body.onload = () => {
-    const d = new Date(document.lastModified);
-    document.getElementById("year").textContent = d.getFullYear();
-    document.getElementById("time").textContent =
-      d.toLocaleDateString() + " " + d.toLocaleTimeString();
+    const dateOptions = {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    };
 
-    window.setInterval(
-      () => (document.getElementById("date").textContent = new Date()),
-      1000
-    );
-  }
+    const fullDateOptions = {
+      ...dateOptions,
+      weekday: undefined,
+      hour: "numeric",
+      minute: "numeric",
+    };
+
+    const docDate = new Date(document.lastModified);
+
+    try {
+      document.getElementById("year").textContent = docDate.getFullYear();
+      document.getElementById("time").textContent = docDate.toLocaleDateString(
+        undefined, // Varies according to browser locale.
+        fullDateOptions
+      );
+
+      document.getElementById(
+        "date"
+      ).textContent = new Date().toLocaleDateString(
+        undefined, // Varies according to browser locale.
+        dateOptions
+      );
+    } catch (err) {
+      alert(err);
+    }
+  };
 })();

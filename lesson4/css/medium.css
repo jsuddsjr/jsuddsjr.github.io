@@ -33,16 +33,19 @@
   #hamburger + label {
     display: none;
   }
+  nav {
+    margin: 1rem auto;
+  }
   nav ul {
-    display: flex !important;
+    position: relative;
     height: auto !important;
     visibility: visible !important;
     opacity: 1 !important;
 
+    display: flex !important;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
-    display: grid;
   }
   nav li {
     text-align: center;

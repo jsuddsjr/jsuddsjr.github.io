@@ -10,126 +10,6 @@
   --hover-link: #4182dc;
 }
 
-/* Menu navigation */
-nav {
-  position: sticky;
-  top: 0;
-  padding: 0 !important;
-  background: transparent !important;
-}
-
-/* Break down menu items into vertical */
-nav a {
-  display: block;
-  text-decoration: none;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  padding: 8px 8px;
-  text-align: center;
-}
-
-nav a:link,
-nav a:visited {
-  background-color: white;
-  color: var(--body-text);
-  transition: all 300ms;
-}
-
-nav a:hover,
-nav a:focus,
-nav a[href="#"] {
-  background-color: var(--body-text);
-  color: white;
-  transition: all 600ms;
-}
-
-/* Toggle Show/Hide Menu */
-nav ul {
-  position: absolute;
-  visibility: hidden;
-  width: 100%;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  box-shadow: 4px 4px 3px var(--body-text);
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: visibility 1ms, opacity 1s, height 1.2s ease;
-}
-
-/* hamburger menu (small screen) */
-
-#hamburger {
-  display: none;
-}
-
-#hamburger ~ label {
-  display: block;
-  color: black;
-  background-color: white;
-  box-shadow: 4px 4px 3px var(--body-text);
-  font-style: normal;
-  font-size: 1.2em;
-  text-align: center;
-  cursor: pointer;
-  padding: 5px 0;
-}
-
-#hamburger ~ label::before {
-  content: "☰";
-}
-
-#hamburger:checked ~ label::before {
-  content: "⛌";
-}
-
-#hamburger:checked ~ ul {
-  visibility: visible;
-  height: 218px;
-  opacity: 1;
-}
-
-/* microdata */
-
-[itemtype='http://schema.org/Weather']
-{
-  display: inline-grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-items: center;
-  width: 100%;
-}
-
-[itemprop="temperature"] {
-  display: inline;
-  font-family: "Sansita Swashed", sans-serif;
-  font-size: 72px;
-  margin: 0;
-  line-height: 82px;
-  color: #aaa;
-  text-shadow: 2px 2px 4px black;
-}
-
-[itemprop="city"] {
-  font-size: 28px;
-  text-align: center;
-}
-
-[itemprop="conditions"],
-#range {
-  margin-bottom: -5px;
-  text-align: center;
-}
-
-[itemprop="high"]::before {
-  content: "↑";
-}
-
-[itemprop="low"]::before {
-  content: "↓";
-}
-
 /* Basic styles */
 
 html {
@@ -266,45 +146,122 @@ p.cats img {
   width: 180px;
 }
 
-/* Color table */
-
-table.colors {
-  border-collapse: separate;
-  border-spacing: 0 0.5em;
+/* Menu navigation */
+nav {
+  position: sticky;
+  top: 0;
+  padding: 0;
+  background: transparent;
 }
 
-table.colors td,
-table.colors th {
-  padding: 5px 12px;
+/* Break down menu items into vertical */
+nav a {
+  display: block;
+  text-decoration: none;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  padding: 8px 8px;
+  text-align: center;
 }
 
-td[class] {
-  font-family: monospace;
-}
-
-td.top-fade {
-  background-color: var(--fade-top);
-}
-
-td.bottom-fade {
-  background-color: var(--fade-bottom);
-}
-
-td.link-text {
-  background-color: var(--link);
-  color: white;
-}
-
-td.hover-link {
-  background-color: var(--hover-link);
-  color: white;
-}
-
-td.inverse {
+nav a:link,
+nav a:visited {
   background-color: white;
+  color: var(--body-text);
+  transition: all 300ms;
 }
 
-td.text {
-  background-color: black;
+nav a:hover,
+nav a:focus,
+nav a[href="#"] {
+  background-color: var(--body-text);
   color: white;
+  transition: all 600ms;
+}
+
+/* Toggle Show/Hide Menu */
+nav ul {
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 4px 4px 3px var(--body-text);
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: visibility 1ms, opacity 1s, height 1.2s ease;
+}
+
+/* hamburger menu (small screen) */
+
+#hamburger {
+  display: none;
+}
+
+#hamburger ~ label {
+  display: block;
+  color: black;
+  background-color: white;
+  box-shadow: 4px 4px 3px var(--body-text);
+  font-style: normal;
+  font-size: 1.2em;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+#hamburger ~ label::before {
+  content: "☰";
+}
+
+#hamburger:checked ~ label::before {
+  content: "⛌";
+}
+
+#hamburger:checked ~ ul {
+  visibility: visible;
+  height: 218px;
+  opacity: 1;
+}
+
+/* microdata */
+
+[itemtype='http://schema.org/Weather']
+{
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+[itemprop="temperature"] {
+  display: inline;
+  font-family: "Sansita Swashed", sans-serif;
+  font-size: 72px;
+  margin: 0;
+  line-height: 82px;
+  color: #aaa;
+  text-shadow: 2px 2px 4px black;
+}
+
+[itemprop="city"] {
+  font-size: 28px;
+  text-align: center;
+}
+
+[itemprop="conditions"],
+#range {
+  margin-bottom: -5px;
+  text-align: center;
+}
+
+[itemprop="high"]::before {
+  content: "↑";
+}
+
+[itemprop="low"]::before {
+  content: "↓";
 }
