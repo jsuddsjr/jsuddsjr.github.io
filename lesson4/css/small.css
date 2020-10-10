@@ -24,30 +24,18 @@ body {
   color: var(--body-text);
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
-  line-height: 1.3rem;
+  line-height: 1.2rem;
   margin: 0;
   padding: 0;
   width: 100%;
-  min-width: 315px;
+  min-width: 240px;
 }
 
 h1,
 h2,
 h3 {
   font-family: "Sansita Swashed", sans-serif;
-}
-
-h3.sample {
-  font-size: 2.5rem;
-  text-align: center;
-}
-
-p.sample {
-  margin: auto 30px;
-}
-
-ul {
-  list-style-type: square;
+  margin: 0.3rem 0;
 }
 
 a {
@@ -67,9 +55,7 @@ header,
 nav,
 main,
 footer {
-  background-color: white;
   margin: 0 auto;
-  padding: 10px 25px;
   max-width: 760px;
 }
 
@@ -79,32 +65,58 @@ header {
     url("../images/dark-skies-and-lightning-storm.jpg");
   background-size: 100% auto;
   text-align: center;
-}
-
-header > h1 {
-  margin-bottom: 0;
-  font-size: 2rem;
-  letter-spacing: 0.2rem;
-  line-height: 2.1rem;
-  color: white;
-  white-space: nowrap;
-  display: inline-grid;
-  grid-template-columns: auto 1fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
   align-items: center;
+  justify-items: center;
 }
 
-header > h1 > img {
-  padding-top: 0.5rem;
+header div {
+  margin: 0.3rem 2rem;
+  letter-spacing: 0.2rem;
+  color: white;
+}
+
+header img {
+  text-align: center;
   height: 36px;
 }
 
-header > p {
+header div img {
+  display: none;
+}
+
+header p {
   margin: 0;
   color: white;
 }
 
 main {
   background-color: var(--main-background);
+}
+
+section,
+footer {
+  margin: 1rem auto;
+  padding: 0.2rem 0.8rem 0.6rem;
+}
+
+section:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+section picture {
+  display: block;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8)
+}
+
+.forecast div {
+  display: flex;
+  justify-content: space-around;
+  flex-shrink: 1;
 }
 
 figure {
@@ -124,14 +136,34 @@ figcaption {
 }
 
 footer {
+  background-color: white;
   font-size: 0.8rem;
   line-height: 1.3em;
   margin-bottom: 12rem;
 }
 
 footer > p {
-  margin: 0;
+  margin: 0.4rem 0;
   text-align: center;
+}
+
+footer .contact .email {
+  padding-left: 20px;
+  background: no-repeat left center
+    url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
+}
+
+footer .contact .phone {
+  padding-left: 20px;
+  background: no-repeat left center
+    url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
+}
+
+footer picture {
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 80%;
 }
 
 /* Cat photos */
@@ -197,8 +229,7 @@ nav ul {
 
 /* hamburger menu (small screen) */
 
-nav button {
-  display: block;
+#menu-state {
   border: 0;
   color: black;
   background-color: white;
@@ -207,21 +238,20 @@ nav button {
   font-size: 1.2em;
   text-align: center;
   cursor: pointer;
-  padding: 5px 0;
-  width: 100%;
+  padding: 5px 8px;
 }
 
-nav button::before {
-  content: "☰ Menu";
+#menu-state::before {
+  content: "☰";
 }
 
-nav button.expanded::before {
+#menu-state[aria-expanded="true"]::before {
   content: "⛌";
 }
 
-nav button.expanded ~ ul {
+nav ul.expanded {
   visibility: visible;
-  height: 216px;
+  height: 210px;
   opacity: 1;
 }
 

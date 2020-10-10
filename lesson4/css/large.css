@@ -1,3 +1,25 @@
 @media only screen and (min-width: 50em) {
-
+  body {
+    font-size: 1.1em;
+    line-height: 1.3rem;
+  }
+  p {
+    padding: 0 1.5rem;
+  }
+  header,
+  main,
+  footer {
+    margin-top: 1.5rem;
+    border-radius: 1rem;
+  }
+  header img {
+    margin-top: -12px;
+  }
+  .article picture {
+    float: right;
+    max-width: 30%;
+  }
+  footer {
+    clear: both;
+  }
 }

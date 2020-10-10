@@ -18,6 +18,7 @@
     />
     <link rel="stylesheet" href="css/small.css" />
     <link rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/large.css" />
     <meta
       name="description"
       content="Website planning document with site map and target audience analysis."
@@ -25,19 +26,19 @@
   </head>
   <body>
     <header>
-      <h1>
-        WeatherCat
-        <img
-          src="images/weathercat-small.svg"
-          alt="WeatherCat logo"
-          height="36"
-        />
-      </h1>
-      <p>It's raining cats.</p>
+      <img
+        src="images/weathercat-small.svg"
+        alt="WeatherCat logo"
+        height="36"
+      />
+      <div>
+        <h1>WeatherCat</h1>
+        <p>It's raining cats.</p>
+      </div>
+      <button id="menu-state" aria-expanded="false"></button>
     </header>
     <nav aria-label="Main navigation">
       <!-- [THE HAMBURGER] -->
-      <button id="menu-state" aria-expanded="false"></button>
       <ul role="menu">
         <li>
           <a role="menuitem" href="index.html"
@@ -73,23 +74,23 @@
     </nav>
     <main>
       <h2>Preston, Idaho</h2>
-      <section>
-        <h3>Hero w/ weather summary</h3>
-        <p></p>
-      </section>
-      <section>
-        <h3>5 Day Forecast</h3>
-        <p></p>
-      </section>
-      <section>
-        <h3>Article</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, unde
-          corporis. Laudantium a quo minus voluptatum, quod pariatur doloribus
-          magni cumque eius facilis debitis ipsum soluta minima, quae harum
-          adipisci!
-        </p>
-
+      <section class="summary">
+        <picture>
+          <source
+            srcset="https://loremflickr.com/320/240/farm,field/all"
+            media="(max-width: 32.5em)"
+          />
+          <source
+            srcset="https://loremflickr.com/780/240/farm,field/all"
+            media="(max-width: 50em)"
+          />
+          <img
+            class="large"
+            src="https://loremflickr.com/960/300/farm,field/all"
+            alt="Randomly generated farm related image"
+          />
+        </picture>
+        <h3>Weather Summary</h3>
         <figure>
           <figcaption>Click to randomly select new values</figcaption>
           <!-- microdata -->
@@ -102,9 +103,9 @@
                 itemtype="http://schema.org/Location"
                 itemprop="city"
               >
-                Chicago
+                Preston
               </div>
-              <div itemprop="conditions" id="conditions">Cloudy</div>
+              <div itemprop="conditions" id="conditions">Sunny</div>
               <div id="range">
                 <span itemprop="high" id="high">76°</span>
                 <span itemprop="low" id="low">62°</span>
@@ -112,13 +113,87 @@
             </div>
           </div>
         </figure>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, dolorem
+          quidem libero dolorum laudantium sapiente fugiat inventore minus
+          mollitia ipsa aliquam. Et earum quisquam molestiae fugit neque
+          perferendis dolorem facere?
+        </p>
       </section>
-      <section>
-        <h3>Contact Information</h3>
-        <p></p>
+      <section class="forecast">
+        <h3>5 Day Forecast</h3>
+        <div>
+          <img src="https://loremflickr.com/100/100/rain,art" alt="Sunny" />
+          <img src="https://loremflickr.com/100/100/rain,art" alt="Sunny" />
+          <img
+            src="https://loremflickr.com/100/100/rain,art"
+            alt="Chance of rain"
+          />
+          <img
+            src="https://loremflickr.com/100/100/rain,art"
+            alt="Chance of rain"
+          />
+          <img src="https://loremflickr.com/100/100/rain,art" alt="Sunny" />
+        </div>
+      </section>
+      <section class="article">
+        <h3>Article</h3>
+        <picture>
+          <source
+            srcset="https://loremflickr.com/600/240/cat,kitten/all"
+            media="(max-width: 32.5em)"
+          />
+          <source
+            srcset="https://loremflickr.com/780/240/cat,kitten/all"
+            media="(max-width: 50em)"
+          />
+          <img
+            class="large"
+            src="https://loremflickr.com/300/300/cat,kitten/all"
+            alt="Randomly generated farm related image"
+          />
+        </picture>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, unde
+          corporis. Laudantium a quo minus voluptatum, quod pariatur doloribus
+          magni cumque eius facilis debitis ipsum soluta minima, quae harum
+          adipisci!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, saepe
+          voluptas? Aspernatur eum, nostrum perferendis neque numquam fugit
+          dolor eveniet est quos ullam repellendus ratione repellat officia enim
+          exercitationem laboriosam? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Voluptates animi, eaque dolor aliquid vero explicabo
+          eum adipisci amet. Inventore, laborum et consectetur id in aut!
+          Voluptatem distinctio ratione dignissimos qui.
+        </p>
       </section>
     </main>
     <footer>
+      <h3>Contact Information</h3>
+      <div class="contact">
+        <p class="email">
+          <a href="mailto:bogus@weathercat.org">bogus@weathercat.org</a>
+        </p>
+        <p class="phone">208-555-1234</p>
+      </div>
+      <picture>
+        <source
+          srcset="https://loremflickr.com/320/240/map,idaho/all"
+          media="(max-width: 32.5em)"
+        />
+        <source
+          srcset="https://loremflickr.com/780/240/map,idaho/all"
+          media="(max-width: 50em)"
+        />
+        <img
+          class="large"
+          src="https://loremflickr.com/960/300/map,idaho/all"
+          alt="Randomly generated farm related image"
+        />
+      </picture>
+
       <p>
         &copy; <span id="year"></span> WeatherCat |
         <a href="https://www.byui.edu/online">Terms of Use</a> | John W Sudds Jr

@@ -1,22 +1,22 @@
 (function () {
   const menuState = document.getElementById("menu-state");
-  const nav = document.querySelector("nav");
+  const nav = document.querySelector("nav ul");
   const expanded = "expanded";
 
   const toggleMenu = (_) => {
-    const isExpanded = menuState.classList.toggle(expanded);
+    const isExpanded = nav.classList.toggle(expanded);
     menuState.setAttribute("aria-expanded", isExpanded);
   };
 
   const collapseMenu = (_) => {
-    menuState.classList.remove(expanded);
+    nav.classList.remove(expanded);
     menuState.setAttribute("aria-expanded", "false");
   };
 
   // Toggle menu state on click.
   menuState.addEventListener("click", toggleMenu);
 
-  // Selecting a menu item closes the menu.
+    // Selecting a menu item closes the menu.
   document.querySelectorAll("nav a").forEach((el) => {
     el.addEventListener("click", collapseMenu);
     el.addEventListener("keypress", (e) => {

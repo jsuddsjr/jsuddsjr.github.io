@@ -1,36 +1,31 @@
 /* Medium screen styles */
 @media only screen and (min-width: 32.5em) {
-  [itemtype='http://schema.org/Weather']
-  {
-    grid-template-columns: minmax(200px, 1fr) 1fr;
-    justify-items: start;
-  }
-  [itemprop="temperature"] {
-    text-align: right;
-    margin-right: 0.8rem;
-    justify-self: end;
-    line-height: 3rem;
-    padding-bottom: 1rem;
-  }
-  [itemprop="city"] {
-    font-size: 32px;
-    text-align: left;
-  }
-  [itemprop="conditions"],
-  #range {
-    text-align: left;
-  }
   body {
     font-size: 1em;
-    line-height: 1.5rem;
+    line-height: 1.3rem;
   }
-  header {
-    border-radius: 0 0 1rem 1rem;
+  h1,
+  h2,
+  h3 {
+    margin: 0.5rem 0;
   }
-  header > h1 {
+  header h1 {
     font-size: 2.5rem;
   }
-  nav button {
+  header img {
+    justify-self: end;
+    height: 80px;
+  }
+  header {
+    grid-template-columns: 1fr 2fr;
+  }
+  header div {
+    justify-self: start;
+
+    display: inline;
+    height: 60px;
+  }
+  #menu-state {
     display: none;
   }
   nav {
@@ -59,12 +54,27 @@
     border-radius: 12px 0 0 0;
     padding: 5px 5px 5px 12px;
   }
-  main,
-  footer {
-    margin-top: 1.5rem;
-    border-radius: 1rem;
-  }
   p.cats img {
     width: 25%;
+  }
+  [itemtype='http://schema.org/Weather']
+  {
+    grid-template-columns: minmax(200px, 1fr) 1fr;
+    justify-items: start;
+  }
+  [itemprop="temperature"] {
+    text-align: right;
+    margin-right: 0.8rem;
+    justify-self: end;
+    line-height: 3rem;
+    padding-bottom: 1rem;
+  }
+  [itemprop="city"] {
+    font-size: 32px;
+    text-align: left;
+  }
+  [itemprop="conditions"],
+  #range {
+    text-align: left;
   }
 }
