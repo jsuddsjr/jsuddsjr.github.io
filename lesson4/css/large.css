@@ -26,6 +26,9 @@
     margin-top: -15px;
     grid-column: 2/3;
   }
+  .summary picture {
+    height: 300px;
+  }
   .article picture {
     float: right;
     max-width: 30%;
