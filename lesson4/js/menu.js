@@ -3,12 +3,13 @@
   const nav = document.querySelector("nav ul");
   const expanded = "expanded";
 
-  const toggleMenu = (_) => {
+  const toggleMenu = (e) => {
     const isExpanded = nav.classList.toggle(expanded);
     menuState.setAttribute("aria-expanded", isExpanded);
+    e.preventDefault();
   };
 
-  const collapseMenu = (_) => {
+  const collapseMenu = (e) => {
     nav.classList.remove(expanded);
     menuState.setAttribute("aria-expanded", "false");
   };
@@ -31,7 +32,7 @@
 
   // Collapse menu if focus moves elsewhere.
   document.body.addEventListener("focusin", (e) => {
-    if (!nav.contains(e.target)) {
+    if (e.target !== menuState && !nav.contains(e.target)) {
       collapseMenu();
     }
   });
