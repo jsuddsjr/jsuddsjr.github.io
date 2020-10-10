@@ -43,6 +43,10 @@
     left: 40px;
     padding: 20px;
     z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+  }
+  .overlay h3 {
+    margin-top: 10px;
   }
   footer {
     clear: both;
