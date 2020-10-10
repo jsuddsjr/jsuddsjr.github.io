@@ -90,29 +90,31 @@
             alt="Randomly generated farm related image"
           />
         </picture>
-        <h3>Weather Summary</h3>
-        <figure>
-          <figcaption>Click to randomly select new values</figcaption>
-          <!-- microdata -->
-          <div itemscope itemtype="http://schema.org/Weather" id="weather">
-            <h3 itemprop="temperature" id="temperature">72°</h3>
-            <div>
-              <div
-                id="city"
-                itemscope
-                itemtype="http://schema.org/Location"
-                itemprop="city"
-              >
-                Preston
-              </div>
-              <div itemprop="conditions" id="conditions">Sunny</div>
-              <div id="range">
-                <span itemprop="high" id="high">76°</span>
-                <span itemprop="low" id="low">62°</span>
+        <div class="overlay">
+          <h3>Weather Summary</h3>
+          <figure>
+            <figcaption>Click to randomly select new values</figcaption>
+            <!-- microdata -->
+            <div itemscope itemtype="http://schema.org/Weather" id="weather">
+              <h3 itemprop="temperature" id="temperature">72°</h3>
+              <div>
+                <div
+                  id="city"
+                  itemscope
+                  itemtype="http://schema.org/Location"
+                  itemprop="city"
+                >
+                  Preston
+                </div>
+                <div itemprop="conditions" id="conditions">Sunny</div>
+                <div id="range">
+                  <span itemprop="high" id="high">76°</span>
+                  <span itemprop="low" id="low">62°</span>
+                </div>
               </div>
             </div>
-          </div>
-        </figure>
+          </figure>
+        </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, dolorem
           quidem libero dolorum laudantium sapiente fugiat inventore minus
