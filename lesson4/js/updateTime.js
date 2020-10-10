@@ -18,10 +18,10 @@
 
     try {
       document.getElementById("year").textContent = docDate.getFullYear();
-      document.getElementById("time").textContent = docDate.toLocaleDateString(
-        undefined, // Varies according to browser locale.
-        fullDateOptions
-      );
+      // document.getElementById("time").textContent = docDate.toLocaleDateString(
+      //   undefined, // Varies according to browser locale.
+      //   fullDateOptions
+      // );
 
       // Get date elements from Intl object, and convert array to object keys.
       const p = new Intl.DateTimeFormat("default", dateOptions)

@@ -131,6 +131,7 @@ footer {
 
 footer > p {
   margin: 0;
+  text-align: center;
 }
 
 /* Cat photos */
@@ -196,12 +197,9 @@ nav ul {
 
 /* hamburger menu (small screen) */
 
-#hamburger {
-  display: none;
-}
-
-#hamburger ~ label {
+nav button {
   display: block;
+  border: 0;
   color: black;
   background-color: white;
   box-shadow: 4px 4px 3px var(--body-text);
@@ -210,17 +208,18 @@ nav ul {
   text-align: center;
   cursor: pointer;
   padding: 5px 0;
+  width: 100%;
 }
 
-#hamburger ~ label::before {
-  content: "☰";
+nav button::before {
+  content: "☰ Menu";
 }
 
-#hamburger:checked ~ label::before {
+nav button.expanded::before {
   content: "⛌";
 }
 
-#hamburger:checked ~ ul {
+nav button.expanded ~ ul {
   visibility: visible;
   height: 216px;
   opacity: 1;

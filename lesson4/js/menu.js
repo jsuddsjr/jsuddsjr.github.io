@@ -1,15 +1,26 @@
 (function () {
-  const hamburger = document.getElementById("hamburger");
   const menuState = document.getElementById("menu-state");
   const nav = document.querySelector("nav");
+  const expanded = "expanded";
+
+  const toggleMenu = (_) => {
+    const isExpanded = menuState.classList.toggle(expanded);
+    menuState.setAttribute("aria-expanded", isExpanded);
+  };
+
+  const collapseMenu = (_) => {
+    menuState.classList.remove(expanded);
+    menuState.setAttribute("aria-expanded", "false");
+  };
+
+  // Toggle menu state on click.
+  menuState.addEventListener("click", toggleMenu);
 
   // Selecting a menu item closes the menu.
   document.querySelectorAll("nav a").forEach((el) => {
-    el.addEventListener("click", (e) => (hamburger.checked = false));
+    el.addEventListener("click", collapseMenu);
     el.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        hamburger.checked = false;
-      }
+      if (e.key === "Enter") collapseMenu();
     });
   });
 
@@ -21,26 +32,10 @@
   // Collapse menu if focus moves elsewhere.
   document.body.addEventListener("focusin", (e) => {
     if (!nav.contains(e.target)) {
-      hamburger.checked = false;
+      collapseMenu();
     }
   });
 
   // Collapse the menu if the window is resized.
-  window.addEventListener("resize", (e) => {
-    hamburger.checked = false;
-  });
-
-  // Keyboard support for expand/collapse.
-  menuState.addEventListener("keypress", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      hamburger.checked = !hamburger.checked;
-      e.preventDefault();
-    }
-  });
-
-  // Update expand state when checkbox changes.
-  hamburger.addEventListener(
-    "change",
-    (e) => (menuState.ariaExpanded = hamburger.checked)
-  );
+  window.addEventListener("resize", collapseMenu);
 })();
