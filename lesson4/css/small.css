@@ -172,6 +172,16 @@ footer picture {
   width: 80%;
 }
 
+footer .address {
+  display: none;
+}
+
+footer .bar {
+  text-align: center;
+  line-height: 1em;
+  font-size: 0.6rem;
+}
+
 /* Cat photos */
 
 p.cats {

@@ -26,6 +26,12 @@
     display: inline;
     height: 60px;
   }
+  footer .address {
+    display: block;
+  }
+  footer .bar {
+    font-size: 1em;
+  }
   #menu-state {
     display: none;
   }
