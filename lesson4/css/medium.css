@@ -7,17 +7,18 @@
   h1,
   h2,
   h3 {
-    margin: 0.5rem 0;
+    margin: 1.5rem 0;
+    font-size: 2rem;
   }
   header h1 {
     font-size: 2.5rem;
+    margin: .5rem 0;
   }
   header img {
-    justify-self: end;
     height: 80px;
   }
   header {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 80px 1fr;
   }
   header div {
     justify-self: start;

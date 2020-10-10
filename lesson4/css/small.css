@@ -110,7 +110,7 @@ section picture {
   overflow: hidden;
   max-width: 100%;
   margin: 0 auto;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8)
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 .forecast div {
@@ -147,14 +147,20 @@ footer > p {
   text-align: center;
 }
 
-footer .contact .email {
+footer .contact p {
   padding-left: 20px;
+}
+
+footer .contact .address {
+  background: no-repeat left top
+    url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
+}
+footer .contact .email {
   background: no-repeat left center
     url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
 }
 
 footer .contact .phone {
-  padding-left: 20px;
   background: no-repeat left center
     url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
 }
@@ -185,6 +191,7 @@ nav {
   top: 0;
   padding: 0;
   background: transparent;
+  z-index: 100;
 }
 
 /* Break down menu items into vertical */

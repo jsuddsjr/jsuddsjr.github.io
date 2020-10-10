@@ -173,34 +173,65 @@
       </section>
     </main>
     <footer>
-      <h3>Contact Information</h3>
-      <div class="contact">
-        <p class="email">
-          <a href="mailto:bogus@weathercat.org">bogus@weathercat.org</a>
-        </p>
-        <p class="phone">208-555-1234</p>
+      <div class="reversible">
+        <div class="contact">
+          <h3>Contact Information</h3>
+          <p class="address">
+            1234 Wherever Drive, Fifth Floor, Boston, MA 02110
+          </p>
+          <p class="email">
+            <a href="mailto:bogus@weathercat.org">bogus@weathercat.org</a>
+          </p>
+          <p class="phone">208-555-1234</p>
+          <div class="social">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://facebook.com"
+              class="facebook"
+              title="Facebook"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://instagram.com"
+              class="instagram"
+              title="Instagram"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com"
+              class="twitter"
+              title="Twitter"
+            ></a>
+          </div>
+        </div>
+        <picture>
+          <source
+            srcset="https://loremflickr.com/320/240/map,idaho/all"
+            media="(max-width: 32.5em)"
+          />
+          <source
+            srcset="https://loremflickr.com/780/240/map,idaho/all"
+            media="(max-width: 50em)"
+          />
+          <img
+            class="large"
+            src="https://loremflickr.com/960/300/map,idaho/all"
+            alt="Randomly generated farm related image"
+          />
+        </picture>
       </div>
-      <picture>
-        <source
-          srcset="https://loremflickr.com/320/240/map,idaho/all"
-          media="(max-width: 32.5em)"
-        />
-        <source
-          srcset="https://loremflickr.com/780/240/map,idaho/all"
-          media="(max-width: 50em)"
-        />
-        <img
-          class="large"
-          src="https://loremflickr.com/960/300/map,idaho/all"
-          alt="Randomly generated farm related image"
-        />
-      </picture>
 
-      <p>
-        &copy; <span id="year"></span> WeatherCat |
-        <a href="https://www.byui.edu/online">Terms of Use</a> | John W Sudds Jr
-      </p>
-      <p><span id="date"></span></p>
+      <div class="bar">
+        <p>
+          &copy; <span id="year"></span> WeatherCat |
+          <a href="https://www.byui.edu/online">Terms of Use</a> | John W Sudds
+          Jr
+        </p>
+        <p><span id="date"></span></p>
+      </div>
     </footer>
     <script src="js/menu.js"></script>
     <script src="js/updateTime.js"></script>
