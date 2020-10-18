@@ -115,11 +115,8 @@ section picture {
   height: 240px;
 }
 
-.forecast div {
-  display: flex;
-  justify-content: space-around;
-  flex-shrink: 1;
-  width: 100%;
+.forecast {
+  display: none;
 }
 
 figure {
