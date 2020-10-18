@@ -2,7 +2,7 @@
   const FRIDAY = 5;
 
   const banner = document.querySelector(".banner-box");
-  if (new Date().getDay() === 6) {
+  if (new Date().getDay() === FRIDAY) {
     banner.style.display = "block";
 
     setTimeout(() => banner.classList.toggle("show"), 2000);
