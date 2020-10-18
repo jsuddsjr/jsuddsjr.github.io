@@ -313,7 +313,7 @@ nav ul.expanded {
 }
 
 aside.banner-box {
-  display: "none";
+  display: none;
   position: absolute;
   top: 2rem;
   z-index: 999;
