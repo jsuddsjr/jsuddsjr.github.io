@@ -315,7 +315,7 @@ nav ul.expanded {
   content: "↓";
 }
 
-.banner-box {
+aside.banner-box {
   display: "none";
   position: absolute;
   top: 2rem;
@@ -324,28 +324,41 @@ nav ul.expanded {
   transition: transform 1s ease-out;
 }
 
-.banner-box.show {
+aside.banner-box.show {
   transform: scaleY(1);
-  transition: transform 2s ease-in-out;
+  transition: transform 2s ease-in;
 }
 
-.banner-box .center {
+aside.banner-box .center {
   top: 50px;
   margin: 0 auto;
   width: 80%;
   border: 3px solid var(--body-text);
-  background-color: white !important;
+  background-color: var(--fade-bottom) !important;
   color: var(--body-text);
   box-sizing: border-box;
+  box-shadow: 5px 5px 30px var(--body-text);
   overflow: hidden;
   padding: 1rem;
 }
-.banner-box p {
+
+aside.banner-box p {
   font-size: 1.5rem;
   line-height: 1.5rem;
 }
 
-.banner-box img {
+aside.banner-box img {
   height: 36px;
   float: right;
+}
+
+aside.banner-box button {
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+aside.banner-box button:hover {
+  background-color: black;
+  color: white;
 }
