@@ -106,13 +106,10 @@ section:nth-child(odd) {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-section picture {
-  display: block;
-  overflow: hidden;
+section picture img {
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
-  height: 240px;
 }
 
 .forecast {
@@ -276,7 +273,7 @@ nav ul.expanded {
 
 [itemtype='http://schema.org/Weather']
 {
-  display: inline-grid;
+  display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
@@ -284,11 +281,11 @@ nav ul.expanded {
 }
 
 [itemprop="temperature"] {
-  display: inline;
   font-family: "Sansita Swashed", sans-serif;
-  font-size: 72px;
+  font-size: 3.5rem;
+  line-height: 3.2rem;
   margin: 0;
-  line-height: 82px;
+  margin-bottom: .5rem;
   color: #aaa;
   text-shadow: 2px 2px 4px black;
 }
@@ -310,6 +307,21 @@ nav ul.expanded {
 
 [itemprop="low"]::before {
   content: "↓";
+}
+
+#weather table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#weather table td {
+  width: 50%;
+}
+
+#weather table td:nth-child(1) {
+  text-align: right;
+  font-weight: bold;
 }
 
 aside.banner-box {

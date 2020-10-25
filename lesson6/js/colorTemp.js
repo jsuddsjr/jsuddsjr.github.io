@@ -40,6 +40,9 @@
   const w = document.getElementById("conditions");
   const h = document.getElementById("high");
   const l = document.getElementById("low");
+  const ws = document.getElementById("windSpeed");
+
+  const weatherUpdated = new Event('weatherUpdated');
   
   document.getElementById("weather").addEventListener("click", async (e) => {
     const newTemp = randomDouble(-30, 120);
@@ -56,6 +59,11 @@
 
     h.innerHTML = (newTemp + randomDouble(1, 10)).toFixed(0) + "&deg;";
     l.innerHTML = (newTemp - randomDouble(1, 10)).toFixed(0) + "&deg;";
+
+    ws.textContent = (randomDouble(0, 40).toFixed(0)) + " mph";
+
+    // Let others know that the weather has been updated.
+    currentTarget.dispatchEvent(weatherUpdated);
 
     await fade(currentTarget, "in");
   });

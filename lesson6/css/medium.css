@@ -86,7 +86,7 @@
 
   [itemtype='http://schema.org/Weather']
   {
-    grid-template-columns: minmax(200px, 1fr) 1fr;
+    grid-template-columns: 1fr 1fr;
     justify-items: start;
   }
   [itemprop="temperature"] {
@@ -95,6 +95,7 @@
     justify-self: end;
     line-height: 3rem;
     padding-bottom: 1rem;
+    font-size: 5rem;
   }
   [itemprop="city"] {
     font-size: 32px;
@@ -103,5 +104,8 @@
   [itemprop="conditions"],
   #range {
     text-align: left;
+  }
+  #weather table {
+    grid-column: 1 / 3;
   }
 }

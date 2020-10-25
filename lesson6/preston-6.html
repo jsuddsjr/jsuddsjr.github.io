@@ -93,16 +93,16 @@
       <section class="summary">
         <picture>
           <source
-            srcset="https://loremflickr.com/600/240/farm,field/all"
+            srcset="images/wdd230_image_franklin_600w.jpg"
             media="(max-width: 32.5em)"
           />
           <source
-            srcset="https://loremflickr.com/780/240/farm,field/all"
-            media="(max-width: 50em)"
+            srcset="images/wdd230_image_franklin_780w.jpg"
+            media="(max-width: 48em)"
           />
           <img
-            src="https://loremflickr.com/960/300/farm,field/all"
-            alt="Randomly generated farm related image"
+            src="images/wdd230_image_franklin_960w.jpg"
+            alt="Sunrise over the mountain in Franklin, Idaho"
           />
         </picture>
         <div class="overlay">
@@ -111,7 +111,7 @@
             <figcaption>Click to randomly select new values</figcaption>
             <!-- microdata -->
             <div itemscope itemtype="http://schema.org/Weather" id="weather">
-              <h3 itemprop="temperature" id="temperature">72°</h3>
+              <div itemprop="temperature" id="temperature">72°</div>
               <div>
                 <div
                   id="city"
@@ -127,6 +127,10 @@
                   <span itemprop="low" id="low">62°</span>
                 </div>
               </div>
+              <table>
+                <tr><td>Wind Speed:</td><td id="windSpeed">5 mph</td></tr>
+                <tr><td>Wind Chill:</td><td id="windChill">N/A</td></tr>
+              </table>
             </div>
           </figure>
         </div>
@@ -275,5 +279,6 @@
     <script src="js/updateTime.js"></script>
     <script src="js/colorTemp.js"></script>
     <script src="js/banner.js"></script>
+    <script src="js/windchill.js"></script>
   </body>
 </html>
