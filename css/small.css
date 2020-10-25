@@ -7,15 +7,6 @@
   --hover-link: #dec278;
 }
 
-body {
-  display: none;
-}
-
-html.wf-active body {
-  display: block;
-}
-
-
 /* Basic styles */
 html {
   width: 100%;
