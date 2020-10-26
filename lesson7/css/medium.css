@@ -1,0 +1,111 @@
+/* Medium screen styles */
+@media only screen and (min-width: 32.5em) {
+  body {
+    font-size: 1em;
+    line-height: 1.3rem;
+  }
+  h1,
+  h2,
+  h3 {
+    font-size: 2rem;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+  }
+  header img {
+    height: 80px;
+  }
+  header {
+    grid-template-columns: 80px 1fr;
+  }
+  header div {
+    justify-self: start;
+
+    display: inline;
+    height: 60px;
+  }
+  .forecast {
+    display: block;
+  }
+  .forecast div {
+    display: flex;
+    justify-content: space-around;
+    flex-shrink: 1;
+    width: 100%;
+  }
+
+  section,
+  footer {
+    margin: 1rem auto;
+    padding: 0.5rem 2rem;
+  }
+  footer .address {
+    display: block;
+  }
+  footer .bar {
+    font-size: 1em;
+  }
+  #menu-state {
+    display: none;
+  }
+  nav {
+    margin: 1rem auto;
+  }
+  nav ul {
+    position: relative;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  nav li {
+    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 5em;
+  }
+  nav a {
+    border: 1px solid black;
+    border-bottom: 0;
+    border-radius: 12px 0 0 0;
+    padding: 5px 5px 5px 12px;
+  }
+  p.cats img {
+    width: 25%;
+  }
+
+  .banner-box p {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  [itemtype='http://schema.org/Weather']
+  {
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+  }
+  [itemprop="temperature"] {
+    text-align: right;
+    margin-right: 0.8rem;
+    justify-self: end;
+    line-height: 3rem;
+    padding-bottom: 1rem;
+    font-size: 5rem;
+  }
+  [itemprop="city"] {
+    font-size: 32px;
+    text-align: left;
+  }
+  [itemprop="conditions"],
+  #range {
+    text-align: left;
+  }
+  #weather table {
+    grid-column: 1 / 3;
+  }
+}
