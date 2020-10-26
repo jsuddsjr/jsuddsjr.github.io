@@ -61,9 +61,8 @@ footer {
 
 header {
   background-color: black;
-  background: center no-repeat
+  background: border-box center 75%/100% no-repeat
     url("../images/dark-skies-and-lightning-storm.jpg");
-  background-size: 100% auto;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -72,7 +71,7 @@ header {
 }
 
 header div {
-  margin: 0.3rem 2rem;
+  margin: 0.3rem 0.5rem;
   letter-spacing: 0.2rem;
   color: white;
 }
