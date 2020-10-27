@@ -86,7 +86,7 @@
 
   [itemtype='http://schema.org/Weather']
   {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(1fr, 12rem), 1fr;
     justify-items: start;
   }
   [itemprop="temperature"] {
