@@ -141,6 +141,7 @@ figcaption {
 .gallery img {
   margin: 0;
   width: 100%;
+  min-width: 200px;
 }
 
 .gallery figure {

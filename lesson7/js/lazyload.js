@@ -2,7 +2,7 @@
   /** @param {HTMLImageElement} image */
   const loadImage = (image) => {
     if (image.dataset.src) {
-      image.loading = "lazy";
+      // image.loading = "lazy";
       image.src = image.dataset.src;
       // Remove data-src to apply new CSS rules.
       image.addEventListener("load", () => image.removeAttribute("data-src"), {
