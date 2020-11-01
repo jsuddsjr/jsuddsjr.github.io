@@ -1,26 +1,30 @@
 (function () {
-  if ("loading" in HTMLImageElement.prototype) {
-    document.querySelectorAll("img[data-src]").forEach(
-      /** @param {HTMLImageElement} image */
-      (image) => {
-        image.loading = "lazy";
-        image.src = image.dataset.src;
-        image.removeAttribute("data-src");
-      }
-    );
-  } else if ("IntersectionObserver" in window) {
+  /** @param {HTMLImageElement} image */
+  const loadImage = (image) => {
+    const src = image.dataset.src;
+    if (src) {
+      image.loading = "lazy";
+      image.src = src;
+    }
+    // Remove data-src to apply new CSS rules.
+    setTimeout(() => image.removeAttribute("data-src"), 600);
+    return image;
+  };
+
+  // if ("loading" in HTMLImageElement.prototype) {
+  //   document.querySelectorAll("img[data-src]").forEach(load);
+  // } else
+  if ("IntersectionObserver" in window) {
     const imageObserver = new IntersectionObserver((entries) => {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          /** @type HTMLImageElement */
-          var image = entry.target;
-          image.src = image.dataset.src;
-          image.removeAttribute("data-src");
-          imageObserver.unobserve(image);
+          imageObserver.unobserve(loadImage(entry.target));
         }
       });
     });
-    document.querySelectorAll("img[data-src]").forEach(imageObserver.observe);
+    document
+      .querySelectorAll("img[data-src]")
+      .forEach((image) => imageObserver.observe(image));
   } else {
     let throttleTimeout;
 
@@ -28,22 +32,20 @@
       clearTimeout(throttleTimeout);
 
       throttleTimeout = setTimeout(() => {
-        const pageTop = window.pageYOffset;
-        const pageBottom = window.innerHeight + pageTop;
-
         // Get a new list, in case elements have been added dynamically.
         const lazyloadImages = document.querySelectorAll("img[data-src]");
         if (lazyloadImages.length) {
+          const pageTop = window.pageYOffset;
+          const pageBottom = window.innerHeight + pageTop;
+
           lazyloadImages.forEach(
             /** @param {HTMLImageElement} image */
             (image) => {
               if (
-                getComputedStyle(image).display !== "none" &&
-                image.offsetHeight >= pageTop &&
+                image.offsetTop + image.clientHeight >= pageTop &&
                 image.offsetTop < pageBottom
               ) {
-                image.src = image.dataset.src;
-                image.removeAttribute("data-src");
+                loadImage(image);
               }
             }
           );
