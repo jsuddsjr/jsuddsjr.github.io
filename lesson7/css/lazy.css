@@ -10,7 +10,7 @@ img {
   margin-bottom: 2rem;
   background: linear-gradient(#ddd, #222);
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
-  transition: opacity 500ms ease-in;
+  transition: all 500ms ease-in;
   opacity: 1;
 }
 
