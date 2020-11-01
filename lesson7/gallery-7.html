@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery | WeatherCats</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/large.css" />
+    <meta
+      name="description"
+      content="A lazy-loaded gallery of the cutest feline friends in Idaho, and those that love them."
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="images/weathercat-small.svg"
+        alt="WeatherCats logo"
+        height="36"
+        width="36"
+      />
+      <div>
+        <h1>WeatherCats</h1>
+        <p>It's raining cats.</p>
+      </div>
+      <!-- [THE HAMBURGER] -->
+      <button
+        id="menu-state"
+        aria-expanded="false"
+        aria-label="Main navigation"
+      ></button>
+    </header>
+    <nav>
+      <ul role="menubar">
+        <li role="menuitem">
+          <a href="index.html"><span aria-hidden="true">🏠</span> Home</a>
+        </li>
+        <li role="menuitem">
+          <a href="preston-7.html"
+            ><span aria-hidden="true">😼</span> Preston</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="soda-springs.html"
+            ><span aria-hidden="true">🌲</span> Soda Springs</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="fish-haven.html"
+            ><span aria-hidden="true">🐟</span> Fish Haven</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="storm-center.html"
+            ><span aria-hidden="true">🌧</span> Storm Center</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="#"><span aria-hidden="true">🎨</span> Gallery</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <h2>Gallery</h2>
+      <img data-src="images/cat-in-a-shelter.jpg" />
+      <img data-src="images/cat-lover.jpg" />
+      <img data-src="images/sunshine-cat.jpg" />
+    </main>
+    <footer>
+      <div class="reversible">
+        <div class="contact">
+          <h3>Contact Information</h3>
+          <p class="address">
+            1234 Wherever Drive, Fifth Floor, Boston, MA 02110
+          </p>
+          <p class="email">
+            <a href="mailto:bogus@weathercat.org">bogus@weathercat.org</a>
+          </p>
+          <p class="phone">208-555-1234</p>
+          <div class="social">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://facebook.com"
+              class="facebook"
+              title="Facebook"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://instagram.com"
+              class="instagram"
+              title="Instagram"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com"
+              class="twitter"
+              title="Twitter"
+            ></a>
+          </div>
+        </div>
+        <picture>
+          <source
+            srcset="https://loremflickr.com/600/240/map,idaho/all"
+            media="(max-width: 32.5em)"
+            width="600"
+            height="240"
+          />
+          <source
+            srcset="https://loremflickr.com/780/240/map,idaho/all"
+            media="(max-width: 50em)"
+            width="780"
+            height="240"
+          />
+          <img
+            src="https://loremflickr.com/960/300/map,idaho/all"
+            alt="Randomly generated farm related image"
+            width="960"
+            height="300"
+          />
+        </picture>
+      </div>
+
+      <div class="bar">
+        <p>
+          &copy; <span id="year"></span> WeatherCats |
+          <a href="https://www.byui.edu/online">Terms of Use</a> | John W Sudds
+          Jr
+        </p>
+        <p><span id="date"></span></p>
+      </div>
+    </footer>
+    <script src="js/menu.js" defer></script>
+    <script src="js/updateTime.js" defer></script>
+    <script src="js/lazyload.js" defer></script>
+  </body>
+</html>
