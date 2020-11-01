@@ -1,13 +1,14 @@
 (function () {
   /** @param {HTMLImageElement} image */
   const loadImage = (image) => {
-    const src = image.dataset.src;
-    if (src) {
+    if (image.dataset.src) {
       image.loading = "lazy";
-      image.src = src;
+      image.src = image.dataset.src;
+      // Remove data-src to apply new CSS rules.
+      image.addEventListener("load", () => image.removeAttribute("data-src"), {
+        once: true,
+      });
     }
-    // Remove data-src to apply new CSS rules.
-    setTimeout(() => image.removeAttribute("data-src"), 600);
     return image;
   };
 
@@ -15,13 +16,18 @@
   //   document.querySelectorAll("img[data-src]").forEach(load);
   // } else
   if ("IntersectionObserver" in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          imageObserver.unobserve(loadImage(entry.target));
-        }
-      });
-    });
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            imageObserver.unobserve(loadImage(entry.target));
+          }
+        });
+      },
+      {
+        threshold: 0.25,
+      }
+    );
     document
       .querySelectorAll("img[data-src]")
       .forEach((image) => imageObserver.observe(image));
