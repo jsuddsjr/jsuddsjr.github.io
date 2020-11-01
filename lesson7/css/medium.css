@@ -84,6 +84,10 @@
     line-height: 2rem;
   }
 
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
   [itemtype='http://schema.org/Weather']
   {
     grid-template-columns: minmax(1fr, 12rem), 1fr;

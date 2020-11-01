@@ -25,7 +25,7 @@
         });
       },
       {
-        threshold: 0.25,
+        threshold: 0.5,
       }
     );
     document

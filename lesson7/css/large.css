@@ -7,7 +7,7 @@
     padding: 0;
   }
   h2 {
-    margin-top: 1.5rem;
+    margin: 1.5rem 0 2rem;
     font-size: 3rem;
   }
   h3 {
@@ -48,6 +48,13 @@
   .overlay h3 {
     margin-top: 0;
   }
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .gallery figure:hover {
+    transform: scale(3);
+  }
+  
   footer {
     clear: both;
   }
