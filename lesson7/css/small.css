@@ -152,7 +152,6 @@ figcaption {
 
 .gallery figure:hover {
   transform: scale(1.2);
-  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.8);
   transition: all 500ms ease;
 }
 
@@ -160,7 +159,7 @@ figcaption {
   padding: 2px 5px;
 }
 
-.gallery [data-src] {
+.gallery figure > [data-src] {
   opacity: 0.2;
   filter: blur(5px);
   transition: all 500ms ease-out;

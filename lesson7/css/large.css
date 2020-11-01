@@ -53,6 +53,7 @@
   }
   .gallery figure:hover {
     transform: scale(3);
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.8);
   }
   
   footer {
