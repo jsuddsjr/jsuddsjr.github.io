@@ -13,7 +13,7 @@ body {
 
 table {
     border-collapse: collapse;
-    box-shadow: 5px 5px 18px var(--dark-header);
+    box-shadow: 8px 8px 10px var(--dark-header);
     background-color: var(--even-row)
 }
 
