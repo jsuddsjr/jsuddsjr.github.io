@@ -12,6 +12,12 @@
         }
     );
 
+    d.querySelectorAll("input[type='number']").forEach(el => {
+        el.addEventListener('change', () => {
+            e.value
+        })
+    });
+
     [...d.getElementsByTagName('textarea')].forEach(el => {
         el.addEventListener('onchange', () => {
             el.style.height = (15 + el.scrollHeight) + "px";
