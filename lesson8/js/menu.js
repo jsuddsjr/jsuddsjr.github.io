@@ -26,9 +26,13 @@
   });
 
   // Add label to current menu item. (No Narrator support.)
-  document
-    .querySelector("nav a[href='#']")
-    .setAttribute("aria-current", "location");
+  try {
+    document
+      .querySelector("nav a[href='#']")
+      .setAttribute("aria-current", "location");
+  } catch (ex) {
+    // Ignore error. Current location not set.
+  }
 
   // Collapse menu if focus moves elsewhere.
   document.body.addEventListener("focusin", (e) => {
