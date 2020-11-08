@@ -434,10 +434,19 @@ textarea {
   border: none;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
 textarea {
   min-width: 100%;
   min-height: 5rem;
   padding-top: 20px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 input:invalid,

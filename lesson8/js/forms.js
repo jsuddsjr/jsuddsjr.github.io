@@ -13,7 +13,8 @@
     );
 
     [...d.getElementsByTagName('textarea')].forEach(el => {
-        el.addEventListener('onchange', () => {
+        el.addEventListener('keypress', () => {
+            el.style.height = "";
             el.style.height = (15 + el.scrollHeight) + "px";
         })
     });
