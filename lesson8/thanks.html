@@ -17,10 +17,7 @@
     <link rel="stylesheet" href="css/small.css" />
     <link rel="stylesheet" href="css/medium.css" />
     <link rel="stylesheet" href="css/large.css" />
-    <meta
-      name="description"
-      content="A lazy-loaded gallery of the cutest feline friends in Idaho, and those that love them."
-    />
+    <meta name="description" content="Thank you ." />
   </head>
 
   <body>
@@ -63,12 +60,12 @@
           >
         </li>
         <li role="menuitem">
-          <a href="storm-center.html"
+          <a href="stormcenter.html"
             ><span aria-hidden="true">🌧</span> Storm Center</a
           >
         </li>
         <li role="menuitem">
-          <a href="#"><span aria-hidden="true">🎨</span> Gallery</a>
+          <a href="gallery-8.html"><span aria-hidden="true">🎨</span> Gallery</a>
         </li>
       </ul>
     </nav>
@@ -76,7 +73,30 @@
       <section>
         <h2>Thanks for your report</h2>
         <p>We'll get right on it!</p>
-        <a href="./stormcenter.html">Make another report?</a>
+        <p><a href="./stormcenter.html">Make another report?</a></p>
+        <picture>
+          <source
+            srcset="https://placekitten.com/600/240"
+            media="(max-width: 32.5em)"
+          />
+          <source
+            srcset="https://placekitten.com/780/240"
+            media="(max-width: 50em)"
+          />
+          <img
+            src="https://placekitten.com/400/300"
+            alt="Randomly generated cat image"
+          />
+        </picture>
+      </section>
+      <section>
+        <h3>Debug</h3>
+        <table class="debug">
+          <tr>
+            <th>Param</th>
+            <th>Value</th>
+          </tr>
+        </table>
       </section>
     </main>
     <footer>
@@ -147,5 +167,6 @@
     </footer>
     <script src="js/menu.js" defer></script>
     <script src="js/updateTime.js" defer></script>
+    <script src="js/debugTable.js" defer></script>
   </body>
 </html>

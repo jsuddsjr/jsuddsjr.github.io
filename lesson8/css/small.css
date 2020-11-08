@@ -540,3 +540,14 @@ input::-webkit-calendar-picker-indicator {
   color: black;
   opacity: 1;
 }
+
+table.debug {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+table.debug th,
+table.debug td {
+  text-align: left;
+  padding: 4px 12px;
+}
