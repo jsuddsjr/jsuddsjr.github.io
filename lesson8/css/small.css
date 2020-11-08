@@ -61,8 +61,7 @@ footer {
 
 header {
   background-color: black;
-  background: border-box center 75%/100% no-repeat
-    url("../images/dark-skies-and-lightning-storm.jpg");
+  background: border-box center 75%/100% no-repeat url("../images/dark-skies-and-lightning-storm.jpg");
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -159,7 +158,7 @@ figcaption {
   padding: 2px 5px;
 }
 
-.gallery figure > [data-src] {
+.gallery figure>[data-src] {
   opacity: 0.2;
   filter: blur(5px);
   transition: all 500ms ease-out;
@@ -172,7 +171,7 @@ footer {
   margin-bottom: 12rem;
 }
 
-footer > p {
+footer>p {
   margin: 0.4rem 0;
   text-align: center;
 }
@@ -182,18 +181,15 @@ footer .contact p {
 }
 
 footer .contact .address {
-  background: no-repeat left top
-    url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
+  background: no-repeat left top url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
 }
 
 footer .contact .email {
-  background: no-repeat left center
-    url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
+  background: no-repeat left center url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
 }
 
 footer .contact .phone {
-  background: no-repeat left center
-    url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
+  background: no-repeat left center url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
 }
 
 footer picture {
@@ -305,8 +301,7 @@ nav ul.expanded {
 
 /* microdata */
 
-[itemtype='http://schema.org/Weather']
-{
+[itemtype='http://schema.org/Weather'] {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -404,4 +399,113 @@ aside.banner-box button {
 aside.banner-box button:hover {
   background-color: black;
   color: white;
+}
+
+/* Form fields */
+fieldset {
+  position: relative;
+  text-align: center;
+  width: 80%;
+  padding: 0;
+}
+
+label {
+  position: absolute;
+  display: block;
+  font-size: .8rem;
+  top: 0;
+  left: 8px;
+}
+
+input,
+select,
+textarea {
+  position: relative;
+  box-sizing: border-box;
+
+  height: 2.5rem;
+  padding: 15px 8px 4px;
+  width: 100%;
+  border: none;
+}
+
+textarea {
+  min-width: 100%;
+  min-height: 5rem;
+  padding-top: 20px;
+}
+
+input:valid,
+select:valid {
+  background-color: azure;
+}
+
+input:invalid,
+select:invalid {
+  background-color: var(--fade-bottom);
+}
+
+input[type='date'] {
+  color: white;
+}
+
+input[type='date']:before {
+  position: absolute;
+  top: 18px;
+  left: 8px;
+  content: attr(data-date);
+  display: inline-block;
+  color: black;
+}
+
+fieldset.radio {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: none;
+  height: 2.5rem;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+input[type='radio']+label {
+  display: inline-block;
+  position: initial;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  min-width: 2rem;
+  padding: 0 .5rem;
+}
+
+input[type='radio']:checked+label {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  transition: all 500ms ease-in-out;
+}
+
+button[type='submit'] {
+  margin-top: 1rem;
+  padding: .5rem 1rem;
+  background: linear-gradient(var(--fade-top), var(--fade-bottom));
+}
+
+button[type='submit']:hover {
+  background: linear-gradient(var(--fade-bottom), var(--fade-top));
+}
+
+
+input::-webkit-datetime-edit,
+input::-webkit-inner-spin-button,
+input::-webkit-clear-button {
+  display: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: black;
+  opacity: 1;
 }
