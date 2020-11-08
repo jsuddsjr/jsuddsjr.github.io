@@ -12,24 +12,11 @@
         }
     );
 
-    d.querySelectorAll("input[type='number']").forEach(el => {
-        el.addEventListener('change', () => {
-            e.value
-        })
-    });
-
     [...d.getElementsByTagName('textarea')].forEach(el => {
         el.addEventListener('onchange', () => {
             el.style.height = (15 + el.scrollHeight) + "px";
         })
     });
-
-    // [...d.getElementsByTagName('form')].forEach(el => {
-    //     el.addEventListener('submit', (e) => {
-    //         alert("Thanks for your report. We'll get on it!");
-    //         e.preventDefault();
-    //     })
-    // });
 
     const dateInputs = d.querySelectorAll("input[type='date']");
     if (dateInputs.length) {
