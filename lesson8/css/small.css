@@ -446,7 +446,7 @@ textarea {
   min-height: 5rem;
   padding-top: 20px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 input:invalid,
@@ -454,8 +454,25 @@ select:invalid {
   background-color: var(--fade-bottom);
 }
 
+fieldset.range {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 100%;
+}
+
 input[type='range'] {
-  margin-top: .4rem;
+  width: 80%;
+}
+
+input[type='range']+span {
+  display: inline-block;
+  margin-left: .4rem;
+  padding: 5px 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
 }
 
 input[type='date'] {

@@ -152,16 +152,18 @@
           <fieldset>
             <!-- storm severity using type range (1 to 10) with a corresponding label that indicates the 
                 current range value from 1 to 10. -->
-            <input
-              type="range"
-              name="severity"
-              id="severity"
-              min="1"
-              max="10"
-              value="1"
-            />
+            <fieldset class="range">
+              <input
+                type="range"
+                name="severity"
+                id="severity"
+                min="1"
+                max="10"
+                value="1"
+              />
+              <span id="severity-value">1</span>
+            </fieldset>
             <label for="severity">Severity</label>
-            <span id="severity-value">1</span>
           </fieldset>
           <fieldset>
             <!-- storm region using select with drop-down options of "Preston", "Soda Springs", and "Fish Haven". 
