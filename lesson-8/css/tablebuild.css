@@ -11,19 +11,24 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+/* Shadow div, so the entire table shares a common shadow */
+body div {
+    box-shadow: 8px 8px 10px var(--dark-header);
+    display: inline-block;
+}
+
 table {
     border-collapse: collapse;
-    box-shadow: 8px 8px 10px var(--dark-header);
     background-color: var(--even-row)
 }
 
-thead {
+caption {
     background-color: var(--light-header);
     font-size: 1.65rem;
-    line-height: 1.8rem;
+    line-height: 2.5rem;
 }
 
-tbody tr:first-child {
+thead {
     font-size: 1.2rem;
     line-height: 1.5rem;
     color: white;
@@ -37,10 +42,11 @@ td {
     padding: 6px 8px;
 }
 
-tbody tr:nth-child(even) {
+tbody tr:nth-child(odd) {
     background-color: var(--odd-row);
 }
 
+/* SINGLE CLASS */
 .emphasis {
     color: white;
     background-color: var(--dark-header);
