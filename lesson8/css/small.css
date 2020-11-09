@@ -471,8 +471,6 @@ input[type='range']+span {
   display: inline-block;
   margin-left: .4rem;
   padding: 5px 15px;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
 }
 
 input[type='date'] {
@@ -541,4 +539,15 @@ input::-webkit-calendar-picker-indicator {
   right: 3px;
   color: black;
   opacity: 1;
+}
+
+table.debug {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+table.debug th,
+table.debug td {
+  text-align: left;
+  padding: 4px 12px;
 }

@@ -52,7 +52,7 @@
     await fade(currentTarget, "out");
 
     t.innerHTML = newTemp.toFixed(1) + "&deg;";
-    t.style.textShadow = `2px 2px 5px hsl(${colorTemp} 90% 30%)`;
+    t.style.textShadow = `2px 2px 5px hsl(${colorTemp}, 90%, 30%)`;
 
     c.textContent = cities[Math.trunc(randomDouble(0, cities.length))];
     w.textContent = weather[Math.trunc(randomDouble(0, weather.length))];
