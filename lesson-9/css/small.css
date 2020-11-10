@@ -19,7 +19,8 @@ body {
 }
 
 h1 {
-    margin-bottom: 2rem;
+    margin: 2rem auto;
+    text-align: center;
 }
 
 .cards {
