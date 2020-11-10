@@ -1,28 +1,37 @@
 const requestURL = 'https://byui-cit230.github.io/lessons/lesson-09/data/latter-day-prophets.json';
 
-const buildCardFromTemplate = (p) => {
+/**
+ * Copy the key/value pairs into new template.
+ * @param {*} record 
+ */
+const buildCardFromTemplate = (record) => {
     const template = document.getElementById("template");
 
     /** @type {HTMLElement} card */
     const card = template.cloneNode(true);
     card.removeAttribute("id");
 
-    Object.entries(p).forEach(([key, value]) => {
+    Object.entries(record).forEach(([key, value]) => {
+        // TODO: create hyphenated attribute from camel-cased keys.
         [...card.querySelectorAll(`[data-${key}]`)].forEach(
             /** @param {HTMLElement} el */
             el => {
                 const attr = el.dataset[key];
-                if (attr && el.hasAttribute(attr)) el.setAttribute(attr, value)
-                else el.textContent = value;
+                if (attr && el.hasAttribute(attr)) {
+                    el.setAttribute(attr, value);
+                    if (attr === 'src' && el.nodeName === 'IMG') {
+                        // Keep track of images as they load, to trigger alignment.
+                        imagePromises.push(
+                            new Promise(resolve => el.addEventListener('load', resolve, {
+                                once: true
+                            })));
+                    }
+                } else {
+                    el.textContent = value;
+                }
             }
         );
     });
-
-    // Keep track of images as they load, to trigger alignment.
-    imagesLoaded.push(...[...card.getElementsByTagName('img')].map(img =>
-        new Promise(resolve => img.addEventListener('load', resolve, {
-            once: true
-        }))));
 
     template.parentElement.appendChild(card);
 }
@@ -38,7 +47,7 @@ const alignItems = () => {
 
     // Do not align single columns.
     if (columns === 1) {
-        [...container.children].forEach(child => 
+        [...container.children].forEach(child =>
             child.style.display = "inline-block"
         );
         return;
@@ -79,25 +88,21 @@ const chunk = (arr, size) => Array.from({
     length: Math.ceil(arr.length / size)
 }, (_, i) => arr.slice(i * size, i * size + size));
 
-const includeAttributesInHeight = [
-    'margin-top',
-    'margin-bottom'
-]
-
 /**
  * Calculate height of element, including margins.
  * @param {HTMLElement} item 
  */
 const computeElementHeight = (item) => {
     const style = window.getComputedStyle(item);
-    const height = includeAttributesInHeight
+    const height = ['margin-top', 'margin-bottom']
         .map(k => parseInt(style.getPropertyValue(k)))
         .map(n => Number.isNaN(n) ? 0 : n)
         .reduce((prev, cur) => prev + cur, item.getBoundingClientRect().height);
     return height;
 }
 
-const imagesLoaded = [];
+// List of images to await.
+const imagePromises = [];
 
 window.addEventListener('resize', alignItems);
 
@@ -105,18 +110,4 @@ window.addEventListener('resize', alignItems);
 fetch(requestURL)
     .then(response => response.json())
     .then(jsonObject => jsonObject['prophets'].forEach(buildCardFromTemplate))
-    .then(async () => await Promise.all(imagesLoaded).then(alignItems));
-
-/** @typedef {{name: string, lastname: string, birthday: string, death: string, length: number, order: number, birthplace: string, numofchildren: number, imageurl: string}} Prophet  */
-
-//   {
-//     "name": "Joseph",
-//     "lastname": "Smith",
-//     "birthdate": "23 December 1805",
-//     "death": "27 June 1844",
-//     "length": 14,
-//     "order": 1,
-//     "birthplace": "Vermont",
-//     "numofchildren": 11,
-//     "imageurl": "https://media.ldscdn.org/images/media-library/gospel-art/latter-day-prophets/american-prophet-joseph-smith-jr-1178035-gallery.jpg"
-//   }
+    .then(async () => await Promise.all(imagePromises).then(alignItems));
