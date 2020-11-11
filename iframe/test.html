@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      iframe {
+        height: 0; /* Most important rule, sets iframe to 0 height. */
+        padding-left: 7%; /* To better align the content in the frame. */
+
+        opacity: 1; /* Transition between loading states. */
+        transition: opacity 1s ease-in-out;
+
+        -border: 1px solid red; /* DEBUG to see the frame. */
+      }
+      iframe.loading {
+        opacity: 0;
+        transition: opacity 300ms ease-in-out;
+      }
+      .iframeFrame {
+        /* Keep the content centered and sized */
+        display: grid;
+        grid-template-columns: minmax(200px, 90ch);
+        justify-content: space-around;
+        justify-items: stretch;
+
+        overflow: hidden; /* Keep the frame inside its frame. */
+
+        -border: 1px dashed green; /* DEBUG: to see the frame. */
+        transition: height 1s ease-in-out; /* Slow down the transition to see what's happening. */
+      }
+    </style>
+  </head>
+  <body>
+    <button>Load a page</button>
+    <span id="currentHeight"></span>
+    <div class="iframeFrame">
+      <iframe
+        id="contentIFrame"
+        scrolling="no"
+        frameborder="0"
+        referrerpolicy="noreferrer"
+        title="Content window"
+      ></iframe>
+    </div>
+    <button>Load a page</button>
+    <script>
+      (function (d) {
+        // Targets iterator (infinite sequence)
+        const targets = (function* () {
+          const pages = [
+            "https://support.office.com/en-us/client/5bec897f-4e36-43f8-9d9d-c41cb4917d9c?embed=true",
+            "https://support.office.com/en-us/client/92d238e6-0ae2-447e-af90-40b1052c4547?embed=true",
+            "https://support.office.com/en-us/client/741bf760-39fc-4807-ad8b-92558273f542?embed=true",
+            "https://support.office.com/en-us/client/get-your-team-up-and-running-702a2977-e662-4038-bef5-bdf8ee47b17b?embed=true",
+            "https://support.microsoft.com/en-us/office/share-and-collaborate-with-onedrive-51e669f6-4602-4492-8648-13ffa09ff24f?ui=en-US&rs=en-US&ad=US",
+          ];
+          let index = 0;
+          while (true) {
+            yield pages[index++];
+            if (index === pages.length) index = 0;
+          }
+        })();
+
+        const CLIENT_MSG = "help_getClientHeight";
+        const MAX_HEIGHT = "1950px"; // Should be bigger...
+        const LOADING_CLASS = "loading";
+
+        /** @type HTMLIFrameElement */
+        const iframe = d.getElementById("contentIFrame");
+        /** @type HTMLDivElement */
+        const iframeFrame = d.querySelector(".iframeFrame");
+
+        // React to message by setting iframe height.
+        window.addEventListener(
+          "message",
+          /** @param {MessageEvent} e */ (e) => {
+            if (e.data.indexOf(CLIENT_MSG) == 0) {
+              const height = `${e.data.split("=")[1]}px`;
+              setSize(height);
+            } else {
+              setSize(MAX_HEIGHT);
+            }
+          }
+        );
+
+        let autoSize = false;
+        let url = new URL();
+
+        /**
+         * @param {string} size
+         */
+        const setSize = (size) => {
+          iframe.style.height = size;
+          iframeFrame.style.height = size;
+          iframe.scrolling = size === MAX_HEIGHT ? "yes" : "no";
+          iframe.classList.remove(LOADING_CLASS);
+          document.getElementById('currentHeight').textContent = size;
+        };
+
+        // Post size message as soon as possible after loading.
+        iframe.addEventListener("load", () => {
+          if (autoSize) {
+            try {
+              iframe.contentWindow.postMessage(CLIENT_MSG, "*");
+            } catch (ex) {
+              setSize(MAX_HEIGHT);
+            }
+          } else {
+            setSize(MAX_HEIGHT);
+          }
+        });
+
+        iframe.addEventListener("load", () => {
+          console.log("loading iframe");
+        });
+
+        // Request a new page.
+        // NOTE: Must set iframe back to 0 height for accurate results.
+        const loadIframe = () => {
+          iframe.classList.add(LOADING_CLASS);
+          iframe.style.height = "";
+          url = new URL(targets.next().value);
+          autoSize = !!(
+            url.host === "support.office.com" &&
+            url.search.indexOf("embed=true") > 0
+          );
+          iframe.src = url.href;
+        };
+
+        // Trigger page load via button.
+        d.querySelectorAll("button").forEach((btn) =>
+          btn.addEventListener("click", loadIframe)
+        );
+
+        loadIframe();
+      })(document);
+    </script>
+  </body>
+</html>
