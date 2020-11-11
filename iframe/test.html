@@ -12,7 +12,7 @@
         opacity: 1; /* Transition between loading states. */
         transition: opacity 1s ease-in-out;
 
-        -border: 1px solid red; /* DEBUG to see the frame. */
+        border: 1px solid red; /* DEBUG to see the frame. */
       }
       iframe.loading {
         opacity: 0;
@@ -27,14 +27,14 @@
 
         overflow: hidden; /* Keep the frame inside its frame. */
 
-        -border: 1px dashed green; /* DEBUG: to see the frame. */
+        border: 1px dashed green; /* DEBUG: to see the frame. */
         transition: height 1s ease-in-out; /* Slow down the transition to see what's happening. */
       }
     </style>
   </head>
   <body>
     <button>Load a page</button>
-    <span id="currentHeight"></span>
+    <span class="currentHeight"></span>
     <div class="iframeFrame">
       <iframe
         id="contentIFrame"
@@ -45,6 +45,7 @@
       ></iframe>
     </div>
     <button>Load a page</button>
+    <span class="currentHeight"></span>
     <script>
       (function (d) {
         // Targets iterator (infinite sequence)
@@ -72,6 +73,50 @@
         /** @type HTMLDivElement */
         const iframeFrame = d.querySelector(".iframeFrame");
 
+        /**
+         * Smooth scroller.
+         * TODO: Bring the element fully on screen.
+         * @param {HTMLElement} el
+         */
+        const scrollTo = (el) => {
+          var to = el ? el.offsetTop : 0;
+          var from = window.pageYOffset;
+          var isVisible =
+            to > from
+              ? /** @param {number} offset */
+                (offset) => offset < to
+              : (offset) => offset > to;
+          const interval = window.setInterval(() => {
+            var pos = window.pageYOffset;
+            if (visible(pos)) {
+              window.scrollTo(0, pos - 20); // how far to scroll on each step
+            } else {
+              window.clearInterval(interval);
+            }
+          }, 16);
+        };
+
+        // Track back button events.
+        window.addEventListener(
+          "popstate",
+          /** @param {PopStateEvent} e */
+          (e) => {
+            console.log(e, e.state);
+            if (e.state) {
+              setSize(e.state.iframeHeight, e.state.autoSize);
+              currentUrl = new URL(e.state.url);
+
+              if (currentUrl != iframe.src) {
+                console.error("*** iframe out of sync with history! ***");
+              }
+            }
+          }
+        );
+
+        iframe.addEventListener("unload", (e) => {
+          console.log("iframe unload", e);
+        });
+
         // React to message by setting iframe height.
         window.addEventListener(
           "message",
@@ -86,55 +131,98 @@
         );
 
         let autoSize = false;
-        let url = new URL();
+        let currentUrl;
 
-        /**
-         * @param {string} size
-         */
-        const setSize = (size) => {
-          iframe.style.height = size;
-          iframeFrame.style.height = size;
-          iframe.scrolling = size === MAX_HEIGHT ? "yes" : "no";
-          iframe.classList.remove(LOADING_CLASS);
-          document.getElementById('currentHeight').textContent = size;
-        };
-
-        // Post size message as soon as possible after loading.
-        iframe.addEventListener("load", () => {
+        const postMessage = () => {
           if (autoSize) {
             try {
-              iframe.contentWindow.postMessage(CLIENT_MSG, "*");
+              // Set height when user clicks link inside iframe.
+              if (!iframe.classList.contains(LOADING_CLASS)) {
+                iframe.style.height = "";
+              }
+              iframe.contentWindow.postMessage(CLIENT_MSG, currentUrl.origin);
             } catch (ex) {
               setSize(MAX_HEIGHT);
             }
           } else {
             setSize(MAX_HEIGHT);
           }
-        });
+        };
 
-        iframe.addEventListener("load", () => {
-          console.log("loading iframe");
-        });
-
-        // Request a new page.
-        // NOTE: Must set iframe back to 0 height for accurate results.
-        const loadIframe = () => {
-          iframe.classList.add(LOADING_CLASS);
-          iframe.style.height = "";
-          url = new URL(targets.next().value);
-          autoSize = !!(
+        /**
+         * @param {URL} url
+         */
+        const shouldSize = (url) => {
+          return !!(
             url.host === "support.office.com" &&
             url.search.indexOf("embed=true") > 0
           );
-          iframe.src = url.href;
+        };
+
+        /**
+         * @param {string} size
+         */
+        const setSize = (size, scrollbar) => {
+          if (size && iframe.style.height != size) {
+            iframe.style.height = size;
+            iframeFrame.style.height = size;
+            iframe.scrolling = scrollbar ? "no" : "yes";
+            window.scrollTo();
+          }
+
+          iframe.classList.remove(LOADING_CLASS);
+
+          // // Push state for current page
+          // const newState = {
+          //   ...history.state,
+          //   iframeHeight: size,
+          //   autoSize,
+          //   url: currentUrl.href,
+          // };
+          // if (history.state) {
+          //   if (JSON.stringify(history.state) != JSON.stringify(newState)) {
+          //     console.log("PUSH STATE", newState);
+          //     history.pushState(newState, "");
+          //   }
+          //   else {
+          //     console.log("SAME STATE");
+          //   }
+          // } else {
+          //   console.log("REPLACE STATE", newState);
+          //   history.replaceState(newState, "");
+          // }
+
+          // Report height
+          [...d.getElementsByClassName("currentHeight")].forEach(
+            (el) => (el.textContent = size)
+          );
+        };
+
+        // Post size message as soon as possible after loading.
+        iframe.addEventListener("load", (e) => {
+          console.log("iframe loaded", e);
+          postMessage();
+        });
+
+        /**
+         * Request a new page.
+         * @param {string} url
+         */
+        const loadIframe = (url) => {
+          iframe.classList.add(LOADING_CLASS);
+          currentUrl = new URL(url);
+          autoSize = shouldSize(currentUrl);
+          // NOTE: Must set iframe back to 0 height for accurate results.
+          iframe.style.height = "";
+          iframe.src = currentUrl.href;
         };
 
         // Trigger page load via button.
         d.querySelectorAll("button").forEach((btn) =>
-          btn.addEventListener("click", loadIframe)
+          btn.addEventListener("click", () => loadIframe(targets.next().value))
         );
 
-        loadIframe();
+        loadIframe(targets.next().value);
       })(document);
     </script>
   </body>
