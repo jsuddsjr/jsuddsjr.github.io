@@ -70,7 +70,7 @@
         /**
          * @param {URL} url
          */
-        const shouldSize = (url) => {
+        const shouldPostMessage = (url) => {
           if (typeof url === "string") {
             try {
               url = new URL(url);
@@ -119,7 +119,7 @@
         // Post size message as soon as possible after loading.
         iframe.addEventListener("load", () => {
           if (iframe.src) {
-            if (shouldSize(iframe.src)) {
+            if (shouldPostMessage(iframe.src)) {
               // Clicks inside the iframe will trigger load also.
               // We need to reset the height here too.
               iframe.style.height = "";
@@ -154,33 +154,6 @@
             (el) => (el.textContent = height)
           );
         };
-
-        // // TODO: Remove. Track back button events.
-        // window.addEventListener(
-        //   "popstate",
-        //   /** @param {PopStateEvent} e */ (e) => {
-        //     console.log("POP", e);
-        //     if (e.state && e.state.url) {
-        //       loadIframe(e.state.url);
-        //     }
-        //   }
-        // );
-
-        // // TODO: Remove.
-        // const saveHistory = (url) => {
-        //   const newState = { ...history.state, url };
-        //   const newUrl = "?url=" + url;
-        //   if (
-        //     history.state &&
-        //     JSON.stringify(history.state) !== JSON.stringify(newState)
-        //   ) {
-        //     console.log("PUSH", newState);
-        //     history.pushState(newState, null, newUrl);
-        //   } else {
-        //     console.log("REPLACE", newState);
-        //     history.replaceState(newState, null, newUrl);
-        //   }
-        // };
 
         /**
          * Request a new page.
