@@ -40,7 +40,6 @@
         id="contentIFrame"
         scrolling="no"
         frameborder="0"
-        all
         referrerpolicy="noreferrer"
         title="Content window"
       ></iframe>
@@ -131,10 +130,10 @@
           }
         });
 
-        let debounceInterval;
+        let debounceResize;
         window.addEventListener("resize", () => {
-          clearInterval(debounceInterval);
-          debounceInterval = setTimeout(postMessage, 400);
+          clearInterval(debounceResize);
+          debounceResize = setTimeout(postMessage, 400);
         });
 
         /**
@@ -160,12 +159,14 @@
          * Request a new page.
          * @param {string} url
          */
+        let debounceLoad;
         const loadIframe = (url) => {
           console.log("Loading", url);
           iframe.classList.add(LOADING_CLASS);
 
           // Just in case loading gets hung up somewhere...
-          setTimeout(() => {
+          clearInterval(debounceLoad);
+          debounceLoad = setTimeout(() => {
             if (iframe.classList.contains(LOADING_CLASS)) {
               setHeight(AVG_HEIGHT);
               iframe.classList.remove(LOADING_CLASS);
