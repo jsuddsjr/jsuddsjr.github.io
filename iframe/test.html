@@ -73,49 +73,15 @@
         /** @type HTMLDivElement */
         const iframeFrame = d.querySelector(".iframeFrame");
 
-        /**
-         * Smooth scroller.
-         * TODO: Bring the element fully on screen.
-         * @param {HTMLElement} el
-         */
-        const scrollTo = (el) => {
-          var to = el ? el.offsetTop : 0;
-          var from = window.pageYOffset;
-          var isVisible =
-            to > from
-              ? /** @param {number} offset */
-                (offset) => offset < to
-              : (offset) => offset > to;
-          const interval = window.setInterval(() => {
-            var pos = window.pageYOffset;
-            if (visible(pos)) {
-              window.scrollTo(0, pos - 20); // how far to scroll on each step
-            } else {
-              window.clearInterval(interval);
-            }
-          }, 16);
-        };
-
-        // Track back button events.
-        window.addEventListener(
-          "popstate",
-          /** @param {PopStateEvent} e */
-          (e) => {
-            console.log(e, e.state);
-            if (e.state) {
-              setSize(e.state.iframeHeight, e.state.autoSize);
-              currentUrl = new URL(e.state.url);
-
-              if (currentUrl != iframe.src) {
-                console.error("*** iframe out of sync with history! ***");
-              }
-            }
+        // Send cross-origin message to get content height.
+        const postMessage = () => {
+          try {
+            iframe.contentWindow.postMessage(CLIENT_MSG, "*");
+          } catch (ex) {
+            console.error(ex);
+            setSize(MAX_HEIGHT);
           }
-        );
-
-        iframe.addEventListener("unload", (e) => {
-          console.log("iframe unload", e);
-        });
+        };
 
         // React to message by setting iframe height.
         window.addEventListener(
@@ -123,29 +89,62 @@
           /** @param {MessageEvent} e */ (e) => {
             if (e.data.indexOf(CLIENT_MSG) == 0) {
               const height = `${e.data.split("=")[1]}px`;
-              setSize(height);
+              setSize(height, false);
             } else {
               setSize(MAX_HEIGHT);
             }
           }
         );
 
-        let autoSize = false;
-        let currentUrl;
+        // Post size message as soon as possible after loading.
+        iframe.addEventListener("load", () => {
+          // Clicks inside the iframe will trigger load also.
+          // We need to reset the height here too.
+          iframe.style.height = "";
+          setTimeout(postMessage, 10);
+        });
 
-        const postMessage = () => {
-          if (autoSize) {
-            try {
-              // Set height when user clicks link inside iframe.
-              if (!iframe.classList.contains(LOADING_CLASS)) {
-                iframe.style.height = "";
-              }
-              iframe.contentWindow.postMessage(CLIENT_MSG, currentUrl.origin);
-            } catch (ex) {
-              setSize(MAX_HEIGHT);
+        // Track back button events.
+        window.addEventListener(
+          "popstate",
+          /** @param {PopStateEvent} e */ (e) => {
+            console.log("POP", e);
+            if (e.state && e.state.url) {
+              loadIframe(e.state.url);
             }
+          }
+        );
+
+        /**
+         * @param {string} size
+         */
+        const setSize = (size, scrollbar = true) => {
+          if (size && iframe.style.height != size) {
+            iframe.style.height = size;
+            iframeFrame.style.height = size;
+          }
+
+          iframe.scrolling = scrollbar ? "yes" : "no";
+          iframe.classList.remove(LOADING_CLASS);
+
+          // TODO: Remove.
+          [...d.getElementsByClassName("currentHeight")].forEach(
+            (el) => (el.textContent = size)
+          );
+        };
+
+        const saveHistory = (url) => {
+          const newState = { ...history.state, url };
+          const newUrl = "?url=" + url;
+          if (
+            history.state &&
+            JSON.stringify(history.state) !== JSON.stringify(newState)
+          ) {
+            console.log("PUSH", newState);
+            history.pushState(newState, null, newUrl);
           } else {
-            setSize(MAX_HEIGHT);
+            console.log("REPLACE", newState);
+            history.replaceState(newState, null, newUrl);
           }
         };
 
@@ -153,6 +152,14 @@
          * @param {URL} url
          */
         const shouldSize = (url) => {
+          if (typeof url === "string") {
+            try {
+              url = new URL(url);
+            } catch (ex) {
+              return false;
+            }
+          }
+
           return !!(
             url.host === "support.office.com" &&
             url.search.indexOf("embed=true") > 0
@@ -160,69 +167,21 @@
         };
 
         /**
-         * @param {string} size
-         */
-        const setSize = (size, scrollbar) => {
-          if (size && iframe.style.height != size) {
-            iframe.style.height = size;
-            iframeFrame.style.height = size;
-            iframe.scrolling = scrollbar ? "no" : "yes";
-            window.scrollTo();
-          }
-
-          iframe.classList.remove(LOADING_CLASS);
-
-          // // Push state for current page
-          // const newState = {
-          //   ...history.state,
-          //   iframeHeight: size,
-          //   autoSize,
-          //   url: currentUrl.href,
-          // };
-          // if (history.state) {
-          //   if (JSON.stringify(history.state) != JSON.stringify(newState)) {
-          //     console.log("PUSH STATE", newState);
-          //     history.pushState(newState, "");
-          //   }
-          //   else {
-          //     console.log("SAME STATE");
-          //   }
-          // } else {
-          //   console.log("REPLACE STATE", newState);
-          //   history.replaceState(newState, "");
-          // }
-
-          // Report height
-          [...d.getElementsByClassName("currentHeight")].forEach(
-            (el) => (el.textContent = size)
-          );
-        };
-
-        // Post size message as soon as possible after loading.
-        iframe.addEventListener("load", (e) => {
-          console.log("iframe loaded", e);
-          postMessage();
-        });
-
-        /**
          * Request a new page.
          * @param {string} url
          */
         const loadIframe = (url) => {
+          console.log("Loading", url);
           iframe.classList.add(LOADING_CLASS);
-          currentUrl = new URL(url);
-          autoSize = shouldSize(currentUrl);
           // NOTE: Must set iframe back to 0 height for accurate results.
           iframe.style.height = "";
-          iframe.src = currentUrl.href;
+          iframe.src = url;
         };
 
         // Trigger page load via button.
         d.querySelectorAll("button").forEach((btn) =>
           btn.addEventListener("click", () => loadIframe(targets.next().value))
         );
-
-        loadIframe(targets.next().value);
       })(document);
     </script>
   </body>
