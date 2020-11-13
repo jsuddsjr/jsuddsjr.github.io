@@ -6,12 +6,9 @@
     <title>Resize IFRAME test</title>
     <style>
       iframe {
-        height: 0; /* Most important rule, sets iframe to 0 height. */
         padding-left: 7%; /* To better align the content in the frame. */
-
         opacity: 1; /* Transition between loading states. */
         transition: opacity 1s ease-in-out;
-
         border: 1px solid red; /* DEBUG to see the frame. */
       }
       iframe.loading {
@@ -25,7 +22,7 @@
         justify-content: space-around;
         justify-items: stretch;
 
-        overflow: hidden; /* Keep the frame inside its frame. */
+        -overflow: hidden; /* Keep the frame inside its frame. */
 
         border: 1px dashed green; /* DEBUG: to see the frame. */
         transition: height 1s ease-in-out; /* Slow down the transition to see what's happening. */
@@ -35,6 +32,7 @@
   <body>
     <button>Load a page</button>
     <span class="currentHeight"></span>
+    (<span class="mouseLocation"></span>)
     <div class="iframeFrame">
       <iframe
         id="contentIFrame"
@@ -42,6 +40,7 @@
         frameborder="0"
         referrerpolicy="noreferrer"
         title="Content window"
+        height="0"
       ></iframe>
     </div>
     <button>Load a page</button>
@@ -67,21 +66,6 @@
           }
         })();
 
-        /**
-         * @param {URL} url
-         */
-        const shouldPostMessage = (url) => {
-          if (typeof url === "string") {
-            try {
-              url = new URL(url);
-            } catch (ex) {
-              return false;
-            }
-          }
-
-          return allowedDomains.includes(url.host);
-        };
-
         const CLIENT_MSG = "help_getClientHeight";
         const AVG_HEIGHT = "2500px"; // Should it be bigger?
         const LOADING_CLASS = "loading";
@@ -91,16 +75,24 @@
         /** @type HTMLDivElement */
         const iframeFrame = d.querySelector("div.iframeFrame");
 
-        // Send cross-origin message to get content height.
-        const postMessage = () => {
-          if (iframe.src) {
+        /**
+         * Send cross-origin message to get content height.
+         * @param {string} src
+         */
+        const postMessage = (src) => {
+          if (src) {
             try {
-              iframe.contentWindow.postMessage(CLIENT_MSG, "*");
-            } catch (ex) {
-              console.error(ex);
-              setHeight(AVG_HEIGHT);
-            }
+              const url = new URL(src);
+              if (
+                allowedDomains.includes(url.host) ||
+                url.search.indexOf("embed=true") > 0
+              ) {
+                iframe.contentWindow.postMessage(CLIENT_MSG, url.origin);
+                return true;
+              }
+            } catch (ex) {}
           }
+          return false;
         };
 
         // React to message by setting iframe height.
@@ -113,36 +105,76 @@
             } else {
               setHeight(AVG_HEIGHT);
             }
-          }
+          },
+          true
         );
 
         // Post size message as soon as possible after loading.
-        iframe.addEventListener("load", () => {
-          if (iframe.src) {
-            if (shouldPostMessage(iframe.src)) {
-              // Clicks inside the iframe will trigger load also.
-              // We need to reset the height here too.
-              iframe.style.height = "";
-              setTimeout(postMessage, 10);
-            } else {
-              setHeight(AVG_HEIGHT);
+        iframe.addEventListener(
+          "load",
+          () => {
+            if (iframe.src) {
+              postMessage(iframe.src) || setHeight(AVG_HEIGHT);
             }
-          }
-        });
+          },
+          true
+        );
+
+        let mouseOverIframe = false;
+        iframe.addEventListener(
+          "mouseenter",
+          () => (mouseOverIframe = true),
+          true
+        );
+        iframe.addEventListener(
+          "mouseover",
+          () => (mouseOverIframe = true),
+          true
+        );
+        iframe.addEventListener(
+          "mouseleave",
+          () => (mouseOverIframe = false),
+          true
+        );
+        iframe.addEventListener(
+          "mouseout",
+          () => (mouseOverIframe = false),
+          true
+        );
+        iframe.addEventListener("click", () => console.log("iframe clicked"));
+        window.addEventListener(
+          "mousemove",
+          /** @param {MouseEvent} e */ (e) =>
+            [...document.getElementsByClassName("mouseLocation")].forEach(
+              (el) =>
+                (el.textContent = `${e.clientX},${e.clientY} - ${mouseOverIframe}`)
+            ), true
+        );
+        window.addEventListener("blur", () => {
+          if (mouseOverIframe) postMessage(iframe.src);
+        }, true);
 
         let debounceResize;
-        window.addEventListener("resize", () => {
-          clearInterval(debounceResize);
-          debounceResize = setTimeout(postMessage, 400);
-        });
+        window.addEventListener(
+          "resize",
+          () => {
+            clearInterval(debounceResize);
+            debounceResize = setTimeout(postMessage, 400);
+          },
+          true
+        );
 
         /**
          * Set the iframe height.
          * @param {string} height
          */
         const setHeight = (height, scrollbar = true) => {
-          if (height && iframe.style.height != height) {
-            iframe.style.height = height;
+          // If the height is set to the current value
+          if (!scrollbar && height === iframe.height) {
+            iframe.height = `${Math.max(Number(iframe.height) - 1000, 0)}px`;
+            setTimeout(() => postMessage(iframe.src), 10);
+          } else if (iframe.height !== height) {
+            iframe.height = height;
             iframeFrame.style.height = height;
           }
 
@@ -157,11 +189,11 @@
 
         /**
          * Request a new page.
-         * @param {string} url
+         * @param {string} target
          */
         let debounceLoad;
-        const loadIframe = (url) => {
-          console.log("Loading", url);
+        const loadIframe = (target) => {
+          console.log("Loading", target);
           iframe.classList.add(LOADING_CLASS);
 
           // Just in case loading gets hung up somewhere...
@@ -173,9 +205,7 @@
             }
           }, 4000);
 
-          // NOTE: Must set iframe back to 0 height for accurate results.
-          iframe.style.height = "";
-          iframe.src = url;
+          iframe.src = target;
         };
 
         // Trigger page load via button.
