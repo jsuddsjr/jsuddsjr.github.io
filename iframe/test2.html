@@ -160,6 +160,7 @@
             // console.log("Setting height", height);
             iframeFrame.style.height = height;
             iframe.height = height;
+            iframe.classList.remove(LOADING_CLASS);
             heightTesting = false;
             ratio = START_RATIO;
           }
@@ -171,8 +172,6 @@
             iframe.scrolling = "no";
             iframe.style.overflowY = "hidden";
           }
-
-          iframe.classList.remove(LOADING_CLASS);
 
           // TODO: Remove.
           [...d.getElementsByClassName("currentHeight")].forEach(
@@ -202,7 +201,7 @@
 
           // Just in case loading gets hung up somewhere...
           clearInterval(debounceLoad);
-          debounceLoad = setTimeout(finishLoading, 4000);
+          debounceLoad = setTimeout(finishLoading, 2500);
 
           iframe.src = target;
         };
