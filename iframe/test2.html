@@ -6,10 +6,11 @@
     <title>Polling and scrolling</title>
     <style>
       iframe {
+        scroll-behavior: smooth;
         padding-left: 7%; /* To better align the content in the frame. */
         opacity: 1; /* Transition between loading states. */
         transition: opacity 1s ease-in-out;
-        border: 1px solid red; /* DEBUG to see the frame. */
+        -border: 1px solid red; /* DEBUG to see the frame. */
       }
       iframe.loading {
         opacity: 0;
@@ -22,8 +23,8 @@
         justify-content: space-around;
         justify-items: stretch;
 
-        border: 1px dashed green; /* DEBUG: to see the frame. */
-        transition: height 1s ease-in-out; /* Slow down the transition to see what's happening. */
+        -border: 1px dashed green; /* DEBUG: to see the frame. */
+        -transition: height 1s ease-in-out; /* Slow down the transition to see what's happening. */
       }
     </style>
   </head>
@@ -65,7 +66,7 @@
         })();
 
         const CLIENT_MSG = "help_getClientHeight";
-        const AVG_HEIGHT = "2500px"; // Should it be bigger?
+        const AVG_HEIGHT = "3500px"; // Should it be bigger?
         const LOADING_CLASS = "loading";
 
         /** @type HTMLIFrameElement */
@@ -122,40 +123,6 @@
           true
         );
 
-        // Source: http://gizma.com/easing/
-        Math.easeInOutCubic = function (t, b, c, d) {
-          t /= d / 2;
-          if (t < 1) return (c / 2) * t * t * t + b;
-          t -= 2;
-          return (c / 2) * (t * t * t + 2) + b;
-        };
-
-        /** @param {HTMLElement} elem */
-        const scrollIntoView = (elem, totalTime = 800) => {
-          const top = elem.getBoundingClientRect().top;
-          if (top < 0) {
-            const startValue = window.scrollY;
-
-            let start, elapsed = 0;
-            const step = (time) => {
-              if (start) {
-                elapsed = Math.min(time - start, totalTime);
-                const pos = Math.trunc(
-                  Math.easeInOutCubic(elapsed, startValue, top, totalTime)
-                );
-                window.scroll(0, pos);
-              } else {
-                start = time;
-              }
-              if (elapsed < totalTime) {
-                requestAnimationFrame(step);
-              }
-            };
-
-            requestAnimationFrame(step);
-          }
-        };
-
         // Post size message as soon as possible after loading.
         iframe.addEventListener(
           "load",
@@ -191,13 +158,20 @@
             iframe.height = newHeight;
           } else if (iframe.height !== height) {
             // console.log("Setting height", height);
-            iframe.height = height;
             iframeFrame.style.height = height;
+            iframe.height = height;
             heightTesting = false;
             ratio = START_RATIO;
           }
 
-          iframe.scrolling = scrollbar ? "auto" : "no";
+          if (scrollbar) {
+            iframe.scrolling = "yes";
+            iframe.style.overflowY = "scroll";
+          } else {
+            iframe.scrolling = "no";
+            iframe.style.overflowY = "hidden";
+          }
+
           iframe.classList.remove(LOADING_CLASS);
 
           // TODO: Remove.
@@ -239,6 +213,43 @@
             startLoading(targets.next().value)
           )
         );
+
+        // *** SMOOTH SCROLLER ***
+
+        // Source: http://gizma.com/easing/
+        Math.easeInOutCubic = function (t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t * t + b;
+          t -= 2;
+          return (c / 2) * (t * t * t + 2) + b;
+        };
+
+        /** @param {HTMLElement} elem */
+        const scrollIntoView = (elem, totalTime = 800) => {
+          const top = elem.getBoundingClientRect().top;
+          if (top < 0) {
+            const startValue = window.scrollY;
+
+            let start,
+              elapsed = 0;
+            const step = (time) => {
+              if (start) {
+                elapsed = Math.min(time - start, totalTime);
+                const pos = Math.trunc(
+                  Math.easeInOutCubic(elapsed, startValue, top, totalTime)
+                );
+                window.scroll(0, pos);
+              } else {
+                start = time;
+              }
+              if (elapsed < totalTime) {
+                requestAnimationFrame(step);
+              }
+            };
+
+            requestAnimationFrame(step);
+          }
+        };
       })(document);
     </script>
   </body>
