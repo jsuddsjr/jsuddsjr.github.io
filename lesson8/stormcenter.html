@@ -63,12 +63,12 @@
           >
         </li>
         <li role="menuitem">
-          <a href="#"
-            ><span aria-hidden="true">🌧</span> Storm Center</a
-          >
+          <a href="#"><span aria-hidden="true">🌧</span> Storm Center</a>
         </li>
         <li role="menuitem">
-          <a href="gallery-8.html"><span aria-hidden="true">🎨</span> Gallery</a>
+          <a href="gallery-8.html"
+            ><span aria-hidden="true">🎨</span> Gallery</a
+          >
         </li>
       </ul>
     </nav>
@@ -124,10 +124,10 @@
             <input
               type="date"
               name="date"
-              id="date"
+              id="stormDate"
               data-date-format="ddd, MMM D YYYY"
             />
-            <label for="date">Date</label>
+            <label for="stormDate">Date</label>
           </fieldset>
           <fieldset>
             <!-- storm type using input with a list attribute referencing a datalist of suggestions that 
@@ -252,14 +252,10 @@
           <source
             srcset="https://loremflickr.com/600/240/map,idaho/all"
             media="(max-width: 32.5em)"
-            width="600"
-            height="240"
           />
           <source
             srcset="https://loremflickr.com/780/240/map,idaho/all"
             media="(max-width: 50em)"
-            width="780"
-            height="240"
           />
           <img
             src="https://loremflickr.com/960/300/map,idaho/all"
