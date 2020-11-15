@@ -167,10 +167,12 @@
 
           if (scrollbar) {
             iframe.scrolling = "yes";
-            iframe.style.overflowY = "scroll";
+            iframe.style.overflow = "scroll";
+            iframe.style.padding = "0";
           } else {
             iframe.scrolling = "no";
-            iframe.style.overflowY = "hidden";
+            iframe.style.overflow = "";
+            iframe.style.padding = "";
           }
 
           // TODO: Remove.
