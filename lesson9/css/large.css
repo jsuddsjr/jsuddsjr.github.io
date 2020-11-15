@@ -3,39 +3,49 @@
     font-size: 1.1em;
     line-height: 1.5rem;
   }
+
   p {
     padding: 0;
   }
+
   h2 {
     margin: 1.5rem 0 2rem;
     font-size: 3rem;
   }
+
   h3 {
     line-height: 1.7rem;
   }
+
   header,
   footer {
     margin-top: 1.5rem;
     border-radius: 1rem;
     max-width: 1024px;
   }
+
   header {
     grid-template-columns: 1fr 80px 638px 1fr;
   }
+
   header img {
     margin-top: -15px;
     grid-column: 2/3;
   }
+
   .summary picture {
     height: 300px;
   }
+
   .article picture {
     float: right;
     max-width: 30%;
   }
+
   .summary {
     position: relative;
   }
+
   .overlay {
     background-color: rgba(255, 255, 255, 0.65);
     position: absolute;
@@ -45,21 +55,25 @@
     z-index: 1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.65)
   }
+
   .overlay h3 {
     margin-top: 0;
   }
+
   .gallery {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
   .gallery figure:hover {
     transform: scale(3);
     box-shadow: 0 0 5px black;
     z-index: 100;
   }
-  
+
   footer {
     clear: both;
   }
+
   footer .reversible {
     display: flex;
     flex-direction: row-reverse;
@@ -67,29 +81,59 @@
     max-width: 760px;
     margin: 0 auto;
   }
-  footer .reversible > * {
+
+  footer .reversible>* {
     margin: 20px 10px;
   }
+
   footer .bar p {
     text-align: center;
     line-height: 1.3em;
     margin: 0;
   }
+
   .social {
     display: block;
   }
+
   .social a {
     display: inline-block;
     width: 64px;
     height: 64px;
   }
+
   .facebook {
     background-image: url("https://cdn3.iconfinder.com/data/icons/peelicons-vol-1/50/Facebook-64.png");
   }
+
   .instagram {
     background-image: url("https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Instagram_svg-64.png");
   }
+
   .twitter {
     background-image: url("https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Twitter_svg-64.png");
   }
+
+
+  div.column-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
+
+  .column-layout section {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .column-layout section a {
+    width: 200px;
+    display: inline;
+  }
+
+  .column-layout section img {
+    margin-top: 1rem;
+  }
+
 }
