@@ -17,17 +17,19 @@ const buildCardFromTemplate = (record) => {
             /** @param {HTMLElement} el */
             el => {
                 const attr = el.dataset[key];
-                if (attr && el.hasAttribute(attr)) {
+                if (attr) {
                     el.setAttribute(attr, value);
-                    if (attr === 'src' && el.nodeName === 'IMG') {
-                        // Keep track of images as they load, to trigger alignment.
-                        imagePromises.push(
-                            new Promise(resolve => el.addEventListener('load', resolve, {
-                                once: true
-                            })));
-                    }
                 } else {
                     el.textContent = value;
+                }
+
+                // Keep track of images as they load, to trigger alignment.
+                if (attr === 'src' && el.nodeName === 'IMG') {
+                    imagePromises.push(
+                        new Promise(resolve => el.addEventListener('load', resolve, {
+                            once: true
+                        }))
+                    );
                 }
             }
         );
@@ -53,7 +55,7 @@ const alignItems = () => {
         return;
     };
 
-    // Slice off the template element
+    // Slice off the template element.
     chunk([...container.children].slice(1), columns).forEach(
         /** @param {HTMLElement[]} children */
         children => {
