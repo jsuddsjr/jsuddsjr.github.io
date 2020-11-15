@@ -1,32 +1,32 @@
 (function () {
 
-    const cities = [
-        "Seattle, WA",
-        "Chicago, IL",
-        "San Francisco, CA",
-        "New York, NY",
-        "Atlanta, GA",
-        "Salt Lake City, UT",
-        "Orem, UT"
-    ];
+  const cities = [
+    "Seattle, WA",
+    "Chicago, IL",
+    "San Francisco, CA",
+    "New York, NY",
+    "Atlanta, GA",
+    "Salt Lake City, UT",
+    "Orem, UT"
+  ];
 
-    const weather = [
-        "Stormy", 
-        "Rain",
-        "Light rain",
-        "Windy",
-        "Foggy",
-        "Partly cloudy",
-        "Partly sunny",
-        "Showers",
-        "Sunny",
-        "Overcast",
-        "Hurricane",
-        "Tornados",
-        "Snow flurries",
-        "Heavy snow",
-        "Smog"
-    ];
+  const weather = [
+    "Stormy",
+    "Rain",
+    "Light rain",
+    "Windy",
+    "Foggy",
+    "Partly cloudy",
+    "Partly sunny",
+    "Showers",
+    "Sunny",
+    "Overcast",
+    "Hurricane",
+    "Tornados",
+    "Snow flurries",
+    "Heavy snow",
+    "Smog"
+  ];
 
   /**
    * Generate a random number.
@@ -35,39 +35,46 @@
    */
   const randomDouble = (low, high) => Math.random() * (high - low) + low;
 
-  const t = document.getElementById("temperature");
-  const c = document.getElementById("city");
-  const w = document.getElementById("conditions");
-  const h = document.getElementById("high");
-  const l = document.getElementById("low");
-  const ws = document.getElementById("windSpeed");
+  ((weather) => {
+    if (!weather) return;
+    
+    const t = document.getElementById("temperature");
+    const c = document.getElementById("city");
+    const w = document.getElementById("conditions");
+    const h = document.getElementById("high");
+    const l = document.getElementById("low");
+    const ws = document.getElementById("windSpeed");
 
-  const weatherUpdated = new Event('weatherUpdated');
-  
-  document.getElementById("weather").addEventListener("click", async (e) => {
-    const newTemp = randomDouble(-30, 120);
-    const colorTemp = 270 - (Math.max(30, newTemp) / 120) * 270;
-    const { currentTarget } = e;
+    const weatherUpdated = new Event('weatherUpdated');
 
-    await fade(currentTarget, "out");
+    weather.addEventListener("click", async (e) => {
+      const newTemp = randomDouble(-30, 120);
+      const colorTemp = 270 - (Math.max(30, newTemp) / 120) * 270;
+      const {
+        currentTarget
+      } = e;
 
-    t.innerHTML = newTemp.toFixed(1) + "&deg;";
-    t.style.textShadow = `2px 2px 5px hsl(${colorTemp}, 90%, 30%)`;
+      await fade(currentTarget, "out");
 
-    c.textContent = cities[Math.trunc(randomDouble(0, cities.length))];
-    w.textContent = weather[Math.trunc(randomDouble(0, weather.length))];
+      t.innerHTML = newTemp.toFixed(1) + "&deg;";
+      t.style.textShadow = `2px 2px 5px hsl(${colorTemp}, 90%, 30%)`;
 
-    h.innerHTML = (newTemp + randomDouble(1, 10)).toFixed(0) + "&deg;";
-    l.innerHTML = (newTemp - randomDouble(1, 10)).toFixed(0) + "&deg;";
+      c.textContent = cities[Math.trunc(randomDouble(0, cities.length))];
+      w.textContent = weather[Math.trunc(randomDouble(0, weather.length))];
 
-    ws.textContent = (randomDouble(0, 40).toFixed(0)) + " mph";
+      h.innerHTML = (newTemp + randomDouble(1, 10)).toFixed(0) + "&deg;";
+      l.innerHTML = (newTemp - randomDouble(1, 10)).toFixed(0) + "&deg;";
 
-    // Let others know that the weather has been updated.
-    currentTarget.dispatchEvent(weatherUpdated);
+      ws.textContent = (randomDouble(0, 40).toFixed(0)) + " mph";
 
-    await fade(currentTarget, "in");
-  });
-  
+      // Let others know that the weather has been updated.
+      currentTarget.dispatchEvent(weatherUpdated);
+
+      await fade(currentTarget, "in");
+    });
+
+  })(document.getElementById("weather"));
+
   /**
    * Fade object in or out.
    * @param {HTMLElement} element A DOM element
@@ -88,11 +95,11 @@
      */
     const calc = (n) => direction === "in" ? n += n * 0.1 : n -= n * 0.1;
 
-    while(!done(op)) {
-        op = calc(op);
-        element.style.opacity = op;
-        // element.style.filter = `alpha(opacity=${(op * 100).toFixed(0)})`;
-        await delay(10);
+    while (!done(op)) {
+      op = calc(op);
+      element.style.opacity = op;
+      // element.style.filter = `alpha(opacity=${(op * 100).toFixed(0)})`;
+      await delay(10);
     };
   }
 

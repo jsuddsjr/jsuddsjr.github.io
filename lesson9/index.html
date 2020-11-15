@@ -49,7 +49,7 @@
           <a href="#"><span aria-hidden="true">🏠</span> Home</a>
         </li>
         <li role="menuitem">
-          <a href="preston-8.html"
+          <a href="preston-9.html"
             ><span aria-hidden="true">😼</span> Preston</a
           >
         </li>
@@ -69,75 +69,87 @@
           >
         </li>
         <li role="menuitem">
-          <a href="gallery-8.html"><span aria-hidden="true">🎨</span> Gallery</a>
+          <a href="gallery-9.html"
+            ><span aria-hidden="true">🎨</span> Gallery</a
+          >
         </li>
       </ul>
     </nav>
     <main>
-      <section>
-        <h2>Site name</h2>
-        <p>
-          WeatherCats, because why not get a cute kitten with your weather
-          report?
-        </p>
-        <p>
-          My site is loosely based on
-          <a href="https://weatherpuppy.com">Weather Puppy&trade;</a>. The
-          "WeatherCat" and "WeatherCats" domains are for sale, but the owner of
-          <em>WeatherCat</em> is asking at least $534/month to lease or $6,399
-          to buy now. Meee-ow!
-        </p>
-        <p>
-          On the other hand, <em>WeatherCats</em> (plural) is available for less
-          up-front and monthly costs. Oh what a swishy, little letter can do for
-          the budget!
-        </p>
-      </section>
-      <section>
-        <h2>Site logo</h2>
-        <p>
-          The following whimsical cat logo was created specifically for the site
-          and can be used without copyright restrictions.
-        </p>
-        <figure>
-          <img
-            src="images/weathercat-small.svg"
-            alt="WeatherCats logo"
-            width="100"
+      <section class="hero-img">
+        <picture>
+          <source
+            srcset="https://loremflickr.com/600/240/rain,art"
+            media="(max-width: 32.5em)"
           />
-          <figcaption>WeatherCats logo</figcaption>
-        </figure>
+          <source
+            srcset="https://loremflickr.com/780/240/rain,art"
+            media="(max-width: 48em)"
+          />
+          <img
+            src="https://loremflickr.com/960/300/rain,art"
+            alt="Weather"
+          />
+        </picture>
       </section>
-      <section>
-        <h2>Site purpose</h2>
-        <p>
-          In addition to reporting weather conditions, WeatherCats is designed as
-          a regional, community-based website that includes events, relevant
-          news, and other creative content... plus cats.
-        </p>
-
-        <figure>
-          <figcaption>Click to randomly select new values</figcaption>
-          <!-- microdata -->
-          <div itemscope itemtype="http://schema.org/Weather" id="weather">
-            <h3 itemprop="temperature" id="temperature">72°</h3>
-            <div>
-              <div
-                id="city"
-                itemscope
-                itemtype="http://schema.org/Location"
-                itemprop="city"
-              >
-                Chicago
-              </div>
-              <div itemprop="conditions" id="conditions">Cloudy</div>
-              <div id="range">
-                <span itemprop="high" id="high">76°</span>
-                <span itemprop="low" id="low">62°</span>
-              </div>
+      <div class="column-layout">
+        <section class="town-info">
+          <a href="preston-9.html">
+            <h2>Preston</h2>
+            <div class="tagline">Home of Napoleon Dynamite.</div>
+            <p>Year Founded: 1866</p>
+            <p>Population: 5204</p>
+            <p>Annual Rain Fall: 16.65</p>
+          </a>
+          <picture>
+            <img
+              src="https://loremflickr.com/200/300/barn/all"
+              alt="Weather"
+              width="200"
+              height="300"
+            />
+          </picture>
+        </section>
+        <section class="town-info">
+          <a href="fish-haven.html">
+            <h2>Fish Haven</h2>
+            <div class="tagline">This is Fish Heaven.</div>
+            <p>Year Founded: 1864</p>
+            <p>Population: 501</p>
+            <p>Annual Rain Fall: 14.2</p>
+          </a>
+          <picture>
+            <img
+              src="https://loremflickr.com/200/300/field/all"
+              alt="Weather"
+              width="200"
+              height="300"
+            />
+          </picture>
+        </section>
+        <section class="town-info">
+          <a href="soda-springs.html">
+            <h2>Soda Springs</h2>
+            <div class="tagline">
+              Historic Oregon Trail Oasis. The Soda is on Us.
             </div>
-          </div>
-        </figure>
+            <p>Year Founded: 1858</p>
+            <p>Population: 2985</p>
+            <p>Annual Rain Fall: 15.75</p>
+          </a>
+          <picture>
+            <img
+              src="https://loremflickr.com/200/300/cow/all"
+              alt="Weather"
+              width="200"
+              height="300"
+            />
+          </picture>
+        </section>
+      </div>
+
+      <section>
+        <h2>Event calendar</h2>
       </section>
     </main>
     <footer>
