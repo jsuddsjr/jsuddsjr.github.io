@@ -128,6 +128,7 @@
           "load",
           () => {
             if (iframe.src) {
+              // BUG: This doesn't scroll smoothly in Edge Chromium.
               // iframe.scrollIntoView({
               //   behavior: "smooth",
               //   block: "start",
@@ -141,7 +142,7 @@
         );
 
         /**
-         * Set the iframe height.
+         * Set the iframe height after testing decreasing heights.
          * @param {string} height
          */
         const START_RATIO = 5;
@@ -150,7 +151,8 @@
         const setHeight = (height, scrollbar = true) => {
           // If the height is set to the current value
           if (!scrollbar && heightTesting && height === iframe.height) {
-            // Shrink the size and wait for next polling interval to get accurate.
+            // Shrink the size and wait for next polling interval to measure again.
+            // NOTE: ratio is 4/5, then 3/4, etc.
             const newHeight = `${Math.trunc(
               (parseInt(height) / ratio--) * ratio
             )}px`;
@@ -165,6 +167,7 @@
             ratio = START_RATIO;
           }
 
+          // Scrollbar is true when polling is disabled.
           if (scrollbar) {
             iframe.scrolling = "yes";
             iframe.style.overflow = "scroll";
