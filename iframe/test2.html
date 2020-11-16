@@ -9,7 +9,7 @@
         scroll-behavior: smooth;
         padding-left: 7%; /* To better align the content in the frame. */
         opacity: 1; /* Transition between loading states. */
-        transition: opacity 1s ease-in-out;
+        transition: opacity 600ms ease-in-out;
         -border: 1px solid red; /* DEBUG to see the frame. */
       }
       iframe.loading {
@@ -97,10 +97,9 @@
           return false;
         };
 
-        /**
-         * @param {URL} url
-         */
         let pollingInterval;
+
+        /** @param {URL} url */
         const beginPolling = (url) => {
           stopPolling();
           pollingInterval = setInterval(
@@ -141,13 +140,14 @@
           true
         );
 
+        const START_RATIO = 5;
+        let heightTesting = true;
+        let ratio = START_RATIO;
+
         /**
          * Set the iframe height after testing decreasing heights.
          * @param {string} height
          */
-        const START_RATIO = 5;
-        let heightTesting = true;
-        let ratio = START_RATIO;
         const setHeight = (height, scrollbar = true) => {
           // If the height is set to the current value
           if (!scrollbar && heightTesting && height === iframe.height) {
@@ -195,11 +195,12 @@
           }
         };
 
+        let debounceLoad;
+        
         /**
          * Request a new page.
          * @param {string} target
          */
-        let debounceLoad;
         const startLoading = (target) => {
           console.log("Loading", target);
           iframe.classList.add(LOADING_CLASS);
