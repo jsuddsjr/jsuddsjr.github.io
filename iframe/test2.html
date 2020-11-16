@@ -22,9 +22,8 @@
         grid-template-columns: minmax(200px, 90ch);
         justify-content: space-around;
         justify-items: stretch;
-
+        transition: height 1s ease-in-out; /* Slow down the transition. */
         -border: 1px dashed green; /* DEBUG: to see the frame. */
-        -transition: height 1s ease-in-out; /* Slow down the transition to see what's happening. */
       }
     </style>
   </head>
@@ -132,7 +131,7 @@
               //   behavior: "smooth",
               //   block: "start",
               // });
-              scrollIntoView(iframe, 1200);
+              scrollIntoView(iframe, 1000);
               heightTesting = true;
               postMessage(iframe.src);
             }
@@ -196,7 +195,7 @@
         };
 
         let debounceLoad;
-        
+
         /**
          * Request a new page.
          * @param {string} target
