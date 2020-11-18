@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Active notifications</title>
+    <style>
+      iframe {
+        padding-left: 7%; /* To better align the content in the frame. */
+      }
+      iframe.loading {
+        outline: 1px solid red;
+      }
+      .iframeFrame {
+        /* Keep the content centered and sized */
+        display: grid;
+        grid-template-columns: minmax(200px, 120ch);
+        justify-content: space-around;
+        justify-items: stretch;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Load a page</button>
+    <span class="currentHeight">0px</span> - <span id="hostname"></span>
+    <div class="iframeFrame">
+      <iframe
+        id="contentIFrame"
+        frameborder="0"
+        referrerpolicy="noreferrer"
+        height="0"
+      ></iframe>
+    </div>
+    <button>Load a page</button>
+    <span class="currentHeight"></span>
+    <script>
+      (function (d) {
+        // Only send size messages to these domains. All others will load into average-sized iframe with scrollbars.
+        const allowedDomains = ["support.office.com", "support.microsoft.com"];
+
+        // Test data (infinite sequence)
+        const targets = (function* () {
+          const pages = [
+            "https://support.office.com/en-us/client/manage-notifications-in-teams-1cc31834-5fe5-412b-8edb-43fecc78413d#bkmk_changechannellist",
+            "https://support.office.com/en-us/client/5bec897f-4e36-43f8-9d9d-c41cb4917d9c?embed=true",
+            "https://support.office.com/en-us/client/92d238e6-0ae2-447e-af90-40b1052c4547?embed=true",
+            "https://support.office.com/en-us/client/741bf760-39fc-4807-ad8b-92558273f542?embed=true",
+            "https://support.office.com/en-us/client/get-your-team-up-and-running-702a2977-e662-4038-bef5-bdf8ee47b17b?embed=true",
+            "https://support.microsoft.com/en-us/office/share-and-collaborate-with-onedrive-51e669f6-4602-4492-8648-13ffa09ff24f?ui=en-US&rs=en-US&ad=US",
+            "https://www.bing.com/search?q=javascript",
+          ];
+          let index = 0;
+          while (true) {
+            yield pages[index++];
+            if (index === pages.length) index = 0;
+          }
+        })();
+
+        const CLIENT_MSG = "help_getContentHeight";
+        const SCROLL_MSG = "help_scrollToOffset";
+        const ANCHOR_MSG = "help_getAnchorOffset";
+
+        const AVG_HEIGHT = "3500px"; // Should it be bigger?
+        const LOADING_CLASS = "loading";
+
+        /** @type HTMLIFrameElement */
+        const iframe = d.getElementById("contentIFrame");
+        /** @type HTMLDivElement */
+        const iframeFrame = d.querySelector("div.iframeFrame");
+
+        /**
+         * Send cross-origin message to get content height.
+         * @param {string} src
+         */
+        const postMessage = (src) => {
+          if (src) {
+            try {
+              const url = new URL(src);
+              d.getElementById("hostname").textContent = url.hostname;
+              if (
+                // Allow only recognized domains, or included "embed=true" in query params.
+                allowedDomains.includes(url.host) ||
+                url.search.indexOf("embed=true") > 0
+              ) {
+                // The message origin is based on the "last-known" src of the iframe,
+                // but it's really impossible to say what domain is loaded.
+                iframe.contentWindow.postMessage(CLIENT_MSG, "*");
+                return true;
+              }
+            } catch (ex) {}
+          }
+          setHeight(AVG_HEIGHT);
+          return false;
+        };
+
+        // React to message by setting iframe height.
+        window.addEventListener(
+          "message",
+          /** @param {MessageEvent} e */ (e) => {
+            console.log(e.data);
+            if (e.data.indexOf("=") > 0) {
+              const [msg, value] = e.data.split("=");
+
+              if (msg === CLIENT_MSG) {
+                setHeight(`${value}px`);
+              } else if (msg === SCROLL_MSG) {
+                scrollIntoView(iframe, parseInt(value));
+              }
+            }
+          },
+          true
+        );
+
+        // Post size message as soon as possible after loading.
+        iframe.addEventListener(
+          "load",
+          () => {
+            if (iframe.src) {
+              // BUG: This doesn't scroll smoothly in Edge Chromium.
+              // iframe.scrollIntoView({
+              //   behavior: "smooth",
+              //   block: "start",
+              // });
+              postMessage(iframe.src);
+              startLoading();
+            }
+          },
+          true
+        );
+
+        /**
+         * Set the iframe height after testing decreasing heights.
+         * @param {string} height
+         */
+        const setHeight = (height) => {
+          if (iframe.height !== height) {
+            // console.log("Setting height", height);
+            iframeFrame.style.height = height;
+            iframe.height = height;
+
+            // TODO: Remove.
+            [...d.getElementsByClassName("currentHeight")].forEach(
+              (el) => (el.textContent = height)
+            );
+          }
+
+          iframe.classList.remove(LOADING_CLASS);
+
+          if (height === AVG_HEIGHT) {
+            iframe.scrolling = "yes";
+            iframe.style.overflow = "scroll";
+            iframe.style.padding = "0";
+          } else {
+            iframe.scrolling = "no";
+            iframe.style.overflow = "";
+            iframe.style.padding = "";
+          }
+        };
+
+        /**
+         * Finalize loading process, even if the page doesn't support API.
+         */
+        const finishLoading = () => {
+          if (iframe.classList.contains(LOADING_CLASS)) {
+            iframe.classList.remove(LOADING_CLASS);
+            console.log("Load timed out");
+            setHeight(AVG_HEIGHT);
+            scrollIntoView(iframe);
+          }
+        };
+
+        let debounceLoad;
+
+        /**
+         * Request a new page.
+         * @param {string} target
+         */
+        const startLoading = (target) => {
+          console.log("Loading", target ?? "from load event");
+          iframe.classList.add(LOADING_CLASS);
+
+          // Just in case loading gets hung up somewhere...
+          clearInterval(debounceLoad);
+          debounceLoad = setTimeout(finishLoading, 4500);
+
+          if (target) iframe.src = target;
+        };
+
+        // Trigger page load via button.
+        d.querySelectorAll("button").forEach((btn) =>
+          btn.addEventListener("click", () =>
+            startLoading(targets.next().value)
+          )
+        );
+
+        // *** SMOOTH SCROLLER ***
+
+        // Source: http://gizma.com/easing/
+        Math.easeInOutCubic = function (t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t * t + b;
+          t -= 2;
+          return (c / 2) * (t * t * t + 2) + b;
+        };
+
+        /** @param {HTMLElement} elem */
+        const scrollIntoView = (elem, offset = 0) => {
+          const delta = Math.trunc(elem.getBoundingClientRect().top + offset);
+          const startValue = window.scrollY;
+          const totalTime = 1200;
+
+          if (
+            delta < 0 ||
+            delta > document.documentElement.clientHeight + startValue
+          ) {
+            let start,
+              elapsed = 0;
+
+            const step = (time) => {
+              if (start) {
+                elapsed = Math.min(time - start, totalTime);
+                const pos = Math.trunc(
+                  Math.easeInOutCubic(elapsed, startValue, delta, totalTime)
+                );
+                window.scroll(0, pos);
+              } else {
+                start = time;
+              }
+              if (elapsed < totalTime) {
+                requestAnimationFrame(step);
+              }
+            };
+
+            requestAnimationFrame(step);
+          }
+        };
+      })(document);
+    </script>
+  </body>
+</html>
