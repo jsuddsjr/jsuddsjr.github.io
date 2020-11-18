@@ -68,6 +68,37 @@
         /** @type HTMLDivElement */
         const iframeFrame = d.querySelector("div.iframeFrame");
 
+        // Remember the scroll position for the current page.
+        window.addEventListener(
+          "popstate",
+          (e) => {
+            if (e.state && e.state.pos) {
+              scrollIntoView(iframe, e.state.pos);
+            }
+          },
+          true
+        );
+
+        let scrollDebounce;
+        window.addEventListener(
+          "scroll",
+          (e) => {
+            clearTimeout(scrollDebounce);
+            scrollDebounce = setTimeout(() => {
+              const newState = {
+                ...history.state,
+                pos: Math.trunc(iframe.getBoundingClientRect().top * -1),
+              };
+              if (history.state) {
+                history.replaceState(newState, "", document.URL);
+              } else {
+                history.pushState(newState, "", document.URL);
+              }
+            }, 600);
+          },
+          true
+        );
+
         /**
          * Send cross-origin message to get content height.
          * @param {string} src
@@ -102,7 +133,7 @@
               const [msg, value] = e.data.split("=");
 
               if (msg === CLIENT_MSG) {
-                setHeight(`${value}px`);
+                setHeight(`${value}px`, false);
               } else if (msg === SCROLL_MSG) {
                 scrollIntoView(iframe, parseInt(value));
               }
@@ -121,8 +152,8 @@
               //   behavior: "smooth",
               //   block: "start",
               // });
-              postMessage(iframe.src);
               startLoading();
+              postMessage(iframe.src);
             }
           },
           true
@@ -132,7 +163,7 @@
          * Set the iframe height after testing decreasing heights.
          * @param {string} height
          */
-        const setHeight = (height) => {
+        const setHeight = (height, scrollbar = true) => {
           if (iframe.height !== height) {
             // console.log("Setting height", height);
             iframeFrame.style.height = height;
@@ -146,7 +177,7 @@
 
           iframe.classList.remove(LOADING_CLASS);
 
-          if (height === AVG_HEIGHT) {
+          if (scrollbar) {
             iframe.scrolling = "yes";
             iframe.style.overflow = "scroll";
             iframe.style.padding = "0";
@@ -165,7 +196,6 @@
             iframe.classList.remove(LOADING_CLASS);
             console.log("Load timed out");
             setHeight(AVG_HEIGHT);
-            scrollIntoView(iframe);
           }
         };
 
@@ -181,7 +211,8 @@
 
           // Just in case loading gets hung up somewhere...
           clearInterval(debounceLoad);
-          debounceLoad = setTimeout(finishLoading, 4500);
+          debounceLoad = setTimeout(finishLoading, 2500);
+          scrollIntoView(iframe);
 
           if (target) iframe.src = target;
         };

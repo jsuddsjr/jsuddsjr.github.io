@@ -34,7 +34,11 @@ $(document).ready(() => {
 				var msg = `${SCROLL_OFFSET_MSG}=${Math.trunc($(el).position().top)}`;
 				source.postMessage(msg, origin);
 			});
-		}
+		} 
+		// else {
+		// 	var msg = `${SCROLL_OFFSET_MSG}=0`;
+		// 	source.postMessage(msg, origin);
+		// }
 	}
 
 	$(window).on('message onmessage', function (event) {
@@ -43,10 +47,10 @@ $(document).ready(() => {
 			cacheEventSource(event.originalEvent);
 
 			try {
-				var $ocHelpDiv = $("section").first();
+				var $ocHelpDiv = $("div:first");
 				// reportHeight($ocHelpDiv.height());
 
-				$("a[href^='#']").click(function (event) {
+				$("a").click(function (event) {
 					var url = new URL(event.currentTarget.href);
 					reportAnchorOffset(url.hash);
 				});
