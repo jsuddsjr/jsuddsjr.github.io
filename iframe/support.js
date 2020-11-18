@@ -1,18 +1,17 @@
 $(document).ready(() => {
 
-	const CONTENT_HEIGHT_MSG = "help_getContentHeight";
-	const SCROLL_OFFSET_MSG = "help_scrollToOffset";
+	console.log('Script ready');
 
 	$(window).on('message onmessage', function (event) {
 		var data = event.originalEvent.data.toString();
-		if (data === CONTENT_HEIGHT_MSG) {
+		if (data === "help_getContentHeight") {
 			/** @type {MessageEventSource} */
 			var source = event.originalEvent.source;
 			var origin = event.originalEvent.origin;
 
 			/** @param {number} height */
 			function reportHeight(height) {
-				var msg = `${CONTENT_HEIGHT_MSG}=${Math.trunc(height)}`;
+				var msg = "help_getContentHeight=" + height.toFixed(0);
 				source.postMessage(msg, origin);
 			}
 
@@ -20,34 +19,36 @@ $(document).ready(() => {
 			function reportAnchorOffset(name) {
 				if (name) {
 					if (name[0] === '#') name = name.substring(1);
-					$(`a[name='${name}']`).each((_, el) => {
-						var msg = `${SCROLL_OFFSET_MSG}=${Math.trunc($(el).position().top)}`;
+					var anchor = $(`a[name='${name}']`).first();
+					if (anchor) {
+						var msg = "help_scrollToOffset=" + $(anchor).position().top.toFixed(0);
 						source.postMessage(msg, origin);
-					});
+					}
 				}
 			}
 
 			try {
 				var firstDiv = document.querySelector("div");
 
+				// Actively report changes to the element height.
 				new ResizeObserver(
 						/** @param {ResizeObserverEntry[]} entries */
 						entries => reportHeight(entries[0].contentRect.height))
 					.observe(firstDiv);
 
-				// Include details of current anchor.
+				// Include details of current anchor, if any.
 				reportAnchorOffset(document.location.hash);
 
-				$("a[href^='#'").click(function (event) {
+				// Report anchor clicks on bookmarks.
+				$("a[href^='#']").click(function (event) {
 					var url = new URL(event.currentTarget.href);
 					reportAnchorOffset(url.hash);
 				});
 
 			} catch (ex) {
-				console.error(ex);
+				// console.error(ex);
 			}
 		}
 	});
-
 
 });
