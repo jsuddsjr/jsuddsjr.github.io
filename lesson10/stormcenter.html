@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery | WeatherCats</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/large.css" />
+    <meta
+      name="description"
+      content="A lazy-loaded gallery of the cutest feline friends in Idaho, and those that love them."
+    />
+  </head>
+
+  <body>
+    <header>
+      <img
+        src="images/weathercat-small.svg"
+        alt="WeatherCats logo"
+        height="36"
+        width="36"
+      />
+      <div>
+        <h1>WeatherCats</h1>
+        <p>It's raining cats.</p>
+      </div>
+      <!-- [THE HAMBURGER] -->
+      <button
+        id="menu-state"
+        aria-expanded="false"
+        aria-label="Main navigation"
+      ></button>
+    </header>
+    <nav>
+      <ul role="menubar">
+        <li role="menuitem">
+          <a href="index.html"><span aria-hidden="true">🏠</span> Home</a>
+        </li>
+        <li role="menuitem">
+          <a href="preston-9.html"
+            ><span aria-hidden="true">😼</span> Preston</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="soda-springs.html"
+            ><span aria-hidden="true">🌲</span> Soda Springs</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="fish-haven.html"
+            ><span aria-hidden="true">🐟</span> Fish Haven</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="#"
+            ><span aria-hidden="true">🌧</span> Storm Center</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="gallery-9.html"><span aria-hidden="true">🎨</span> Gallery</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <section>
+        <h2>Storm Center Form</h2>
+        <form action="./thanks.html">
+          <fieldset>
+            <!-- full name using input of type text and is required and only accepts alpha characters with a minimum of five characters using a regular expression pattern -->
+            <input
+              type="text"
+              pattern="\s*[A-Za-z ]{5,}"
+              name="fullname"
+              id="fullname"
+              required
+            />
+            <label for="fullname">Full name</label>
+          </fieldset>
+          <fieldset>
+            <!-- email using input of type email and use a placeholder to provide a demo email -->
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="email@domain.com"
+              required
+            />
+            <label for="email">Email</label>
+          </fieldset>
+          <fieldset>
+            <!-- phone number using input of type tel and is required   -->
+            <input type="tel" name="phone" id="phone" required />
+            <label for="phone">Telephone</label>
+          </fieldset>
+          <fieldset>
+            <!-- zip code using input of type number and is required   -->
+            <!-- According to the US Postal Service's current website, the lowest ZIP Code number is 
+                01001 in Agawam, Massachusetts, and the Highest ZIP Code number is 99950 in Ketchikan, Alaska. 
+                https://www.answers.com/Q/What_is_the_lowest_ZIP_code_number_in_the_US
+            -->
+            <input
+              type="number"
+              name="zip"
+              id="zip"
+              min="01001"
+              max="99950"
+              required
+            />
+            <label for="zip">Zip</label>
+          </fieldset>
+          <fieldset>
+            <!-- storm date using input of type date   -->
+            <input
+              type="date"
+              name="date"
+              id="date"
+              data-date-format="ddd, MMM D YYYY"
+            />
+            <label for="date">Date</label>
+          </fieldset>
+          <fieldset>
+            <!-- storm type using input with a list attribute referencing a datalist of suggestions that 
+                include "Flash Flood," "Hail," "Hurricane," "Thunderstorm," and "Tornado." -->
+
+            <input
+              type="text"
+              name="stype"
+              id="stype"
+              list="storm-types"
+              required
+            />
+            <datalist id="storm-types">
+              <option>Flash Flood</option>
+              <option>Hail</option>
+              <option>Hurricane</option>
+              <option>Thunderstorm</option>
+              <option>Other</option>
+            </datalist>
+            <label for="stype">Storm type</label>
+          </fieldset>
+          <fieldset>
+            <!-- storm severity using type range (1 to 10) with a corresponding label that indicates the 
+                current range value from 1 to 10. -->
+            <fieldset class="range">
+              <input
+                type="range"
+                name="severity"
+                id="severity"
+                min="1"
+                max="10"
+                value="1"
+              />
+              <span id="severity-value">1</span>
+            </fieldset>
+            <label for="severity">Severity</label>
+          </fieldset>
+          <fieldset>
+            <!-- storm region using select with drop-down options of "Preston", "Soda Springs", and "Fish Haven". 
+                Add a first option with the text "Select Region ..." that is shown by default but not selectable (disabled). 
+                The rest of the options should have relevant value attributes. -->
+
+            <select name="region" id="region">
+              <option value="" disabled>Select region...</option>
+              <option value="Preston">Preston</option>
+              <option value="Soda Springs">Soda Springs</option>
+              <option value="Fish Haven">Fish Haven</option>
+            </select>
+            <label for="region">Region</label>
+          </fieldset>
+          <fieldset>
+            <!-- user in-danger level using input of type radio with options and values of "yes," "maybe," and "no." -->
+            <fieldset class="radio">
+              <input
+                type="radio"
+                name="danger"
+                id="danger-no"
+                value="no"
+                checked
+              />
+              <label for="danger-no" tabindex="0">No</label>
+
+              <input type="radio" name="danger" id="danger-yes" value="yes" />
+              <label for="danger-yes" tabindex="0">Yes!</label>
+
+              <input
+                type="radio"
+                name="danger"
+                id="danger-maybe"
+                value="maybe"
+              />
+              <label for="danger-maybe" tabindex="0">Maybe</label>
+            </fieldset>
+            <label>Are you in danger?</label>
+          </fieldset>
+          <fieldset>
+            <!-- additional information or comments using a textarea form submission -->
+            <textarea rows="4" name="info" id="info"></textarea>
+            <label for="info">More information</label>
+          </fieldset>
+          <!-- button using input of type submit -->
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div class="reversible">
+        <div class="contact">
+          <h3>Contact Information</h3>
+          <p class="address">
+            1234 Wherever Drive, Fifth Floor, Boston, MA 02110
+          </p>
+          <p class="email">
+            <a href="mailto:bogus@weathercat.org">bogus@weathercat.org</a>
+          </p>
+          <p class="phone">208-555-1234</p>
+          <div class="social">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://facebook.com"
+              class="facebook"
+              title="Facebook"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://instagram.com"
+              class="instagram"
+              title="Instagram"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com"
+              class="twitter"
+              title="Twitter"
+            ></a>
+          </div>
+        </div>
+        <picture>
+          <source
+            srcset="https://loremflickr.com/600/240/map,idaho/all"
+            media="(max-width: 32.5em)"
+            width="600"
+            height="240"
+          />
+          <source
+            srcset="https://loremflickr.com/780/240/map,idaho/all"
+            media="(max-width: 50em)"
+            width="780"
+            height="240"
+          />
+          <img
+            src="https://loremflickr.com/960/300/map,idaho/all"
+            alt="Randomly generated farm related image"
+            width="960"
+            height="300"
+          />
+        </picture>
+      </div>
+
+      <div class="bar">
+        <p>
+          &copy; <span id="year"></span> WeatherCats |
+          <a href="https://www.byui.edu/online">Terms of Use</a> | John W Sudds
+          Jr
+        </p>
+        <p><span id="date"></span></p>
+      </div>
+    </footer>
+    <script src="js/menu.js" defer></script>
+    <script src="js/updateTime.js" defer></script>
+    <script src="js/forms.js" defer></script>
+  </body>
+</html>

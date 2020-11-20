@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Preston, Idaho | WeatherCats</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/large.css" />
+    <meta
+      name="description"
+      content="Latest news and weather updates for Preston, Idaho."
+    />
+  </head>
+  <body>
+    <aside class="banner-box">
+      <div class="center">
+        <button type="button">Close</button>
+        <img
+          aria-hidden="true"
+          src="images/weathercat-small.svg"
+          alt="WeatherCats Logo"
+          height="36"
+          width="36"
+        />
+        <p>
+          Saturday = Preston Pancakes in the Park! 9:00 a.m. Saturday at the
+          city park pavilion.
+        </p>
+      </div>
+    </aside>
+    <header>
+      <img
+        src="images/weathercat-small.svg"
+        alt="WeatherCats logo"
+        height="36"
+        width="36"
+      />
+      <div>
+        <h1>WeatherCats</h1>
+        <p>It's raining cats.</p>
+      </div>
+      <!-- [THE HAMBURGER] -->
+      <button
+        id="menu-state"
+        aria-expanded="false"
+        aria-label="Main navigation"
+      ></button>
+    </header>
+    <nav>
+      <ul role="menubar">
+        <li role="menuitem">
+          <a href="index.html"><span aria-hidden="true">🏠</span> Home</a>
+        </li>
+        <li role="menuitem">
+          <a href="#"><span aria-hidden="true">😼</span> Preston</a>
+        </li>
+        <li role="menuitem">
+          <a href="soda-springs.html"
+            ><span aria-hidden="true">🌲</span> Soda Springs</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="fish-haven.html"
+            ><span aria-hidden="true">🐟</span> Fish Haven</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="stormcenter.html"
+            ><span aria-hidden="true">🌧</span> Storm Center</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="gallery-9.html"><span aria-hidden="true">🎨</span> Gallery</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <h2>Preston, Idaho</h2>
+      <section class="summary">
+        <picture>
+          <source
+            srcset="images/wdd230_image_franklin_600w.jpg"
+            media="(max-width: 32.5em)"
+          />
+          <source
+            srcset="images/wdd230_image_franklin_780w.jpg"
+            media="(max-width: 48em)"
+          />
+          <img
+            src="images/wdd230_image_franklin_960w.jpg"
+            alt="Sunrise over the mountain in Franklin, Idaho"
+          />
+        </picture>
+        <div class="overlay">
+          <h3>Weather Summary</h3>
+          <figure>
+            <figcaption>Click to randomly select new values</figcaption>
+            <!-- microdata -->
+            <div itemscope itemtype="http://schema.org/Weather" id="weather">
+              <div itemprop="temperature" id="temperature">72°</div>
+              <div>
+                <div
+                  id="city"
+                  itemscope
+                  itemtype="http://schema.org/Location"
+                  itemprop="city"
+                >
+                  Preston
+                </div>
+                <div itemprop="conditions" id="conditions">Sunny</div>
+                <div id="range">
+                  <span itemprop="high" id="high">76°</span>
+                  <span itemprop="low" id="low">62°</span>
+                </div>
+              </div>
+              <table>
+                <tr><td>Wind Speed:</td><td id="windSpeed">5 mph</td></tr>
+                <tr><td>Wind Chill:</td><td id="windChill">N/A</td></tr>
+              </table>
+            </div>
+          </figure>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, dolorem
+          quidem libero dolorum laudantium sapiente fugiat inventore minus
+          mollitia ipsa aliquam. Et earum quisquam molestiae fugit neque
+          perferendis dolorem facere?
+        </p>
+      </section>
+      <section class="forecast">
+        <h3>5 Day Forecast</h3>
+        <div>
+          <img
+            src="https://loremflickr.com/100/100/sun,art"
+            alt="Sunny"
+            width="100"
+            height="100"
+          />
+          <img
+            src="https://loremflickr.com/100/100/rain,art"
+            alt="Sunny"
+            width="100"
+            height="100"
+          />
+          <img
+            src="https://loremflickr.com/100/100/cloud,art"
+            alt="Chance of rain"
+            width="100"
+            height="100"
+          />
+          <img
+            src="https://loremflickr.com/100/100/snow,art"
+            alt="Chance of rain"
+            width="100"
+            height="100"
+          />
+          <img
+            src="https://loremflickr.com/100/100/sun,art"
+            alt="Sunny"
+            width="100"
+            height="100"
+          />
+        </div>
+      </section>
+      <section class="article">
+        <h3>Article</h3>
+        <picture>
+          <source
+            srcset="https://placekitten.com/600/240"
+            media="(max-width: 32.5em)"
+          />
+          <source
+            srcset="https://placekitten.com/780/240"
+            media="(max-width: 50em)"
+          />
+          <img
+            src="https://placekitten.com/400/300"
+            alt="Randomly generated cat image"
+          />
+        </picture>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, unde
+          corporis. Laudantium a quo minus voluptatum, quod pariatur doloribus
+          magni cumque eius facilis debitis ipsum soluta minima, quae harum
+          adipisci!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, saepe
+          voluptas? Aspernatur eum, nostrum perferendis neque numquam fugit
+          dolor eveniet est quos ullam repellendus ratione repellat officia enim
+          exercitationem laboriosam? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Voluptates animi, eaque dolor aliquid vero explicabo
+          eum adipisci amet. Inventore, laborum et consectetur id in aut!
+          Voluptatem distinctio ratione dignissimos qui.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <div class="reversible">
+        <div class="contact">
+          <h3>Contact Information</h3>
+          <p class="address">
+            1234 Wherever Drive, Fifth Floor, Boston, MA 02110
+          </p>
+          <p class="email">
+            <a href="mailto:bogus@weathercat.org">bogus@weathercat.org</a>
+          </p>
+          <p class="phone">208-555-1234</p>
+          <div class="social">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://facebook.com"
+              class="facebook"
+              title="Facebook"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://instagram.com"
+              class="instagram"
+              title="Instagram"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com"
+              class="twitter"
+              title="Twitter"
+            ></a>
+          </div>
+        </div>
+        <picture>
+          <source
+            srcset="https://loremflickr.com/600/240/map,idaho/all"
+            media="(max-width: 32.5em)"
+            width="600"
+            height="240"
+          />
+          <source
+            srcset="https://loremflickr.com/780/240/map,idaho/all"
+            media="(max-width: 50em)"
+            width="780"
+            height="240"
+          />
+          <img
+            src="https://loremflickr.com/960/300/map,idaho/all"
+            alt="Randomly generated farm related image"
+            width="960"
+            height="300"
+          />
+        </picture>
+      </div>
+
+      <div class="bar">
+        <p>
+          &copy; <span id="year"></span> WeatherCats |
+          <a href="https://www.byui.edu/online">Terms of Use</a> | John W Sudds
+          Jr
+        </p>
+        <p><span id="date"></span></p>
+      </div>
+    </footer>
+    <script src="js/menu.js" defer></script>
+    <script src="js/updateTime.js" defer></script>
+    <script src="js/colorTemp.js" defer></script>
+    <script src="js/banner.js" defer></script>
+    <script src="js/windchill.js" defer></script>
+  </body>
+</html>
