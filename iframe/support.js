@@ -1,55 +1,83 @@
 $(document).ready(() => {
+  console.log("Script ready");
 
-	console.log('Script ready');
+  $(window).on("message onmessage", function (event) {
+    var data = event.originalEvent.data;
 
-	$(window).on('message onmessage', function (event) {
-		var data = event.originalEvent.data.toString();
-		if (data === "help_getContentHeight") {
-			/** @type {MessageEventSource} */
-			var source = event.originalEvent.source;
-			var origin = event.originalEvent.origin;
+    if (data === "help_startNotifications") {
+      notificationEngineSingleton
+        .instance()
+        .startNotifications(event.originalEvent);
+    }
+  });
 
-			/** @param {number} height */
-			function reportHeight(height) {
-				var msg = "help_getContentHeight=" + height.toFixed(0);
-				source.postMessage(msg, origin);
-			}
+  var notificationEngineSingleton = (function () {
+    // Internal engine object, not instantiated yet.
+    function NotificationEngine() {
+      /** @type {MessageEventSource} */
+      var source;
 
-			/** @param {string} name */
-			function reportAnchorOffset(name) {
-				if (name) {
-					if (name[0] === '#') name = name.substring(1);
-					var $anchor = $(`a[name='${name}']`).first();
-					if ($anchor) {
-						var msg = "help_scrollToOffset=" + $anchor.position().top.toFixed(0);
-						source.postMessage(msg, origin);
-					}
-				}
-			}
+      /** @type {string} */
+      var origin;
 
-			try {
-				var firstDiv = document.querySelector("div");
+      /** @param {MessageEvent<string>} event */
+      this.startNotifications = (event) => {
+        // Do nothing if already notifying.
+        if (source) return;
 
-				// Actively report changes to the element height.
-				new ResizeObserver(
-						/** @param {ResizeObserverEntry[]} entries */
-						entries => reportHeight(entries[0].contentRect.height))
-					.observe(firstDiv);
+        source = event.source;
+        origin = event.origin;
 
-				// Include offset of current anchor, if any.
-				reportAnchorOffset(document.location.hash);
+        /** @param {number} height */
+        function reportHeight(height) {
+          console.log(_instance);
+          var msg = "help_setFrameHeight=" + height.toFixed(0);
+          source.postMessage(msg, origin);
+        }
 
-				// Report anchor clicks on bookmarks.
-				$("a[href^='#']").click(function (event) {
-					var url = new URL(event.currentTarget.href);
-					reportAnchorOffset(url.hash);
-					event.preventDefault();
-				});
+        /** @param {string} name */
+        function reportAnchorOffset(name) {
+          if (name) {
+            if (name[0] === "#") name = name.substring(1);
+            var $anchor = $(`a[name='${name}']`).first();
+            if ($anchor) {
+              var msg =
+                "help_scrollToOffset=" + $anchor.position().top.toFixed(0);
+              source.postMessage(msg, origin);
+            }
+          } else {
+            source.postMessage("help_scrollToOffset=0", origin);
+          }
+        }
 
-			} catch (ex) {
-				// console.error(ex);
-			}
-		}
-	});
+        try {
+          // Avoid using ID here for uniform support across all page types.
+          var containerDiv = document.querySelector("div");
 
+          // Actively report changes to the element height.
+          new ResizeObserver((entries) =>
+            reportHeight(entries[0].contentRect.height)
+          ).observe(containerDiv);
+
+          // Include offset of current anchor, if any.
+          reportAnchorOffset(document.location.hash);
+
+          // Report anchor clicks on bookmarks.
+          $("a[href^='#']").click(function (event) {
+            var url = new URL(event.currentTarget.href);
+            reportAnchorOffset(url.hash);
+            event.preventDefault();
+          });
+        } catch (ex) {
+          // console.error(ex);
+        }
+      };
+    }
+
+    /** @type {NotificationEngine} */
+    var _instance;
+    return {
+      instance: () => _instance || (_instance = new NotificationEngine()),
+    };
+  })();
 });
