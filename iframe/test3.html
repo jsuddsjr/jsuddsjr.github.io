@@ -208,31 +208,29 @@
           const startValue = window.scrollY;
           const totalTime = 1200;
 
-          if (
-            delta < 0 ||
-            delta > document.documentElement.clientHeight
-          ) {
+          if (delta < 0 || delta > document.documentElement.clientHeight) {
             console.log("Scrolling into view", offset);
 
-            let start,
-              elapsed = 0;
+            const callback = (value) => {
+              window.scrollTo(0, Math.trunc(value));
+            };
 
+            let start = 0;
             const step = (time) => {
-              if (start) {
-                elapsed = Math.min(time - start, totalTime);
-                const pos = Math.trunc(
-                  Math.easeInOutCubic(elapsed, startValue, delta, totalTime)
-                );
-                window.scroll(0, pos);
-              } else {
-                start = time;
-              }
+              const elapsed = Math.min(time - start, totalTime);
+              const value = Math.easeInOutCubic(elapsed, startValue, delta, totalTime)
+              callback(value);
               if (elapsed < totalTime) {
                 requestAnimationFrame(step);
               }
             };
 
-            requestAnimationFrame(step);
+            const setStart = (time) => {
+              start = time;
+              requestAnimationFrame(step);
+            };
+
+            requestAnimationFrame(setStart);
           }
         };
       })(document);
