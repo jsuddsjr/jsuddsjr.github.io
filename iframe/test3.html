@@ -194,8 +194,13 @@
 
         // *** SMOOTH SCROLLER ***
 
-        // Source: http://gizma.com/easing/
-        Math.easeInOutCubic = function (t, b, c, d) {
+        /** Source: http://gizma.com/easing/
+         * @param {number} t Time elapsed
+         * @param {number} b Base value
+         * @param {number} c Delta from base
+         * @param {number} d Total time
+         */
+        const easeInOutCubic = (t, b, c, d) => {
           t /= d / 2;
           if (t < 1) return (c / 2) * t * t * t + b;
           t -= 2;
@@ -211,6 +216,7 @@
           if (delta < 0 || delta > document.documentElement.clientHeight) {
             console.log("Scrolling into view", offset);
 
+            /** @param {number} value */
             const callback = (value) => {
               window.scrollTo(0, Math.trunc(value));
             };
@@ -218,7 +224,12 @@
             let start = 0;
             const step = (time) => {
               const elapsed = Math.min(time - start, totalTime);
-              const value = Math.easeInOutCubic(elapsed, startValue, delta, totalTime)
+              const value = easeInOutCubic(
+                elapsed,
+                startValue,
+                delta,
+                totalTime
+              );
               callback(value);
               if (elapsed < totalTime) {
                 requestAnimationFrame(step);
