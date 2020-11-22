@@ -100,67 +100,74 @@
   });
 
   const forecast = d.querySelector(".forecast div");
+  if (forecast) {
+    fetch(apiURL.replace("{{endpoint}}", "forecast"))
+      .then((response) => response.json())
+      .then(
+        /** @param {RawData} data */ (data) =>
+          data.list
+            .filter((d) => d.dt_txt.indexOf("18:00:00") > 0)
+            .map(normalizeData)
+            .forEach((info) => {
+              // console.log(info);
 
-  fetch(apiURL.replace("{{endpoint}}", "forecast"))
-    .then((response) => response.json())
-    .then(
-      /** @param {RawData} data */ (data) =>
-        data.list
-          .filter((d) => d.dt_txt.indexOf("18:00:00") > 0)
-          .map(normalizeData)
-          .forEach((info) => {
-            // console.log(info);
+              const div = d.createElement("DIV");
+              div.className = "day";
 
-            const div = d.createElement("DIV");
-            div.className = "day";
+              const dayName = d.createElement("SPAN");
+              dayName.textContent = info.weekday;
+              div.appendChild(dayName);
 
-            const dayName = d.createElement("SPAN");
-            dayName.innerText = info.weekday;
-            div.appendChild(dayName);
+              const iconImage = d.createElement("IMG");
+              iconImage.src = info.icon;
+              iconImage.alt = info.conditions;
+              iconImage.title = info.conditions;
+              div.appendChild(iconImage);
 
-            const iconImage = d.createElement("IMG");
-            iconImage.src = info.icon;
-            iconImage.alt = info.conditions;
-            iconImage.title = info.conditions;
-            div.appendChild(iconImage);
+              const temp = d.createElement("SPAN");
+              temp.innerHTML = info.currentTemp.toFixed(0) + "&deg;";
+              div.appendChild(temp);
 
-            const temp = d.createElement("SPAN");
-            temp.innerHTML = info.currentTemp.toFixed(0) + "&deg;";
-            div.appendChild(temp);
+              const conditions = d.createElement("DIV");
+              conditions.textContent = info.conditions;
+              conditions.className = "overlay-popup";
+              div.appendChild(conditions);
 
-            forecast.appendChild(div);
-          })
-    );
+              forecast.appendChild(div);
+            })
+      );
+  }
 
   const weather = d.getElementById("weather");
+  if (weather) {
+    const temp = d.querySelector("[itemprop='temperature']");
+    const cond = d.querySelector("[itemprop='conditions']");
+    const high = d.querySelector("[itemprop='high']");
+    const low = d.querySelector("[itemprop='low']");
+    const humidity = d.querySelector("[itemprop='humidity']");
+    const ws = d.querySelector("[itemprop='windSpeed']");
 
-  const temp = d.querySelector("[itemprop='temperature']");
-  const cond = d.querySelector("[itemprop='conditions']");
-  const high = d.querySelector("[itemprop='high']");
-  const low = d.querySelector("[itemprop='low']");
-  const humidity = d.querySelector("[itemprop='humidity']");
-  const ws = d.querySelector("[itemprop='windSpeed']");
+    fetch(apiURL.replace("{{endpoint}}", "weather"))
+      .then((response) => response.json())
+      .then(
+        /** @param {ForecastData} data */
+        (data) => {
+          console.log(data);
+          const info = normalizeData(data);
 
-  fetch(apiURL.replace("{{endpoint}}", "weather"))
-    .then((response) => response.json())
-    .then(
-      /** @param {ForecastData} data */
-      (data) => {
-          console.log(data)
-        const info = normalizeData(data);
+          temp.innerHTML = info.currentTemp.toFixed(1) + "&deg;";
+          cond.textContent = info.conditions;
+          high.textContent = info.high.toFixed(0);
+          low.textContent = info.low.toFixed(0);
+          humidity.textContent = info.humidity + "%";
+          ws.textContent = info.windSpeed + " mph";
 
-        temp.innerHTML = info.currentTemp.toFixed(1) + "&deg;";
-        cond.textContent = info.conditions;
-        high.textContent = info.high.toFixed(0);
-        low.textContent = info.low.toFixed(0);
-        humidity.textContent = info.humidity + "%";
-        ws.textContent = info.windSpeed + " mph";
+          // Do side-effects, such as calculate wind chill factor.
+          weather.dispatchEvent(new Event("weatherUpdated"));
 
-        // Do side-effects, such as calculate wind chill factor.
-        weather.dispatchEvent(new Event("weatherUpdated"));
-
-        const colorTemp = 270 - (Math.max(30, info.currentTemp) / 120) * 270;
-        temp.style.textShadow = `2px 2px 5px hsl(${colorTemp}, 90%, 30%)`;
-      }
-    );
+          const colorTemp = 270 - (Math.max(30, info.currentTemp) / 120) * 270;
+          temp.style.textShadow = `2px 2px 5px hsl(${colorTemp}, 90%, 30%)`;
+        }
+      );
+  }
 })(document);

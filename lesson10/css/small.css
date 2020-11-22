@@ -609,17 +609,42 @@ section.forecast > div {
 }
 
 section.forecast .day {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
 }
 
 section.forecast .day span {
   text-align: center;
   padding: 0.3rem;
-  overflow: hidden;
+  height: 20%;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
   font-size: 0.8rem;
+}
+
+section.forecast .day .overlay-popup {
+  position: absolute;
+  left: 0;
+  padding: 0;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  top: 100%;
+  color: var(--fade-top);
+  text-align: center;
+  text-shadow: 2px 2px 5px var(--body-text);
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: top 500ms ease-in-out;
+}
+
+section.forecast .day:hover .overlay-popup {
+  top: 0;
+  transition: top 250ms ease-in-out;
 }
 
 section.forecast .day img {
