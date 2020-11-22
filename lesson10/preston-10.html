@@ -84,7 +84,9 @@
           >
         </li>
         <li role="menuitem">
-          <a href="gallery-10.html"><span aria-hidden="true">🎨</span> Gallery</a>
+          <a href="gallery-10.html"
+            ><span aria-hidden="true">🎨</span> Gallery</a
+          >
         </li>
       </ul>
     </nav>
@@ -108,10 +110,10 @@
         <div class="overlay">
           <h3>Weather Summary</h3>
           <figure>
-            <figcaption>Click to randomly select new values</figcaption>
+            <figcaption>Current conditions</figcaption>
             <!-- microdata -->
             <div itemscope itemtype="http://schema.org/Weather" id="weather">
-              <div itemprop="temperature" id="temperature">72°</div>
+              <div itemprop="temperature"></div>
               <div>
                 <div
                   id="city"
@@ -121,15 +123,25 @@
                 >
                   Preston
                 </div>
-                <div itemprop="conditions" id="conditions">Sunny</div>
+                <div itemprop="conditions">Sunny</div>
                 <div id="range">
-                  <span itemprop="high" id="high">76°</span>
-                  <span itemprop="low" id="low">62°</span>
+                  <span itemprop="high"></span>&deg;
+                  <span itemprop="low"></span>&deg;
                 </div>
               </div>
               <table>
-                <tr><td>Wind Speed:</td><td id="windSpeed">5 mph</td></tr>
-                <tr><td>Wind Chill:</td><td id="windChill">N/A</td></tr>
+                <tr>
+                  <td>Humidity:</td>
+                  <td itemprop="humidity"></td>
+                </tr>
+                <tr>
+                  <td>Wind Speed:</td>
+                  <td itemprop="windSpeed"></td>
+                </tr>
+                <tr>
+                  <td>Wind Chill:</td>
+                  <td itemprop="windChill">N/A</td>
+                </tr>
               </table>
             </div>
           </figure>
@@ -143,38 +155,7 @@
       </section>
       <section class="forecast">
         <h3>5 Day Forecast</h3>
-        <div>
-          <img
-            src="https://loremflickr.com/100/100/sun,art"
-            alt="Sunny"
-            width="100"
-            height="100"
-          />
-          <img
-            src="https://loremflickr.com/100/100/rain,art"
-            alt="Sunny"
-            width="100"
-            height="100"
-          />
-          <img
-            src="https://loremflickr.com/100/100/cloud,art"
-            alt="Chance of rain"
-            width="100"
-            height="100"
-          />
-          <img
-            src="https://loremflickr.com/100/100/snow,art"
-            alt="Chance of rain"
-            width="100"
-            height="100"
-          />
-          <img
-            src="https://loremflickr.com/100/100/sun,art"
-            alt="Sunny"
-            width="100"
-            height="100"
-          />
-        </div>
+        <div></div>
       </section>
       <section class="article">
         <h3>Article</h3>
@@ -277,8 +258,8 @@
     </footer>
     <script src="js/menu.js" defer></script>
     <script src="js/updateTime.js" defer></script>
-    <script src="js/colorTemp.js" defer></script>
     <script src="js/banner.js" defer></script>
     <script src="js/windchill.js" defer></script>
+    <script src="js/weatherapi.js" defer></script>
   </body>
 </html>

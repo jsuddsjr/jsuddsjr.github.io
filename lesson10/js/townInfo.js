@@ -56,5 +56,4 @@ fetch(townInfoUrl)
                 }
             })
 
-
         });

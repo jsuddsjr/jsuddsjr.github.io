@@ -61,7 +61,8 @@ footer {
 
 header {
   background-color: black;
-  background: border-box center 75%/100% no-repeat url("../images/dark-skies-and-lightning-storm.jpg");
+  background: border-box center 75%/100% no-repeat
+    url("../images/dark-skies-and-lightning-storm.jpg");
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -97,7 +98,7 @@ main {
 section,
 footer {
   margin: 1rem auto;
-  padding: 0.6rem 0.8rem
+  padding: 0.6rem 0.8rem;
 }
 
 section:nth-child(odd) {
@@ -159,7 +160,7 @@ figcaption {
   padding: 2px 5px;
 }
 
-.gallery figure>[data-src] {
+.gallery figure > [data-src] {
   opacity: 0.2;
   filter: blur(5px);
   transition: all 500ms ease-out;
@@ -172,7 +173,7 @@ footer {
   margin-bottom: 12rem;
 }
 
-footer>p {
+footer > p {
   margin: 0.4rem 0;
   text-align: center;
 }
@@ -182,15 +183,18 @@ footer .contact p {
 }
 
 footer .contact .address {
-  background: no-repeat left top url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
+  background: no-repeat left top
+    url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
 }
 
 footer .contact .email {
-  background: no-repeat left center url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
+  background: no-repeat left center
+    url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
 }
 
 footer .contact .phone {
-  background: no-repeat left center url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
+  background: no-repeat left center
+    url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
 }
 
 footer picture {
@@ -302,7 +306,8 @@ nav ul.expanded {
 
 /* microdata */
 
-[itemtype='http://schema.org/Weather'] {
+[itemtype='http://schema.org/Weather']
+{
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -409,7 +414,7 @@ fieldset {
   width: 80%;
   padding: 0;
   margin: 0;
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
   background-color: white;
   min-width: 240px;
 }
@@ -418,7 +423,7 @@ label {
   position: absolute;
   background-color: transparent;
   display: block;
-  font-size: .8rem;
+  font-size: 0.8rem;
   top: 0;
   left: 8px;
 }
@@ -464,21 +469,21 @@ fieldset.range {
   width: 100%;
 }
 
-input[type='range'] {
+input[type="range"] {
   width: 80%;
 }
 
-input[type='range']+span {
+input[type="range"] + span {
   display: inline-block;
-  margin-left: .4rem;
+  margin-left: 0.4rem;
   padding: 5px 15px;
 }
 
-input[type='date'] {
+input[type="date"] {
   color: white;
 }
 
-input[type='date']:before {
+input[type="date"]:before {
   position: absolute;
   top: 18px;
   left: 8px;
@@ -495,11 +500,11 @@ fieldset.radio {
   height: 2.5rem;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   display: none;
 }
 
-input[type='radio']+label {
+input[type="radio"] + label {
   display: inline-block;
   position: initial;
   font-size: 1.1rem;
@@ -510,23 +515,22 @@ input[type='radio']+label {
   z-index: 100;
 }
 
-input[type='radio']:checked+label {
+input[type="radio"]:checked + label {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
   border-radius: 3px;
   transition: all 500ms ease-in-out;
 }
 
-button[type='submit'] {
+button[type="submit"] {
   margin-top: 1rem;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   background: linear-gradient(var(--fade-top), var(--fade-bottom));
 }
 
-button[type='submit']:hover {
+button[type="submit"]:hover {
   background: linear-gradient(var(--fade-bottom), var(--fade-top));
 }
-
 
 input::-webkit-datetime-edit,
 input::-webkit-inner-spin-button,
@@ -566,28 +570,28 @@ section.town-info a {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  
+
   text-decoration: none;
   color: var(--body-text);
   text-align: center;
-  padding: .5rem;
-  font-size: .8rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
 
   grid-row-start: 2;
   margin-top: -2rem;
   z-index: 1;
-  
+
   background-color: rgba(255, 255, 255, 0.6);
 }
 
 section.town-info h2 {
   font-size: 2rem;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
 }
 
 section.town-info .motto {
   line-height: 1.1rem;
-  font-size: .6rem;
+  font-size: 0.6rem;
 }
 
 section.town-info img {
@@ -597,4 +601,27 @@ section.town-info img {
 section.town-info p {
   line-height: 1.2rem;
   margin: 0;
+}
+
+section.forecast > div {
+  display: flex;
+  column-gap: 5px;
+}
+
+section.forecast .day {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+section.forecast .day span {
+  text-align: center;
+  padding: 0.3rem;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+section.forecast .day img {
+  width: 100%;
 }
