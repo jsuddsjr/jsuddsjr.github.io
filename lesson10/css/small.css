@@ -21,7 +21,7 @@ html {
 
 body {
   background-attachment: fixed;
-  background-color: linear-gradient(var(--fade-top), var(--fade-bottom));
+  background-image: linear-gradient(var(--fade-top), var(--fade-bottom));
   color: var(--body-text);
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
@@ -527,11 +527,11 @@ input[type="radio"]:checked + label {
 button[type="submit"] {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: linear-gradient(var(--fade-top), var(--fade-bottom));
+  background-image: linear-gradient(var(--fade-top), var(--fade-bottom));
 }
 
 button[type="submit"]:hover {
-  background-color: linear-gradient(var(--fade-bottom), var(--fade-top));
+  background-image: linear-gradient(var(--fade-bottom), var(--fade-top));
 }
 
 input::-webkit-datetime-edit,
