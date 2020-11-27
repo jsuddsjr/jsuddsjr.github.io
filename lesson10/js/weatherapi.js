@@ -1,4 +1,7 @@
 (function (d) {
+
+  /** Source: https://openweathermap.org/api */
+
   /** @typedef {Object} WeatherData
    * @property {String} description
    * @property {String} icon
@@ -58,22 +61,35 @@
    */
 
   /**
+   * Local representation for easy mapping to HTML.
    * @typedef {Object} WeatherInfo
-   * @property {String} weekday
-   * @property {number} currentTemp
-   * @property {string} conditions
-   * @property {string} icon
-   * @property {number} high
-   * @property {number} low
-   * @property {number} humidity
-   * @property {number} windSpeed
+   * @property {String} weekday      Day of the week
+   * @property {number} currentTemp  Current temperature
+   * @property {string} conditions   Brief description of weather
+   * @property {string} icon         URL path to weather symbol
+   * @property {number} high         High temperature
+   * @property {number} low          Low temperature
+   * @property {number} humidity     Humidity percentage
+   * @property {number} windSpeed    Wind speed
    */
 
-  const townId = "5604473";
-  const apiKey = "5d50935bc3ce8aa3de4654aabf285ea8";
-  const units = "imperial";
+  /**
+   * Construct URL for weather API.
+   * @param {string} townId
+   * @param {"weather"|"forecast"} endpoint
+   * @param {"imperial"|"metric"} units
+   */
+  const getUrl = (townId, endpoint = "weather", units = "imperial") => {
+    const apiKey = "5d50935bc3ce8aa3de4654aabf285ea8";
+    return `https://api.openweathermap.org/data/2.5/${endpoint}?id=${townId}&units=${units}&appid=${apiKey}`;
+  };
 
-  const apiURL = `https://api.openweathermap.org/data/2.5/{{endpoint}}?id=${townId}&units=${units}&appid=${apiKey}`;
+  /**
+   * A lookup for town data.
+   */
+  const townData = {
+    preston: "5604473",
+  };
 
   if (!String.toInitialCap) {
     String.prototype.toInitialCap = function () {
@@ -88,7 +104,7 @@
   const normalizeData = (d) => ({
     // Convert date to weekday name.
     weekday: new Date(d.dt * 1000).toLocaleDateString("default", {
-      weekday: "long",
+      weekday: "short",
     }),
     currentTemp: d.main.temp,
     conditions: d.weather[0].description.toInitialCap(),
@@ -101,7 +117,7 @@
 
   const forecast = d.querySelector(".forecast div");
   if (forecast) {
-    fetch(apiURL.replace("{{endpoint}}", "forecast"))
+    fetch(getUrl(townData.preston, "forecast"))
       .then((response) => response.json())
       .then(
         /** @param {RawData} data */ (data) =>
@@ -147,12 +163,12 @@
     const humidity = d.querySelector("[itemprop='humidity']");
     const ws = d.querySelector("[itemprop='windSpeed']");
 
-    fetch(apiURL.replace("{{endpoint}}", "weather"))
+    fetch(getUrl(townData.preston))
       .then((response) => response.json())
       .then(
         /** @param {ForecastData} data */
         (data) => {
-          console.log(data);
+          // console.log(data);
           const info = normalizeData(data);
 
           temp.innerHTML = info.currentTemp.toFixed(1) + "&deg;";
