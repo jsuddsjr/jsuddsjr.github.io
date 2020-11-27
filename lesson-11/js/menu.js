@@ -1,46 +1,50 @@
-(function () {
-  const menuState = document.getElementById("menu-state");
-  const nav = document.querySelector("nav ul");
+(function (d) {
   const expanded = "expanded";
 
+  let currentLocation = d.location.href;
+  if (currentLocation[currentLocation.length - 1] === "/") {
+    currentLocation += "index.html";
+  }
+
+  const navList = d.querySelector("nav ul");
+  const menuState = d.getElementById("menu-state");
+
   const toggleMenu = (e) => {
-    const isExpanded = nav.classList.toggle(expanded);
+    const isExpanded = navList.classList.toggle(expanded);
     menuState.setAttribute("aria-expanded", isExpanded);
     e.preventDefault();
   };
 
   const collapseMenu = (e) => {
-    nav.classList.remove(expanded);
+    navList.classList.remove(expanded);
     menuState.setAttribute("aria-expanded", "false");
   };
+
+  // Selecting a menu item closes the menu.
+  d.querySelectorAll("nav a").forEach(
+    /** @param {HTMLAnchorElement} el */ (el) => {
+      el.addEventListener("click", collapseMenu);
+      el.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") collapseMenu();
+      });
+      if (currentLocation === el.href) {
+        el.href = "#";
+        // Add label to current menu item. (No Narrator support.)
+        el.setAttribute("aria-current", "location");
+      }
+    }
+  );
 
   // Toggle menu state on click.
   menuState.addEventListener("click", toggleMenu);
 
-    // Selecting a menu item closes the menu.
-  document.querySelectorAll("nav a").forEach((el) => {
-    el.addEventListener("click", collapseMenu);
-    el.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") collapseMenu();
-    });
-  });
-
-  // Add label to current menu item. (No Narrator support.)
-  try {
-    document
-      .querySelector("nav a[href='#']")
-      .setAttribute("aria-current", "location");
-  } catch (ex) {
-    // Ignore error. Current location not set.
-  }
-
   // Collapse menu if focus moves elsewhere.
-  document.body.addEventListener("focusin", (e) => {
-    if (e.target !== menuState && !nav.contains(e.target)) {
+  d.body.addEventListener("focusin", (e) => {
+    if (e.target !== menuState && !navList.contains(e.target)) {
       collapseMenu();
     }
   });
 
   // Collapse the menu if the window is resized.
   window.addEventListener("resize", collapseMenu);
-})();
+})(document);
