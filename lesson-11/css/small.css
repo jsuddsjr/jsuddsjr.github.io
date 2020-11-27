@@ -1,0 +1,655 @@
+/* Color scheme */
+
+/* https://coolors.co/4182dc-f8ae8b-212147-ffffff-000000 */
+
+:root {
+  --body-text: black;
+  --fade-top: #bad2f2;
+  --fade-bottom: #f8ae8b;
+  --link: #40408c;
+  --hover-link: #4182dc;
+}
+
+/* Basic styles */
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-attachment: fixed;
+  background-image: linear-gradient(var(--fade-top), var(--fade-bottom));
+  color: var(--body-text);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  line-height: 1.2rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 240px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Sansita Swashed", sans-serif;
+  margin: 0.5rem 0 1.2rem;
+}
+
+a {
+  color: var(--link);
+  transition: color 0.3s;
+}
+
+a:focus,
+a:hover {
+  color: var(--hover-link);
+  transition: color 0.3s;
+}
+
+/* Section styles */
+
+header,
+nav,
+main,
+footer {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+header {
+  background-color: black;
+  background: border-box center 75%/100% no-repeat
+    url("../images/dark-skies-and-lightning-storm.jpg");
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+header div {
+  margin: 0.3rem 0.5rem;
+  letter-spacing: 0.2rem;
+  color: white;
+}
+
+header img {
+  text-align: center;
+  height: 36px;
+  width: auto;
+}
+
+header div img {
+  display: none;
+}
+
+header p {
+  margin: 0;
+  color: white;
+}
+
+main {
+  background-color: var(--main-background);
+}
+
+section,
+footer {
+  margin: 1rem auto;
+  padding: 0.6rem 0.8rem;
+}
+
+section:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding-bottom: 1.2rem;
+}
+
+section picture img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.forecast {
+  display: none;
+}
+
+.overlay figure {
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+}
+
+.overlay figure img {
+  margin: 0 auto;
+}
+
+figcaption {
+  display: inline-block;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  grid-gap: 20px;
+}
+
+.gallery img {
+  margin: 0;
+  width: 100%;
+  min-width: 200px;
+}
+
+.gallery figure {
+  margin: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 500ms ease;
+}
+
+.gallery figure:hover {
+  transform: scale(1.2);
+  transition: all 500ms ease;
+}
+
+.gallery figcaption {
+  padding: 2px 5px;
+}
+
+.gallery figure > [data-src] {
+  opacity: 0.2;
+  filter: blur(5px);
+  transition: all 500ms ease-out;
+}
+
+footer {
+  background-color: white;
+  font-size: 0.8rem;
+  line-height: 1.3em;
+  margin-bottom: 12rem;
+}
+
+footer > p {
+  margin: 0.4rem 0;
+  text-align: center;
+}
+
+footer .contact p {
+  padding-left: 20px;
+}
+
+footer .contact .address {
+  background: no-repeat left top
+    url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
+}
+
+footer .contact .email {
+  background: no-repeat left center
+    url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
+}
+
+footer .contact .phone {
+  background: no-repeat left center
+    url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
+}
+
+footer picture {
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 80%;
+}
+
+footer .address {
+  display: none;
+}
+
+footer .bar {
+  text-align: center;
+  line-height: 1em;
+  font-size: 0.6rem;
+}
+
+/* Cat photos */
+
+p.cats {
+  text-align: center;
+}
+
+p.cats img {
+  padding: 9px;
+  background: white;
+  box-shadow: 4px 4px 10px var(--body-text);
+  width: 180px;
+}
+
+/* Menu navigation */
+nav {
+  position: sticky;
+  top: 0;
+  padding: 0;
+  background: transparent;
+  z-index: 100;
+}
+
+/* Break down menu items into vertical */
+nav a {
+  display: block;
+  text-decoration: none;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  padding: 8px 8px;
+  text-align: center;
+}
+
+nav a:link,
+nav a:visited {
+  background-color: white;
+  color: var(--body-text);
+  transition: all 300ms;
+}
+
+nav a:hover,
+nav a:focus,
+nav a[href="#"] {
+  background-color: var(--body-text);
+  color: white;
+  transition: all 600ms;
+}
+
+/* Toggle Show/Hide Menu */
+nav ul {
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 4px 4px 3px var(--body-text);
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: visibility 1ms, opacity 1s, height 1.2s ease;
+}
+
+/* hamburger menu (small screen) */
+
+#menu-state {
+  border: 0;
+  color: black;
+  background-color: white;
+  box-shadow: 4px 4px 3px var(--body-text);
+  font-style: normal;
+  font-size: 1.2em;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+#menu-state::before {
+  content: "☰";
+}
+
+#menu-state[aria-expanded="true"]::before {
+  content: "⛌";
+}
+
+nav ul.expanded {
+  visibility: visible;
+  height: 210px;
+  opacity: 1;
+}
+
+/* microdata */
+
+[itemtype='http://schema.org/Weather']
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+[itemprop="temperature"] {
+  font-family: "Sansita Swashed", sans-serif;
+  font-size: 3.5rem;
+  line-height: 3.2rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+  text-shadow: 2px 2px 4px black;
+}
+
+[itemprop="city"] {
+  font-size: 28px;
+  text-align: center;
+}
+
+[itemprop="conditions"],
+#range {
+  margin-bottom: -5px;
+  text-align: center;
+}
+
+[itemprop="high"]::before {
+  content: "↑";
+}
+
+[itemprop="low"]::before {
+  content: "↓";
+}
+
+#weather table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#weather table td {
+  width: 50%;
+}
+
+#weather table td:nth-child(1) {
+  text-align: right;
+  font-weight: bold;
+}
+
+aside.banner-box {
+  display: none;
+  position: absolute;
+  top: 2rem;
+  z-index: 999;
+  transform: scaleY(0);
+  transition: transform 1s ease-out;
+}
+
+aside.banner-box.show {
+  transform: scaleY(1);
+  transition: transform 2s ease-in;
+}
+
+aside.banner-box .center {
+  top: 50px;
+  margin: 0 auto;
+  width: 80%;
+  border: 3px solid var(--body-text);
+  background-color: var(--fade-bottom) !important;
+  color: var(--body-text);
+  box-sizing: border-box;
+  box-shadow: 5px 5px 30px var(--body-text);
+  overflow: hidden;
+  padding: 1rem;
+}
+
+aside.banner-box p {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
+aside.banner-box img {
+  height: 36px;
+  float: right;
+}
+
+aside.banner-box button {
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+aside.banner-box button:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Form fields */
+fieldset {
+  position: relative;
+  text-align: center;
+  width: 80%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.2rem;
+  background-color: white;
+  min-width: 240px;
+}
+
+label {
+  position: absolute;
+  background-color: transparent;
+  display: block;
+  font-size: 0.8rem;
+  top: 0;
+  left: 8px;
+}
+
+input,
+select,
+textarea {
+  position: relative;
+  box-sizing: border-box;
+
+  height: 2.5rem;
+  padding: 15px 8px 4px;
+  width: 100%;
+  border: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  min-width: 100%;
+  min-height: 5rem;
+  padding-top: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+input:invalid,
+select:invalid {
+  background-color: var(--fade-bottom);
+}
+
+fieldset.range {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 100%;
+}
+
+input[type="range"] {
+  width: 80%;
+}
+
+input[type="range"] + span {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 5px 15px;
+}
+
+input[type="date"] {
+  color: white;
+}
+
+input[type="date"]:before {
+  position: absolute;
+  top: 18px;
+  left: 8px;
+  content: attr(data-date);
+  display: inline-block;
+  color: black;
+}
+
+fieldset.radio {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: none;
+  height: 2.5rem;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  display: inline-block;
+  position: initial;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  min-width: 2rem;
+  padding: 0 0.5rem;
+  margin: 0 0.2rem;
+  z-index: 100;
+}
+
+input[type="radio"]:checked + label {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: 3px;
+  transition: all 500ms ease-in-out;
+}
+
+button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-image: linear-gradient(var(--fade-top), var(--fade-bottom));
+}
+
+button[type="submit"]:hover {
+  background-image: linear-gradient(var(--fade-bottom), var(--fade-top));
+}
+
+input::-webkit-datetime-edit,
+input::-webkit-inner-spin-button,
+input::-webkit-clear-button {
+  display: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: black;
+  opacity: 1;
+}
+
+table.debug {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+table.debug th,
+table.debug td {
+  text-align: left;
+  padding: 4px 12px;
+}
+
+section.hero-img {
+  padding: 0;
+}
+
+section.town-info {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+section.town-info a {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  text-decoration: none;
+  color: var(--body-text);
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+
+  grid-row-start: 2;
+  margin-top: -2rem;
+  z-index: 1;
+
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+section.town-info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+section.town-info .motto {
+  line-height: 1.1rem;
+  font-size: 0.6rem;
+}
+
+section.town-info img {
+  margin-bottom: 1rem;
+}
+
+section.town-info p {
+  line-height: 1.2rem;
+  margin: 0;
+}
+
+section.forecast > div {
+  display: flex;
+  column-gap: 5px;
+}
+
+section.forecast .day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+section.forecast .day span {
+  text-align: center;
+  padding: 0.3rem;
+  height: 20%;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+section.forecast .day .overlay-popup {
+  position: absolute;
+  left: 0;
+  padding: 0;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  font-weight: bold;
+  height: 105%;
+  width: 100%;
+  top: 100%;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 5px var(--body-text);
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: top 500ms ease-in-out;
+}
+
+section.forecast .day:hover .overlay-popup {
+  top: 0;
+  transition: top 250ms ease-in-out;
+}
+
+section.forecast .day img {
+  width: 100%;
+  min-width: 100%;
+}

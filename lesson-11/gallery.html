@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery | WeatherCats</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Sansita+Swashed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/large.css" />
+    <meta
+      name="description"
+      content="A lazy-loaded gallery of the cutest feline friends in Idaho, and those that love them."
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="images/weathercat-small.svg"
+        alt="WeatherCats logo"
+        height="36"
+        width="36"
+      />
+      <div>
+        <h1>WeatherCats</h1>
+        <p>It's raining cats.</p>
+      </div>
+      <!-- [THE HAMBURGER] -->
+      <button
+        id="menu-state"
+        aria-expanded="false"
+        aria-label="Main navigation"
+      ></button>
+    </header>
+    <nav>
+      <ul role="menubar">
+        <li role="menuitem">
+          <a href="index.html"><span aria-hidden="true">🏠</span> Home</a>
+        </li>
+        <li role="menuitem">
+          <a href="preston.html"
+            ><span aria-hidden="true">😼</span> Preston</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="soda-springs.html"
+            ><span aria-hidden="true">🌲</span> Soda Springs</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="fish-haven.html"
+            ><span aria-hidden="true">🐟</span> Fish Haven</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="stormcenter.html"
+            ><span aria-hidden="true">🌧</span> Storm Center</a
+          >
+        </li>
+        <li role="menuitem">
+          <a href="#"><span aria-hidden="true">🎨</span> Gallery</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <section>
+        <h2>Weather & Cats Gallery</h2>
+        <p>Welcome to the gallery! Please enjoy our selection of cats enjoying the weather, both good and bad.</p>
+        <div class="gallery">
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/two-cats-in-the-rain.png"
+              alt="Two cats sitting under an umbrella"
+            />
+            <figcaption>Sharing an umbrella</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/cats-in-cold-weather-3-1.jpg"
+              alt="Tabby sitting in the snow"
+            />
+            <figcaption>Tabby sitting in the snow</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/cat-fan.jpg"
+              alt="Cat enjoying the breeze of a window fan"
+            />
+            <figcaption>Staying cool on a hot day</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/raincoat-cat.jpg"
+              alt="Cat in bright yellow raincoat"
+            />
+            <figcaption>Dressed for the weather</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/cat-attacking-snowman.jpg"
+              alt="Cat climbing a snowman"
+            />
+            <figcaption>Attacking the snowman</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/catching-rays.jpg"
+              alt="Cat in prone position enjoying the sunshine"
+            />
+            <figcaption>CAT-ching some rays</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/flower-cat.jpg"
+              alt="Cat smelling a flower"
+            />
+            <figcaption>Working in the garden</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/rainy-day.jpg"
+              alt="Cat with face against wet pane of glass"
+            />
+            <figcaption>Rained in</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x300/000/FFF?text=Loading"
+              data-src="images/sunset-cat.jpg"
+              alt="Cat watching a golden sunset"
+            />
+            <figcaption>Today was a good day</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="reversible">
+        <div class="contact">
+          <h3>Contact Information</h3>
+          <p class="address">
+            1234 Wherever Drive, Fifth Floor, Boston, MA 02110
+          </p>
+          <p class="email">
+            <a href="mailto:bogus@weathercat.org">bogus@weathercat.org</a>
+          </p>
+          <p class="phone">208-555-1234</p>
+          <div class="social">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://facebook.com"
+              class="facebook"
+              title="Facebook"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://instagram.com"
+              class="instagram"
+              title="Instagram"
+            ></a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com"
+              class="twitter"
+              title="Twitter"
+            ></a>
+          </div>
+        </div>
+        <picture>
+          <source
+            srcset="https://loremflickr.com/600/240/map,idaho/all"
+            media="(max-width: 32.5em)"
+            width="600"
+            height="240"
+          />
+          <source
+            srcset="https://loremflickr.com/780/240/map,idaho/all"
+            media="(max-width: 50em)"
+            width="780"
+            height="240"
+          />
+          <img
+            data-src="https://loremflickr.com/960/300/map,idaho/all"
+            alt="Randomly generated farm related image"
+            width="960"
+            height="300"
+          />
+        </picture>
+      </div>
+
+      <div class="bar">
+        <p>
+          &copy; <span id="year"></span> WeatherCats |
+          <a href="https://www.byui.edu/online">Terms of Use</a> | John W Sudds
+          Jr
+        </p>
+        <p><span id="date"></span></p>
+      </div>
+    </footer>
+    <script src="js/menu.js" defer></script>
+    <script src="js/updateTime.js" defer></script>
+    <script src="js/lazyload.js" defer></script>
+  </body>
+</html>
