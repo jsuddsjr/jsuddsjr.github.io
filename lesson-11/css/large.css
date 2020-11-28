@@ -20,8 +20,16 @@
   header,
   footer {
     margin-top: 1.5rem;
-    border-radius: 1rem;
-    max-width: 1024px;
+    max-width: 100%;
+  }
+
+  nav {
+    max-width: 100%;
+    background-color: white;
+  }
+
+  nav ul {
+    max-width: 718px;
   }
 
   header {

@@ -1,59 +1,82 @@
-const townInfoUrl = "https://byui-cit230.github.io/weather/data/towndata.json";
+(function (d) {
+  const towns = d.getElementById("towns");
+  if (towns) {
+    const townInfoUrl =
+      "https://byui-cit230.github.io/weather/data/towndata.json";
 
-/**
- * @typedef {Object} Town
- * @property {string} name
- * @property {string} photo
- * @property {string} motto
- * @property {number} yearFounded
- * @property {number} currentPopulation
- * @property {number} averageRainfall
- * @property {string[]} events
- */
+    /**
+     * @typedef {Object} Town
+     * @property {String} name
+     * @property {String} photo
+     * @property {String} motto
+     * @property {Number} yearFounded
+     * @property {Number} currentPopulation
+     * @property {Number} averageRainfall
+     * @property {Array<String>} events
+     */
 
-
-/*
-
-<h2>Preston</h2>
-<div class="motto">Home of Napoleon Dynamite.</div>
-<p>Year Founded: 1866</p>
-<p>Population: 5204</p>
-<p>Annual Rain Fall: 16.65</p>
-
-*/
-
-fetch(townInfoUrl)
-    .then((request) => request.json())
-    .then(
+    fetch(townInfoUrl)
+      .then((request) => request.json())
+      .then(
         /** @param {{towns:Town[]}} json */
         (json) => {
-            json.towns.forEach(t => {
-                const id = t.name.replace(" ", "-").toLowerCase();
-                const a = document.querySelector(`#${id} a`);
-                if (a) {
-                    a.innerHTML = "";
+          json.towns.forEach((t) => {
+            const id = t.name.replace(" ", "-").toLowerCase();
+            const a = d.querySelector(`#${id} a`);
+            if (a) {
+              a.innerHTML = "";
 
-                    const h2 = document.createElement('h2');
-                    h2.textContent = t.name;
-                    a.appendChild(h2);
+              const h2 = d.createElement("h2");
+              h2.textContent = t.name;
+              a.appendChild(h2);
 
-                    const div = document.createElement('div');
-                    div.className = "motto";
-                    div.textContent = t.motto;
-                    a.appendChild(div);
+              const div = d.createElement("div");
+              div.className = "motto";
+              div.textContent = t.motto;
+              a.appendChild(div);
 
-                    const year = document.createElement('p');
-                    year.textContent = `Year Founded: ${t.yearFounded}`;
-                    a.appendChild(year);
+              const year = d.createElement("p");
+              year.textContent = `Year Founded: ${t.yearFounded}`;
+              a.appendChild(year);
 
-                    const pop = document.createElement('p');
-                    pop.textContent = `Population: ${t.currentPopulation}`;
-                    a.appendChild(pop);
+              const pop = d.createElement("p");
+              pop.textContent = `Population: ${t.currentPopulation}`;
+              a.appendChild(pop);
 
-                    const rain = document.createElement('p');
-                    rain.textContent = `Annual Rain Fall: ${t.averageRainfall}`;
-                    a.appendChild(rain);
-                }
-            })
+              const rain = d.createElement("p");
+              rain.textContent = `Annual Rain Fall: ${t.averageRainfall}`;
+              a.appendChild(rain);
+            }
+          });
+        }
+      );
+  }
 
-        });
+  const news = d.getElementById("news");
+  if (news) {
+    const dataUrl = "data/news.json";
+
+    /**
+     * @typedef {Object} News
+     * @property {string} town
+     * @property {string} imageUrl
+     * @property {string} byline
+     * @property {String} pubDate
+     * @property {String} title
+     * @property {Array<String>} text
+     */
+
+    fetch(dataUrl)
+      .then((response) => response.json())
+      .then(
+        /** @param {Array<News>} data */ (data) => {
+          const story = data[0];
+          news.querySelector(".title").textContent = story.title;
+          news.querySelector(".byline").textContent= story.byline;
+          news.querySelector(".published span").textContent = (new Date(story.pubDate)).toLocaleDateString();
+          news.querySelector(".text").innerHTML = story.text.map(p => `<p>${p}<\p>`).join('');
+          news.querySelector("img").src = story.imageUrl;
+        }
+      );
+  }
+})(document);

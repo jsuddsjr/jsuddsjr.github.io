@@ -231,11 +231,7 @@ p.cats img {
 
 /* Menu navigation */
 nav {
-  position: sticky;
-  top: 0;
-  padding: 0;
-  background: transparent;
-  z-index: 100;
+  box-shadow: 0 4px 5px var(--body-text);
 }
 
 /* Break down menu items into vertical */
@@ -243,7 +239,6 @@ nav a {
   display: block;
   text-decoration: none;
   font-size: 0.8rem;
-  white-space: nowrap;
   padding: 8px 8px;
   text-align: center;
 }
@@ -252,7 +247,7 @@ nav a:link,
 nav a:visited {
   background-color: white;
   color: var(--body-text);
-  transition: all 300ms;
+  transition: all 600ms;
 }
 
 nav a:hover,
@@ -260,7 +255,7 @@ nav a:focus,
 nav a[href="#"] {
   background-color: var(--body-text);
   color: white;
-  transition: all 600ms;
+  transition: all 300ms ease-in;
 }
 
 /* Toggle Show/Hide Menu */
@@ -271,11 +266,10 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  box-shadow: 4px 4px 3px var(--body-text);
   height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: visibility 1ms, opacity 1s, height 1.2s ease;
+  transition: visibility 1ms, opacity 1s, height 1.2s ease-out;
 }
 
 /* hamburger menu (small screen) */
@@ -652,4 +646,16 @@ section.forecast .day:hover .overlay-popup {
 section.forecast .day img {
   width: 100%;
   min-width: 100%;
+}
+
+#news .published {
+  font-style: italic;
+}
+
+#news .byline {
+  font-weight: bold;
+}
+
+#news picture {
+  
 }

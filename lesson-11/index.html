@@ -31,7 +31,7 @@
     </nav>
 
     <main>
-      <section class="hero-img">
+      <!-- <section class="hero-img">
         <picture>
           <source
             srcset="https://loremflickr.com/600/240/rain,art"
@@ -43,8 +43,8 @@
           />
           <img src="https://loremflickr.com/960/300/rain,art" alt="Weather" />
         </picture>
-      </section>
-      <div class="column-layout">
+      </section> -->
+      <div class="column-layout" id="towns">
         <section class="town-info" id="preston">
           <a href="preston.html">
             <!-- Content from JSON. -->
@@ -89,13 +89,26 @@
       <section>
         <h2>Event calendar</h2>
       </section>
+
+      <section id="news">
+        <h2 class="title"></h2>
+        <div class="byline"></div>
+        <div class="published">Published: <span></span></div>
+        <picture>
+          <img
+            src="https://placekitten.com/400/300"
+            alt="Randomly generated cat image"
+            class="newsImage"
+          />
+        </picture>
+        <div class="text"></div>
+      </section>
     </main>
 
     <footer>
       <!-- See templates.js -->
     </footer>
     <script src="js/templates.js" defer></script>
-    <script src="js/updateTime.js" async></script>
     <script src="js/townInfo.js" async></script>
   </body>
 </html>
