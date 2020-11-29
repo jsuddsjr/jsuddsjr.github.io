@@ -30,26 +30,38 @@
       ></a>
     </div>
   </div>
-  <picture>
-    <source
-      srcset="https://loremflickr.com/600/240/map,idaho/all"
-      media="(max-width: 32.5em)"
-      width="600"
-      height="240"
-    />
-    <source
-      srcset="https://loremflickr.com/780/240/map,idaho/all"
-      media="(max-width: 50em)"
-      width="780"
-      height="240"
-    />
-    <img
-      src="https://loremflickr.com/960/300/map,idaho/all"
-      alt="Randomly generated farm related image"
-      width="960"
-      height="300"
-    />
-  </picture>
+  <div>
+    <iframe
+      width="500"
+      height="400"
+      frameborder="0"
+      src="https://www.bing.com/maps/embed?h=400&w=500&cp=42.192007858693344~-111.92710761455935&lvl=10&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
+      scrolling="no"
+    >
+    </iframe>
+    <div
+      style="
+        white-space: nowrap;
+        text-align: center;
+        width: 350px;
+        padding: 6px 0;
+      "
+    >
+      <a
+        id="largeMapLink"
+        target="_blank"
+        href="https://www.bing.com/maps?cp=42.192007858693344~-111.92710761455935&amp;sty=r&amp;lvl=10&amp;FORM=MBEDLD"
+        >View Larger Map</a
+      >
+      &nbsp; | &nbsp;
+      <a
+        id="dirMapLink"
+        target="_blank"
+        href="https://www.bing.com/maps/directions?cp=42.192007858693344~-111.92710761455935&amp;sty=r&amp;lvl=10&amp;rtp=~pos.42.192007858693344_-111.92710761455935____&amp;FORM=MBEDLD"
+        >Get Directions</a
+      >
+    </div>
+  </div>
 </div>
 
 <div class="bar">

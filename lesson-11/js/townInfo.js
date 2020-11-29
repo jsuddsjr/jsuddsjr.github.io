@@ -58,25 +58,38 @@
 
     /**
      * @typedef {Object} News
-     * @property {string} town
-     * @property {string} imageUrl
-     * @property {string} byline
+     * @property {String} town
+     * @property {String} imageUrl
+     * @property {String} byline
      * @property {String} pubDate
      * @property {String} title
      * @property {Array<String>} text
      */
 
+     // A filter for news stories from data-town attribute.
+    const filterNews = news.dataset.town
+      ? /**
+         * @param {News} story
+         * @param {Number} i
+         */
+        (story, i) => story.town === news.dataset.town
+      : (story, i) => i === 0;
+
     fetch(dataUrl)
       .then((response) => response.json())
       .then(
-        /** @param {Array<News>} data */ (data) => {
-          const story = data[0];
-          news.querySelector(".title").textContent = story.title;
-          news.querySelector(".byline").textContent= story.byline;
-          news.querySelector(".published span").textContent = (new Date(story.pubDate)).toLocaleDateString();
-          news.querySelector(".text").innerHTML = story.text.map(p => `<p>${p}<\p>`).join('');
-          news.querySelector("img").src = story.imageUrl;
-        }
+        /** @param {Array<News>} data */ (data) =>
+          data.filter(filterNews).forEach((story) => {
+            news.querySelector(".title").textContent = story.title;
+            news.querySelector(".byline").textContent = story.byline;
+            news.querySelector(".published span").textContent = new Date(
+              story.pubDate
+            ).toLocaleString();
+            news.querySelector(".text").innerHTML = story.text
+              .map((p) => `<p>${p}<\p>`)
+              .join("");
+            news.querySelector("img").src = story.imageUrl;
+          })
       );
   }
 })(document);
