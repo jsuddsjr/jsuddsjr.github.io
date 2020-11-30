@@ -41,6 +41,16 @@
     grid-column: 2/3;
   }
 
+  
+  aside.banner-box {
+    column-gap: 2rem;
+  }
+
+  aside.banner-box p {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
   .summary picture {
     height: 300px;
   }

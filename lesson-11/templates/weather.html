@@ -1,0 +1,36 @@
+<h3>Weather Summary</h3>
+<figure>
+  <figcaption>Current conditions</figcaption>
+  <!-- microdata -->
+  <div itemscope itemtype="http://schema.org/Weather" id="weather">
+    <div itemprop="temperature"></div>
+    <div>
+      <div
+        itemscope
+        itemtype="http://schema.org/Location"
+        itemprop="city"
+      ></div>
+      <div itemprop="conditions"></div>
+      <div id="range">
+        <span itemprop="high"></span>&deg; <span itemprop="low"></span>&deg;
+      </div>
+    </div>
+    <table>
+      <tr>
+        <td>Humidity:</td>
+        <td itemprop="humidity"></td>
+      </tr>
+      <tr>
+        <td>Wind Speed:</td>
+        <td itemprop="windSpeed"></td>
+      </tr>
+      <tr>
+        <td>Wind Chill:</td>
+        <td itemprop="windChill">N/A</td>
+      </tr>
+    </table>
+  </div>
+</figure>
+
+<script src="js/windchill.js" async></script>
+<script src="js/weatherapi.js" async></script>

@@ -1,5 +1,4 @@
 (function (d) {
-
   /** Source: https://openweathermap.org/api */
 
   /** @typedef {Object} WeatherData
@@ -61,19 +60,6 @@
    */
 
   /**
-   * Local representation for easy mapping to HTML.
-   * @typedef {Object} WeatherInfo
-   * @property {String} weekday      Day of the week
-   * @property {number} currentTemp  Current temperature
-   * @property {string} conditions   Brief description of weather
-   * @property {string} icon         URL path to weather symbol
-   * @property {number} high         High temperature
-   * @property {number} low          Low temperature
-   * @property {number} humidity     Humidity percentage
-   * @property {number} windSpeed    Wind speed
-   */
-
-  /**
    * Construct URL for weather API.
    * @param {string} townId
    * @param {"weather"|"forecast"} endpoint
@@ -98,10 +84,25 @@
   }
 
   /**
+   * Local representation for easy mapping to HTML.
+   * @typedef {Object} WeatherInfo
+   * @property {String} name         Name of the location
+   * @property {String} weekday      Day of the week
+   * @property {number} currentTemp  Current temperature
+   * @property {string} conditions   Brief description of weather
+   * @property {string} icon         URL path to weather symbol
+   * @property {number} high         High temperature
+   * @property {number} low          Low temperature
+   * @property {number} humidity     Humidity percentage
+   * @property {number} windSpeed    Wind speed
+   */
+
+  /**
    * @param {ForecastData} d
    * @returns {WeatherInfo}
    */
   const normalizeData = (d) => ({
+    name: d.name,
     // Convert date to weekday name.
     weekday: new Date(d.dt * 1000).toLocaleDateString("default", {
       weekday: "short",
@@ -117,7 +118,7 @@
 
   const forecast = d.querySelector(".forecast div");
   if (forecast) {
-    fetch(getUrl(townData.preston, "forecast"))
+    fetch(getUrl(townData[d.body.dataset.town || "preston"], "forecast"))
       .then((response) => response.json())
       .then(
         /** @param {RawData} data */ (data) =>
@@ -156,14 +157,16 @@
 
   const weather = d.getElementById("weather");
   if (weather) {
-    const temp = d.querySelector("[itemprop='temperature']");
-    const cond = d.querySelector("[itemprop='conditions']");
-    const high = d.querySelector("[itemprop='high']");
-    const low = d.querySelector("[itemprop='low']");
-    const humidity = d.querySelector("[itemprop='humidity']");
-    const ws = d.querySelector("[itemprop='windSpeed']");
 
-    fetch(getUrl(townData.preston))
+    const city = weather.querySelector("[itemprop='city']");
+    const temp = weather.querySelector("[itemprop='temperature']");
+    const cond = weather.querySelector("[itemprop='conditions']");
+    const high = weather.querySelector("[itemprop='high']");
+    const low = weather.querySelector("[itemprop='low']");
+    const humidity = weather.querySelector("[itemprop='humidity']");
+    const ws = weather.querySelector("[itemprop='windSpeed']");
+
+    fetch(getUrl(townData[d.body.dataset.town || "preston"]))
       .then((response) => response.json())
       .then(
         /** @param {ForecastData} data */
@@ -171,6 +174,7 @@
           // console.log(data);
           const info = normalizeData(data);
 
+          city.textContent = info.name;
           temp.innerHTML = info.currentTemp.toFixed(1) + "&deg;";
           cond.textContent = info.conditions;
           high.textContent = info.high.toFixed(0);

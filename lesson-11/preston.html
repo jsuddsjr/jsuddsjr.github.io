@@ -23,28 +23,26 @@
     />
   </head>
   <body data-town="preston">
-    <aside class="banner-box">
-      <div class="center">
-        <button type="button">Close</button>
-        <img
-          aria-hidden="true"
-          src="images/weathercat-small.svg"
-          alt="WeatherCats Logo"
-          height="36"
-          width="36"
-        />
-        <p>
-          Saturday = Preston Pancakes in the Park! 9:00 a.m. Saturday at the
-          city park pavilion.
-        </p>
-      </div>
-    </aside>
     <header>
       <!-- See templates.js -->
     </header>
     <nav>
       <!-- See templates.js -->
     </nav>
+    <aside class="banner-box show">
+      <img
+        aria-hidden="true"
+        src="images/weathercat-small.svg"
+        alt="WeatherCats Logo"
+        height="36"
+        width="36"
+      />
+      <p>
+        Saturday = Preston Pancakes in the Park! 9:00 a.m. Saturday at the city
+        park pavilion.
+      </p>
+      <button type="button">Dismiss</button>
+    </aside>
 
     <main>
       <h2>Preston, Idaho</h2>
@@ -64,43 +62,7 @@
           />
         </picture>
         <div class="overlay">
-          <h3>Weather Summary</h3>
-          <figure>
-            <figcaption>Current conditions</figcaption>
-            <!-- microdata -->
-            <div itemscope itemtype="http://schema.org/Weather" id="weather">
-              <div itemprop="temperature"></div>
-              <div>
-                <div
-                  id="city"
-                  itemscope
-                  itemtype="http://schema.org/Location"
-                  itemprop="city"
-                >
-                  Preston
-                </div>
-                <div itemprop="conditions">Sunny</div>
-                <div id="range">
-                  <span itemprop="high"></span>&deg;
-                  <span itemprop="low"></span>&deg;
-                </div>
-              </div>
-              <table>
-                <tr>
-                  <td>Humidity:</td>
-                  <td itemprop="humidity"></td>
-                </tr>
-                <tr>
-                  <td>Wind Speed:</td>
-                  <td itemprop="windSpeed"></td>
-                </tr>
-                <tr>
-                  <td>Wind Chill:</td>
-                  <td itemprop="windChill">N/A</td>
-                </tr>
-              </table>
-            </div>
-          </figure>
+          <!-- See templates.js -->
         </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, dolorem
@@ -152,7 +114,5 @@
     </footer>
     <script src="js/templates.js" defer></script>
     <script src="js/banner.js" async></script>
-    <script src="js/windchill.js" async></script>
-    <script src="js/weatherapi.js" async></script>
   </body>
 </html>

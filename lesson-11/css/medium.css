@@ -82,9 +82,9 @@
     width: 25%;
   }
 
-  .banner-box p {
-    font-size: 2rem;
-    line-height: 2rem;
+  aside.banner-box img {
+    display: block;
+    height: 36px;
   }
 
   .gallery {
@@ -134,7 +134,7 @@
 
   #news picture {
     float: right;
-    margin: 0 0 .5rem 1rem;
+    margin: 0 0 0.5rem 1rem;
     width: 50%;
   }
 }

@@ -114,10 +114,6 @@ section picture img {
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
-.forecast {
-  display: none;
-}
-
 .overlay figure {
   margin: 0 auto;
   display: grid;
@@ -356,50 +352,46 @@ nav ul.expanded {
 }
 
 aside.banner-box {
-  display: none;
-  position: absolute;
-  top: 2rem;
-  z-index: 999;
-  transform: scaleY(0);
-  transition: transform 1s ease-out;
-}
-
-aside.banner-box.show {
-  transform: scaleY(1);
-  transition: transform 2s ease-in;
-}
-
-aside.banner-box .center {
-  top: 50px;
-  margin: 0 auto;
-  width: 80%;
-  border: 3px solid var(--body-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: .8rem;
+  width: 100%;
+  border-bottom: 1px solid var(--body-text);
   background-color: var(--fade-bottom) !important;
   color: var(--body-text);
   box-sizing: border-box;
-  box-shadow: 5px 5px 30px var(--body-text);
+  box-shadow: 5px 5px 20px var(--body-text);
   overflow: hidden;
-  padding: 1rem;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+  max-height: 0;
+  transition: max-height 500ms ease-in;
+}
+
+aside.banner-box.show {
+  max-height: 15rem;
+  transition: max-height 1s ease-in;
 }
 
 aside.banner-box p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.5rem;
+  max-width: 600px;
 }
 
 aside.banner-box img {
-  height: 36px;
-  float: right;
+  display: none;
 }
 
 aside.banner-box button {
   background-color: white;
-  border: 0;
+  color: var(--body-text);
   cursor: pointer;
 }
 
 aside.banner-box button:hover {
-  background-color: black;
+  background-color: var(--body-text);
   color: white;
 }
 
@@ -655,4 +647,3 @@ section.forecast .day img {
 #news .byline {
   font-weight: bold;
 }
-

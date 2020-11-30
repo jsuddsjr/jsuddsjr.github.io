@@ -24,5 +24,6 @@
 
   // Nav depends on header.
   insertTemplate("header").then(() => insertTemplate("nav"));
+  insertTemplate("div.overlay", "weather");
   insertTemplate("footer");
 })(document);
