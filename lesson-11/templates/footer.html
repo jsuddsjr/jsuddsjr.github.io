@@ -32,10 +32,11 @@
   </div>
   <div>
     <iframe
+      id="bingMapsFrame"
       width="500"
       height="400"
       frameborder="0"
-      src="https://www.bing.com/maps/embed?h=400&w=500&cp=42.192007858693344~-111.92710761455935&lvl=10&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
+      src="https://www.bing.com/maps/embed?h=400&w=500&cp={{location}}&lvl=10&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
       scrolling="no"
     >
     </iframe>
@@ -50,14 +51,14 @@
       <a
         id="largeMapLink"
         target="_blank"
-        href="https://www.bing.com/maps?cp=42.192007858693344~-111.92710761455935&amp;sty=r&amp;lvl=10&amp;FORM=MBEDLD"
+        href="https://www.bing.com/maps?cp={{location}}&amp;sty=r&amp;lvl=10&amp;FORM=MBEDLD"
         >View Larger Map</a
       >
       &nbsp; | &nbsp;
       <a
         id="dirMapLink"
         target="_blank"
-        href="https://www.bing.com/maps/directions?cp=42.192007858693344~-111.92710761455935&amp;sty=r&amp;lvl=10&amp;rtp=~pos.42.192007858693344_-111.92710761455935____&amp;FORM=MBEDLD"
+        href="https://www.bing.com/maps/directions?cp={{location}}&amp;sty=r&amp;lvl=10&amp;rtp=~pos.42.192007858693344_-111.92710761455935____&amp;FORM=MBEDLD"
         >Get Directions</a
       >
     </div>
@@ -73,3 +74,4 @@
 </div>
 
 <script src="js/updateTime.js" async></script>
+<script src="js/mapLinks.js" async></script>
