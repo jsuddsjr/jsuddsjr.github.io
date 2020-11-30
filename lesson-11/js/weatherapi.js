@@ -67,14 +67,16 @@
    */
   const getUrl = (townId, endpoint = "weather", units = "imperial") => {
     const apiKey = "5d50935bc3ce8aa3de4654aabf285ea8";
-    return `https://api.openweathermap.org/data/2.5/${endpoint}?id=${townId}&units=${units}&appid=${apiKey}`;
+    return `https://api.openweathermap.org/data/2.5/${endpoint}?${townId}&units=${units}&appid=${apiKey}`;
   };
 
   /**
    * A lookup for town data.
    */
   const townData = {
-    preston: "5604473",
+    preston: "id=5604473",
+    "soda-springs": "id=5607916",
+    "fish-haven": "lat=42.0380399&lon=-111.4048681"
   };
 
   if (!String.toInitialCap) {
