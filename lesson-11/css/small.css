@@ -36,7 +36,7 @@ h1,
 h2,
 h3 {
   font-family: "Sansita Swashed", sans-serif;
-  margin: 1.2rem 0 .5rem;
+  margin: 1.2rem 0 0.5rem;
 }
 
 a {
@@ -560,25 +560,26 @@ section.town-info > div {
 section.town-info a {
   padding: 0;
   display: block;
-  width: 200px; 
+  min-width: 200px;
+  width: 70%;
   height: 300px;
-  border: 1px solid red;
   background-repeat: no-repeat;
-  background-position: 50% 0;
+  background-position: 50% 50%;
   justify-self: center;
 }
 
 #preston a {
-  background-image: url('../images/preston-450w.jpg');
+  background-image: url("../images/preston-450w.jpg");
 }
 
 #fish-haven a {
-  background-image: url('../images/fish-haven-450w.jpg');
+  background-image: url("../images/fish-haven-450w.jpg");
 }
 
 #soda-springs a {
-  background-image: url('../images/soda-springs-450w.jpg');
+  background-image: url("../images/soda-springs-450w.jpg");
 }
+
 section.town-info h2 {
   font-size: 2rem;
   margin-bottom: 0.4rem;

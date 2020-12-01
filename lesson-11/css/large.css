@@ -41,7 +41,11 @@
     grid-column: 2/3;
   }
 
-  
+  section.town-info > div {
+    height: 12rem;
+    margin-top: 0;
+  }
+
   aside.banner-box {
     column-gap: 2rem;
   }
@@ -154,7 +158,7 @@
   }
 
   .column-layout section a {
-    width: 200px;
+    width: 250px;
   }
 
 }

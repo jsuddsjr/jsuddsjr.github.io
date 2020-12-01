@@ -44,7 +44,7 @@
               townDiv.appendChild(pop);
 
               const rain = d.createElement("p");
-              rain.textContent = `Annual Rain Fall: ${t.averageRainfall}`;
+              rain.textContent = `Annual Rain Fall: ${t.averageRainfall} in.`;
               townDiv.appendChild(rain);
             }
             if (events && (d.body.dataset.town === id)) {
