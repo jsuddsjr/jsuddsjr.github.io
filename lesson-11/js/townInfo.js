@@ -90,7 +90,7 @@
               news.querySelector(".byline").textContent = story.byline;
               news.querySelector(".published span").textContent = new Date(
                 story.pubDate
-              ).toLocaleString();
+              ).toLocaleDateString();
               news.querySelector(".text").innerHTML = story.text
                 .map((p) => `<p>${p}<\p>`)
                 .join("");
