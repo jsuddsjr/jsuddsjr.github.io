@@ -633,7 +633,6 @@ section.forecast .day .overlay-popup {
   section.forecast .day .overlay-popup {
     height: 50%;
     top: 25%;
-    border: 1px solid red;
   }
 }
 
