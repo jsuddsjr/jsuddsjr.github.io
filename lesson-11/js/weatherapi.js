@@ -128,8 +128,6 @@
             .filter((d) => d.dt_txt.indexOf("18:00:00") > 0)
             .map(normalizeData)
             .forEach((info) => {
-              // console.log(info);
-
               const div = d.createElement("DIV");
               div.className = "day";
 
@@ -173,7 +171,6 @@
       .then(
         /** @param {ForecastData} data */
         (data) => {
-          // console.log(data);
           const info = normalizeData(data);
 
           city.textContent = info.name;

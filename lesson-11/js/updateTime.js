@@ -15,26 +15,16 @@
     };
 
     const docDate = new Date(document.lastModified);
+    const year = document.getElementById("year");
+    if (year) year.textContent = docDate.getFullYear();
 
-    try {
-      document.getElementById("year").textContent = docDate.getFullYear();
-      // document.getElementById("time").textContent = docDate.toLocaleDateString(
-      //   undefined, // Varies according to browser locale.
-      //   fullDateOptions
-      // );
+    // Get date elements from Intl object, and convert array to object keys.
+    const p = new Intl.DateTimeFormat("default", dateOptions)
+      .formatToParts()
+      .reduce((p, c) => ((p[c.type] = c.value), p), {});
 
-      // Get date elements from Intl object, and convert array to object keys.
-      const p = new Intl.DateTimeFormat("default", dateOptions)
-        .formatToParts()
-        .reduce((p, c) => ((p[c.type] = c.value), p), {});
-
-      // Format date according to homework requirements.
-      document.getElementById(
-        "date"
-      ).textContent = `${p.weekday}, ${p.day} ${p.month}, ${p.year}`;
-
-    } catch (err) {
-      alert(err);
-    }
+    // Format date according to homework requirements.
+    const date = document.getElementById("date");
+    if (date) date.textContent = `${p.weekday}, ${p.day} ${p.month}, ${p.year}`;
   };
 })();
