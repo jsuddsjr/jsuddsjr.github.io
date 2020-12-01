@@ -52,10 +52,7 @@
             srcset="images/preston-450w.jpg"
             media="(max-width: 32.5em)"
           />
-          <source
-            srcset="images/preston-800w.jpg"
-            media="(max-width: 48em)"
-          />
+          <source srcset="images/preston-800w.jpg" media="(max-width: 48em)" />
           <img
             src="images/preston-large.JPG"
             alt="Icy pond and snow mountains, Preston, Idaho"
@@ -75,37 +72,18 @@
         <h3>5 Day Forecast</h3>
         <div><!-- This area will be filled by code. --></div>
       </section>
-      <section class="article">
-        <h3>Article</h3>
+      <section id="news">
+        <h2 class="title"></h2>
+        <div class="byline"></div>
+        <div class="published">Published: <span></span></div>
         <picture>
-          <source
-            srcset="https://placekitten.com/600/240"
-            media="(max-width: 32.5em)"
-          />
-          <source
-            srcset="https://placekitten.com/780/240"
-            media="(max-width: 50em)"
-          />
           <img
             src="https://placekitten.com/400/300"
             alt="Randomly generated cat image"
+            class="newsImage"
           />
         </picture>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, unde
-          corporis. Laudantium a quo minus voluptatum, quod pariatur doloribus
-          magni cumque eius facilis debitis ipsum soluta minima, quae harum
-          adipisci!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, saepe
-          voluptas? Aspernatur eum, nostrum perferendis neque numquam fugit
-          dolor eveniet est quos ullam repellendus ratione repellat officia enim
-          exercitationem laboriosam? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Voluptates animi, eaque dolor aliquid vero explicabo
-          eum adipisci amet. Inventore, laborum et consectetur id in aut!
-          Voluptatem distinctio ratione dignissimos qui.
-        </p>
+        <div class="text"></div>
       </section>
     </main>
 
@@ -114,5 +92,6 @@
     </footer>
     <script src="js/templates.js" defer></script>
     <script src="js/banner.js" async></script>
+    <script src="js/townInfo.js" async></script>
   </body>
 </html>

@@ -66,30 +66,26 @@
      * @property {Array<String>} text
      */
 
-     // A filter for news stories from data-town attribute.
-    const filterNews = news.dataset.town
-      ? /**
-         * @param {News} story
-         * @param {Number} i
-         */
-        (story, i) => story.town === news.dataset.town
-      : (story, i) => i === 0;
-
+    // A filter for news stories from data-town attribute.
+    const selectedTown = news.dataset.town || d.body.dataset.town || "preston";
+    
     fetch(dataUrl)
       .then((response) => response.json())
       .then(
         /** @param {Array<News>} data */ (data) =>
-          data.filter(filterNews).forEach((story) => {
-            news.querySelector(".title").textContent = story.title;
-            news.querySelector(".byline").textContent = story.byline;
-            news.querySelector(".published span").textContent = new Date(
-              story.pubDate
-            ).toLocaleString();
-            news.querySelector(".text").innerHTML = story.text
-              .map((p) => `<p>${p}<\p>`)
-              .join("");
-            news.querySelector("img").src = story.imageUrl;
-          })
+          data
+            .filter((story) => story.town === selectedTown)
+            .forEach((story) => {
+              news.querySelector(".title").textContent = story.title;
+              news.querySelector(".byline").textContent = story.byline;
+              news.querySelector(".published span").textContent = new Date(
+                story.pubDate
+              ).toLocaleString();
+              news.querySelector(".text").innerHTML = story.text
+                .map((p) => `<p>${p}<\p>`)
+                .join("");
+              news.querySelector("img").src = story.imageUrl;
+            })
       );
   }
 })(document);

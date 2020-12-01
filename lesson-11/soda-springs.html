@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="css/small.css" />
     <link rel="stylesheet" href="css/medium.css" media="(min-width: 32.5em)" />
     <link rel="stylesheet" href="css/large.css" media="(min-width: 48em)" />
-    <meta name="description" content="Catch up on weather and more from Soda Springs, Idaho." />
+    <meta
+      name="description"
+      content="Catch up on weather and more from Soda Springs, Idaho."
+    />
   </head>
 
   <body data-town="soda-springs">
@@ -29,40 +32,55 @@
     </nav>
 
     <main>
-        <h2>Soda Springs</h2>
-        <section class="summary">
-            <picture>
-              <source
-                srcset="images/soda-springs-450w.jpg"
-                media="(max-width: 32.5em)"
-              />
-              <source
-                srcset="images/soda-springs-800w.jpg"
-                media="(max-width: 48em)"
-              />
-              <img
-                src="images/soda-springs-large.jpg"
-                alt="Soda geyser in Soda Springs, Idaho"
-              />
-            </picture>
-            <div class="overlay">
-              <!-- See templates.js -->
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, dolorem
-              quidem libero dolorum laudantium sapiente fugiat inventore minus
-              mollitia ipsa aliquam. Et earum quisquam molestiae fugit neque
-              perferendis dolorem facere?
-            </p>
-          </section>
-          <section class="forecast">
-            <h3>5 Day Forecast</h3>
-            <div><!-- This area will be filled by code. --></div>
-          </section>    </main>
+      <h2>Soda Springs</h2>
+      <section class="summary">
+        <picture>
+          <source
+            srcset="images/soda-springs-450w.jpg"
+            media="(max-width: 32.5em)"
+          />
+          <source
+            srcset="images/soda-springs-800w.jpg"
+            media="(max-width: 48em)"
+          />
+          <img
+            src="images/soda-springs-large.jpg"
+            alt="Soda geyser in Soda Springs, Idaho"
+          />
+        </picture>
+        <div class="overlay">
+          <!-- See templates.js -->
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, dolorem
+          quidem libero dolorum laudantium sapiente fugiat inventore minus
+          mollitia ipsa aliquam. Et earum quisquam molestiae fugit neque
+          perferendis dolorem facere?
+        </p>
+      </section>
+      <section class="forecast">
+        <h3>5 Day Forecast</h3>
+        <div><!-- This area will be filled by code. --></div>
+      </section>
+      <section id="news">
+        <h2 class="title"></h2>
+        <div class="byline"></div>
+        <div class="published">Published: <span></span></div>
+        <picture>
+          <img
+            src="https://placekitten.com/400/300"
+            alt="Randomly generated cat image"
+            class="newsImage"
+          />
+        </picture>
+        <div class="text"></div>
+      </section>
+    </main>
 
     <footer>
       <!-- See templates.js -->
     </footer>
     <script src="js/templates.js" defer></script>
+    <script src="js/townInfo.js" async></script>
   </body>
 </html>
