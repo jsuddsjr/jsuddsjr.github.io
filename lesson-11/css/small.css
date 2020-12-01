@@ -36,7 +36,7 @@ h1,
 h2,
 h3 {
   font-family: "Sansita Swashed", sans-serif;
-  margin: 0.5rem 0 1.2rem;
+  margin: 1.2rem 0 .5rem;
 }
 
 a {
@@ -195,7 +195,7 @@ footer .contact .phone {
     url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
 }
 
-footer picture {
+footer img {
   display: block;
   overflow: hidden;
   margin: 0 auto;
