@@ -155,11 +155,6 @@
 
   .column-layout section a {
     width: 200px;
-    display: inline;
-  }
-
-  .column-layout section img {
-    margin-top: 1rem;
   }
 
 }

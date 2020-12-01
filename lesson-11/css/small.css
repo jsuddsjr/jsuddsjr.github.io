@@ -542,24 +542,43 @@ section.town-info {
   grid-template-columns: 1fr;
 }
 
-section.town-info a {
+section.town-info > div {
   display: flex;
   flex-flow: column;
   justify-content: center;
 
-  text-decoration: none;
   color: var(--body-text);
   text-align: center;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   font-size: 0.8rem;
 
   grid-row-start: 2;
-  margin-top: -2rem;
   z-index: 1;
-
-  background-color: rgba(255, 255, 255, 0.6);
+  margin-top: -15px;
 }
 
+section.town-info a {
+  padding: 0;
+  display: block;
+  width: 200px; 
+  height: 300px;
+  border: 1px solid red;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  justify-self: center;
+}
+
+#preston a {
+  background-image: url('../images/preston-450w.jpg');
+}
+
+#fish-haven a {
+  background-image: url('../images/fish-haven-450w.jpg');
+}
+
+#soda-springs a {
+  background-image: url('../images/soda-springs-450w.jpg');
+}
 section.town-info h2 {
   font-size: 2rem;
   margin-bottom: 0.4rem;
@@ -648,5 +667,3 @@ section.forecast .day img {
 #news .byline {
   font-weight: bold;
 }
-
-@media;

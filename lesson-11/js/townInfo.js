@@ -24,30 +24,28 @@
         (json) => {
           json.towns.forEach((t) => {
             const id = t.name.replace(" ", "-").toLowerCase();
-            const a = d.querySelector(`#${id} a`);
-            if (a) {
-              a.innerHTML = "";
-
+            const townDiv = d.querySelector(`#${id} div`);
+            if (townDiv) {
               const h2 = d.createElement("h2");
               h2.textContent = t.name;
-              a.appendChild(h2);
+              townDiv.appendChild(h2);
 
               const div = d.createElement("div");
               div.className = "motto";
               div.textContent = t.motto;
-              a.appendChild(div);
+              townDiv.appendChild(div);
 
               const year = d.createElement("p");
               year.textContent = `Year Founded: ${t.yearFounded}`;
-              a.appendChild(year);
+              townDiv.appendChild(year);
 
               const pop = d.createElement("p");
               pop.textContent = `Population: ${t.currentPopulation}`;
-              a.appendChild(pop);
+              townDiv.appendChild(pop);
 
               const rain = d.createElement("p");
               rain.textContent = `Annual Rain Fall: ${t.averageRainfall}`;
-              a.appendChild(rain);
+              townDiv.appendChild(rain);
             }
             if (events && (d.body.dataset.town === id)) {
               const ul = events.querySelector("ul");
