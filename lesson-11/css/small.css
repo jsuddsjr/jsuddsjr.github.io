@@ -298,8 +298,7 @@ nav ul.expanded {
 
 /* microdata */
 
-[itemtype='http://schema.org/Weather']
-{
+#weather {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -318,13 +317,13 @@ nav ul.expanded {
 }
 
 [itemprop="city"] {
-  font-size: 28px;
+  font-size: 2rem;
+  line-height: 2.2rem;
   text-align: center;
 }
 
 [itemprop="conditions"],
 #range {
-  margin-bottom: -5px;
   text-align: center;
 }
 
@@ -336,18 +335,7 @@ nav ul.expanded {
   content: "↓";
 }
 
-#weather table {
-  border-collapse: collapse;
-  margin-top: 10px;
-  width: 100%;
-}
-
-#weather table td {
-  width: 50%;
-}
-
-#weather table td:nth-child(1) {
-  text-align: right;
+#weather .heading {
   font-weight: bold;
 }
 
@@ -355,7 +343,7 @@ aside.banner-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: .8rem;
+  column-gap: 0.8rem;
   width: 100%;
   border-bottom: 1px solid var(--body-text);
   background-color: var(--fade-bottom) !important;
@@ -591,14 +579,15 @@ section.town-info p {
   margin: 0;
 }
 
-section.forecast > div {
+section.forecast div {
   display: flex;
-  column-gap: 5px;
+  justify-content: space-around;
 }
 
 section.forecast .day {
   position: relative;
   display: flex;
+  width: 20%;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.3);
   overflow: hidden;
@@ -618,21 +607,34 @@ section.forecast .day .overlay-popup {
   left: 0;
   padding: 0;
   align-items: center;
-  backdrop-filter: blur(3px);
   font-weight: bold;
-  height: 105%;
   width: 100%;
-  top: 100%;
   color: white;
   text-align: center;
   text-shadow: 2px 2px 5px var(--body-text);
-  background-color: rgba(0, 0, 0, 0.3);
   transition: top 500ms ease-in-out;
 }
 
-section.forecast .day:hover .overlay-popup {
-  top: 0;
-  transition: top 250ms ease-in-out;
+@media (hover: hover) {
+  section.forecast .day .overlay-popup {
+    height: 105%;
+    top: 100%;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: top 500ms ease-in-out;
+  }
+  section.forecast .day:hover .overlay-popup {
+    top: 0;
+    transition: top 250ms ease-in-out;
+  }
+}
+
+@media (hover: none) {
+  section.forecast .day .overlay-popup {
+    height: 50%;
+    top: 25%;
+    border: 1px solid red;
+  }
 }
 
 section.forecast .day img {
@@ -647,3 +649,5 @@ section.forecast .day img {
 #news .byline {
   font-weight: bold;
 }
+
+@media;
