@@ -8,6 +8,7 @@
   --fade-bottom: #f8ae8b;
   --link: #40408c;
   --hover-link: #4182dc;
+  --linear-fade: linear-gradient(var(--fade-top), var(--fade-bottom));
 }
 
 /* Basic styles */
@@ -21,7 +22,7 @@ html {
 
 body {
   background-attachment: fixed;
-  background-image: linear-gradient(var(--fade-top), var(--fade-bottom));
+  background-image: var(--linear-fade);
   color: var(--body-text);
   font-family: "Montserrat", sans-serif;
   font-size: 0.8em;
@@ -501,11 +502,12 @@ input[type="radio"]:checked + label {
 button[type="submit"] {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-image: linear-gradient(var(--fade-top), var(--fade-bottom));
+  border-radius: 5px;;
 }
 
 button[type="submit"]:hover {
-  background-image: linear-gradient(var(--fade-bottom), var(--fade-top));
+  background-color: black;
+  color: white;
 }
 
 input::-webkit-datetime-edit,

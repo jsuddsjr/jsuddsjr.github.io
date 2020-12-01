@@ -26,6 +26,8 @@
             const id = t.name.replace(" ", "-").toLowerCase();
             const townDiv = d.querySelector(`#${id} div`);
             if (townDiv) {
+              townDiv.innerHTML = "";
+              
               const h2 = d.createElement("h2");
               h2.textContent = t.name;
               townDiv.appendChild(h2);
