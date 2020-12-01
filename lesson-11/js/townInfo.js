@@ -1,6 +1,8 @@
 (function (d) {
   const towns = d.getElementById("towns");
-  if (towns) {
+  const events = d.getElementById("events");
+
+  if (events || towns) {
     const townInfoUrl =
       "https://byui-cit230.github.io/weather/data/towndata.json";
 
@@ -47,6 +49,14 @@
               rain.textContent = `Annual Rain Fall: ${t.averageRainfall}`;
               a.appendChild(rain);
             }
+            if (events && (d.body.dataset.town === id)) {
+              const ul = events.querySelector("ul");
+              t.events.forEach(ev => {
+                const li = d.createElement('LI');
+                li.textContent = ev;
+                ul.appendChild(li);
+              })
+            }
           });
         }
       );
@@ -68,7 +78,7 @@
 
     // A filter for news stories from data-town attribute.
     const selectedTown = news.dataset.town || d.body.dataset.town || "preston";
-    
+
     fetch(dataUrl)
       .then((response) => response.json())
       .then(
