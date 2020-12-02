@@ -65,6 +65,8 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
+
+    box-shadow: none;
   }
 
   nav li {

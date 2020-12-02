@@ -35,6 +35,7 @@
       <section>
         <h2>Storm Center Form</h2>
         <form action="./thanks.html">
+          <h3>Contact Info</h3>
           <fieldset>
             <!-- full name using input of type text and is required and only accepts alpha characters with a minimum of five characters using a regular expression pattern -->
             <input
@@ -78,6 +79,7 @@
             />
             <label for="zip">Zip</label>
           </fieldset>
+          <h3>Storm Info</h3>
           <fieldset>
             <!-- storm date using input of type date   -->
             <input
@@ -137,6 +139,7 @@
             </select>
             <label for="region">Region</label>
           </fieldset>
+          <h3>More info</h3>
           <fieldset>
             <!-- user in-danger level using input of type radio with options and values of "yes," "maybe," and "no." -->
             <fieldset class="radio">
@@ -168,7 +171,10 @@
             <label for="info">More information</label>
           </fieldset>
           <!-- button using input of type submit -->
-          <button type="submit">Submit</button>
+          <p>
+            <button type="submit">Submit</button>
+            <button type="reset">Clear form</button>
+          </p>
         </form>
       </section>
     </main>

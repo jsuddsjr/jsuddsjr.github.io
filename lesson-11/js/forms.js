@@ -31,8 +31,6 @@
     script.src =
       "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js";
     script.addEventListener("load", (e) => {
-      // Set minimum date input to today.
-      const dateNow = moment(Date.now()).format().substring(0, 10);
       dateInputs.forEach(
         /** @param {HTMLInputElement} el */
         (el) => {
@@ -42,7 +40,7 @@
               el.dataset.dateFormat || moment.localeData().longDateFormat("L")
             );
           });
-          el.min = el.value = dateNow;
+          el.value = moment(Date.now()).format().substring(0, 10);;
           el.dispatchEvent(new Event("change"));
         }
       );
@@ -50,4 +48,16 @@
 
     d.body.append(script);
   }
+
+  /** @type {HTMLSelectElement} */
+  const stormType = d.getElementById("stype");
+  /** @type {HTMLTextAreaElement} */
+  const moreInfo = d.getElementById("info");
+  if (stormType && moreInfo) {
+    stormType.addEventListener("change", (e) => {
+      moreInfo.required = stormType.value === "Other";
+    })
+  }
+
+
 })(document);
