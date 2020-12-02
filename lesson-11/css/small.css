@@ -354,7 +354,7 @@ aside.banner-box {
   box-sizing: border-box;
   box-shadow: 5px 5px 20px var(--body-text);
   overflow: hidden;
-  padding: 0 -1rem;
+  padding: 0 0.8rem;
   margin-bottom: 2rem;
   max-height: 0;
   transition: max-height 500ms ease-in;
@@ -366,8 +366,8 @@ aside.banner-box.show {
 }
 
 aside.banner-box p {
-  font-size: 1.2rem;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.2rem;
   max-width: 600px;
 }
 
@@ -540,7 +540,6 @@ form {
   flex-direction: column;
   align-items: center;
 }
-
 
 table.debug {
   border-collapse: collapse;
