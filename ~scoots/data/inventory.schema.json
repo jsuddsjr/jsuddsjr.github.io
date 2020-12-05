@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "description": "The inventory schema comprises the entire JSON document.",
+  "required": ["inventory"],
+  "properties": {
+    "inventory": {
+      "$id": "#/properties/inventory",
+      "type": "array",
+      "items": {
+        "$id": "#/properties/inventory/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/inventory/items/anyOf/0",
+            "type": "object",
+            "description": "An inventory item.",
+            "required": ["imageBase", "type", "persons", "cost"],
+            "properties": {
+              "imageBase": {
+                "$id": "#/properties/inventory/items/anyOf/0/properties/imageBase",
+                "type": "string",
+                "description": "Base name of imageBase."
+              },
+              "type": {
+                "$id": "#/properties/inventory/items/anyOf/0/properties/type",
+                "type": "string",
+                "description": "Inventory item type."
+              },
+              "description": {
+                "$id": "#/properties/inventory/items/anyOf/0/properties/description",
+                "type": "string",
+                "description": "Inventory item expanded description."
+              },
+              "persons": {
+                "$id": "#/properties/inventory/items/anyOf/0/properties/persons",
+                "type": "integer",
+                "description": "Number of people who can use."
+              },
+              "cost": {
+                "$id": "#/properties/inventory/items/anyOf/0/properties/cost",
+                "type": "object",
+                "description": "Cost per rental type.",
+                "required": ["reservation", "walk-in"],
+                "properties": {
+                  "reservation": {
+                    "$id": "#/properties/inventory/items/anyOf/0/properties/cost/properties/reservation",
+                    "type": "object",
+                    "description": "Period of time per day.",
+                    "required": ["half", "full"],
+                    "properties": {
+                      "half": {
+                        "$id": "#/properties/inventory/items/anyOf/0/properties/cost/properties/reservation/properties/half",
+                        "type": "integer",
+                        "description": "Half day rental."
+                      },
+                      "full": {
+                        "$id": "#/properties/inventory/items/anyOf/0/properties/cost/properties/reservation/properties/full",
+                        "type": "integer",
+                        "description": "Full day rental."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "walk-in": {
+                    "$ref": "#/properties/inventory/items/anyOf/0/properties/cost/properties/reservation",
+                    "type": "object",
+                    "description": "Walk-in, no reservation."
+                  }
+                }
+              },
+              "countAvailable": {
+                "$id": "#/properties/inventory/items/anyOf/0/properties/countAvailable",
+                "type": "number",
+                "description": "Items remaining in inventory."
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "./inventory.schema.json",
+  "inventory": [
+    {
+      "imageBase": "honda-metro-scooter",
+      "type": "~Honda Metro Scooter",
+      "description": "",
+      "persons": 1,
+      "cost": {
+        "reservation": {
+          "half": 20,
+          "full": 30
+        },
+        "walk-in": {
+          "half": 25,
+          "full": 35
+        }
+      }
+    },
+    {
+      "imageBase": "honda-dio-scooter",
+      "type": "~Honda Dio Scooter",
+      "persons": 2,
+      "cost": {
+        "reservation": {
+          "half": 30,
+          "full": 40
+        },
+        "walk-in": {
+          "half": 35,
+          "full": 45
+        }
+      }
+    },
+    {
+      "imageBase": "honda-pcx150-scooter",
+      "type": "~Honda PCX150 Scooter",
+      "persons": 2,
+      "cost": {
+        "reservation": {
+          "half": 40,
+          "full": 50
+        },
+        "walk-in": {
+          "half": 45,
+          "full": 55
+        }
+      }
+    },
+    {
+      "imageBase": "honda-pioneer-atv",
+      "type": "Honda Pioneer ATV",
+      "persons": 4,
+      "cost": {
+        "reservation": {
+          "half": 50,
+          "full": 70
+        },
+        "walk-in": {
+          "half": 60,
+          "full": 80
+        }
+      }
+    },
+    {
+      "imageBase": "jeep-wrangler-4door",
+      "type": "Jeep Wrangler - 4 door",
+      "description": "with a/c",
+      "persons": 5,
+      "cost": {
+        "reservation": {
+          "half": 70,
+          "full": 100
+        },
+        "walk-in": {
+          "half": 85,
+          "full": 125
+        }
+      }
+    },
+    {
+      "imageBase": "jeep-wrangler-2door",
+      "type": "Jeep Wrangler - 2 door",
+      "description": "with a/c",
+      "persons": 4,
+      "cost": {
+        "reservation": {
+          "half": 60,
+          "full": 85
+        },
+        "walk-in": {
+          "half": 70,
+          "full": 90
+        }
+      }
+    }
+  ]
+}
