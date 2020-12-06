@@ -7,8 +7,10 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!-- Load Google fonts asynchronously. -->
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Montez&family=Open+Sans&display=swap"
+      onload="this.onload=null; this.rel='stylesheet'"
     />
     <link
       rel="stylesheet"

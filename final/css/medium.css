@@ -1,0 +1,10 @@
+@media screen and (min-width: 32rem) {
+  body {
+    font-size: 14pt;
+    line-height: 1.8rem;
+  }
+
+  .colors {
+      font-size: 100%;
+  }
+}
