@@ -61,7 +61,7 @@ p, ul {
   max-width: 80%;
 }
 
-/* RULES FOR SITE PAGE */
+/* RULES FOR SITE PLAN */
 .domain {
   font-family: monospace;
 
@@ -105,4 +105,9 @@ p, ul {
 .colors td:nth-child(5) {
   background-color: var(--playa-light);
   color: var(--body-text);
+}
+
+.wireframes img {
+  width: 80%;
+  max-width: 500px;
 }
