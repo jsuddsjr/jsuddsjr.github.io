@@ -1,35 +1,111 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+:root {
+  --body-text: #038387;
+  --link-color: #298fcf;
+  --link-hover: #023f8a;
+  --playa: #897362;
+  --playa-light: #eee6de;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-
-    font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12pt;
+  line-height: 1.6rem;
+  background-color: white;
+  color: var(--body-text);
+  background-color: white;
+  min-width: 280px;
 }
 
-h1,h2, h3 {
-    font-family: Montez, cursive;
+body,
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-p {
-    margin-bottom: 1rem;
-    line-height: 1.25rem;
-    font-size: .9375rem;
-    max-width: 48ch;
+img {
+    max-width: 100%;
+}
+section {
+  padding: 1rem 0;
+  width: 100%;
+}
+
+section:nth-child(odd) {
+  background-color: var(--playa-light);
+}
+
+
+h1,
+h2,
+h3 {
+  font-family: Montez, cursive;
+  margin: 10pt 0 4pt;
 }
 
 a {
-    color: #038387;
-    text-decoration: none;
+  color: var(--link-color);
+  text-decoration: none;
+  padding-left: 1.6rem;
+  margin-left: -3px;
+  background: url('../images/palm-tree-icon.png') no-repeat 0 50%;
+  background-size: contain;
 }
 
+/* a::before {
+    content: '🌴';
+    font-size: .8rem;
+    display: inline-block;
+} */
+
 a:hover {
-    text-decoration: underline;
+  color: var(--link-hover);
+  text-decoration: underline wavy var(--link-color);
+}
+
+p, ul {
+  max-width: 80%;
+}
+
+/* RULES FOR SITE PAGE */
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.colors {
+  width: 80%;
+}
+
+.colors tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.colors td {
+  color: white;
+  padding: 0.5rem .5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.colors td:nth-child(1) {
+  background-color: var(--body-text);
+}
+.colors td:nth-child(2) {
+  background-color: var(--link-color);
+}
+.colors td:nth-child(3) {
+  background-color: var(--link-hover);
+}
+.colors td:nth-child(4) {
+  background-color: var(--playa);
+}
+.colors td:nth-child(5) {
+  background-color: var(--playa-light);
+  color: var(--body-text);
 }
