@@ -21,12 +21,8 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-img {
-    max-width: 100%;
-}
 section {
   padding: 1rem 0;
   width: 100%;
@@ -36,6 +32,9 @@ section:nth-child(odd) {
   background-color: var(--playa-light);
 }
 
+img {
+    max-width: 100%;
+}
 
 h1,
 h2,
@@ -53,12 +52,6 @@ a {
   background-size: contain;
 }
 
-/* a::before {
-    content: '🌴';
-    font-size: .8rem;
-    display: inline-block;
-} */
-
 a:hover {
   color: var(--link-hover);
   text-decoration: underline wavy var(--link-color);
@@ -69,6 +62,10 @@ p, ul {
 }
 
 /* RULES FOR SITE PAGE */
+.domain {
+  font-family: monospace;
+
+}
 .images {
   display: flex;
   flex-wrap: wrap;
