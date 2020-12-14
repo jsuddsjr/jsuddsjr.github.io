@@ -6,6 +6,10 @@
   --playa-light: #eee6de;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 12pt;
@@ -27,6 +31,7 @@ section {
 img {
     max-width: 100%;
 }
+
 section {
   padding: 1rem 0;
   width: 100%;
@@ -35,7 +40,6 @@ section {
 section:nth-child(odd) {
   background-color: var(--playa-light);
 }
-
 
 h1,
 h2,

@@ -1,0 +1,150 @@
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+#main-menu {
+  position: relative;
+  font-family: "Montez", cursive;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+#main-menu li {
+  position: relative;
+  min-width: 110px;
+  text-align: center;
+}
+
+#main-menu li a {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: var(--body-text);
+  background: var(--playa-light);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+#main-menu .drop-menu {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 2.5rem;
+}
+
+#main-menu .drop-menu div {
+  -webkit-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  -webkit-transition: all 500ms 0.1s;
+  transition: all 500ms 0.1s;
+}
+
+#main-menu .drop-menu a {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  padding: 0 5px !important;
+}
+
+#main-menu .drop-menu a:hover {
+  color: var(--playa-light) !important;
+  background: var(--body-text) !important;
+}
+
+#main-menu #marker {
+  height: 100%;
+  background: var(--body-text);
+  position: absolute;
+  top: 0;
+  border-radius: 5px;
+  width: 110px;
+  z-index: -2;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+#main-menu li:nth-child(1).active ~ #marker {
+  -webkit-transform: translate(0px, 0);
+          transform: translate(0px, 0);
+}
+
+#main-menu li:nth-child(2).active ~ #marker {
+  -webkit-transform: translate(110px, 0);
+          transform: translate(110px, 0);
+}
+
+#main-menu li:nth-child(3).active ~ #marker {
+  -webkit-transform: translate(220px, 0);
+          transform: translate(220px, 0);
+}
+
+#main-menu li:nth-child(4).active ~ #marker {
+  -webkit-transform: translate(330px, 0);
+          transform: translate(330px, 0);
+}
+
+#main-menu li:nth-child(5).active ~ #marker {
+  -webkit-transform: translate(440px, 0);
+          transform: translate(440px, 0);
+}
+
+#main-menu li:nth-child(1):hover .drop-menu div {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+#main-menu li:nth-child(1):hover ~ #marker {
+  -webkit-transform: translate(0px, 0);
+          transform: translate(0px, 0);
+}
+
+#main-menu li:nth-child(2):hover .drop-menu div {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+#main-menu li:nth-child(2):hover ~ #marker {
+  -webkit-transform: translate(110px, 0);
+          transform: translate(110px, 0);
+}
+
+#main-menu li:nth-child(3):hover .drop-menu div {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+#main-menu li:nth-child(3):hover ~ #marker {
+  -webkit-transform: translate(220px, 0);
+          transform: translate(220px, 0);
+}
+
+#main-menu li:nth-child(4):hover .drop-menu div {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+#main-menu li:nth-child(4):hover ~ #marker {
+  -webkit-transform: translate(330px, 0);
+          transform: translate(330px, 0);
+}
+
+#main-menu li:nth-child(5):hover .drop-menu div {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+#main-menu li:nth-child(5):hover ~ #marker {
+  -webkit-transform: translate(440px, 0);
+          transform: translate(440px, 0);
+}
+/*# sourceMappingURL=menu-slide.css.map */
