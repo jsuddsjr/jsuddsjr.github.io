@@ -16,6 +16,10 @@ $items: 5;
   transition: ($value);
 }
 
+nav {
+  width: 100%;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
@@ -48,15 +52,19 @@ nav ul {
     overflow: hidden;
     position: absolute;
     left: 0;
-    top: 2.5rem;
+    top: 2.8rem;
     div {
+      opacity: 0;
+      box-shadow: 0 10px 15px var(--body-text);
+      border: 1px solid var(--body-text);
       @include transform(translate(0, -100%));
       @include transition(all 500ms 0.1s);
     }
     a {
       text-align: left;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
+      font-family: "Open Sans", sans-serif;
+      font-size: 0.8rem;
+      line-height: 1.5rem;
       padding: 0 5px !important;
     }
     a:hover {
@@ -86,10 +94,52 @@ nav ul {
 @for $i from 1 through $items {
   #main-menu li:nth-child(#{$i}) {
     &:hover .drop-menu div {
+      opacity: 1;
       @include transform(translate(0, 0));
     }
     &:hover ~ #marker {
       @include transform(translate(#{(-1 + $i) * $min-width}, 0));
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  $min-width: 80px;
+
+  #main-menu {
+    font-size: 1.2rem;
+
+    li {
+      min-width: $min-width;
+    }
+
+    .drop-menu {
+      top: 2.5rem;
+      a {
+        font-size: 0.6rem;
+      }
+    }
+
+    #marker {
+      width: $min-width;
+    }
+  }
+
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}).active ~ #marker {
+      @include transform(translate(#{(-1 + $i) * $min-width}, 0));
+    }
+  }
+
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}) {
+      &:hover .drop-menu div {
+        opacity: 1;
+        @include transform(translate(0, 0));
+      }
+      &:hover ~ #marker {
+        @include transform(translate(#{(-1 + $i) * $min-width}, 0));
+      }
     }
   }
 }

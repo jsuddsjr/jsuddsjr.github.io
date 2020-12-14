@@ -1,3 +1,7 @@
+nav {
+  width: 100%;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
@@ -39,10 +43,14 @@ nav ul {
   overflow: hidden;
   position: absolute;
   left: 0;
-  top: 2.5rem;
+  top: 2.8rem;
 }
 
 #main-menu .drop-menu div {
+  opacity: 0;
+  -webkit-box-shadow: 0 10px 15px var(--body-text);
+          box-shadow: 0 10px 15px var(--body-text);
+  border: 1px solid var(--body-text);
   -webkit-transform: translate(0, -100%);
           transform: translate(0, -100%);
   -webkit-transition: all 500ms 0.1s;
@@ -51,8 +59,9 @@ nav ul {
 
 #main-menu .drop-menu a {
   text-align: left;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
   padding: 0 5px !important;
 }
 
@@ -99,6 +108,7 @@ nav ul {
 }
 
 #main-menu li:nth-child(1):hover .drop-menu div {
+  opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
 }
@@ -109,6 +119,7 @@ nav ul {
 }
 
 #main-menu li:nth-child(2):hover .drop-menu div {
+  opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
 }
@@ -119,6 +130,7 @@ nav ul {
 }
 
 #main-menu li:nth-child(3):hover .drop-menu div {
+  opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
 }
@@ -129,6 +141,7 @@ nav ul {
 }
 
 #main-menu li:nth-child(4):hover .drop-menu div {
+  opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
 }
@@ -139,6 +152,7 @@ nav ul {
 }
 
 #main-menu li:nth-child(5):hover .drop-menu div {
+  opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
 }
@@ -146,5 +160,88 @@ nav ul {
 #main-menu li:nth-child(5):hover ~ #marker {
   -webkit-transform: translate(440px, 0);
           transform: translate(440px, 0);
+}
+
+@media screen and (max-width: 770px) {
+  #main-menu {
+    font-size: 1.2rem;
+  }
+  #main-menu li {
+    min-width: 80px;
+  }
+  #main-menu .drop-menu {
+    top: 2.5rem;
+  }
+  #main-menu .drop-menu a {
+    font-size: 0.6rem;
+  }
+  #main-menu #marker {
+    width: 80px;
+  }
+  #main-menu li:nth-child(1).active ~ #marker {
+    -webkit-transform: translate(0px, 0);
+            transform: translate(0px, 0);
+  }
+  #main-menu li:nth-child(2).active ~ #marker {
+    -webkit-transform: translate(80px, 0);
+            transform: translate(80px, 0);
+  }
+  #main-menu li:nth-child(3).active ~ #marker {
+    -webkit-transform: translate(160px, 0);
+            transform: translate(160px, 0);
+  }
+  #main-menu li:nth-child(4).active ~ #marker {
+    -webkit-transform: translate(240px, 0);
+            transform: translate(240px, 0);
+  }
+  #main-menu li:nth-child(5).active ~ #marker {
+    -webkit-transform: translate(320px, 0);
+            transform: translate(320px, 0);
+  }
+  #main-menu li:nth-child(1):hover .drop-menu div {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  #main-menu li:nth-child(1):hover ~ #marker {
+    -webkit-transform: translate(0px, 0);
+            transform: translate(0px, 0);
+  }
+  #main-menu li:nth-child(2):hover .drop-menu div {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  #main-menu li:nth-child(2):hover ~ #marker {
+    -webkit-transform: translate(80px, 0);
+            transform: translate(80px, 0);
+  }
+  #main-menu li:nth-child(3):hover .drop-menu div {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  #main-menu li:nth-child(3):hover ~ #marker {
+    -webkit-transform: translate(160px, 0);
+            transform: translate(160px, 0);
+  }
+  #main-menu li:nth-child(4):hover .drop-menu div {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  #main-menu li:nth-child(4):hover ~ #marker {
+    -webkit-transform: translate(240px, 0);
+            transform: translate(240px, 0);
+  }
+  #main-menu li:nth-child(5):hover .drop-menu div {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  #main-menu li:nth-child(5):hover ~ #marker {
+    -webkit-transform: translate(320px, 0);
+            transform: translate(320px, 0);
+  }
 }
 /*# sourceMappingURL=menu-slide.css.map */

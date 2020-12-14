@@ -32,6 +32,17 @@ img {
     max-width: 100%;
 }
 
+header {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  column-gap: 20px;
+  align-items: center;
+}
+
+header a {
+  background: none;
+}
+
 section {
   padding: 1rem 0;
   width: 100%;
