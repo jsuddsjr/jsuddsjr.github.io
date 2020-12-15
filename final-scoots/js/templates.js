@@ -32,8 +32,7 @@
     return true;
   };
 
-  // Nav depends on header.
-  insertTemplate("header"); // .then(() => insertTemplate("nav", "menu"));
+  insertTemplate("header");
   insertTemplate("div.overlay", "weather");
   insertTemplate("footer");
 })(document);

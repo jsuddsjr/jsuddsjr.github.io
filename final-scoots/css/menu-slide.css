@@ -24,7 +24,7 @@ nav ul {
   text-decoration: none;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 440px) {
   #main-menu {
     position: relative;
     display: -webkit-box;
@@ -132,7 +132,7 @@ nav ul {
   }
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 800px) {
   #main-menu {
     font-size: 1.2rem;
   }
@@ -250,7 +250,7 @@ nav ul {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 440px) {
   nav {
     border: 1px solid var(--body-text);
     color: var(--body-text);
