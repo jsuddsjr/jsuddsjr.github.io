@@ -1,6 +1,7 @@
 $min-width: 110px;
-$maincolor: var(--playa-light);
-$secondarycolor: var(--body-text);
+$mainColor: var(--playa-light);
+$secondaryColor: var(--body-text);
+$shadowColor: var(--body-text-faded);
 $items: 5;
 
 @mixin transform($value) {
@@ -17,7 +18,7 @@ $items: 5;
 }
 
 nav {
-  width: 100%;
+  z-index: 1;
 }
 
 nav ul {
@@ -26,82 +27,87 @@ nav ul {
 }
 
 #main-menu {
-  position: relative;
   font-family: "Montez", cursive;
-  display: flex;
-  align-items: center;
-  height: 3rem;
   font-size: 1.5rem;
-  line-height: 2  rem;
-  li {
+  line-height: 2rem;
+  a {
+    display: block;
+    margin: 0;
+    padding: 0;
+    color: $secondaryColor;
+    background: $mainColor;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  #main-menu {
     position: relative;
-    min-width: $min-width;
-    text-align: center;
-    a {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    li {
+      position: relative;
+      min-width: $min-width;
+      text-align: center;
+    }
+
+    .drop-menu {
+      display: none;
+      min-width: fit-content;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 2.8rem;
+      opacity: 0;
+      box-shadow: 5px 5px 5px var(--body-text-faded);
+      border: 1px solid var(--body-text);
+      @include transform(translate(0, -100%));
+      @include transition(all 500ms 0.1s);
+      a {
+        text-align: left;
+        font-family: "Open Sans", sans-serif;
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+        padding: 0 5px !important;
+      }
+      a:hover,
+      a:focus {
+        color: $mainColor !important;
+        background: $secondaryColor !important;
+      }
+    }
+
+    #marker {
       display: block;
-      margin: 0;
-      padding: 0;
-      color: var(--body-text);
-      background: $maincolor;
-      white-space: nowrap;
-      text-decoration: none;
+      height: 100%;
+      background: $secondaryColor;
+      position: absolute;
+      top: 0;
+      border-radius: 5px;
+      width: $min-width;
+      z-index: -1;
+      @include transition(all 0.35s);
     }
   }
 
-  .drop-menu {
-    display: none;
-    min-width: fit-content;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    top: 2.8rem;
-    opacity: 0;
-    box-shadow: 5px 5px 5px var(--body-text-faded);
-    border: 1px solid var(--body-text);
-    @include transform(translate(0, -100%));
-    @include transition(all 500ms 0.1s);
-    a {
-      text-align: left;
-      font-family: "Open Sans", sans-serif;
-      font-size: 0.8rem;
-      line-height: 1.5rem;
-      padding: 0 5px !important;
-    }
-    a:hover,
-    a:focus {
-      color: $maincolor !important;
-      background: $secondarycolor !important;
-    }
-  }
-
-  #marker {
-    height: 100%;
-    background: $secondarycolor;
-    position: absolute;
-    top: 0;
-    border-radius: 5px;
-    width: $min-width;
-    z-index: -2;
-    @include transition(all 0.35s);
-  }
-}
-
-@for $i from 1 through $items {
-  #main-menu li:nth-child(#{$i}).active ~ #marker {
-    @include transform(translate(#{(-1 + $i) * $min-width}, 0));
-  }
-}
-
-@for $i from 1 through $items {
-  #main-menu li:nth-child(#{$i}) {
-    &:hover .drop-menu,
-    a[aria-expanded="true"] ~ .drop-menu,
-    .drop-menu:focus-within {
-      opacity: 1;
-      @include transform(translate(0, 0));
-    }
-    &:hover ~ #marker {
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}).active ~ #marker {
       @include transform(translate(#{(-1 + $i) * $min-width}, 0));
+    }
+  }
+
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}) {
+      &:hover .drop-menu,
+      a[aria-expanded="true"] ~ .drop-menu {
+        opacity: 1;
+        @include transform(translate(0, 0));
+      }
+      &:hover ~ #marker {
+        @include transform(translate(#{(-1 + $i) * $min-width}, 0));
+      }
     }
   }
 }
@@ -137,8 +143,7 @@ nav ul {
   @for $i from 1 through $items {
     #main-menu li:nth-child(#{$i}) {
       &:hover .drop-menu,
-      a[aria-expanded="true"] ~ .drop-menu,
-      .drop-menu:focus-within {
+      a[aria-expanded="true"] ~ .drop-menu {
         opacity: 1;
         @include transform(translate(0, 0));
       }
@@ -146,5 +151,63 @@ nav ul {
         @include transform(translate(#{(-1 + $i) * $min-width}, 0));
       }
     }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  nav {
+    border: 1px solid $secondaryColor;
+    color: $secondaryColor;
+    background-color: $mainColor;
+    font-style: normal;
+    font-size: 1.2em;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 8px;
+    justify-self: flex-end;
+  }
+
+  nav:before {
+    content: "☰";
+  }
+
+  #main-menu {
+    display: none;
+    position: absolute;
+    right: 20px;
+    background: $mainColor;
+    padding: 8px 12px;
+    box-shadow: 5px 5px 5px $shadowColor;
+    border: 1px solid $secondaryColor;
+
+    li {
+      font-size: 2rem;
+      line-height: 2.5rem;
+      text-align: left;
+      display: block !important;
+      @include transform(translate(0, 0));
+
+      &.active a, a:hover {
+        color: $mainColor;
+        background: $secondaryColor;
+      }
+
+      a[aria-expanded='true'] ~ .drop-menu {
+        max-height: auto;
+        transition: all 500ms ease-in;
+      }
+
+      ul.drop-menu {
+        max-height: 0;
+      }
+    }
+
+    #marker {
+      display: none;
+    }
+  }
+
+  nav[aria-expanded='true'] #main-menu {
+    display: block;
   }
 }

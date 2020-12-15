@@ -17,7 +17,6 @@ body {
   line-height: 1.6rem;
   background-color: white;
   color: var(--body-text);
-  background-color: white;
   min-width: 280px;
 }
 
@@ -35,14 +34,16 @@ img {
 
 header {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  width: 100%;
+  padding: 0 20px;
+  grid-template-columns: 120px 1fr;
   column-gap: 20px;
   align-items: center;
 }
 
 header a {
   background: none;
-  padding: 0;
+  padding: 0 10px;
 }
 
 section {

@@ -1,10 +1,26 @@
 @media screen and (min-width: 32rem) {
+  html {
+    background-image: url(../images/palm-tree-background.webp);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+
   body {
     font-size: 14pt;
     line-height: 1.8rem;
+
+    margin-bottom: 450px;
   }
 
-  .colors {
-      font-size: 100%;
+  header {
+    display: grid;
+    width: auto;
+    grid-template-columns: 150px 1fr;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
   }
 }
