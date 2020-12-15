@@ -52,11 +52,10 @@ img {
 header {
   margin-top: .5rem;
   display: grid;
-  width: 100%;
-  padding: 0 20px;
   grid-template-columns: 80px 1fr;
-  column-gap: 0;
+  column-gap: 8px;
   align-items: center;
+  justify-content: center;
 }
 
 header a {
@@ -202,4 +201,12 @@ button[type="submit"] {
 }
 button[type="submit"]:hover {
   color: var(--body-text);
+}
+
+
+@media only screen and (max-width: 535px) {
+  header {
+    width: 100%;
+    padding: 0 20px;
+  }
 }

@@ -1,4 +1,4 @@
-$min-width: 125px;
+$min-width: 135px;
 $mainColor: var(--playa-light);
 $secondaryColor: var(--body-text);
 $shadowColor: var(--body-text-faded);
@@ -33,7 +33,6 @@ nav ul {
 
 #main-menu {
   font-family: "Montez", cursive;
-  font-size: 1.8rem;
   line-height: 2rem;
   a {
     display: block;
@@ -46,13 +45,14 @@ nav ul {
   }
 }
 
-@media screen and (min-width: 440px) {
+@media screen and (min-width: 535px) {
   #main-menu {
     position: relative;
     display: flex;
     column-gap: 2px;
     align-items: center;
-    height: 3rem;
+    font-size: 2rem;
+    height: 2.8rem;
     li {
       position: relative;
       min-width: $min-width;
@@ -126,6 +126,8 @@ nav ul {
 
   #main-menu {
     font-size: 1.2rem;
+    line-height: 2rem;
+    height: 2.5rem;
 
     li {
       min-width: $min-width;
@@ -161,11 +163,14 @@ nav ul {
 }
 
 @media screen and (min-width: 1240px) {
-  $min-width: 140px;
+  $min-width: 160px;
+  $col-gap: 4px;
 
   #main-menu {
-    font-size: 2rem;
-    column-gap: 4px;
+    font-size: 2.2rem;
+    column-gap: $col-gap;
+    line-height: 2.6rem;
+    height: 3.4rem;
 
     li {
       min-width: $min-width;
@@ -186,7 +191,7 @@ nav ul {
   @for $i from 1 through $items {
     #main-menu li:nth-child(#{$i}) {
       &.active ~ #marker {
-        @include transform-marker($i, $min-width, 4px);
+        @include transform-marker($i, $min-width, $col-gap);
       }
     }
   }
@@ -200,7 +205,7 @@ nav ul {
   }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 535px) {
   nav {
     border: 1px solid $secondaryColor;
     color: $secondaryColor;
