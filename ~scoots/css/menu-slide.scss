@@ -1,4 +1,4 @@
-$min-width: 110px;
+$min-width: 125px;
 $mainColor: var(--playa-light);
 $secondaryColor: var(--body-text);
 $shadowColor: var(--body-text-faded);
@@ -31,7 +31,7 @@ nav ul {
 
 #main-menu {
   font-family: "Montez", cursive;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 2rem;
   a {
     display: block;
@@ -107,6 +107,11 @@ nav ul {
       &.active ~ #marker {
         @include transform-marker($i, $min-width);
       }
+    }
+  }
+
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}) {
       &:hover ~ #marker {
         @include transform-marker($i, $min-width);
       }
@@ -141,6 +146,11 @@ nav ul {
       &.active ~ #marker {
         @include transform-marker($i, $min-width);
       }
+    }
+  }
+
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}) {
       &:hover ~ #marker {
         @include transform-marker($i, $min-width);
       }
@@ -196,7 +206,7 @@ nav ul {
         overflow: hidden;
 
         a {
-          font-family: 'Open Sans', sans-serif;
+          font-family: "Open Sans", sans-serif;
           font-size: 1.1rem;
           min-width: 30rem;
         }

@@ -28,9 +28,83 @@
       <!-- See templates.js -->
     </header>
     <section>
-        <h2>Contact Us</h2>
-        <p>Ask questions or let us know if you need anything. We'll get back to you as soon as we can.</p>
+      <h2>Contact Us</h2>
+      <p>
+        Ask questions or let us know if you need anything. We'll get back to you
+        as soon as we can.
+        <strong>If you need emergency assistance, please call 911.</strong>
+      </p>
     </section>
+    <section>
+      <h3>Our locations</h3>
+      <div class="location">
+        <a
+          href="https://www.bing.com/maps?osid=b8f92961-c8fe-4cc3-be0e-a03b50597d7d&cp=20.493412~-86.956745&lvl=16&v=2&sV=2&form=S00027"
+        >
+          <img
+            src="images/scoots-central-map-450w.png"
+            alt="Arial photo of ~Scoots location in Cozumel"
+        /></a>
+        <div>
+          <p class="address">
+            Calle 21 sur 1120<br />
+            Col Independencia, Cozumel
+          </p>
+          <p class="phone">987 118 4498</p>
+        </div>
+        <a
+          href="https://www.bing.com/maps?osid=80a18cfd-feaf-4c82-ab06-38592bb64e12&cp=20.479103~-86.976895&lvl=16&v=2&sV=2&form=S00027"
+        >
+          <img
+            src="images/scoots-puerta-map-450w.png"
+            alt="Arial photo of ~Scoots location near Puerta Maya"
+        /></a>
+        <div>
+          <p class="address">Puerta Maya, Cozumel</p>
+          <p class="phone">987 118 4498</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3>Contact Us</h3>
+      <form action="" method="get">
+        <fieldset>
+          <!-- full name using input of type text and is required and only accepts alpha characters with a minimum of five characters using a regular expression pattern -->
+          <input
+            type="text"
+            pattern="\s*[A-Za-z ]{5,}"
+            name="fullname"
+            id="fullname"
+            required
+          />
+          <label for="fullname">Full name</label>
+        </fieldset>
+        <fieldset>
+          <!-- email using input of type email and use a placeholder to provide a demo email -->
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="xxx@yyy.zz"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+            required
+          />
+          <label for="email">Email</label>
+        </fieldset>
+        <fieldset>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            required
+          ></textarea>
+          <label for="message">Message</label>
+        </fieldset>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
     <script src="js/templates.js" defer></script>
-</body>
+  </body>
 </html>

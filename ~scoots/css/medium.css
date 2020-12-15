@@ -22,4 +22,21 @@
     align-items: center;
     justify-content: center;
   }
+
+  p.motto {
+    text-align: right;
+    width: 80%;
+    margin-top: -1rem;
+  }
+
+  .location {
+    grid-template-columns: 3fr 2fr;
+    column-gap: 15px;
+    width: 80%;
+  }
+
+  .location p {
+    padding-left: 20px;
+    font-size: 0.9rem;
+  }
 }

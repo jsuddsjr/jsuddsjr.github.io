@@ -60,10 +60,15 @@ h2,
 h3 {
   font-family: Montez, cursive;
   font-size: 200%;
-  margin: 10pt 0 4pt;
+  margin: 1.5rem 0 1rem;
 }
 
-a {
+p.motto {
+  text-align: right;
+  width: 80%;
+}
+
+p > a {
   color: var(--link-color);
   text-decoration: none;
   padding-left: 1.6rem;
@@ -71,12 +76,6 @@ a {
   background: url("../images/palm-tree-icon.png") no-repeat 0 50%;
   background-size: contain;
 }
-
-/* a::before {
-    content: '🌴';
-    font-size: .8rem;
-    display: inline-block;
-} */
 
 a:hover {
   color: var(--link-hover);
@@ -88,44 +87,69 @@ ul {
   max-width: 80%;
 }
 
-/* RULES FOR SITE PAGE */
-.images {
-  display: flex;
-  flex-wrap: wrap;
+/* CONTACT PAGE */
+
+.location {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
+  width: 90%;
 }
 
-.colors {
-  width: 80%;
+.location p {
+  padding-left: 20px;
+  font-size: .8rem;
 }
 
-.colors tr {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.location .address {
+  background: no-repeat left top
+    url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
 }
 
-.colors td {
-  color: white;
-  padding: 0.5rem 0.5rem;
-  text-align: center;
+.location .email {
+  background: no-repeat left center
+    url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
+}
+
+.location .phone {
+  background: no-repeat left center
+    url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
+}
+
+/* FORMS */
+
+form > fieldset {
+  display: block;
+  position: relative;
+  padding: 0;
+}
+form > fieldset > label {
+  position: absolute;
+  color: var(--playa);
+  top: 0;
+  left: .5rem;
+  width: 100%;
+  transition: 0.2s;
+}
+input, textarea {
+  padding: 1.5rem .5rem .5rem;
+  border: 0;
   width: 100%;
 }
-
-.colors td:nth-child(1) {
-  background-color: var(--body-text);
+input:focus + label,
+textarea:focus + label {
+  font-size: .8rem;
 }
-.colors td:nth-child(2) {
-  background-color: var(--link-color);
+input:invalid, textarea:invalid {
+  border-bottom: 5px solid red;
 }
-.colors td:nth-child(3) {
-  background-color: var(--link-hover);
+input:valid, textarea:valid {
+  border-bottom: 5px solid var(--playa);
 }
-.colors td:nth-child(4) {
-  background-color: var(--playa);
-}
-.colors td:nth-child(5) {
-  background-color: var(--playa-light);
-  color: var(--body-text);
+button[type='submit'] {
+  margin-top: 1rem;
+  padding: .3rem;
+  width: 100%;
 }
