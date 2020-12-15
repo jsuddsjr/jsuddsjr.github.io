@@ -80,6 +80,7 @@ p {
 p.motto {
   text-align: right;
   width: 80%;
+  padding: 0;
 }
 
 p.motto em {
@@ -121,6 +122,7 @@ ul {
   justify-items: center;
   background-color: var(--white-faded);
   overflow: hidden;
+  border: 3px solid var(--body-text-faded);
 }
 
 .weather .day:nth-child(1) {
