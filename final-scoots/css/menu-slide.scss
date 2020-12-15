@@ -46,7 +46,7 @@ nav ul {
   }
 }
 
-@media screen and (min-width: 32rem) {
+@media screen and (min-width: 800px) {
   #main-menu {
     position: relative;
     display: flex;
@@ -200,7 +200,7 @@ nav ul {
   }
 }
 
-@media screen and (max-width: 32rem) {
+@media screen and (max-width: 800px) {
   nav {
     border: 1px solid $secondaryColor;
     color: $secondaryColor;
