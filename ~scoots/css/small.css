@@ -13,7 +13,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  font-size: 12pt;
+  font-size: 10pt;
   line-height: 1.6rem;
   background-color: white;
   color: var(--body-text);
@@ -59,6 +59,7 @@ h1,
 h2,
 h3 {
   font-family: Montez, cursive;
+  font-size: 200%;
   margin: 10pt 0 4pt;
 }
 

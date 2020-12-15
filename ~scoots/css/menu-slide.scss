@@ -16,6 +16,9 @@ $items: 5;
   //   -ms-transition: ($value);
   transition: ($value);
 }
+@mixin transform-marker($i, $width) {
+  @include transform(translate(#{(-1 + $i) * ($width + 2)}, 0));
+}
 
 nav {
   z-index: 1;
@@ -41,16 +44,23 @@ nav ul {
   }
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 32rem) {
   #main-menu {
     position: relative;
     display: flex;
+    column-gap: 2px;
     align-items: center;
     height: 3rem;
     li {
       position: relative;
       min-width: $min-width;
       text-align: center;
+
+      &:hover .drop-menu,
+      a[aria-expanded="true"] ~ .drop-menu {
+        opacity: 1;
+        @include transform(translate(0, 0));
+      }
     }
 
     .drop-menu {
@@ -93,20 +103,12 @@ nav ul {
   }
 
   @for $i from 1 through $items {
-    #main-menu li:nth-child(#{$i}).active ~ #marker {
-      @include transform(translate(#{(-1 + $i) * $min-width}, 0));
-    }
-  }
-
-  @for $i from 1 through $items {
     #main-menu li:nth-child(#{$i}) {
-      &:hover .drop-menu,
-      a[aria-expanded="true"] ~ .drop-menu {
-        opacity: 1;
-        @include transform(translate(0, 0));
+      &.active ~ #marker {
+        @include transform-marker($i, $min-width);
       }
       &:hover ~ #marker {
-        @include transform(translate(#{(-1 + $i) * $min-width}, 0));
+        @include transform-marker($i, $min-width);
       }
     }
   }
@@ -135,26 +137,18 @@ nav ul {
   }
 
   @for $i from 1 through $items {
-    #main-menu li:nth-child(#{$i}).active ~ #marker {
-      @include transform(translate(#{(-1 + $i) * $min-width}, 0));
-    }
-  }
-
-  @for $i from 1 through $items {
     #main-menu li:nth-child(#{$i}) {
-      &:hover .drop-menu,
-      a[aria-expanded="true"] ~ .drop-menu {
-        opacity: 1;
-        @include transform(translate(0, 0));
+      &.active ~ #marker {
+        @include transform-marker($i, $min-width);
       }
       &:hover ~ #marker {
-        @include transform(translate(#{(-1 + $i) * $min-width}, 0));
+        @include transform-marker($i, $min-width);
       }
     }
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 32rem) {
   nav {
     border: 1px solid $secondaryColor;
     color: $secondaryColor;
@@ -185,20 +179,27 @@ nav ul {
       line-height: 2.5rem;
       text-align: left;
       display: block !important;
-      @include transform(translate(0, 0));
 
-      &.active a, a:hover {
+      &.active a,
+      a:hover {
         color: $mainColor;
         background: $secondaryColor;
       }
 
-      a[aria-expanded='true'] ~ .drop-menu {
-        max-height: auto;
+      a[aria-expanded="true"] ~ .drop-menu {
+        max-height: fit-content;
         transition: all 500ms ease-in;
       }
 
-      ul.drop-menu {
+      .drop-menu {
         max-height: 0;
+        overflow: hidden;
+
+        a {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 1.1rem;
+          min-width: 30rem;
+        }
       }
     }
 
@@ -207,7 +208,7 @@ nav ul {
     }
   }
 
-  nav[aria-expanded='true'] #main-menu {
+  nav[aria-expanded="true"] #main-menu {
     display: block;
   }
 }

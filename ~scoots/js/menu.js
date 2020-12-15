@@ -9,10 +9,11 @@
   const navList = d.querySelector("nav ul");
   const menuRoot = d.querySelector("nav");
 
+  /** @param {MouseEvent} e */
   const toggleMenu = (e) => {
     const isExpanded = navList.classList.toggle(expanded);
     menuRoot.setAttribute("aria-expanded", isExpanded);
-    e.preventDefault();
+    if (e.currentTarget === e.target) e.preventDefault();
   };
 
   const collapseMenu = (e) => {
@@ -97,7 +98,6 @@
             const handleKey = (e) => {
               switch (e.code) {
                 case "ArrowDown":
-                case "Enter":
                 case "Space":
                   const toggle =
                     menuAnchor.getAttribute("aria-expanded") !== "true";
