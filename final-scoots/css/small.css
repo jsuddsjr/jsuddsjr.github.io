@@ -5,17 +5,23 @@
   --link-hover: #023f8a;
   --playa: #897362;
   --playa-light: #eee6de;
+  --playa-light-faded: rgba(238, 230, 222, 0.5);
+  --white-faded: rgba(255, 255, 255, 0.8);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  background-color: white;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 10pt;
   line-height: 1.6rem;
-  background-color: white;
+  background-color: transparent;
   color: var(--body-text);
   min-width: 280px;
 }
@@ -26,6 +32,16 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+section {
+  padding: 1rem 0;
+  width: 100%;
+  background-color: var(--white-faded);
+}
+
+section:nth-of-type(odd) {
+  background-color: var(--playa-light-faded);
 }
 
 img {
@@ -46,15 +62,6 @@ header a {
   padding: 0 10px;
 }
 
-section {
-  padding: 1rem 0;
-  width: 100%;
-}
-
-section:nth-child(odd) {
-  background-color: var(--playa-light);
-}
-
 h1,
 h2,
 h3 {
@@ -63,9 +70,18 @@ h3 {
   margin: 1.5rem 0 1rem;
 }
 
+p {
+  padding: .8rem 1rem;
+  background-color: var(--white-faded);
+}
+
 p.motto {
   text-align: right;
   width: 80%;
+}
+
+p.motto em {
+  letter-spacing: 5px;
 }
 
 p > a {
@@ -99,27 +115,35 @@ ul {
 }
 
 .location p {
-  padding-left: 20px;
-  font-size: .8rem;
+  padding: 5px 5px 5px 25px;
+  font-size: 0.8rem;
+  margin: 0;
 }
 
 .location .address {
-  background: no-repeat left top
+  background: no-repeat 5px center white
     url("https://cdn4.iconfinder.com/data/icons/location-map-2/64/x-18-16.png");
 }
 
 .location .email {
-  background: no-repeat left center
+  background: no-repeat 5px center white
     url("https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/mail-24-16.png");
 }
 
 .location .phone {
-  background: no-repeat left center
+  background: no-repeat 5px center white
     url("https://cdn0.iconfinder.com/data/icons/simple-darkcon-1/91/telepnone-16.png");
+}
+
+.location a {
+  text-align: center;
 }
 
 /* FORMS */
 
+form {
+  width: 60%;
+}
 form > fieldset {
   display: block;
   position: relative;
@@ -129,27 +153,36 @@ form > fieldset > label {
   position: absolute;
   color: var(--playa);
   top: 0;
-  left: .5rem;
+  left: 0.5rem;
   width: 100%;
   transition: 0.2s;
 }
-input, textarea {
-  padding: 1.5rem .5rem .5rem;
+input,
+textarea {
+  padding: 1.5rem 0.5rem 0.5rem;
   border: 0;
   width: 100%;
 }
 input:focus + label,
 textarea:focus + label {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
-input:invalid, textarea:invalid {
+input:invalid,
+textarea:invalid {
   border-bottom: 5px solid red;
 }
-input:valid, textarea:valid {
+input:valid,
+textarea:valid {
   border-bottom: 5px solid var(--playa);
 }
-button[type='submit'] {
+button[type="submit"] {
   margin-top: 1rem;
-  padding: .3rem;
-  width: 100%;
+  padding: 0.3rem;
+  width: 50%;
+  background-image: linear-gradient(45deg, var(--playa), var(--playa-light));
+  color: white;
+  text-shadow: 1px 1px 2px var(--playa);
+}
+button[type="submit"]:hover {
+  color: var(--body-text);
 }

@@ -1,7 +1,12 @@
-@media screen and (min-width: 60rem) {
+@media only screen and (min-width: 60rem) {
   body {
     font-size: 18pt;
     line-height: 2rem;
+  }
+
+  header {
+    grid-template-columns: 200px 1fr;
+    column-gap: 30px;
   }
 
   h1 {

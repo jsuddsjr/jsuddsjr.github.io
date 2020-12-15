@@ -190,6 +190,66 @@ nav ul {
   }
 }
 
+@media screen and (min-width: 1240px) {
+  #main-menu {
+    font-size: 2rem;
+    -webkit-column-gap: 4px;
+            column-gap: 4px;
+  }
+  #main-menu li {
+    min-width: 140px;
+  }
+  #main-menu .drop-menu {
+    top: 2.8rem;
+  }
+  #main-menu .drop-menu a {
+    font-size: 0.8rem;
+  }
+  #main-menu #marker {
+    width: 140px;
+  }
+  #main-menu li:nth-child(1).active ~ #marker {
+    -webkit-transform: translate(0px, 0);
+            transform: translate(0px, 0);
+  }
+  #main-menu li:nth-child(2).active ~ #marker {
+    -webkit-transform: translate(144px, 0);
+            transform: translate(144px, 0);
+  }
+  #main-menu li:nth-child(3).active ~ #marker {
+    -webkit-transform: translate(288px, 0);
+            transform: translate(288px, 0);
+  }
+  #main-menu li:nth-child(4).active ~ #marker {
+    -webkit-transform: translate(432px, 0);
+            transform: translate(432px, 0);
+  }
+  #main-menu li:nth-child(5).active ~ #marker {
+    -webkit-transform: translate(576px, 0);
+            transform: translate(576px, 0);
+  }
+  #main-menu li:nth-child(1):hover ~ #marker {
+    -webkit-transform: translate(0px, 0);
+            transform: translate(0px, 0);
+  }
+  #main-menu li:nth-child(2):hover ~ #marker {
+    -webkit-transform: translate(144px, 0);
+            transform: translate(144px, 0);
+  }
+  #main-menu li:nth-child(3):hover ~ #marker {
+    -webkit-transform: translate(288px, 0);
+            transform: translate(288px, 0);
+  }
+  #main-menu li:nth-child(4):hover ~ #marker {
+    -webkit-transform: translate(432px, 0);
+            transform: translate(432px, 0);
+  }
+  #main-menu li:nth-child(5):hover ~ #marker {
+    -webkit-transform: translate(576px, 0);
+            transform: translate(576px, 0);
+  }
+}
+
 @media screen and (max-width: 32rem) {
   nav {
     border: 1px solid var(--body-text);

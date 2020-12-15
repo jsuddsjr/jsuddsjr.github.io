@@ -10,14 +10,16 @@ $items: 5;
   //   -ms-transform: ($value);
   transform: ($value);
 }
+
 @mixin transition($value) {
   //   -webkit-transition: ($value);
   //   -moz-transition: ($value);
   //   -ms-transition: ($value);
   transition: ($value);
 }
-@mixin transform-marker($i, $width) {
-  @include transform(translate(#{(-1 + $i) * ($width + 2)}, 0));
+
+@mixin transform-marker($i, $width, $space: 2) {
+  @include transform(translate(#{(-1 + $i) * ($width + $space)}, 0));
 }
 
 nav {
@@ -153,6 +155,46 @@ nav ul {
     #main-menu li:nth-child(#{$i}) {
       &:hover ~ #marker {
         @include transform-marker($i, $min-width);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  $min-width: 140px;
+
+  #main-menu {
+    font-size: 2rem;
+    column-gap: 4px;
+
+    li {
+      min-width: $min-width;
+    }
+
+    .drop-menu {
+      top: 2.8rem;
+      a {
+        font-size: 0.8rem;
+      }
+    }
+
+    #marker {
+      width: $min-width;
+    }
+  }
+
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}) {
+      &.active ~ #marker {
+        @include transform-marker($i, $min-width, 4px);
+      }
+    }
+  }
+
+  @for $i from 1 through $items {
+    #main-menu li:nth-child(#{$i}) {
+      &:hover ~ #marker {
+        @include transform-marker($i, $min-width, 4px);
       }
     }
   }

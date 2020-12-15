@@ -2,15 +2,15 @@
   html {
     background-image: url(../images/palm-tree-background.webp);
     background-position: bottom;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
   }
 
   body {
     font-size: 14pt;
     line-height: 1.8rem;
-
     margin-bottom: 450px;
   }
 
@@ -36,7 +36,6 @@
   }
 
   .location p {
-    padding-left: 20px;
     font-size: 0.9rem;
   }
 }
