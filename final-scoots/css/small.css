@@ -108,7 +108,7 @@ ul {
 .location {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 10px;
+  gap: 15px;
   align-items: center;
   justify-content: center;
   width: 90%;
@@ -137,6 +137,20 @@ ul {
 
 .location a {
   text-align: center;
+  background-color: var(--white-faded);
+  padding: 10px;
+  margin: 0;
+}
+
+.location a div {
+  text-transform: uppercase;
+  font-size: .9rem;
+  margin: 0;
+  padding: 0;
+}
+
+.location a img {
+  min-width: 100%;
 }
 
 /* FORMS */
