@@ -1,6 +1,81 @@
 (function (d) {
   /** Source: https://openweathermap.org/api */
 
+  /**
+   * @typedef {Object} CurrentData
+   * @property {Number} clouds
+   * @property {Number} dew_point
+   * @property {Number} dt
+   * @property {Number} feels_like
+   * @property {Number} humidity
+   * @property {Number} pressure
+   * @property {{1h:Number}} rain
+   * @property {Number} sunrise
+   * @property {Number} sunset
+   * @property {Number} temp
+   * @property {Number} uvi
+   * @property {Number} visibility
+   * @property {Array<WeatherData>} weather
+   * @property {Number} wind_deg
+   * @property {Number} wind_speed
+   */
+
+  /**
+   * @typedef {Object} DailyData
+   * @property {Number} clouds
+   * @property {Number} dew_point
+   * @property {Number} dt
+   * @property {FeelsLikeData} feels_like
+   * @property {Number} humidity
+   * @property {Number} pop
+   * @property {Number} pressure
+   * @property {Number} rain
+   * @property {Number} sunrise
+   * @property {Number} sunset
+   * @property {TempData} temp
+   * @property {Number} uvi
+   * @property {Array<WeatherData>} weather
+   * @property {Number} wind_deg
+   * @property {Number} wind_speed
+   */
+
+  /**
+   * @typedef {Object} FeelsLikeData
+   * @property {Number} day
+   * @property {Number} eve
+   * @property {Number} morn
+   * @property {Number} night
+   */
+
+  /**
+   * @typedef {Object} TempData
+   * @property {Number} day
+   * @property {Number} eve
+   * @property {Number} max
+   * @property {Number} min
+   * @property {Number} morn
+   * @property {Number} night
+   */
+
+  /**
+   * @typedef {Object} AlertData
+   * @property {String} description
+   * @property {Number} end
+   * @property {String} event
+   * @property {String} sender_name
+   * @property {Number} start
+   */
+
+  /** @typedef {Object} OneCall
+   * @property {Array<AlertData>} alerts
+   * @property {CurrentData} current
+   * @property {Array<DailyData>} daily
+   * @property {Number} lat
+   * @property {Number} lon
+   * @property {String} timezone
+   * @property {Number} timezone_offset
+   */
+
   /** @typedef {Object} WeatherData
    * @property {String} description
    * @property {String} icon
@@ -65,18 +140,17 @@
    * @param {"weather"|"forecast"} endpoint
    * @param {"imperial"|"metric"} units
    */
-  const getUrl = (townId, endpoint = "weather", units = "imperial") => {
+  const getUrl = (townId, endpoint = "onecall", units = "imperial") => {
     const apiKey = "5d50935bc3ce8aa3de4654aabf285ea8";
-    return `https://api.openweathermap.org/data/2.5/${endpoint}?${townId}&units=${units}&appid=${apiKey}`;
+    return `https://api.openweathermap.org/data/2.5/${endpoint}?${townId}&units=${units}&exclude=hourly,minutely&appid=${apiKey}`;
   };
 
   /**
-   * A lookup for town data.
+   * A lookup for location data.
    */
-  const townData = {
-    preston: "id=5604473",
-    "soda-springs": "id=5607916",
-    "fish-haven": "lat=42.0380399&lon=-111.4048681"
+  const loc = {
+    // 20.494950, -86.951089
+    cozumel: "lat=20.494950&lon=-86.951089",
   };
 
   if (!String.toInitialCap) {
@@ -100,39 +174,41 @@
    */
 
   /**
-   * @param {ForecastData} d
+   * @param {DailyData} daily
    * @returns {WeatherInfo}
    */
-  const normalizeData = (d) => ({
-    name: d.name,
+  const normalizeData = (daily) => ({
+    name: daily.name,
     // Convert date to weekday name.
-    weekday: new Date(d.dt * 1000).toLocaleDateString("default", {
+    weekday: new Date(daily.dt * 1000).toLocaleDateString("default", {
       weekday: "short",
     }),
-    currentTemp: d.main.temp,
-    conditions: d.weather[0].description.toInitialCap(),
-    icon: "https://openweathermap.org/img/w/" + d.weather[0].icon + ".png",
-    high: d.main.temp_max,
-    low: d.main.temp_min,
-    humidity: d.main.humidity,
-    windSpeed: d.wind.speed,
+    currentTemp: Math.trunc(daily.temp.day),
+    conditions: daily.weather[0].description.toInitialCap(),
+    icon: "https://openweathermap.org/img/w/" + daily.weather[0].icon + ".png",
+    high: daily.temp.max,
+    low: daily.temp.min,
+    humidity: daily.humidity,
+    windSpeed: daily.wind_speed,
   });
 
-  const forecast = d.querySelector(".forecast div");
-  if (forecast) {
-    fetch(getUrl(townData[d.body.dataset.town || "preston"], "forecast"))
+  const weatherEvent = new Event("weatherLoad");
+  const weatherDiv = d.querySelector(".weather");
+  if (weatherDiv) {
+    fetch(getUrl(loc.cozumel))
       .then((response) => response.json())
       .then(
-        /** @param {RawData} data */ (data) =>
-          data.list
-            .filter((d) => d.dt_txt.indexOf("18:00:00") > 0)
+        /** @param {OneCall} data */ (data) =>
+          data.daily
+            .slice(0, 4)
             .map(normalizeData)
             .forEach((info) => {
               const div = d.createElement("DIV");
               div.className = "day";
 
-              const dayName = d.createElement("SPAN");
-              dayName.textContent = info.weekday;
+              const dayName = d.createElement("DIV");
+              dayName.innerHTML = `${info.weekday} ~ ${info.currentTemp}&deg;`;
+              dayName.className = "detail";
               div.appendChild(dayName);
 
               const iconImage = d.createElement("IMG");
@@ -141,23 +217,20 @@
               iconImage.title = info.conditions;
               div.appendChild(iconImage);
 
-              const temp = d.createElement("SPAN");
-              temp.innerHTML = info.currentTemp.toFixed(0) + "&deg;";
-              div.appendChild(temp);
-
               const conditions = d.createElement("DIV");
               conditions.textContent = info.conditions;
-              conditions.className = "overlay-popup";
+              conditions.className = "conditions";
               div.appendChild(conditions);
 
-              forecast.appendChild(div);
+              weatherDiv.appendChild(div);
+              weatherDiv.dispatchEvent(weatherEvent);
             })
-      );
+      )
+      .then(() => weatherDiv.dispatchEvent(weatherEvent));
   }
 
   const weather = d.getElementById("weather");
   if (weather) {
-
     const city = weather.querySelector("[itemprop='city']");
     const temp = weather.querySelector("[itemprop='temperature']");
     const cond = weather.querySelector("[itemprop='conditions']");
@@ -166,7 +239,7 @@
     const humidity = weather.querySelector("[itemprop='humidity']");
     const ws = weather.querySelector("[itemprop='windSpeed']");
 
-    fetch(getUrl(townData[d.body.dataset.town || "preston"]))
+    fetch(getUrl(loc[d.body.dataset.town || "preston"]))
       .then((response) => response.json())
       .then(
         /** @param {ForecastData} data */

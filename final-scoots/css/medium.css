@@ -25,14 +25,18 @@
   footer {
     width: 80%;
     margin-top: 400px;
-    font-size: .6rem;
+    font-size: 0.6rem;
     text-align: center;
   }
 
   p.motto {
-    text-align: right;
-    width: 80%;
     margin-top: -1rem;
+  }
+
+  .weather {
+    grid-template-columns: repeat(4, 100px);
+    padding: 8px 12px;
+    column-gap: 12px;
   }
 
   .location {

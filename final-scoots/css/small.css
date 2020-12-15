@@ -23,7 +23,7 @@ body {
   line-height: 1.6rem;
   background-color: transparent;
   color: var(--body-text);
-  min-width: 280px;
+  min-width: 320px;
 }
 
 body,
@@ -50,7 +50,7 @@ img {
 }
 
 header {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   display: grid;
   grid-template-columns: 80px 1fr;
   column-gap: 8px;
@@ -73,7 +73,7 @@ h3 {
 }
 
 p {
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
   background-color: var(--white-faded);
 }
 
@@ -103,6 +103,28 @@ a:hover {
 p,
 ul {
   max-width: 80%;
+}
+
+/* WEATHER WIDGET */
+.weather {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: flex-end;
+  background: linear-gradient(90deg, white, var(--body-text-faded));
+  column-gap: 2px;
+  font-size: 0.6rem;
+  margin-left: 6px;
+}
+
+.weather .day {
+  display: grid;
+  justify-items: center;
+  background-color: var(--white-faded);
+  overflow: hidden;
+}
+
+.weather .day:nth-child(1) {
+  border: 3px solid var(--body-text);
 }
 
 /* CONTACT PAGE */
@@ -146,7 +168,7 @@ ul {
 
 .location a div {
   text-transform: uppercase;
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin: 0;
   padding: 0;
 }
@@ -202,7 +224,6 @@ button[type="submit"] {
 button[type="submit"]:hover {
   color: var(--body-text);
 }
-
 
 @media only screen and (max-width: 535px) {
   header {
