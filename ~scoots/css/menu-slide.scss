@@ -32,6 +32,7 @@ nav ul {
   align-items: center;
   height: 3rem;
   font-size: 1.5rem;
+  line-height: 2  rem;
   li {
     position: relative;
     min-width: $min-width;
@@ -48,18 +49,17 @@ nav ul {
   }
 
   .drop-menu {
+    display: none;
     min-width: fit-content;
     overflow: hidden;
     position: absolute;
     left: 0;
     top: 2.8rem;
-    div {
-      opacity: 0;
-      box-shadow: 0 10px 15px var(--body-text);
-      border: 1px solid var(--body-text);
-      @include transform(translate(0, -100%));
-      @include transition(all 500ms 0.1s);
-    }
+    opacity: 0;
+    box-shadow: 5px 5px 5px var(--body-text-faded);
+    border: 1px solid var(--body-text);
+    @include transform(translate(0, -100%));
+    @include transition(all 500ms 0.1s);
     a {
       text-align: left;
       font-family: "Open Sans", sans-serif;
@@ -67,7 +67,8 @@ nav ul {
       line-height: 1.5rem;
       padding: 0 5px !important;
     }
-    a:hover {
+    a:hover,
+    a:focus {
       color: $maincolor !important;
       background: $secondarycolor !important;
     }
@@ -93,7 +94,9 @@ nav ul {
 
 @for $i from 1 through $items {
   #main-menu li:nth-child(#{$i}) {
-    &:hover .drop-menu div {
+    &:hover .drop-menu,
+    a[aria-expanded="true"] ~ .drop-menu,
+    .drop-menu:focus-within {
       opacity: 1;
       @include transform(translate(0, 0));
     }
@@ -133,7 +136,9 @@ nav ul {
 
   @for $i from 1 through $items {
     #main-menu li:nth-child(#{$i}) {
-      &:hover .drop-menu div {
+      &:hover .drop-menu,
+      a[aria-expanded="true"] ~ .drop-menu,
+      .drop-menu:focus-within {
         opacity: 1;
         @include transform(translate(0, 0));
       }

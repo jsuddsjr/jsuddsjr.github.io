@@ -27,7 +27,7 @@
       el.addEventListener("keypress", (e) => {
         if (e.key === "Enter") collapseMenu();
       });
-      if (currentLocation === el.href) {
+      if (currentLocation.indexOf(el.href) === 0) {
         el.parentElement.classList.add("active");
         // Add label to current menu item. (No Narrator support.)
         el.setAttribute("aria-current", "location");
@@ -68,11 +68,37 @@
           /** @param {HTMLUListElement} ul */ (ul) => {
             /** @type {HTMLAnchorElement} */
             const menuAnchor = ul.parentElement.children[0];
-            const div = d.createElement("DIV");
-            data.inventory.forEach((desc) => {
-              div.innerHTML += `<li><a href="${menuAnchor.href}?id=${desc.imageBase}">${desc.type}</a></li>`;
-            });
-            ul.appendChild(div);
+            ul.innerHTML = data.inventory
+              .map(
+                (desc) =>
+                  `<li><a tabindex="-1" role="menuitem" href="${menuAnchor.href}?id=${desc.imageBase}">${desc.type}</a></li>`
+              )
+              .join("");
+
+            const subMenuOptions = ul.querySelectorAll("li > a");
+            if (subMenuOptions.length) ul.style.display = "block";
+
+            /** Toggle the menu with the keyboard.
+             *  @param {KeyboardEvent} e
+             */
+            const handleKey = (e) => {
+              switch (e.code) {
+                case "ArrowDown":
+                case "ArrowUp":
+                case "Enter":
+                case "Space":
+                  const toggle = menuAnchor.getAttribute("aria-expanded") !== "true";
+                  menuAnchor.setAttribute("aria-expanded", toggle.toString());
+                  subMenuOptions.forEach(
+                    /** @param {HTMLAnchorElement} a */ (a) =>
+                      (a.tabIndex = toggle ? 0 : -1)
+                  );
+                  e.preventDefault();
+                  break;
+              }
+            };
+
+            menuAnchor.addEventListener("keydown", handleKey);
           }
         );
       }

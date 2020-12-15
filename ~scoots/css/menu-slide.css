@@ -18,6 +18,7 @@ nav ul {
           align-items: center;
   height: 3rem;
   font-size: 1.5rem;
+  line-height: 2  rem;
 }
 
 #main-menu li {
@@ -37,6 +38,7 @@ nav ul {
 }
 
 #main-menu .drop-menu {
+  display: none;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
@@ -44,12 +46,9 @@ nav ul {
   position: absolute;
   left: 0;
   top: 2.8rem;
-}
-
-#main-menu .drop-menu div {
   opacity: 0;
-  -webkit-box-shadow: 0 10px 15px var(--body-text);
-          box-shadow: 0 10px 15px var(--body-text);
+  -webkit-box-shadow: 5px 5px 5px var(--body-text-faded);
+          box-shadow: 5px 5px 5px var(--body-text-faded);
   border: 1px solid var(--body-text);
   -webkit-transform: translate(0, -100%);
           transform: translate(0, -100%);
@@ -65,7 +64,8 @@ nav ul {
   padding: 0 5px !important;
 }
 
-#main-menu .drop-menu a:hover {
+#main-menu .drop-menu a:hover,
+#main-menu .drop-menu a:focus {
   color: var(--playa-light) !important;
   background: var(--body-text) !important;
 }
@@ -107,7 +107,9 @@ nav ul {
           transform: translate(440px, 0);
 }
 
-#main-menu li:nth-child(1):hover .drop-menu div {
+#main-menu li:nth-child(1):hover .drop-menu,
+#main-menu li:nth-child(1) a[aria-expanded="true"] ~ .drop-menu,
+#main-menu li:nth-child(1) .drop-menu:focus-within {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -118,7 +120,9 @@ nav ul {
           transform: translate(0px, 0);
 }
 
-#main-menu li:nth-child(2):hover .drop-menu div {
+#main-menu li:nth-child(2):hover .drop-menu,
+#main-menu li:nth-child(2) a[aria-expanded="true"] ~ .drop-menu,
+#main-menu li:nth-child(2) .drop-menu:focus-within {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -129,7 +133,9 @@ nav ul {
           transform: translate(110px, 0);
 }
 
-#main-menu li:nth-child(3):hover .drop-menu div {
+#main-menu li:nth-child(3):hover .drop-menu,
+#main-menu li:nth-child(3) a[aria-expanded="true"] ~ .drop-menu,
+#main-menu li:nth-child(3) .drop-menu:focus-within {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -140,7 +146,9 @@ nav ul {
           transform: translate(220px, 0);
 }
 
-#main-menu li:nth-child(4):hover .drop-menu div {
+#main-menu li:nth-child(4):hover .drop-menu,
+#main-menu li:nth-child(4) a[aria-expanded="true"] ~ .drop-menu,
+#main-menu li:nth-child(4) .drop-menu:focus-within {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -151,7 +159,9 @@ nav ul {
           transform: translate(330px, 0);
 }
 
-#main-menu li:nth-child(5):hover .drop-menu div {
+#main-menu li:nth-child(5):hover .drop-menu,
+#main-menu li:nth-child(5) a[aria-expanded="true"] ~ .drop-menu,
+#main-menu li:nth-child(5) .drop-menu:focus-within {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -198,7 +208,9 @@ nav ul {
     -webkit-transform: translate(320px, 0);
             transform: translate(320px, 0);
   }
-  #main-menu li:nth-child(1):hover .drop-menu div {
+  #main-menu li:nth-child(1):hover .drop-menu,
+  #main-menu li:nth-child(1) a[aria-expanded="true"] ~ .drop-menu,
+  #main-menu li:nth-child(1) .drop-menu:focus-within {
     opacity: 1;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -207,7 +219,9 @@ nav ul {
     -webkit-transform: translate(0px, 0);
             transform: translate(0px, 0);
   }
-  #main-menu li:nth-child(2):hover .drop-menu div {
+  #main-menu li:nth-child(2):hover .drop-menu,
+  #main-menu li:nth-child(2) a[aria-expanded="true"] ~ .drop-menu,
+  #main-menu li:nth-child(2) .drop-menu:focus-within {
     opacity: 1;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -216,7 +230,9 @@ nav ul {
     -webkit-transform: translate(80px, 0);
             transform: translate(80px, 0);
   }
-  #main-menu li:nth-child(3):hover .drop-menu div {
+  #main-menu li:nth-child(3):hover .drop-menu,
+  #main-menu li:nth-child(3) a[aria-expanded="true"] ~ .drop-menu,
+  #main-menu li:nth-child(3) .drop-menu:focus-within {
     opacity: 1;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -225,7 +241,9 @@ nav ul {
     -webkit-transform: translate(160px, 0);
             transform: translate(160px, 0);
   }
-  #main-menu li:nth-child(4):hover .drop-menu div {
+  #main-menu li:nth-child(4):hover .drop-menu,
+  #main-menu li:nth-child(4) a[aria-expanded="true"] ~ .drop-menu,
+  #main-menu li:nth-child(4) .drop-menu:focus-within {
     opacity: 1;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -234,7 +252,9 @@ nav ul {
     -webkit-transform: translate(240px, 0);
             transform: translate(240px, 0);
   }
-  #main-menu li:nth-child(5):hover .drop-menu div {
+  #main-menu li:nth-child(5):hover .drop-menu,
+  #main-menu li:nth-child(5) a[aria-expanded="true"] ~ .drop-menu,
+  #main-menu li:nth-child(5) .drop-menu:focus-within {
     opacity: 1;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
