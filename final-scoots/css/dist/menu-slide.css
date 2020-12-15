@@ -23,7 +23,7 @@ nav ul {
   text-decoration: none;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 850px) {
   #main-menu {
     position: relative;
     display: flex;
@@ -175,7 +175,7 @@ nav ul {
     transform: translate(328px, 0);
   }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   nav {
     border: 1px solid var(--body-text);
     color: var(--body-text);

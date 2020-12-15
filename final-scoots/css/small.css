@@ -110,7 +110,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: flex-end;
-  background: linear-gradient(90deg, white, var(--body-text-faded));
+  background: linear-gradient(90deg, transparent, var(--body-text-faded));
   column-gap: 2px;
   font-size: 0.6rem;
   margin-left: 6px;
