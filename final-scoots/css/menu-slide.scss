@@ -177,7 +177,7 @@ nav ul {
     }
 
     .drop-menu {
-      top: 2.8rem;
+      top: 3.4rem;
       a {
         font-size: 0.8rem;
       }
@@ -225,22 +225,30 @@ nav ul {
   #main-menu {
     display: none;
     position: absolute;
+    height: auto;
     right: 20px;
     background: $mainColor;
-    padding: 8px 12px;
     box-shadow: 5px 5px 5px $shadowColor;
     border: 1px solid $secondaryColor;
 
     li {
       font-size: 2rem;
-      line-height: 2.5rem;
-      text-align: left;
+      line-height: 2.6rem;
+      text-align: right;
       display: block !important;
 
-      &.active a,
-      a:hover {
+      a {
+        padding: 8px 12px;
+      }
+
+      &.active a {
         color: $mainColor;
         background: $secondaryColor;
+      }
+
+      a:hover,
+      a:focus {
+        background-color: $shadowColor;
       }
 
       a[aria-expanded="true"] ~ .drop-menu {
@@ -251,11 +259,14 @@ nav ul {
       .drop-menu {
         max-height: 0;
         overflow: hidden;
-
+        text-align: right;
+        min-width: fit-content;
         a {
           font-family: "Open Sans", sans-serif;
           font-size: 1.1rem;
-          min-width: 30rem;
+          &:focus {
+            background-color: $shadowColor;
+          }
         }
       }
     }

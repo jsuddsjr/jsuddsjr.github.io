@@ -204,7 +204,7 @@ nav ul {
     min-width: 160px;
   }
   #main-menu .drop-menu {
-    top: 2.8rem;
+    top: 3.4rem;
   }
   #main-menu .drop-menu a {
     font-size: 0.8rem;
@@ -272,23 +272,29 @@ nav ul {
   #main-menu {
     display: none;
     position: absolute;
+    height: auto;
     right: 20px;
     background: var(--playa-light);
-    padding: 8px 12px;
     -webkit-box-shadow: 5px 5px 5px var(--body-text-faded);
             box-shadow: 5px 5px 5px var(--body-text-faded);
     border: 1px solid var(--body-text);
   }
   #main-menu li {
     font-size: 2rem;
-    line-height: 2.5rem;
-    text-align: left;
+    line-height: 2.6rem;
+    text-align: right;
     display: block !important;
   }
-  #main-menu li.active a,
-  #main-menu li a:hover {
+  #main-menu li a {
+    padding: 8px 12px;
+  }
+  #main-menu li.active a {
     color: var(--playa-light);
     background: var(--body-text);
+  }
+  #main-menu li a:hover,
+  #main-menu li a:focus {
+    background-color: var(--body-text-faded);
   }
   #main-menu li a[aria-expanded="true"] ~ .drop-menu {
     max-height: -webkit-fit-content;
@@ -300,11 +306,17 @@ nav ul {
   #main-menu li .drop-menu {
     max-height: 0;
     overflow: hidden;
+    text-align: right;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
   }
   #main-menu li .drop-menu a {
     font-family: "Open Sans", sans-serif;
     font-size: 1.1rem;
-    min-width: 30rem;
+  }
+  #main-menu li .drop-menu a:focus {
+    background-color: var(--body-text-faded);
   }
   #main-menu #marker {
     display: none;
