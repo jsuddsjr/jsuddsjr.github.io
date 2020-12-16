@@ -10,12 +10,13 @@
   }
 
   h1 {
-      font-size: 3rem;
+    font-size: 3rem;
   }
 
-  a {
-      padding-left: 2rem;
-      margin-left: -6px;
+  p > a,
+  li > a {
+    padding-left: 2rem;
+    margin-left: -6px;
   }
 
   .location p {
