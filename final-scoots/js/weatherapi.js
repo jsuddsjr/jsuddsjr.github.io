@@ -198,7 +198,7 @@
     fetch(getUrl(loc.cozumel))
       .then((response) => response.json())
       .then(
-        /** @param {OneCall} data */ (data) =>
+        /** @param {OneCall} data */ (data) => {
           data.daily
             .slice(0, 4)
             .map(normalizeData)
@@ -224,7 +224,22 @@
 
               weatherDiv.appendChild(div);
               weatherDiv.dispatchEvent(weatherEvent);
-            })
+            });
+
+          const currentTemp = d.getElementById("current-temp");
+          if (currentTemp)
+            currentTemp.innerHTML = data.current.temp + "&deg;<sup>F</sup>";
+
+          const humidity = d.getElementById("humidity");
+          if (humidity) humidity.textContent += data.current.humidity + "%";
+
+          const sunrise = d.getElementById("sunrise");
+          if (sunrise) sunrise.textContent += new Date(data.current.sunrise * 1000).toLocaleTimeString();
+
+          const sunset = d.getElementById("sunset");
+          if (sunset) sunset.textContent += new Date(data.current.sunset * 1000).toLocaleTimeString();
+
+        }
       )
       .then(() => weatherDiv.dispatchEvent(weatherEvent));
   }

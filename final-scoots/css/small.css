@@ -135,6 +135,10 @@ ul {
   border: 3px solid var(--body-text);
 }
 
+.current-weather {
+  display: none;
+}
+
 /* INVENTORY */
 .rentals {
   display: grid;
@@ -323,6 +327,7 @@ textarea {
 input[type="radio"] {
   width: auto;
   margin-top: 1.8rem;
+  margin-right: 1rem;
 }
 input:focus + label,
 textarea:focus + label {

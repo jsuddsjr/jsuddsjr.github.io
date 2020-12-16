@@ -35,9 +35,19 @@
   }
 
   .weather {
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: 1fr repeat(4, 100px);
     padding: 8px 12px;
     column-gap: 12px;
+  }
+
+  .current-weather {
+    display: block;
+    justify-self: end;
+  }
+
+  #current-temp {
+    font-size: 3rem;
+    text-shadow: 2px 2px 3px var(--body-text-faded);
   }
 
   .location {
