@@ -86,6 +86,8 @@ p.motto {
   text-align: right;
   width: 80%;
   padding: 0;
+  background: transparent;
+  text-shadow: 2px 2px 3px var(--body-text-faded);
 }
 
 p.motto em {
