@@ -44,4 +44,14 @@
   .location p {
     font-size: 0.9rem;
   }
+
+  form {
+    width: 75%;
+  }
+
+  .inventory {
+    width: 90%; 
+    font-size: 1rem;
+  }
+  
 }

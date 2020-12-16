@@ -42,13 +42,19 @@
   const toTable = (data) => {
     const rows = [];
     rows.push(`<tr><td colspan="2">${data.description}</td></tr>`);
-    rows.push(`<tr><td>Passengers</td><td>${data.persons}</td></tr>`);
-    rows.push(`<tr><td rowspan="2">Daily rates</td><td>$${data.cost.walk_in.full} (Walk-ins)</td></tr>`);
+    rows.push(
+      `<tr><td><strong>Passengers</strong></td><td>${data.persons}</td></tr>`
+    );
+    rows.push(
+      `<tr><td rowspan="2"><strong>Daily rates</strong></td><td>$${data.cost.walk_in.full} (Walk-ins)</td></tr>`
+    );
     rows.push(`<tr><td>$${data.cost.reservation.full} (Reservation)</td></tr>`);
-    rows.push(`<tr><td rowspan="2">Half-day rates</td><td>$${data.cost.walk_in.half} (Walk-ins)</td></tr>`);
+    rows.push(
+      `<tr><td rowspan="2"><strong>Half-day rates</strong></td><td>$${data.cost.walk_in.half} (Walk-ins)</td></tr>`
+    );
     rows.push(`<tr><td>$${data.cost.reservation.half} (Reservation)</td></tr>`);
-    return "<table>" + rows.join('') + "</table>";
-  }
+    return "<table>" + rows.join("") + "</table>";
+  };
 
   const invByType = {};
   const invById = {};
@@ -61,10 +67,12 @@
       : d.getElementById(value);
 
     if (inventory) {
-      d.querySelectorAll(".inventory").forEach(
-        (el) => (el.style.display = "none")
-      );
-      inventory.style.display = "block";
+      d.querySelectorAll(".inventory").forEach((el) => {
+        el.classList.remove("selected");
+        el.classList.add("hidden");
+      });
+      inventory.classList.remove("hidden");
+      inventory.classList.add("selected");
     }
 
     if (options && invById[value]) {
@@ -92,7 +100,7 @@
 
             div.innerHTML = formatImage(inv.imageBase, inv.type);
             div.innerHTML += toTable(inv);
-            
+
             div.innerHTML += `<a class="reservation" href="reservations.html#${inv.imageBase}">Reserve Now</a>`;
 
             container.appendChild(div);

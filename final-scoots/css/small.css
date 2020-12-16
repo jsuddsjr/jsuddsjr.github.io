@@ -131,9 +131,8 @@ ul {
 
 /* INVENTORY */
 .rentals {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
+  display: grid;
+  justify-items: center;
   min-width: 80%;
   margin: 0 auto;
 }
@@ -154,7 +153,15 @@ ul {
   background: white;
 }
 
-.inventory a.reservation {
+.inventory table {
+  padding: 10px;
+}
+
+.inventory.hidden {
+  display: none;
+}
+
+a.reservation {
   display: grid;
   justify-content: center;
   align-content: center;
@@ -170,7 +177,7 @@ a.reservation:hover {
   background-color: var(--body-text-faded);
 }
 
-div[style^="display: block"] > a.reservation {
+.inventory.selected a {
   display: none;
 }
 
@@ -233,7 +240,7 @@ iframe {
 /* FORMS */
 
 form {
-  width: 55%;
+  width: 90%;
 }
 form > fieldset {
   display: block;

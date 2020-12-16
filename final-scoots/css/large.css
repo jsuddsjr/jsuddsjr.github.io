@@ -21,4 +21,12 @@
   .location p {
     font-size: 1.3rem;
   }
+
+  form {
+    width: 55%;
+  }
+
+  .rentals {
+    max-width: 60%;
+  }
 }
