@@ -157,7 +157,16 @@ ul {
   padding: 10px;
 }
 
+.inventory td {
+  padding: 0 3px;
+  vertical-align: top;
+}
+
 .inventory.hidden {
+  display: none;
+}
+
+.inventory.selected tr:nth-child(1) {
   display: none;
 }
 
