@@ -73,6 +73,7 @@ h3 {
 }
 
 ul {
+  padding-right: 1rem;
   background-color: var(--white-faded);
 }
 
@@ -263,16 +264,28 @@ iframe {
 }
 
 .gallery img {
+  width: 100%;
+  margin: 0;
+}
+
+.gallery figure {
   background-color: white;
   padding: 10px;
   transform: rotate(-2deg);
+  transition: all 500ms ease;
 }
 
-.gallery img:hover,
-.gallery img:focus {
-  min-width: 600px;
+.gallery figure:hover {
+  z-index: 1;
+  max-width: 100%;
+  transform: scale(1.8) rotate(0);
+  transition: all 500ms ease-in;
 }
 
+.gallery figcaption {
+  font-size: .9rem;
+  line-height: 1.1rem;
+}
 /* FORMS */
 
 form {
