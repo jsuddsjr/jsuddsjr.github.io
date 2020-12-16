@@ -40,7 +40,8 @@
               el.dataset.dateFormat || moment.localeData().longDateFormat("L")
             );
           });
-          el.value = moment(Date.now()).format().substring(0, 10);;
+          const today = moment(Date.now()).format().substring(0, 10);
+          el.value = el.min = today;
           el.dispatchEvent(new Event("change"));
         }
       );
