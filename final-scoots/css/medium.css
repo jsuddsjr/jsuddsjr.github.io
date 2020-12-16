@@ -53,5 +53,9 @@
     width: 90%; 
     font-size: 1rem;
   }
+
+  form .inventory {
+    width: 100%;
+  }
   
 }

@@ -29,9 +29,7 @@
       <h2>Make your reservation</h2>
 
       <form action="thanks.html" method="get">
-        <div class="rentals">
-
-        </div>
+        <div class="rentals"></div>
 
         <h3>Reservation Detail</h3>
         <fieldset>
@@ -64,16 +62,16 @@
         </fieldset>
 
         <fieldset>
-          <input type="number" name="num" id="num" min="1" max="5" value="1"/>
+          <input type="number" name="num" id="num" min="1" max="5" value="1" />
           <label for="num">How many?</label>
         </fieldset>
 
         <h3>Contact Information</h3>
-        <fieldset>
+        <!-- <fieldset>
           <input type="text" name="fname" id="fname" required />
           <label for="fname">Full name</label>
         </fieldset>
-
+ -->
         <fieldset>
           <input
             type="text"
@@ -119,12 +117,15 @@
           <label for="comment">Instructions</label>
         </fieldset>
 
+        <h3>Rental Agreement</h3>
+        <fieldset>
+          <input type="text" name="sign" id="agree" placeholder="Type your full name here" required >
+          <label for="agree">I have read and agree with the following rules.</label>
+          <iframe src="agreement.html" frameborder="1"></iframe>
+        </fieldset>
+
         <button type="submit">Sign me up!</button>
       </form>
-    </section>
-    <section>
-      <h2>Example Rental Agreement</h2>
-      <iframe src="agreement.html" frameborder="1"></iframe>
     </section>
     <footer>
       <!-- See template.js -->
