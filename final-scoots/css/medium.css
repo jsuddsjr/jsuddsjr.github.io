@@ -62,4 +62,8 @@
   form .inventory {
     width: 100%;
   }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
 }

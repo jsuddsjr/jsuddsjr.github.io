@@ -251,6 +251,28 @@ iframe {
   min-width: 100%;
 }
 
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 20px;
+  row-gap: 30px;
+  width: 90%;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.gallery img {
+  background-color: white;
+  padding: 10px;
+  transform: rotate(-2deg);
+}
+
+.gallery img:hover,
+.gallery img:focus {
+  min-width: 600px;
+}
+
 /* FORMS */
 
 form {
