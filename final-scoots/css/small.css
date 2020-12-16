@@ -131,7 +131,7 @@ ul {
   border: 3px solid var(--body-text-faded);
 }
 
-.weather .day:nth-child(1) {
+.weather .day:nth-last-child(4) {
   border: 3px solid var(--body-text);
 }
 
@@ -185,7 +185,7 @@ a.reservation {
   justify-content: center;
   align-content: center;
   color: var(--playa-light);
-  background-color: var(--body-text);
+  background: var(--body-text);
   text-decoration: none;
   font-size: 1.5rem;
   padding: 8px;
