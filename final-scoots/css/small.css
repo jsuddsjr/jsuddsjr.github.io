@@ -129,8 +129,27 @@ ul {
   border: 3px solid var(--body-text);
 }
 
-/* CONTACT PAGE */
 
+/* INVENTORY */
+.rentals {
+  width: 80%;
+}
+
+.inventory {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  margin-bottom: 1rem;
+  border: 1px solid red;
+  background-color: var(--white-faded);
+}
+
+.inventory img {
+  max-height: 30%;
+  padding: 10px;
+  background: white;
+}
+
+/* CONTACT PAGE */
 .location {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -4,7 +4,7 @@
     {
       "imageBase": "honda-metro-scooter",
       "type": "~Honda Metro Scooter",
-      "description": "",
+      "description": "For those of us who can never find enough hours in the day, here’s your chance to get some back. The Honda Metropolitan is a time-saver with timeless style and all the modern innovations. It starts with one of Honda’s famously reliable four-stroke engines, a no-shift automatic transmission, and remarkable fuel efficiency.",
       "persons": 1,
       "cost": {
         "reservation": {
@@ -20,6 +20,7 @@
     {
       "imageBase": "honda-dio-scooter",
       "type": "~Honda Dio Scooter",
+      "description": "With on-road comfort and off-road styling, the Honda Dio is great for smooth and bumpy terrain alike. The larger front wheel being gets over humps easier than our other models. And, with room for two, this is a great way to share the ride.",
       "persons": 2,
       "cost": {
         "reservation": {
@@ -35,6 +36,7 @@
     {
       "imageBase": "honda-pcx150-scooter",
       "type": "~Honda PCX150 Scooter",
+      "description": "Honda’s PCX150 is a deluxe metropolitan scooter that comes paired with a more voluminous underseat storage area to increase its ’commuterability’.",
       "persons": 2,
       "cost": {
         "reservation": {
@@ -50,6 +52,7 @@
     {
       "imageBase": "honda-pioneer-atv",
       "type": "Honda Pioneer ATV",
+      "description": "The Honda Pioneer 700 is known for its reliability and reputation for being quality-built. It is an excellent vehicle for getting work done around the farm or just going for a fun ride with the family, whether on the beach or off.",
       "persons": 4,
       "cost": {
         "reservation": {
@@ -65,7 +68,7 @@
     {
       "imageBase": "jeep-wrangler-4door",
       "type": "Jeep Wrangler - 4 door",
-      "description": "with a/c",
+      "description": "With four doors, this Jeep Wrangler has enough room for the family. Best for seeing the entire island of Cozumel, and with A/C you can explore in perfect comfort.",
       "persons": 5,
       "cost": {
         "reservation": {
@@ -81,7 +84,7 @@
     {
       "imageBase": "jeep-wrangler-2door",
       "type": "Jeep Wrangler - 2 door",
-      "description": "with a/c",
+      "description": "Better on-road, more capable off-road, lighter, roomier, friendlier... A/C too. What's not to love?",
       "persons": 4,
       "cost": {
         "reservation": {

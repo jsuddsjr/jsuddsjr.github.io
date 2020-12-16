@@ -27,6 +27,11 @@
                 "type": "string",
                 "description": "Inventory item type."
               },
+              "alt": {
+                "$id": "#/properties/inventory/items/anyOf/0/properties/alt",
+                "type": "string",
+                "description": "Image alt text."
+              },
               "description": {
                 "$id": "#/properties/inventory/items/anyOf/0/properties/description",
                 "type": "string",
