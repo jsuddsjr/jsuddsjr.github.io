@@ -42,7 +42,7 @@ section {
 }
 
 section:nth-of-type(odd) {
-  background-color: var(--playa-light-faded);
+  background: linear-gradient(var(--playa-light-faded), transparent);
 }
 
 img {
@@ -294,7 +294,7 @@ iframe {
 }
 
 .gallery figcaption {
-  font-size: .9rem;
+  font-size: 0.9rem;
   line-height: 1.1rem;
 }
 

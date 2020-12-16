@@ -34,4 +34,9 @@
   .gallery {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  footer a {
+    padding-left: 14px;
+    margin-left: 1px;
+  }
 }
