@@ -4,8 +4,13 @@
   /** @type {HTMLDataListElement} */
   const options = d.querySelector("datalist#inventory");
 
+  /** @typedef {Object} CostData
+   * @property {{half:Number, full:Number}} reservation
+   * @property {{half:Number, full:Number}} walk_in
+   */
+
   /** @typedef {Object} InventoryData
-   * @property {Object} cost
+   * @property {CostData} cost
    * @property {String} description
    * @property {String} imageBase
    * @property {Number} persons
@@ -29,6 +34,21 @@
     const img = `<img src="images/${imageBase}-200h.webp" alt="${alt}"/>`;
     return `<picture>${set}${img}</picture>`;
   };
+
+  /**
+   * Convert data into table.
+   * @param {InventoryData} data
+   */
+  const toTable = (data) => {
+    const rows = [];
+    rows.push(`<tr><td colspan="2">${data.description}</td></tr>`);
+    rows.push(`<tr><td>Passengers</td><td>${data.persons}</td></tr>`);
+    rows.push(`<tr><td rowspan="2">Daily rates</td><td>$${data.cost.walk_in.full} (Walk-ins)</td></tr>`);
+    rows.push(`<tr><td>$${data.cost.reservation.full} (Reservation)</td></tr>`);
+    rows.push(`<tr><td rowspan="2">Half-day rates</td><td>$${data.cost.walk_in.half} (Walk-ins)</td></tr>`);
+    rows.push(`<tr><td>$${data.cost.reservation.half} (Reservation)</td></tr>`);
+    return "<table>" + rows.join('') + "</table>";
+  }
 
   const invByType = {};
   const invById = {};
@@ -71,10 +91,9 @@
             div.id = inv.imageBase;
 
             div.innerHTML = formatImage(inv.imageBase, inv.type);
-
-            if (options) {
-                div.innerHTML += `<a class="reservation" href="reservations.html#${inv.imageBase}">Reserve Now</a>`;
-            }
+            div.innerHTML += toTable(inv);
+            
+            div.innerHTML += `<a class="reservation" href="reservations.html#${inv.imageBase}">Reserve Now</a>`;
 
             container.appendChild(div);
           }

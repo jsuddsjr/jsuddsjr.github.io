@@ -46,7 +46,7 @@
                 "$id": "#/properties/inventory/items/anyOf/0/properties/cost",
                 "type": "object",
                 "description": "Cost per rental type.",
-                "required": ["reservation", "walk-in"],
+                "required": ["reservation", "walk_in"],
                 "properties": {
                   "reservation": {
                     "$id": "#/properties/inventory/items/anyOf/0/properties/cost/properties/reservation",
@@ -67,7 +67,7 @@
                     },
                     "additionalProperties": false
                   },
-                  "walk-in": {
+                  "walk_in": {
                     "$ref": "#/properties/inventory/items/anyOf/0/properties/cost/properties/reservation",
                     "type": "object",
                     "description": "Walk-in, no reservation."
