@@ -32,9 +32,51 @@
         anything. We'll get back to you as soon as we can.
         <strong>If you need emergency assistance, please call 911.</strong>
       </p>
+      <form action="thanks.html" method="get">
+        <fieldset>
+          <!-- full name using input of type text and is required and only accepts alpha characters with a minimum of five characters using a regular expression pattern -->
+          <input
+            type="text"
+            pattern="\s*[A-Za-z ]{5,}"
+            name="fullname"
+            id="fullname"
+            required
+          />
+          <label for="fullname">Full name</label>
+        </fieldset>
+        <fieldset>
+          <!-- email using input of type email and use a placeholder to provide a demo email -->
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="xxx@yyy.zz"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+            required
+          />
+          <label for="email">Email</label>
+        </fieldset>
+        <fieldset>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            required
+          ></textarea>
+          <label for="message">Message</label>
+        </fieldset>
+        <button type="submit">Talk to us!</button>
+      </form>
     </section>
     <section>
       <h3>Our locations</h3>
+      <p>
+        The company has two physical rental locations on Cozumel. One is near
+        the Playa del Carmen-Cozumel Ferry dock in el Centro de Cozumel and the
+        other is near the Terminal Puerta Maya further south along the coast
+        which caters to the cruise lines and patrons.
+      </p>
       <div class="location">
         <a
           href="https://www.bing.com/maps?osid=b8f92961-c8fe-4cc3-be0e-a03b50597d7d&cp=20.493412~-86.956745&lvl=16&v=2&sV=2&form=S00027"
@@ -78,45 +120,6 @@
           <p class="phone">987 118 4498</p>
         </div>
       </div>
-    </section>
-    <section>
-      <h3>Contact Form</h3>
-      <form action="thanks.html" method="get">
-        <fieldset>
-          <!-- full name using input of type text and is required and only accepts alpha characters with a minimum of five characters using a regular expression pattern -->
-          <input
-            type="text"
-            pattern="\s*[A-Za-z ]{5,}"
-            name="fullname"
-            id="fullname"
-            required
-          />
-          <label for="fullname">Full name</label>
-        </fieldset>
-        <fieldset>
-          <!-- email using input of type email and use a placeholder to provide a demo email -->
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="xxx@yyy.zz"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
-            required
-          />
-          <label for="email">Email</label>
-        </fieldset>
-        <fieldset>
-          <textarea
-            name="message"
-            id="message"
-            cols="30"
-            rows="10"
-            required
-          ></textarea>
-          <label for="message">Message</label>
-        </fieldset>
-        <button type="submit">Talk to us!</button>
-      </form>
     </section>
     <footer>
       <!-- See template.js -->
