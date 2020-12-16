@@ -253,12 +253,13 @@ iframe {
 }
 
 /* GALLERY */
+
 .gallery {
   display: grid;
   grid-template-columns: 1fr;
   column-gap: 20px;
   row-gap: 30px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   align-content: center;
 }
@@ -275,6 +276,10 @@ iframe {
   transition: all 500ms ease;
 }
 
+.gallery figure:nth-child(odd) {
+  transform: rotate(2deg);
+}
+
 .gallery figure:hover {
   z-index: 1;
   max-width: 100%;
@@ -286,6 +291,7 @@ iframe {
   font-size: .9rem;
   line-height: 1.1rem;
 }
+
 /* FORMS */
 
 form {
