@@ -35,7 +35,12 @@
         data.inventory.forEach((inv) => {
           console.log(inv);
 
+          const bookmark = d.createElement("A");
+          bookmark.name = inv.imageBase;
+          container.appendChild(bookmark);
+
           const div = d.createElement("DIV");
+          
           div.className = "inventory";
           div.innerHTML = formatImage(inv.imageBase, inv.type);
 

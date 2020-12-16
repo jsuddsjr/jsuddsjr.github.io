@@ -138,15 +138,23 @@ ul {
 .inventory {
   display: grid;
   grid-template-columns: 40% 1fr;
+  align-content: center;
+  column-gap: 3rem;
   margin-bottom: 1rem;
   border: 1px solid red;
   background-color: var(--white-faded);
 }
 
 .inventory img {
-  max-height: 30%;
   padding: 10px;
   background: white;
+}
+
+/* RESERVATIONS */
+iframe {
+  height: 25rem;
+  width: 90%;
+  background-color: white;
 }
 
 /* CONTACT PAGE */
@@ -216,11 +224,18 @@ form > fieldset > label {
   width: 100%;
   transition: 0.2s;
 }
+fieldset > fieldset {
+  border: 0;
+}
 input,
 textarea {
-  padding: 1.5rem 0.5rem 0.5rem;
+  padding: 1.8rem 0.5rem 0.5rem;
   border: 0;
   width: 100%;
+}
+input[type='radio'] {
+  width: auto;
+  margin-top: 1.8rem;
 }
 input:focus + label,
 textarea:focus + label {
@@ -234,6 +249,10 @@ input:valid,
 textarea:valid {
   border-bottom: 5px solid var(--playa);
 }
+input::placeholder,
+textarea::placeholder {
+  color: var(--body-text-faded);
+}
 button[type="submit"] {
   margin-top: 1rem;
   padding: 0.3rem;
@@ -246,6 +265,7 @@ button[type="submit"]:hover {
   color: var(--body-text);
 }
 
+/* Breakpoint smaller than medium.css */
 @media only screen and (max-width: 535px) {
   header {
     width: 100%;

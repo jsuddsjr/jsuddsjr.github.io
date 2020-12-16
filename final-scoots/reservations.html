@@ -26,11 +26,107 @@
       <!-- See templates.js -->
     </header>
     <section>
-      <h2>Reservations</h2>
+      <h2>Make your reservation</h2>
+
+      <form action="thanks.html" method="get">
+        <div class="image"></div>
+
+        <h3>Reservation Detail</h3>
+        <fieldset>
+          <!-- storm date using input of type date   -->
+          <input
+            type="date"
+            name="date"
+            id="date"
+            data-date-format="ddd, MMM D YYYY"
+          />
+          <label for="date">Date</label>
+        </fieldset>
+
+        <fieldset>
+          <fieldset class="radio">
+            <label for="half">Half day</label>
+            <input type="radio" name="period" id="half" />
+            <label for="full">Full day</label>
+            <input type="radio" name="period" id="full" checked />
+          </fieldset>
+          <label>Period</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="text" name="type" id="vtype" list="inventory" required />
+          <datalist id="inventory">
+            <!-- See inventory.js -->
+          </datalist>
+          <label for="vtype">Rental Type</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="number" name="num" id="num" min="1" max="5" placeholder="1 - 5"/>
+          <label for="num">How many?</label>
+        </fieldset>
+
+        <h3>Contact Information</h3>
+        <fieldset>
+          <input type="text" name="fname" id="fname" required />
+          <label for="fname">Full name</label>
+        </fieldset>
+
+        <fieldset>
+          <input
+            type="tel"
+            name="tel"
+            id="telephone"
+            placeholder="###-###-####"
+            pattern="\(?\d{3}[)- ]?\d{3}[- ]?\d{4}"
+            required
+          />
+          <label for="telephone">Phone number</label>
+        </fieldset>
+
+        <fieldset>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="xxx@yyy.zz"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+            required
+          />
+          <label for="email">Email</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="text" name="home" id="home" required />
+          <label for="home">Home state or country</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="text" name="cruise" id="cruise" />
+          <label for="cruise">Cruise line (optional)</label>
+        </fieldset>
+
+        <fieldset>
+          <textarea
+            name="comment"
+            id="comment"
+            rows="10"
+            placeholder="Special needs or drop-off requests?"
+          ></textarea>
+          <label for="comment">Instructions</label>
+        </fieldset>
+
+        <button type="submit">Sign me up!</button>
+      </form>
+    </section>
+    <section>
+      <h2>Example Rental Agreement</h2>
+      <iframe src="agreement.html" frameborder="1"></iframe>
     </section>
     <footer>
       <!-- See template.js -->
     </footer>
     <script src="js/templates.js" defer></script>
+    <script src="js/forms.js" async></script>
   </body>
 </html>

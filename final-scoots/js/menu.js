@@ -72,7 +72,7 @@
             ul.innerHTML = data.inventory
               .map(
                 (desc) =>
-                  `<li><a tabindex="-1" role="menuitem" href="${menuAnchor.href}?id=${desc.imageBase}">${desc.type}</a></li>`
+                  `<li><a tabindex="-1" role="menuitem" href="${menuAnchor.href}#${desc.imageBase}">${desc.type}</a></li>`
               )
               .join("");
 
