@@ -335,7 +335,7 @@ input[type="radio"]:focus + label {
 /* Replace value with one from script */
 input[type="date"] {
   color: white;
-  height: 4rem;
+  height: 4.2rem;
 }
 input[type="date"]:before {
   position: absolute;
