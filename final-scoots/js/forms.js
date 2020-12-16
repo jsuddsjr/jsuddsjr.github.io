@@ -11,9 +11,15 @@
           valueSpan.style.color = `hsl(${colorTemp}, 90%, 30%)`;
           valueSpan.style.backgroundColor = `hsla(${colorTemp}, 90%, 30%, .2)`;
         });
-        el.dispatchEvent(new Event('change'));
+        el.dispatchEvent(new Event("change"));
       }
     }
+  );
+
+  // Allow full selection when opening datalist drop-down
+  d.querySelectorAll("input[list]").forEach(
+    /** @param {HTMLInputElement} el */
+    (el) => el.addEventListener("mousedown", (e) => (el.value = ""))
   );
 
   // Constrain text area height by its content.
@@ -57,8 +63,6 @@
   if (stormType && moreInfo) {
     stormType.addEventListener("change", (e) => {
       moreInfo.required = stormType.value === "Other";
-    })
+    });
   }
-
-
 })(document);

@@ -107,7 +107,7 @@
           }
 
           if (options) {
-            options.innerHTML += `<option id="${inv.imageBase}">${inv.type}</option>`;
+            options.innerHTML += `<option id="${inv.imageBase}-option">${inv.type}</option>`;
           }
         });
 

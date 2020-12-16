@@ -75,6 +75,7 @@ nav ul {
       left: 0;
       top: 2.8rem;
       opacity: 0;
+      z-index: -2;
       box-shadow: 5px 5px 5px var(--body-text-faded);
       border: 1px solid var(--body-text);
       @include transform(translate(0, -100%));
