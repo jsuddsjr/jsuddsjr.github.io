@@ -1,7 +1,7 @@
 (function (d) {
   /**
    * Convert text to document fragment
-   * @param {String} text 
+   * @param {String} text
    */
   const asFragment = (text) => {
     return d.createRange().createContextualFragment(text);
@@ -32,7 +32,7 @@
     return true;
   };
 
-  insertTemplate("header");
-  insertTemplate("div.overlay", "weather");
-  insertTemplate("footer");
+  Promise.all([insertTemplate("header"), insertTemplate("footer")]).then(() =>
+    document.body.dispatchEvent(new Event("templateLoad"))
+  );
 })(document);
