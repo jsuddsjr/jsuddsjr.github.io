@@ -72,7 +72,11 @@ h3 {
   margin: 1.5rem 0 1rem;
 }
 
-p, ul {
+ul {
+  background-color: var(--white-faded);
+}
+
+p {
   padding: 0.8rem 1rem;
   background-color: var(--white-faded);
 }
