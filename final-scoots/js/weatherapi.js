@@ -245,11 +245,11 @@
               data.current.sunset * 1000
             ).toLocaleTimeString();
 
-          if (!data.alerts) {
+          if (!data.alerts && Math.random() > 0.7) {
             data.alerts = [
               {
                 sender_name: "John Sudds",
-                description: "This random alert can be ignored.",
+                description: "This random weather alert can be ignored.",
                 event: "Final Project Alert",
                 start: new Date().getTime() / 1000,
                 end: undefined,
@@ -257,7 +257,7 @@
             ];
           }
 
-          if (data.alerts && Math.random() > 0.5) {
+          if (data.alerts) {
             const warnings = d.querySelector(".weather-warning");
             if (warnings) {
               warnings.innerHTML += data.alerts
