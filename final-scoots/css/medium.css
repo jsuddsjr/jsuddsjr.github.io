@@ -47,6 +47,7 @@
   .current-weather {
     display: block;
     justify-self: end;
+    font-size: .9rem;
   }
 
   .weather-warning {

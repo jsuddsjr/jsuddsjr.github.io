@@ -221,7 +221,6 @@
               div.appendChild(conditions);
 
               weatherDiv.appendChild(div);
-              weatherDiv.dispatchEvent(weatherEvent);
             });
 
           const currentTemp = d.getElementById("current-temp");
@@ -243,12 +242,12 @@
               data.current.sunset * 1000
             ).toLocaleTimeString();
 
-          if (!data.alerts && Math.random() > 0.7) {
+          if (!data.alerts && Math.random() > 0.6) {
             data.alerts = [
               {
                 sender_name: "John Sudds",
                 description: "This random weather alert can be ignored.",
-                event: "Final Project Alert",
+                event: "Final Project Banner Test",
                 start: new Date().getTime() / 1000,
                 end: undefined,
               },
