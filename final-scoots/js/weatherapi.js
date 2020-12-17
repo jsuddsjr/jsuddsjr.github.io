@@ -234,11 +234,51 @@
           if (humidity) humidity.textContent += data.current.humidity + "%";
 
           const sunrise = d.getElementById("sunrise");
-          if (sunrise) sunrise.textContent += new Date(data.current.sunrise * 1000).toLocaleTimeString();
+          if (sunrise)
+            sunrise.textContent += new Date(
+              data.current.sunrise * 1000
+            ).toLocaleTimeString();
 
           const sunset = d.getElementById("sunset");
-          if (sunset) sunset.textContent += new Date(data.current.sunset * 1000).toLocaleTimeString();
+          if (sunset)
+            sunset.textContent += new Date(
+              data.current.sunset * 1000
+            ).toLocaleTimeString();
 
+          if (!data.alerts) {
+            data.alerts = [
+              {
+                sender_name: "John Sudds",
+                description: "This random alert can be ignored.",
+                event: "Final Project Alert",
+                start: new Date().getTime() / 1000,
+                end: undefined,
+              },
+            ];
+          }
+
+          if (data.alerts && Math.random() > 0.5) {
+            const warnings = d.querySelector(".weather-warning");
+            if (warnings) {
+              warnings.innerHTML += data.alerts
+                .map((a) => {
+                  const start = a.start
+                    ? new Date(a.start * 1000).toLocaleDateString()
+                    : "start unknown";
+                  const end = a.end
+                    ? new Date(a.end * 1000).toLocaleDateString()
+                    : "end unknown";
+                  return `<div class="warning-dates">(${start} - ${end})</div>
+                  <div class="warning-title">${a.event}</div>
+                  <div class="warning-description">${a.description} - ${a.sender_name}</div>`;
+                })
+                .join("");
+              warnings.classList.remove("hidden");
+              warnings.addEventListener("click", (e) =>
+                warnings.classList.add("hidden")
+              );
+            }
+          }
         }
       )
       .then(() => weatherDiv.dispatchEvent(weatherEvent));

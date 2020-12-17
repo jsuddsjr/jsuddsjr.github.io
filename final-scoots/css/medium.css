@@ -49,6 +49,11 @@
     justify-self: end;
   }
 
+  .weather-warning {
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+  }
+
   #current-temp {
     font-size: 3rem;
     text-shadow: 2px 2px 3px var(--body-text-faded);

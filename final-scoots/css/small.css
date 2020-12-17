@@ -141,6 +141,46 @@ ul {
   display: none;
 }
 
+.weather-warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  grid-auto-flow: dense;
+  background: var(--playa-light);
+  font-size: 1rem;
+  line-height: 1.2rem;
+  padding: 0.8rem;
+  box-shadow: 0 0 10px inset;
+}
+
+.weather-warning.hidden {
+  top: -1000px;
+  transition: top 1s ease-in-out;
+}
+
+.weather-warning div {
+  grid-column: 1 / 2;
+  margin: 0;
+}
+
+.warning-title {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.warning-dates {
+  font-style: italic;
+}
+
+.close-button {
+  grid-column: 2 / 3;
+  justify-self: end;
+}
+
 /* INVENTORY */
 .rentals {
   display: grid;
