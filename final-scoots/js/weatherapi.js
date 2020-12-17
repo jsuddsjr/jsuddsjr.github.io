@@ -178,7 +178,6 @@
    * @returns {WeatherInfo}
    */
   const normalizeData = (daily) => ({
-    name: daily.name,
     // Convert date to weekday name.
     weekday: new Date(daily.dt * 1000).toLocaleDateString("default", {
       weekday: "short",
@@ -192,7 +191,6 @@
     windSpeed: daily.wind_speed,
   });
 
-  const weatherEvent = new Event("weatherLoad");
   const weatherDiv = d.querySelector(".weather");
   if (weatherDiv) {
     fetch(getUrl(loc.cozumel))
@@ -281,40 +279,5 @@
           }
         }
       )
-      .then(() => weatherDiv.dispatchEvent(weatherEvent));
-  }
-
-  const weather = d.getElementById("weather");
-  if (weather) {
-    const city = weather.querySelector("[itemprop='city']");
-    const temp = weather.querySelector("[itemprop='temperature']");
-    const cond = weather.querySelector("[itemprop='conditions']");
-    const high = weather.querySelector("[itemprop='high']");
-    const low = weather.querySelector("[itemprop='low']");
-    const humidity = weather.querySelector("[itemprop='humidity']");
-    const ws = weather.querySelector("[itemprop='windSpeed']");
-
-    fetch(getUrl(loc[d.body.dataset.town || "preston"]))
-      .then((response) => response.json())
-      .then(
-        /** @param {ForecastData} data */
-        (data) => {
-          const info = normalizeData(data);
-
-          city.textContent = info.name;
-          temp.innerHTML = info.currentTemp.toFixed(1) + "&deg;";
-          cond.textContent = info.conditions;
-          high.textContent = info.high.toFixed(0);
-          low.textContent = info.low.toFixed(0);
-          humidity.textContent = info.humidity + "%";
-          ws.textContent = info.windSpeed + " mph";
-
-          // Do side-effects, such as calculate wind chill factor.
-          weather.dispatchEvent(new Event("weatherUpdated"));
-
-          const colorTemp = 270 - (Math.max(30, info.currentTemp) / 120) * 270;
-          temp.style.textShadow = `2px 2px 5px hsl(${colorTemp}, 90%, 30%)`;
-        }
-      );
   }
 })(document);
