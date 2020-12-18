@@ -298,6 +298,31 @@ iframe {
   min-width: 100%;
 }
 
+/* SOCIAL LINKS */
+
+.social {
+  display: flex;
+  column-gap: 16px;
+}
+
+.social a {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+.facebook {
+  background: no-repeat center / contain url("../images/facebook.webp");
+}
+
+.instagram {
+  background: no-repeat center / contain url("../images/instagram.webp");
+}
+
+.twitter {
+  background: no-repeat center / contain url("../images/twitter.webp");
+}
+
 /* GALLERY */
 
 .gallery {

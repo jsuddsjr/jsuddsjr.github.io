@@ -86,4 +86,11 @@
   .gallery {
     grid-template-columns: 1fr 1fr;
   }
+
+  .social a {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+  }
+  
 }
