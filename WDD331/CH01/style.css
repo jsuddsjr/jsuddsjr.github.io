@@ -40,6 +40,26 @@ fieldset:nth-child(n + 2) {
   content: ")";
 }
 
+[type="radio"] {
+  opacity: 0;
+  display: block;
+}
+[type="radio"] + label::before {
+  background: #fff;
+  content: "";
+  display: inline-block;
+  border: 1px solid #444;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 1em;
+  vertical-align: middle;
+}
+[type="radio"]:checked + label::before {
+  background: #4caf50;
+  color: white;
+  content: "✔";
+}
+
 /* Friend */
 
 [rel~="friend"] {
@@ -90,9 +110,29 @@ fieldset:nth-child(n + 2) {
 
 .dropcap p {
   width: 30em;
+  line-height: 1.6;
 }
 
+/* .dropcap p::before {
+  content: "Testing";
+} */
+
 .dropcap p::first-letter {
-  font: bold italic 3em / 0.5 serif;
+  font: bold italic 3.2em / 0.5 serif;
   color: #3f51b5;
+  float: left;
+  margin: 0.25em 0.1em 0.1em 0;
+}
+
+/* Target */
+
+[id^="tab"] {
+  position: absolute;
+  background-color: white;
+}
+[id^="tab"]:first-child {
+  z-index: 1;
+}
+[id^="tab"]:target {
+  z-index: 2;
 }
