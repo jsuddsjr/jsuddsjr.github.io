@@ -85,3 +85,14 @@ fieldset:nth-child(n + 2) {
 [class|="articlepromo"] p {
   margin: 0 0 1em;
 }
+
+/* Drop-cap */
+
+.dropcap p {
+  width: 30em;
+}
+
+.dropcap p::first-letter {
+  font: bold italic 3em / 0.5 serif;
+  color: #3f51b5;
+}
