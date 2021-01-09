@@ -145,6 +145,7 @@ article h2 a:active {
 @media screen and (min-width: 600px) {
   body {
     font-size: 12pt;
+    overflow: hidden;
   }
 
   body > div {
@@ -171,6 +172,7 @@ article h2 a:active {
     flex-wrap: wrap;
     column-gap: 20px;
     justify-content: flex-start;
+    align-content: flex-start;
     padding: 0 2rem;
   }
 
