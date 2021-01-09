@@ -1,0 +1,180 @@
+/* The font for the headlines is Lora and can be found on Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+/* The blue color is #6495ED. */
+/* The background color used for <main> and the color of the text on the blue sidebar is #FAEBD7 */
+:root {
+  --baby-blue: #6495ed;
+  --background: #faebd7;
+  --link-active: #deb887;
+  --gray-trans: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 10pt;
+}
+
+/* The font list for the body copy is: Helvetica, Arial, sans-serif */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+}
+
+h1,
+h2 {
+  font-family: "Lora", serif;
+  font-weight: bold;
+}
+
+/* HEADER */
+
+header {
+  color: var(--background);
+  background-color: var(--baby-blue);
+  padding: 2rem;
+  text-align: right;
+}
+
+nav > ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav > ul > li {
+  line-height: 2.5rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ARTICLE */
+
+article {
+  background-color: white;
+  margin: 2rem 1rem;
+  padding: 2rem;
+  box-shadow: 2px 2px 5px var(--gray-trans);
+  font-size: 1.1rem;
+  width: 90%;
+  margin: 2.5rem auto;
+  overflow: hidden;
+}
+
+article h2 {
+  font-size: 2rem;
+  margin: 0.2rem 0 5rem;
+}
+
+article .post-date {
+  color: #888;
+}
+
+article figure {
+  width: 65%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+article figure img {
+  max-width: 100%;
+}
+
+/* LINKS in LVHA order */
+
+/* Navigation links should behave thus: 
+normal and visited: #FAEBD7 and no underline , 
+active: #DEB887, 
+hover: white and underlined */
+header a,
+header a:visited {
+  color: var(--background);
+  /* no underline inherited */
+}
+
+header a:hover {
+  color: white;
+  /* underline inherited */
+}
+
+header a:active {
+  color: var(--link-active);
+}
+
+/* Other page links should behave thus: 
+normal and visited: #6495ED and no underline , 
+active: #DEB887, 
+hover: underlined */
+a,
+a:visited {
+  color: var(--baby-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--link-active);
+}
+
+/* Article title links should behave thus: 
+normal and visited: black and no underline , 
+active: #DEB887, 
+hover: #6495ED and underlined */
+article h2 a,
+article h2 a:visited {
+  color: black;
+}
+
+article h2 a:hover {
+  color: var(--baby-blue);
+}
+
+article h2 a:active {
+  color: var(--link-active);
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 12pt;
+  }
+
+  body > div {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 18rem 1fr;
+  }
+
+  main {
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
+
+  article {
+    width: 80%;
+    max-width: 600px;
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    justify-content: flex-start;
+    padding: 0 2rem;
+  }
+
+  article {
+    max-width: 450px;
+  }
+}
