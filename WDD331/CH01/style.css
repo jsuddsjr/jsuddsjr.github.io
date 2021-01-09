@@ -1,0 +1,87 @@
+/* Form */
+
+form h1 {
+  color: #009;
+}
+
+form > p {
+  font-size: 22px;
+}
+
+label ~ input {
+  display: block;
+  clear: both;
+}
+
+* + fieldset {
+  margin: 5em 0;
+}
+
+/* fieldset:not(:first-child) { */
+fieldset:nth-child(n + 2) {
+  border: 1px solid red;
+}
+
+/* fieldset:not(:first-of-type) {
+    border: 1px solid orange;
+} */
+
+/* Apply to the label element associated with a required field */
+.required::after {
+  content: " (Required) ";
+  color: #c00;
+  font-size: 0.8em;
+}
+
+.help::before {
+  content: " (";
+}
+.help::after {
+  content: ")";
+}
+
+/* Friend */
+
+[rel~="friend"] {
+  font-size: 2em;
+  background: #eee;
+  padding: 4px;
+  text-decoration: none;
+  border-bottom: 3px solid #ccc;
+}
+[rel~="friend"]:link,
+[rel~="friend"]:visited {
+  color: #34444c;
+}
+[rel~="friend"]:hover {
+  background: #ffeb3b;
+  border-color: #ffc107;
+}
+
+/* Lang */
+
+[lang|="fr"] {
+  font-style: italic;
+}
+[lang|="fr"] q:before {
+  content: "\00AB"; /* Left angle quote */
+}
+[lang|="fr"] q:after {
+  content: "\00BB"; /* Right angle quote */
+}
+
+/* Articles */
+[class|="articlepromo"] {
+  border-top: 5px solid #4caf50;
+  color: #555;
+  line-height: 1.3;
+  padding-top: 0.5em;
+}
+[class|="articlepromo"] h3 {
+  color: #000;
+  font-size: 1.2em;
+  margin: 0;
+}
+[class|="articlepromo"] p {
+  margin: 0 0 1em;
+}
