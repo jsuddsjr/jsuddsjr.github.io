@@ -1,0 +1,15 @@
+body {
+  counter-reset: index;
+}
+fieldset:nth-of-type(3):before {
+  counter-increment: index;
+  content: counter(index);
+  color: red;
+  font-size: 2rem;
+}
+input:invalid:required {
+  border: 1px solid red;
+}
+input:required {
+  border: 1px solid yellow;
+}

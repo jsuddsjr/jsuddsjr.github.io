@@ -40,6 +40,11 @@ fieldset:nth-child(n + 2) {
   content: ")";
 }
 
+
+fieldset p:nth-of-type(n+3) {
+  display: none;
+}
+
 [type="radio"] {
   opacity: 0;
   display: block;
