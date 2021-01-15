@@ -1,0 +1,53 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg: #e3e4e8;
+  --fg: #17181c;
+  font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  font: 1em/1.5 system-ui, -apple-system, sans-serif;
+  height: 100vh;
+}
+
+body > div {
+  position: relative;
+  /* background-image: linear-gradient(
+    -135deg,
+    hsl(223, 10%, 85%),
+    hsl(223, 10%, 65%)
+  );
+  border-radius: 2em;*/
+  box-shadow: 0.2em 0 0.1em hsl(223, 10%, 45%) inset,
+    0 -0.2em 0.1em hsl(223, 10%, 45%) inset, 
+    -0.1em 0 0 hsl(223, 10%, 80%) inset,
+    0 0.1em 0 hsl(223, 10%, 80%) inset; 
+  margin: auto; 
+  width: 10em;
+  height: 30em;
+}
+
+body > div:before {
+  position: absolute;
+  content: "";
+  display: block;
+  left: 1em;
+  background-image: linear-gradient(hsl(223, 10%, 90%), hsl(223, 10%, 80%));
+  border-radius: 1.2em;
+  box-shadow: -0.1em 0.1em 0.1em hsl(223, 10%, 55%) inset,
+    0.2em -0.2em 0.4em hsl(223, 10%, 100%) inset,
+    -0.3em 0.2em 0.4em hsl(223, 10%, 55%) inset,
+    0.1em -0.1em 0.1em hsl(223, 10%, 70%), 
+    0.5em -0.5em 0.3em hsl(223, 10%, 65%),
+    0 0 0.4em 0.4em hsl(223, 10%, 100%);
+  top: 1em;
+  width: calc(100% - 2em);
+  height: calc(100% - 2em);
+}
