@@ -1,7 +1,11 @@
 {
     "cSpell.words": [
         "BYUI",
+        "Magnus",
+        "Magyk",
         "Nauvoo",
+        "Riordan",
+        "Septimus",
         "animationend",
         "autosizes",
         "itemprop",
@@ -32,5 +36,5 @@
         "**/*.sass",
         "**/*.ts"
     ],
-    "compile-hero.disable-compile-files-on-did-save-code": true
+    "compile-hero.disable-compile-files-on-did-save-code": false
 }

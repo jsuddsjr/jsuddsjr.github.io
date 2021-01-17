@@ -1,0 +1,174 @@
+/* The font for the headlines is Lora and can be found on Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  margin: 0;
+  padding: 0;
+  font-size: 10pt;
+}
+
+/* BASIC ELEMENTS */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #faebd7;
+}
+
+body h1,
+body h2 {
+  font-family: "Lora", serif;
+  font-weight: bold;
+}
+
+body a {
+  color: #6495ed;
+  text-decoration: none;
+}
+
+body a:visited {
+  color: #6495ed;
+  text-decoration: none;
+}
+
+body a:hover {
+  text-decoration: underline;
+}
+
+body a:active {
+  color: #deb887;
+}
+
+/* HEADER */
+header {
+  color: #faebd7;
+  background-color: #6495ed;
+  padding: 2rem;
+  text-align: right;
+}
+
+header a {
+  color: #faebd7;
+}
+
+header a:visited {
+  color: #faebd7;
+}
+
+header a:hover {
+  color: white;
+}
+
+header a:active {
+  color: #deb887;
+}
+
+/* NAVIGATION */
+nav > ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav > ul > li {
+  line-height: 2.5rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ARTICLE */
+article {
+  background-color: white;
+  margin: 2rem 1rem;
+  padding: 2rem;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 1.1rem;
+  width: 90%;
+  margin: 2.5rem auto;
+  overflow: hidden;
+}
+
+article h2 {
+  font-size: 2rem;
+  margin: 0.2rem 0 5rem;
+}
+
+article .post-date {
+  color: #888;
+}
+
+article figure {
+  width: 65%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+article figure img {
+  max-width: 100%;
+}
+
+article h2 a {
+  color: black;
+}
+
+article h2 a:visited {
+  color: black;
+}
+
+article h2 a:hover {
+  color: #6495ed;
+}
+
+article h2 a:active {
+  color: #deb887;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 12pt;
+    overflow: hidden;
+  }
+  body > div {
+    display: -ms-grid;
+    display: grid;
+    height: 100vh;
+    -ms-grid-columns: 18rem 1fr;
+        grid-template-columns: 18rem 1fr;
+  }
+  main {
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
+  article {
+    width: 80%;
+    max-width: 600px;
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-column-gap: 20px;
+            column-gap: 20px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+    padding: 0 2rem;
+  }
+  article {
+    max-width: 450px;
+  }
+}
+/*# sourceMappingURL=main.css.map */

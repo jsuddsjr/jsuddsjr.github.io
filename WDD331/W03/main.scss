@@ -1,0 +1,196 @@
+/* The font for the headlines is Lora and can be found on Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+$medium: 2rem;
+$larger: 2.5rem;
+
+$colors: (
+  bg-light: #faebd7,
+  baby-blue: #6495ed,
+  link-active: #deb887,
+  gray-shadow: rgba(0, 0, 0, 0.2),
+);
+
+// Fetch color from Sass map
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+// Simplify media queries
+@mixin breakpoint($min-width) {
+  @media screen and (min-width: #{$min-width}) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  margin: 0;
+  padding: 0;
+  font-size: 10pt;
+}
+
+/* BASIC ELEMENTS */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: color(bg-light);
+
+  h1,
+  h2 {
+    font-family: "Lora", serif;
+    font-weight: bold;
+  }
+
+  a {
+    color: color(baby-blue);
+    text-decoration: none;
+
+    &:visited {
+      color: color(baby-blue);
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: color(link-active);
+    }
+  }
+}
+
+/* HEADER */
+
+header {
+  color: color(bg-light);
+  background-color: color(baby-blue);
+  padding: $medium;
+  text-align: right;
+
+  a {
+    color: color(bg-light);
+
+    &:visited {
+      color: color(bg-light);
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &:active {
+      color: color(link-active);
+    }
+  }
+}
+
+/* NAVIGATION */
+
+nav {
+  & > ul {
+    list-style: none;
+    padding: 0;
+
+    > li {
+      line-height: $larger;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+}
+
+/* ARTICLE */
+
+article {
+  background-color: white;
+  margin: $medium 1rem;
+  padding: $medium;
+  box-shadow: 2px 2px 5px color(gray-shadow);
+  font-size: 1.1rem;
+  width: 90%;
+  margin: $larger auto;
+  overflow: hidden;
+
+  h2 {
+    font-size: $medium;
+    margin: 0.2rem 0 5rem;
+  }
+
+  .post-date {
+    color: #888;
+  }
+
+  figure {
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  h2 a {
+    color: black;
+
+    &:visited {
+      color: black;
+    }
+
+    &:hover {
+      color: color(baby-blue);
+    }
+
+    &:active {
+      color: color(link-active);
+    }
+  }
+}
+
+/* MEDIA QUERIES */
+
+@include breakpoint(600px) {
+  body {
+    font-size: 12pt;
+    overflow: hidden;
+
+    > div {
+      display: grid;
+      height: 100vh;
+      grid-template-columns: 18rem 1fr;
+    }
+  }
+
+  main {
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
+
+  article {
+    width: 80%;
+    max-width: 600px;
+    padding: $larger;
+  }
+}
+
+@include breakpoint(1240px) {
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 0 $medium;
+  }
+
+  article {
+    max-width: 450px;
+  }
+}
