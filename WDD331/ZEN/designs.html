@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Zen Garden: All designs</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 50px;
+        margin: 0;
+        padding: 0;
+        width: 850px;
+        margin: 0 auto;
+      }
+      .gallery > a {
+        width: 400px;
+        height: 400px;
+        display: block;
+      }
+      iframe {
+        width: 200%;
+        height: 200%;
+        margin-top: -50%;
+        margin-left: -50%;
+        transform: scale(0.5);
+        pointer-events: none;
+      }
+      nav ul {
+        list-style: none;
+        width: 80vw;
+        margin: 2em auto;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      nav li a {
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Zen Garden Designs</h1>
+    <nav>
+      <ul>
+        <li><a href="#page120">Page 120</a></li>
+        <li><a href="#page140">Page 140</a></li>
+        <li><a href="#page160">Page 160</a></li>
+        <li><a href="#page180">Page 180</a></li>
+        <li><a href="#page200">Page 200</a></li>
+        <li><a href="#page220">Page 220</a></li>
+      </ul>
+    </nav>
+    <div class="gallery"></div>
+    <script>
+      const loadPage = (entries) => {
+        entries
+          .filter((e) => e.isIntersecting)
+          .forEach((entry) => {
+            /** @type {HTMLIFrameElement} */
+            const iframe = entry.target;
+            iframe.src = iframe.dataset.src;
+            ob.unobserve(iframe);
+          });
+      };
+
+      function* pageIter() {
+        const gallery = document.querySelector(".gallery");
+        for (let i = 100; i <= 221; i++) {
+          const url = `http://www.csszengarden.com/${i}/`;
+          const anchor = document.createElement("A");
+          const iframe = document.createElement("IFRAME");
+          anchor.name = `page${i}`;
+          anchor.href = url;
+          anchor.title = `Page ${i}`;
+          iframe.dataset.src = url;
+          anchor.appendChild(iframe);
+          gallery.appendChild(anchor);
+          yield iframe;
+        }
+      }
+
+      const ob = new IntersectionObserver(loadPage);
+
+      [...pageIter()].forEach((el) => ob.observe(el));
+    </script>
+  </body>
+</html>
