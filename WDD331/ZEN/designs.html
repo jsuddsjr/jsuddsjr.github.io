@@ -75,7 +75,9 @@
         for (let i = 100; i <= 221; i++) {
           const url = `http://www.csszengarden.com/${i}/`;
           const anchor = document.createElement("A");
+          /** @type {HTMLIFrameElement} */
           const iframe = document.createElement("IFRAME");
+          iframe.referrerPolicy = "no-referrer";
           anchor.name = `page${i}`;
           anchor.href = url;
           anchor.title = `Page ${i}`;
