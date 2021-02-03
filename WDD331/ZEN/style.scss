@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Oldenburg&display=swap");
+
+$wallpaper: url(https://jsuddsjr.github.io/files/Wallpaper90.png);
+
+$frm: #2d1d29; // rgba(96, 63, 28);
+$frml: lighten($frm, 10%);
+$frmd: darken($frm, 10%);
+
+$pic: #e9d2b7;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  background-color: #300;
+  font-size: 0.8em;
+}
+
+p {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Oldenburg", cursive;
+  font-size: 1.3rem;
+}
+
+#zen-intro {
+  padding-top: 120px;
+}
+
+header {
+  color: white;
+  margin-bottom: 80px;
+  margin-left: 80px;
+  font-size: 1.2rem;
+}
+
+.page-wrapper {
+  width: 100vh;
+  height: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform-origin: right top;
+  transform: rotate(-90deg) translate3d(0, -100vh, 0);
+}
+
+#zen-intro,
+#zen-supporting {
+  background: repeat-y top right $wallpaper;
+
+  & > div {
+    transform-origin: left top;
+    transform: rotate(90deg) translate3d(-60px, calc(-100vh + 40px), 0);
+
+    background-color: $pic;
+    margin-bottom: 40vh;
+    max-width: 50vh;
+
+    border: solid 4vmin $frm {
+      bottom-color: $frml;
+      top-color: $frmd;
+      radius: 2px;
+    }
+
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.45) inset,
+      0 5px 10px 5px rgba(0, 0, 0, 0.65);
+
+    display: inline-block;
+    padding: 4vmin;
+    position: relative;
+    text-align: center;
+
+    &:before {
+      border-radius: 25px;
+      bottom: -2vmin;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.8) inset;
+      content: "";
+      left: -2vmin;
+      position: absolute;
+      right: -2vmin;
+      top: -2vmin;
+    }
+
+    &:after {
+      border-radius: 2px;
+      bottom: -2.5vmin;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.8);
+      content: "";
+      left: -2.5vmin;
+      position: absolute;
+      right: -2.5vmin;
+      top: -2.5vmin;
+    }
+
+    /* "Random" pictures are hung at different locations */
+    &:nth-of-type(2n + 1) {
+      transform: rotate(90deg) translate3d(-20px, calc(-100vh + 80px), 0);
+    }
+
+    &:nth-child(3n) {
+      transform: rotate(90deg) translate3d(60px, calc(-100vh + 140px), 0);
+    }
+  }
+}
+
+#zen-supporting {
+  .participation {
+    min-width: 25vh;
+  }
+  .requirements {
+    min-width: 75vh;
+  }
+  .benefits {
+    min-width: 10vh;
+  }
+}
+
+@media screen and (max-height: 550px) {
+  body {
+    font-size: .7em;
+  }
+  #zen-intro,
+  #zen-supporting {
+    & > div {
+      min-width: 70vh;
+    }
+  }
+}
+
+@media screen and (max-height: 450px) {
+  body {
+    font-size: 0.65em;
+  }
+}
