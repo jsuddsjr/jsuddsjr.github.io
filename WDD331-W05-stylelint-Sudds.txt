@@ -1,0 +1,19 @@
+
+WDD230/lesson9/css/small.css
+  64:3  ├ù  Unexpected shorthand "background" after "background-color"                                             declaration-block-no-shorthand-property-overrides
+ 141:1  ├ù  Expected selector ".gallery img" to come before selector ".overlay figure img"                         no-descending-specificity                        
+ 203:1  ├ù  Expected selector "footer .address" to come before selector "footer .contact .address"                 no-descending-specificity                        
+ 236:1  ├ù  Expected selector "nav a" to come before selector "a:focus"                                            no-descending-specificity                        
+ 236:1  ├ù  Expected selector "nav a" to come before selector "a:hover"                                            no-descending-specificity                        
+ 445:1  ├ù  Expected selector "textarea" to come before selector "textarea:focus"                                  no-descending-specificity                        
+ 531:1  ├ù  Expected selector "input::-webkit-datetime-edit" to come before selector "input:focus"                 no-descending-specificity                        
+ 531:1  ├ù  Expected selector "input::-webkit-datetime-edit" to come before selector "input:invalid"               no-descending-specificity                        
+ 532:1  ├ù  Expected selector "input::-webkit-inner-spin-button" to come before selector "input:focus"             no-descending-specificity                        
+ 532:1  ├ù  Expected selector "input::-webkit-inner-spin-button" to come before selector "input:invalid"           no-descending-specificity                        
+ 533:1  ├ù  Expected selector "input::-webkit-clear-button" to come before selector "input:focus"                  no-descending-specificity                        
+ 533:1  ├ù  Expected selector "input::-webkit-clear-button" to come before selector "input:invalid"                no-descending-specificity                        
+ 537:1  ├ù  Expected selector "input::-webkit-calendar-picker-indicator" to come before selector "input:focus"     no-descending-specificity                        
+ 537:1  ├ù  Expected selector "input::-webkit-calendar-picker-indicator" to come before selector "input:invalid"   no-descending-specificity                        
+ 551:1  ├ù  Expected selector "table.debug td" to come before selector "#weather table td"                         no-descending-specificity                        
+ 551:1  ├ù  Expected selector "table.debug td" to come before selector "#weather table td:nth-child(1)"            no-descending-specificity
+
