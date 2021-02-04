@@ -7,21 +7,31 @@
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        min-width: 680px;
       }
       .gallery {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        row-gap: 50px;
-        margin: 0;
+        justify-content: center;
+        gap: 35px;
         padding: 0;
-        width: 850px;
-        margin: 0 auto;
+        margin: 0 100px 0 120px;
       }
       .gallery > a {
         width: 400px;
         height: 400px;
         display: block;
+        position: relative;
+      }
+      .gallery > a > span {
+        position: absolute;
+        top: -0.5em;
+        left: -0.5em;
+        background-color: white;
+        color: #333;
+        font-weight: bold;
+        padding: 0.2rem 0.5rem;
+        box-shadow: 1px 1px 5px black;
       }
       iframe {
         width: 200%;
@@ -31,24 +41,32 @@
         transform: scale(0.5);
         pointer-events: none;
       }
+      nav {
+        position: fixed;
+        left: 0;
+        width: 100vw;
+        background-color: #333;
+      }
       nav ul {
         list-style: none;
-        width: 80vw;
         margin: 2em auto;
-        padding: 0;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-content: space-between;
       }
       nav li a {
+        color: #ddd;
+        font-weight: bold;
         display: inline-block;
         text-decoration: none;
       }
     </style>
   </head>
-  <body>
+  <body id="top" name="top">
     <h1>CSS Zen Garden Designs</h1>
     <nav>
       <ul>
+        <li><a href="#top">Top</a></li>
         <li><a href="#page120">Page 120</a></li>
         <li><a href="#page140">Page 140</a></li>
         <li><a href="#page160">Page 160</a></li>
@@ -77,13 +95,16 @@
           const anchor = document.createElement("A");
           /** @type {HTMLIFrameElement} */
           const iframe = document.createElement("IFRAME");
+          const span = document.createElement("SPAN");
+          span.innerText = i;
           iframe.referrerPolicy = "no-referrer";
-          anchor.name = `page${i}`;
+          anchor.id = `page${i}`;
           anchor.href = url;
           anchor.title = `Page ${i}`;
-          anchor.target = '_blank';
+          anchor.target = "_blank";
           iframe.dataset.src = url;
           anchor.appendChild(iframe);
+          anchor.appendChild(span);
           gallery.appendChild(anchor);
           yield iframe;
         }
