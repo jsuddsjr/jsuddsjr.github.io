@@ -81,6 +81,7 @@
           anchor.name = `page${i}`;
           anchor.href = url;
           anchor.title = `Page ${i}`;
+          anchor.target = '_blank';
           iframe.dataset.src = url;
           anchor.appendChild(iframe);
           gallery.appendChild(anchor);
