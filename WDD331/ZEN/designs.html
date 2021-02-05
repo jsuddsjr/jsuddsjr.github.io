@@ -8,6 +8,7 @@
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         min-width: 680px;
+        margin-bottom: 400px;
       }
       .gallery {
         display: flex;
@@ -22,6 +23,9 @@
         height: 400px;
         display: block;
         position: relative;
+      }
+      .gallery > a:hover {
+        border-bottom: 1px dashed;
       }
       .gallery > a > span {
         position: absolute;
@@ -52,13 +56,17 @@
         margin: 2em auto;
         display: flex;
         flex-direction: column;
-        align-content: space-between;
+        row-gap: .5rem;
       }
-      nav li a {
+      nav a {
         color: #ddd;
         font-weight: bold;
         display: inline-block;
         text-decoration: none;
+        padding: 2px 5px;
+      }
+      nav a:hover {
+        outline: 1px dashed #ddd;
       }
     </style>
   </head>
