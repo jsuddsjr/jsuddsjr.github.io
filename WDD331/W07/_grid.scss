@@ -1,0 +1,36 @@
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: space-between;
+  height: 100%;
+}
+
+.cell {
+  flex: 1;
+  text-align: center;
+}
+
+$num-columns: 8;
+$one-column: 100 / $num-columns;
+$loop-start: 1;
+
+@mixin col($span-num) {
+  flex: 0 0 $one-column * $span-num;
+}
+
+@mixin offset($offset-num) {
+  margin-left: $one-column * $offset-num;
+}
+
+// Using through keyword includes end variable.
+// Using to keyword does not include end variable, and needs +1.
+@for $index from $loop-start through $num-columns {
+  .col-#{$index} {
+    @include col($index);
+  }
+
+  .offset-#{$index} {
+    @include offset($index);
+  }
+}
