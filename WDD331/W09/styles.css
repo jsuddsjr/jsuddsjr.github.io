@@ -1040,18 +1040,20 @@ body {
   background-color: white;
 }
 body iframe {
-  opacity: 0.4;
+  opacity: 0.5;
   position: absolute;
-  width: 100vw;
+  width: calc(100vw + 16px);
   height: 100vh;
   overflow: hidden;
   z-index: -2;
+  pointer-events: none;
 }
 
 header,
 main,
 footer {
   opacity: 0.8;
+  max-width: 45em;
 }
 
 a:link,
@@ -1067,7 +1069,7 @@ header {
   margin: 0 auto;
   width: 100%;
   border-bottom: 2px solid #727272;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 header > * {
   max-width: 45rem;
@@ -1082,8 +1084,7 @@ header .site-banner {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 3.75rem;
-  padding: 0 15px;
+  height: 3.2rem;
 }
 header .site-banner__left {
   display: -webkit-box;
@@ -1096,8 +1097,8 @@ header .site-banner__left {
       -ms-flex-align: center;
           align-items: center;
   background: black;
-  height: 3.75rem;
-  width: 3.75rem;
+  height: 3.5rem;
+  width: 3.5rem;
 }
 header .site-banner__left .icon-byui-logo:before {
   font-size: 30px;
@@ -1162,13 +1163,12 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  display: none;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   background: black;
   color: white;

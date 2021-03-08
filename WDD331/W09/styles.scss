@@ -81,12 +81,13 @@ body {
 
   // IFRAME for matching content layout
   iframe {
-    opacity: .4;
+    opacity: 0.5;
     position: absolute;
-    width: 100vw;
+    width: calc(100vw + 16px);
     height: 100vh;
     overflow: hidden;
     z-index: -2;
+    pointer-events: none;
   }
 }
 
@@ -94,6 +95,7 @@ header,
 main,
 footer {
   opacity: 0.8;
+  max-width: 45em;
 }
 
 @include anchors() {
@@ -102,7 +104,7 @@ footer {
 }
 
 // ***************
-// HEADER 
+// HEADER
 // ***************
 header {
   background-color: $link-blue;
@@ -110,7 +112,7 @@ header {
   width: 100%;
 
   border-bottom: 2px solid $dark-gray;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.5rem;
 
   & > * {
     max-width: 45rem;
@@ -119,15 +121,14 @@ header {
   .site-banner {
     @include flex($justify: space-between);
 
-    height: 3.75rem;
-    padding: 0 15px;
+    height: 3.2rem;
 
     &__left {
       @include flex();
 
       background: black;
-      height: 3.75rem;
-      width: 3.75rem;
+      height: 3.5rem;
+      width: 3.5rem;
 
       .icon-byui-logo:before {
         font-size: 30px;
@@ -180,8 +181,7 @@ main {
 }
 
 .info-banner {
-  @include flex-column($align: stretch);
-  display: none;
+  @include flex-column($justify: stretch);
 
   width: 100%;
   background: black;
