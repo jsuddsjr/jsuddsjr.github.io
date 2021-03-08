@@ -1,5 +1,5 @@
-@import 'typography';
-@import 'icons';
+@import "typography";
+@import "icons";
 
 $sm-break: 48em;
 // colors
@@ -10,17 +10,29 @@ $body-font: #020202;
 $link-blue: #0076b6; //why do we have both of these blues?
 $byui-blue: #056cb6;
 
+// Define anchor tags in correct order.
+@mixin anchors($tag: a) {
+  #{$tag}:link,
+  #{$tag}:visited,
+  #{$tag}:hover,
+  #{$tag}:active {
+    @content;
+  }
+}
+
 // Utility classes
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
+
 img {
   max-width: 100%;
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -30,4 +42,107 @@ img {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+body {
+  font-family: "BYUI Open Sans", "Open Sans", "Lucida Sans Unicode",
+    "Lucida Grande", Verdana, sans-serif;
+  width: 100vw;
+  color: #020202;
+  overflow-x: hidden;
+  background-color: white;
+
+  background: no-repeat url("images/byui-mobile-header.jpg");
+  background-size: cover;
+}
+
+@include anchors() {
+  color: #020202;
+  text-decoration: none;
+}
+
+header {
+  opacity: .8;
+  background-color: #0076b6;
+  width: 100%;
+
+  border-bottom: 2px solid #727272;
+  margin-bottom: 2.5rem;
+
+  & > * {
+    max-width: 45rem;
+  }
+
+  .site-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.75rem;
+    padding: 0 15px;
+
+    &__left {
+      background: black;
+      display: flex;
+      height: 3.75rem;
+      width: 3.75rem;
+      align-items: center;
+      justify-content: center;
+
+      .icon-byui-logo:before {
+        font-size: 30px;
+        color: white;
+      }
+
+      h1 {
+        display: none;
+      }
+    }
+
+    &__right {
+      display: flex;
+      gap: 0.9rem;
+      font-size: 1.8rem;
+      margin-right: 8px;
+    }
+
+    form {
+      display: none;
+    }
+  }
+
+  .site-header {
+    background-color: #eaeaea;
+    display: flex;
+    width: 100%;
+
+    .container {
+      width: 100%;
+    }
+
+    .site-name {
+      font-size: 1.3rem;
+      font-weight: 300;
+      padding: 15px 0;
+      width: calc(100% - 80px);
+    }
+  }
+}
+
+.white-text,
+.text-white {
+  color: white;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+@media screen and (min-width: 48rem) {
+  body {
+    background-image: url("images/byui-desktop-all.jpg");
+  }
 }
