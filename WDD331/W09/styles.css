@@ -1038,8 +1038,14 @@ body {
   color: #020202;
   overflow-x: hidden;
   background-color: white;
-  background: no-repeat url("images/byui-mobile-header.jpg");
-  background-size: contain;
+}
+body iframe {
+  opacity: 0.4;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
 }
 
 header,
@@ -1159,9 +1165,10 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  display: none;
   width: 100%;
   background: black;
   color: white;
@@ -1181,11 +1188,6 @@ main {
 .interest-box {
   border: 2px solid #eaeaea;
 }
-.interest-box img {
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-}
 .interest-box__figure img {
   max-width: 100%;
   max-height: 100%;
@@ -1202,8 +1204,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding: 0 20px;
-  font-size: 1.5rem;
+  padding: 5px 10px;
   font-weight: 700;
   color: #0076b6;
 }

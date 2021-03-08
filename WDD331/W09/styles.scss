@@ -79,8 +79,15 @@ body {
   overflow-x: hidden;
   background-color: white;
 
-  background: no-repeat url("images/byui-mobile-header.jpg");
-  background-size: contain;
+  // IFRAME for matching content layout
+  iframe {
+    opacity: .4;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -2;
+  }
 }
 
 header,
@@ -94,6 +101,9 @@ footer {
   text-decoration: none;
 }
 
+// ***************
+// HEADER 
+// ***************
 header {
   background-color: $link-blue;
   margin: 0 auto;
@@ -159,6 +169,9 @@ header {
   }
 }
 
+// ***************
+// MAIN
+// ***************
 main {
   @include flex-column($align: stretch);
   @include container($sm-break);
@@ -167,7 +180,8 @@ main {
 }
 
 .info-banner {
-  @include flex-column();
+  @include flex-column($align: stretch);
+  display: none;
 
   width: 100%;
   background: black;
@@ -187,9 +201,11 @@ main {
   }
 }
 
-.interest-box {
-  @include responsive-image();
+// .announcement {
+//   @include responsive-image();
+// }
 
+.interest-box {
   border: 2px solid $light-gray;
 
   &__figure {
@@ -200,8 +216,7 @@ main {
     @include flex($justify: space-between);
 
     width: 100%;
-    padding: 0 20px;
-    font-size: 1.5rem;
+    padding: 5px 10px;
     font-weight: 700;
     color: $link-blue;
   }
