@@ -1040,7 +1040,7 @@ body {
   background-color: white;
 }
 body iframe {
-  opacity: 0.5;
+  opacity: 0;
   position: absolute;
   width: calc(100vw + 16px);
   height: 100vh;
@@ -1069,7 +1069,7 @@ header {
   margin: 0 auto;
   width: 100%;
   border-bottom: 2px solid #727272;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.75rem;
 }
 header > * {
   max-width: 45rem;
@@ -1097,11 +1097,11 @@ header .site-banner__left {
       -ms-flex-align: center;
           align-items: center;
   background: black;
-  height: 3.5rem;
-  width: 3.5rem;
+  padding: 0 10px;
+  height: 100%;
 }
 header .site-banner__left .icon-byui-logo:before {
-  font-size: 30px;
+  font-size: 24px;
   color: white;
 }
 header .site-banner__left h1 {
@@ -1112,8 +1112,8 @@ header .site-banner__right {
   display: -ms-flexbox;
   display: flex;
   gap: 0.9rem;
-  font-size: 1.8rem;
-  margin-right: 8px;
+  font-size: 1.6rem;
+  padding-right: 1rem;
 }
 header .site-banner form {
   display: none;
@@ -1129,10 +1129,10 @@ header .site-header .container {
   width: 100%;
 }
 header .site-header .site-name {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 300;
-  padding: 15px 0;
-  width: calc(100% - 80px);
+  padding: 12px 0;
+  width: calc(100% - 75px);
 }
 
 main {
@@ -1152,7 +1152,7 @@ main {
   max-width: 48em;
   margin: 0 auto;
   padding: 0 15px;
-  gap: 2.5rem;
+  gap: 1.8rem;
 }
 
 .info-banner {
@@ -1172,13 +1172,17 @@ main {
   width: 100%;
   background: black;
   color: white;
-  padding: 20px;
+  padding: 18px;
   text-align: center;
 }
+.info-banner .btn {
+  font-size: 0.75rem;
+}
 .info-banner h2 {
+  font-size: 1.2rem;
   font-weight: 200;
   line-height: 1.25;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.5rem;
 }
 .info-banner a:hover,
 .info-banner a:focus {
@@ -1204,8 +1208,9 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding: 5px 10px;
-  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0 5px 5px;
+  font-weight: 200;
   color: #0076b6;
 }
 
