@@ -1039,7 +1039,13 @@ body {
   overflow-x: hidden;
   background-color: white;
   background: no-repeat url("images/byui-mobile-header.jpg");
-  background-size: cover;
+  background-size: contain;
+}
+
+header,
+main,
+footer {
+  opacity: 0.8;
 }
 
 a:link,
@@ -1051,8 +1057,8 @@ a:active {
 }
 
 header {
-  opacity: 0.8;
   background-color: #0076b6;
+  margin: 0 auto;
   width: 100%;
   border-bottom: 2px solid #727272;
   margin-bottom: 2.5rem;
@@ -1064,28 +1070,28 @@ header .site-banner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 3.75rem;
   padding: 0 15px;
 }
 header .site-banner__left {
-  background: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 3.75rem;
-  width: 3.75rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: black;
+  height: 3.75rem;
+  width: 3.75rem;
 }
 header .site-banner__left .icon-byui-logo:before {
   font-size: 30px;
@@ -1122,6 +1128,86 @@ header .site-header .site-name {
   width: calc(100% - 80px);
 }
 
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  max-width: 48em;
+  margin: 0 auto;
+  padding: 0 15px;
+  gap: 2.5rem;
+}
+
+.info-banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.info-banner h2 {
+  font-weight: 200;
+  line-height: 1.25;
+  margin-bottom: 0.8em;
+}
+.info-banner a:hover,
+.info-banner a:focus {
+  background-color: #056cb6;
+}
+
+.interest-box {
+  border: 2px solid #eaeaea;
+}
+.interest-box img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+.interest-box__figure img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+.interest-box__caption {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0076b6;
+}
+
 .white-text,
 .text-white {
   color: white;
@@ -1139,7 +1225,33 @@ header .site-header .site-name {
           justify-content: space-between !important;
 }
 
-@media screen and (min-width: 48rem) {
+.btn {
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
+  padding: 6px 24px;
+  border-radius: 4px;
+}
+
+.btn-blue {
+  background-color: #0076b6;
+  color: white !important;
+}
+
+.btn:not(.disabled):not(:disabled):hover {
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  text-decoration: none;
+}
+
+.float-right {
+  float: right;
+}
+
+@media screen and (min-width: 48em) {
   body {
     background-image: url("images/byui-desktop-all.jpg");
   }
