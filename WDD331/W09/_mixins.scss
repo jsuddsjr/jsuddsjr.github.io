@@ -1,0 +1,48 @@
+
+
+// Define anchor tags in correct order.
+@mixin anchors($tag: a) {
+    #{$tag}:link,
+    #{$tag}:visited,
+    #{$tag}:hover,
+    #{$tag}:active {
+      @content;
+    }
+  }
+  
+  @mixin flex-column($justify: center, $align: center) {
+    display: flex;
+    flex-flow: column;
+    justify-content: $justify;
+    align-items: $align;
+  }
+  
+  @mixin flex($justify: center, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+  }
+  
+  @mixin container($max-width: $sm-break) {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  @mixin responsive-image() {
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+    }
+  }
+  
+  @function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  
+  @function rem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+  }
+  
+  

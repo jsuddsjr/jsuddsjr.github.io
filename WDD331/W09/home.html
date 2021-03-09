@@ -130,17 +130,197 @@
           </figure>
         </a>
       </div>
+
+      <div class="info-button">
+        <button
+          class="audience-button btn"
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="audience-dropdown"
+          data-toggle="dropdown"
+          data-target="audience-dropdown"
+          aria-expanded="false"
+        >
+          GET INFORMATION FOR:
+          <span
+            class="icon-triangle-down float-right"
+            aria-hidden="true"
+          ></span>
+        </button>
+        <ul
+          class="audience-dropdown list-unstyled hidden"
+          id="audience-dropdown"
+        >
+          <li class="audience-dropdown-item">
+            <a href="#">Future Students</a>
+          </li>
+          <li class="audience-dropdown-item">
+            <a href="#">Current Students</a>
+          </li>
+          <li class="audience-dropdown-item">
+            <a href="#">employees</a>
+          </li>
+          <li class="audience-dropdown-item">
+            <a href="#">Alumni</a>
+          </li>
+          <li class="audience-dropdown-item">
+            <a href="#">Visitors</a>
+          </li>
+        </ul>
+      </div>
+
+      <aside class="highlights">
+        <h3 class="highlights-heading bg-gray">Resources</h3>
+        <div>
+          <a href="#" class="highlights-link d-block"
+            >Apply Now <span class="icon-angle-right float-right"></span>
+          </a>
+          <a href="#" class="highlights-link d-block"
+            >Financial Aid <span class="icon-angle-right float-right"></span>
+          </a>
+          <a href="#" class="highlights-link d-block"
+            >Degrees and Programs
+            <span class="icon-angle-right float-right"></span>
+          </a>
+          <a href="#" class="highlights-link d-block"
+            >Student Housing <span class="icon-angle-right float-right"></span>
+          </a>
+          <a href="#" class="highlights-link d-block"
+            >Tuition and Fees <span class="icon-angle-right float-right"></span>
+          </a>
+          <a href="#" class="highlights-link d-block"
+            >Academic Deadlines
+            <span class="icon-angle-right float-right"></span>
+          </a>
+        </div>
+      </aside>
+      <aside class="component-spacing">
+        <h3 class="highlights-heading bg-blue">Important Dates</h3>
+        <div class="highlights-list">
+          <a
+            href="https://ibelong.byui.edu/universitypublicaffairs/rsvp?id=753252"
+            class="highlights-link highlights-calendar row no-gutters align-items-center"
+          >
+            <div class="col-3 font-weight-bold">Mar 09</div>
+            <span class="col-1"> - </span>
+            <div class="col-8">Devotional - Sister Christina B. Franco</div>
+          </a>
+        </div>
+      </aside>
+      <section class="component-spacing">
+        <div id="news-">
+          <div>
+            <article
+              class="article"
+              data-page="1"
+              data-month=""
+              data-category=""
+            >
+              <div class="row">
+                <div class="hidden-xs hidden-sm col-md-3">
+                  <img
+                    src="https://byui.edu/images/newsroom/byui%20winter%202021%20enrollment%20web.jpg"
+                    alt="Students attend in-person class wearing face masks."
+                    class="img-responsive"
+                  />
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="article-date">February 11, 2021</div>
+                  <h4 class="">
+                    <a href="#" target=""
+                      >BYU-Idaho Students Persist Amid Pandemic</a
+                    >
+                  </h4>
+                  <p class="article-abstract">
+                    Winter 2021 enrollment statistics released
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article
+              class="article"
+              data-page="1"
+              data-month=""
+              data-category=""
+            >
+              <div class="row">
+                <div class="hidden-xs hidden-sm col-md-3">
+                  <img
+                    src="https://byui.edu/documents/sid%20palmer%201.jpg"
+                    alt="Sid Palmer speaking."
+                    class="img-responsive"
+                  />
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="article-date">January 19, 2021</div>
+                  <h4 class="">
+                    <a
+                      href="#"
+                      target=""
+                      >University prioritizes inquiry, innovation, and
+                      collaboration</a
+                    >
+                  </h4>
+                  <p class="article-abstract">
+                    BYU-Idaho’s is working to foster a culture where faculty can
+                    actively engage in inspired inquiry, innovation, and
+                    collaboration with one another.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article
+              class="article"
+              data-page="1"
+              data-month=""
+              data-category=""
+            >
+              <div class="row">
+                <div class="hidden-xs hidden-sm col-md-3">
+                  <img
+                    src="https://byui.edu/images/200824_ILO-Banners_02.jpg"
+                    alt="The four learning outcome messages displayed on stand-up banners in the BYU-Idaho Center."
+                    class="img-responsive"
+                  />
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="article-date">January 19, 2021</div>
+                  <h4 class="">
+                    <a
+                      href="#"
+                      target=""
+                      >BYU-Idaho launches learning outcomes messaging
+                      campaign</a
+                    >
+                  </h4>
+                  <p class="article-abstract">
+                    In an effort to fulfill the mission of the university,
+                    BYU-Idaho has developed four university-wide learning
+                    outcomes, Disciples of Jesus Christ, Sound Thinkers,
+                    Effective Communicators, Skilled Collaborators.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <!-- // PAGINATION SECTION -->
+          <!-- // PAGE COUNT = 3 / 3 -->
+          <div class="clearfix page-links">
+            <a class="btn btn-blue float-right" href="newsroom"> Newsroom </a>
+          </div>
+        </div>
+      </section>
     </main>
     <footer></footer>
 
     <script>
       document.body.onclick = () => {
         /** @type {HTMLIFrameElement} */
-        const iframe = document.body.getElementsByTagName('IFRAME')[0];
+        const iframe = document.body.getElementsByTagName("IFRAME")[0];
         const index = window.getComputedStyle(iframe).zIndex * -1;
         iframe.style.zIndex = index;
-      }
+      };
     </script>
-      
   </body>
 </html>

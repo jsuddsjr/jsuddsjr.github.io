@@ -1,7 +1,13 @@
 @import "typography";
 @import "icons";
+@import "mixins";
 
-$sm-break: 48em;
+$html-font-size: 16px;
+$xs-break: rem(576);
+$sm-break: rem(768);
+$md-break: rem(992);
+$lg-break: rem(1200);
+
 // colors
 $dark-gray: #727272;
 $med-gray: #b4b3b5;
@@ -19,6 +25,10 @@ $byui-blue: #056cb6;
   margin: 0;
 }
 
+:root {
+  font-size: $html-font-size;
+}
+
 img {
   max-width: 100%;
 }
@@ -34,43 +44,6 @@ img {
   border: 0;
 }
 
-// Define anchor tags in correct order.
-@mixin anchors($tag: a) {
-  #{$tag}:link,
-  #{$tag}:visited,
-  #{$tag}:hover,
-  #{$tag}:active {
-    @content;
-  }
-}
-
-@mixin flex-column($justify: center, $align: center) {
-  display: flex;
-  flex-flow: column;
-  justify-content: $justify;
-  align-items: $align;
-}
-
-@mixin flex($justify: center, $align: center) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
-
-@mixin container($max-width: $sm-break) {
-  max-width: $max-width;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-@mixin responsive-image() {
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    width: 100%;
-  }
-}
-
 body {
   font-family: "BYUI Open Sans", "Open Sans", "Lucida Sans Unicode",
     "Lucida Grande", Verdana, sans-serif;
@@ -81,10 +54,10 @@ body {
 
   // IFRAME for matching content layout
   iframe {
-    opacity: 0;
+    opacity: 0.4;
     position: absolute;
     width: calc(100vw + 16px);
-    height: 100vh;
+    height: 200vh;
     overflow: hidden;
     z-index: -2;
     pointer-events: none;
@@ -112,16 +85,16 @@ header {
   width: 100%;
 
   border-bottom: 2px solid $dark-gray;
-  margin-bottom: 1.75rem;
+  margin-bottom: rem(40);
 
   & > * {
-    max-width: 45rem;
+    max-width: rem(720);
   }
 
   .site-banner {
     @include flex($justify: space-between);
 
-    height: 3.2rem;
+    height: rem(64);
 
     &__left {
       @include flex();
@@ -130,9 +103,8 @@ header {
       padding: 0 10px;
       height: 100%;
 
-
       .icon-byui-logo:before {
-        font-size: 24px;
+        font-size: rem(32);
         color: white;
       }
 
@@ -143,9 +115,9 @@ header {
 
     &__right {
       display: flex;
-      gap: 0.9rem;
-      font-size: 1.6rem;
-      padding-right: 1rem;
+      gap: rem(20);
+      font-size: rem(32);
+      padding-right: rem(20);
     }
 
     form {
@@ -163,10 +135,10 @@ header {
     }
 
     .site-name {
-      font-size: 1rem;
+      font-size: rem(20);
       font-weight: 300;
       padding: 12px 0;
-      width: calc(100% - 75px);
+      width: calc(100% - 90px);
     }
   }
 }
@@ -178,54 +150,86 @@ main {
   @include flex-column($align: stretch);
   @include container($sm-break);
 
-  gap: 1.8rem;
-}
+  gap: rem(32);
 
-.info-banner {
-  @include flex-column($justify: stretch);
-
-  width: 100%;
-  background: black;
-  color: white;
-  padding: 18px;
-  text-align: center;
-
-  .btn {
-    font-size: .75rem;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-    font-weight: 200;
-    line-height: 1.25;
-    margin-bottom: .5rem;
-  }
-
-  a:hover,
-  a:focus {
-    background-color: $byui-blue;
-  }
-}
-
-// .announcement {
-//   @include responsive-image();
-// }
-
-.interest-box {
-  border: 2px solid $light-gray;
-
-  &__figure {
-    @include responsive-image();
-  }
-
-  &__caption {
-    @include flex($justify: space-between);
+  .info-banner {
+    @include flex-column($justify: stretch);
 
     width: 100%;
-    font-size: .8rem;
-    padding: 0 5px 5px;
-    font-weight: 200;
-    color: $link-blue;
+    background: black;
+    color: white;
+    padding: 18px;
+    text-align: center;
+
+    .btn {
+      font-size: rem(16);
+    }
+
+    h2 {
+      font-size: rem(24);
+      font-weight: 200;
+      line-height: 1.5;
+      margin-bottom: rem(8);
+    }
+
+    a:hover,
+    a:focus {
+      background-color: $byui-blue;
+    }
+  }
+
+  // .announcement {
+  //   @include responsive-image();
+  // }
+
+  .interest-box {
+    border: 2px solid $light-gray;
+
+    &__figure {
+      @include responsive-image();
+    }
+
+    &__caption {
+      @include flex($justify: space-between);
+
+      width: 100%;
+      font-size: rem(15.5);
+      padding: 1px 12px 5px;
+      font-weight: 200;
+      color: $link-blue;
+    }
+  }
+
+  .audience-button {
+    @include flex($justify: space-between);
+    font-size: rem(15);
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .highlights {
+    &-heading {
+      font-size: rem(22);
+      font-weight: 500;
+      padding: 8px 22px;
+      color: white;
+    }
+
+    &-link {
+      @include flex($justify: space-between);
+
+      font-size: rem(15);
+      color: $byui-blue;
+      border: 1px solid $med-gray;
+      border-top: none;
+      padding: 8px 22px;
+    }
+
+    &-calendar {
+      font-size: rem(14);
+      color: $dark-gray;
+      font-weight: 200;
+    }
   }
 }
 
@@ -241,8 +245,26 @@ main {
 .d-flex {
   display: flex !important;
 }
+.d-block {
+  display: block !important;
+}
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+.hidden {
+  display: none;
+}
 .justify-content-between {
   justify-content: space-between !important;
+}
+.align-items-center {
+  align-items: center !important;
+}
+.bg-gray {
+  background-color: $dark-gray !important;
+}
+.bg-blue {
+  background-color: $link-blue !important;
 }
 
 .btn {
@@ -267,8 +289,50 @@ main {
   float: right;
 }
 
+.row {
+  @include flex();
+}
+$cols: 12;
+$width-pct: 100% / $cols;
+@for $index from 1 through $cols {
+  .col-#{$index} {
+    flex: 0 0 $index * $width-pct;
+    max-width: $index * $width-pct;
+  }
+}
+
+.hidden-xs {
+  display: none;
+}
+
+@media screen and (min-width: $xs-break) {
+  .hidden-sm {
+    display: none;
+  }
+}
+
 @media screen and (min-width: $sm-break) {
-  body {
-    background-image: url("images/byui-desktop-all.jpg");
+  .hidden-md {
+    display: none;
+  }
+  $cols: 12;
+  $width-pct: 100% / $cols;
+  @for $index from 1 through $cols {
+    .col-md-#{$index} {
+      flex: 0 0 $index * $width-pct;
+      max-width: $index * $width-pct;
+    }
+  }
+}
+
+@media screen and (min-width: $md-break) {
+  .hidden-lg {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $lg-break) {
+  .hidden-xl {
+    display: none;
   }
 }
