@@ -1262,6 +1262,14 @@ main .highlights-calendar {
   color: white;
 }
 
+.bg-gray {
+  background-color: #727272 !important;
+}
+
+.bg-blue {
+  background-color: #0076b6 !important;
+}
+
 .d-flex {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
@@ -1292,12 +1300,9 @@ main .highlights-calendar {
           align-items: center !important;
 }
 
-.bg-gray {
-  background-color: #727272 !important;
-}
-
-.bg-blue {
-  background-color: #0076b6 !important;
+.img-responsive {
+  max-width: 100%;
+  width: 100%;
 }
 
 .btn {
@@ -1330,12 +1335,6 @@ main .highlights-calendar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .col-1 {

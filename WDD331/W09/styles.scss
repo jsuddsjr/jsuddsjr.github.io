@@ -242,6 +242,12 @@ main {
 //  Bootstrap-ish classes.
 // ***********************
 
+.bg-gray {
+  background-color: $dark-gray !important;
+}
+.bg-blue {
+  background-color: $link-blue !important;
+}
 .d-flex {
   display: flex !important;
 }
@@ -260,11 +266,9 @@ main {
 .align-items-center {
   align-items: center !important;
 }
-.bg-gray {
-  background-color: $dark-gray !important;
-}
-.bg-blue {
-  background-color: $link-blue !important;
+.img-responsive {
+  max-width: 100%;
+  width: 100%;
 }
 
 .btn {
@@ -290,8 +294,9 @@ main {
 }
 
 .row {
-  @include flex();
+  display: flex;
 }
+
 $cols: 12;
 $width-pct: 100% / $cols;
 @for $index from 1 through $cols {
@@ -315,8 +320,7 @@ $width-pct: 100% / $cols;
   .hidden-md {
     display: none;
   }
-  $cols: 12;
-  $width-pct: 100% / $cols;
+
   @for $index from 1 through $cols {
     .col-md-#{$index} {
       flex: 0 0 $index * $width-pct;
