@@ -36,12 +36,43 @@ body {
   width: 25vmin;
   background-color: teal;
 }
-
-.container-one {
+.container [data-animation] {
+  -webkit-animation: var(--animn, none) var(--animdur, 2.78s) var(--animtf, linear) var(--animdel, 0s) var(--animic, infinite) var(--animdir, normal) var(--animfm, none) var(--animps, running);
+          animation: var(--animn, none) var(--animdur, 2.78s) var(--animtf, linear) var(--animdel, 0s) var(--animic, infinite) var(--animdir, normal) var(--animfm, none) var(--animps, running);
+}
+.container #pause-animation:checked ~ section [data-animation] {
+  --animps: paused;
+}
+.container *,
+.container *:before,
+.container *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.container body {
+  background-color: #172e34;
+  color: white;
+}
+.container .examples {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+.container .container {
+  height: 25vmin;
+  width: 25vmin;
+  background-color: teal;
+}
+.container .container-one {
   padding: 1vmin;
 }
-
-.flex {
+.container .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,133 +83,116 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
-
-.circle {
+.container .circle {
   height: 25%;
   width: 25%;
   background-color: darkred;
   border-radius: 100%;
 }
-
-.half-circle {
-  border: 15px solid transparent;
-  border-left-color: darkred;
-  border-top-color: darkred;
-  border-radius: 50%/50%;
+.container .half-circle {
+  height: 25%;
+  width: 12.5%;
+  background-color: darkred;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
 }
-
-.left {
-  -webkit-transform: translateX(50%) rotate(-45deg);
-          transform: translateX(50%) rotate(-45deg);
-}
-
-.a-shift-left {
+.container .a-shift-left {
   --animn: shift-left;
 }
-
 @-webkit-keyframes shift-left {
   0% {
-    -webkit-transform: translateX(50%) rotate(-45deg);
-            transform: translateX(50%) rotate(-45deg);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   25% {
-    -webkit-transform: translate(50%) rotate(-45deg);
-            transform: translate(50%) rotate(-45deg);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
-  50% {
-    -webkit-transform: translate(25%) rotate(-45deg);
-            transform: translate(25%) rotate(-45deg);
+  45% {
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
   }
   75% {
-    -webkit-transform: translate(25%) rotate(-45deg);
-            transform: translate(25%) rotate(-45deg);
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
   }
   100% {
-    -webkit-transform: translate(50%) rotate(-45deg);
-            transform: translate(50%) rotate(-45deg);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
-
 @keyframes shift-left {
   0% {
-    -webkit-transform: translateX(50%) rotate(-45deg);
-            transform: translateX(50%) rotate(-45deg);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   25% {
-    -webkit-transform: translate(50%) rotate(-45deg);
-            transform: translate(50%) rotate(-45deg);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
-  50% {
-    -webkit-transform: translate(25%) rotate(-45deg);
-            transform: translate(25%) rotate(-45deg);
+  45% {
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
   }
   75% {
-    -webkit-transform: translate(25%) rotate(-45deg);
-            transform: translate(25%) rotate(-45deg);
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
   }
   100% {
-    -webkit-transform: translate(50%) rotate(-45deg);
-            transform: translate(50%) rotate(-45deg);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
-.right {
-  -webkit-transform: translateX(-51%) rotate(135deg);
-          transform: translateX(-51%) rotate(135deg);
-}
-
-.a-shift-right {
+.container .a-shift-right {
   --animn: shift-right;
 }
-
 @-webkit-keyframes shift-right {
   0% {
-    -webkit-transform: translateX(-51%) rotate(135deg);
-            transform: translateX(-51%) rotate(135deg);
+    -webkit-transform: translateX(0) rotate(180deg);
+            transform: translateX(0) rotate(180deg);
   }
   25% {
-    -webkit-transform: translate(-51%) rotate(135deg);
-            transform: translate(-51%) rotate(135deg);
+    -webkit-transform: translate(0) rotate(180deg);
+            transform: translate(0) rotate(180deg);
   }
-  50% {
-    -webkit-transform: translate(-25%) rotate(135deg);
-            transform: translate(-25%) rotate(135deg);
+  45% {
+    -webkit-transform: translate(50%) rotate(180deg);
+            transform: translate(50%) rotate(180deg);
   }
   75% {
-    -webkit-transform: translate(-25%) rotate(135deg);
-            transform: translate(-25%) rotate(135deg);
+    -webkit-transform: translate(50%) rotate(180deg);
+            transform: translate(50%) rotate(180deg);
   }
   100% {
-    -webkit-transform: translate(-51%) rotate(135deg);
-            transform: translate(-51%) rotate(135deg);
+    -webkit-transform: translate(0) rotate(180deg);
+            transform: translate(0) rotate(180deg);
   }
 }
-
 @keyframes shift-right {
   0% {
-    -webkit-transform: translateX(-51%) rotate(135deg);
-            transform: translateX(-51%) rotate(135deg);
+    -webkit-transform: translateX(0) rotate(180deg);
+            transform: translateX(0) rotate(180deg);
   }
   25% {
-    -webkit-transform: translate(-51%) rotate(135deg);
-            transform: translate(-51%) rotate(135deg);
+    -webkit-transform: translate(0) rotate(180deg);
+            transform: translate(0) rotate(180deg);
   }
-  50% {
-    -webkit-transform: translate(-25%) rotate(135deg);
-            transform: translate(-25%) rotate(135deg);
+  45% {
+    -webkit-transform: translate(50%) rotate(180deg);
+            transform: translate(50%) rotate(180deg);
   }
   75% {
-    -webkit-transform: translate(-25%) rotate(135deg);
-            transform: translate(-25%) rotate(135deg);
+    -webkit-transform: translate(50%) rotate(180deg);
+            transform: translate(50%) rotate(180deg);
   }
   100% {
-    -webkit-transform: translate(-51%) rotate(135deg);
-            transform: translate(-51%) rotate(135deg);
+    -webkit-transform: translate(0) rotate(180deg);
+            transform: translate(0) rotate(180deg);
   }
 }
-.a-orbiting {
+.container .a-orbiting {
   --animn: orbit;
 }
-
 @-webkit-keyframes orbit {
   0% {
     -webkit-transform: translate(0, 0);
@@ -220,6 +234,290 @@ body {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
   }
+}
+@keyframes orbit {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  5% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  /* don't change for 5% of the time...pause */
+  25% {
+    -webkit-transform: translate(300%, 0%);
+            transform: translate(300%, 0%);
+  }
+  /* start moving again */
+  30% {
+    -webkit-transform: translate(300%, 0%);
+            transform: translate(300%, 0%);
+  }
+  /* pause */
+  50% {
+    -webkit-transform: translate(300%, 300%);
+            transform: translate(300%, 300%);
+  }
+  /* move */
+  55% {
+    -webkit-transform: translate(300%, 300%);
+            transform: translate(300%, 300%);
+  }
+  75% {
+    -webkit-transform: translate(0%, 300%);
+            transform: translate(0%, 300%);
+  }
+  80% {
+    -webkit-transform: translate(0%, 300%);
+            transform: translate(0%, 300%);
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+}
+.container .a-morphing {
+  --animn: morphing-circle-square;
+}
+@-webkit-keyframes morphing-circle-square {
+  0% {
+    border-radius: 50%;
+  }
+  25% {
+    /*(if you don't add both red and circle here it will start 
+     changing one or the other before you are ready) */
+    border-radius: 50%;
+    background-color: darkred;
+  }
+  50% {
+    /* now change to white square...but don't start rotating yet! */
+    border-radius: 0%;
+    background-color: white;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    /* stay a white square, but rotate 90deg */
+    border-radius: 0%;
+    background-color: white;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  100% {
+    /* stay rotated at 90, but change back to a circle */
+    border-radius: 50%;
+    background-color: darkred;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+@keyframes morphing-circle-square {
+  0% {
+    border-radius: 50%;
+  }
+  25% {
+    /*(if you don't add both red and circle here it will start 
+     changing one or the other before you are ready) */
+    border-radius: 50%;
+    background-color: darkred;
+  }
+  50% {
+    /* now change to white square...but don't start rotating yet! */
+    border-radius: 0%;
+    background-color: white;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    /* stay a white square, but rotate 90deg */
+    border-radius: 0%;
+    background-color: white;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  100% {
+    /* stay rotated at 90, but change back to a circle */
+    border-radius: 50%;
+    background-color: darkred;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+.container .a-heart-beat {
+  --animn: heart-beat;
+}
+@-webkit-keyframes heart-beat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  32% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  35% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  37% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  95% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  98% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes heart-beat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  32% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  35% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  37% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  40% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  95% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  98% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.container-one {
+  padding: 1vmin;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.circle {
+  height: 25%;
+  width: 25%;
+  background-color: darkred;
+  border-radius: 100%;
+}
+
+.half-circle {
+  border: 15px solid transparent;
+  border-left-color: darkred;
+  border-top-color: darkred;
+  border-radius: 50%/50%;
+}
+
+.left {
+  -webkit-transform: translateX(50%) rotate(-45deg);
+          transform: translateX(50%) rotate(-45deg);
+}
+
+.a-shift-left {
+  --animn: shift-left;
+}
+
+@keyframes shift-left {
+  0% {
+    -webkit-transform: translateX(50%) rotate(-45deg);
+            transform: translateX(50%) rotate(-45deg);
+  }
+  25% {
+    -webkit-transform: translate(50%) rotate(-45deg);
+            transform: translate(50%) rotate(-45deg);
+  }
+  50% {
+    -webkit-transform: translate(25%) rotate(-45deg);
+            transform: translate(25%) rotate(-45deg);
+  }
+  75% {
+    -webkit-transform: translate(25%) rotate(-45deg);
+            transform: translate(25%) rotate(-45deg);
+  }
+  100% {
+    -webkit-transform: translate(50%) rotate(-45deg);
+            transform: translate(50%) rotate(-45deg);
+  }
+}
+.right {
+  -webkit-transform: translateX(-51%) rotate(135deg);
+          transform: translateX(-51%) rotate(135deg);
+}
+
+.a-shift-right {
+  --animn: shift-right;
+}
+
+@keyframes shift-right {
+  0% {
+    -webkit-transform: translateX(-51%) rotate(135deg);
+            transform: translateX(-51%) rotate(135deg);
+  }
+  25% {
+    -webkit-transform: translate(-51%) rotate(135deg);
+            transform: translate(-51%) rotate(135deg);
+  }
+  50% {
+    -webkit-transform: translate(-25%) rotate(135deg);
+            transform: translate(-25%) rotate(135deg);
+  }
+  75% {
+    -webkit-transform: translate(-25%) rotate(135deg);
+            transform: translate(-25%) rotate(135deg);
+  }
+  100% {
+    -webkit-transform: translate(-51%) rotate(135deg);
+            transform: translate(-51%) rotate(135deg);
+  }
+}
+.a-orbiting {
+  --animn: orbit;
 }
 
 @keyframes orbit {
@@ -268,39 +566,6 @@ body {
   --animn: morphing-circle-square;
 }
 
-@-webkit-keyframes morphing-circle-square {
-  0% {
-    border-radius: 50%;
-  }
-  25% {
-    /*(if you don't add both red and circle here it will start 
-       changing one or the other before you are ready) */
-    border-radius: 50%;
-    background-color: darkred;
-  }
-  50% {
-    /* now change to white square...but don't start rotating yet! */
-    border-radius: 0%;
-    background-color: white;
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  75% {
-    /* stay a white square, but rotate 90deg */
-    border-radius: 0%;
-    background-color: white;
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
-  }
-  100% {
-    /* stay rotated at 90, but change back to a circle */
-    border-radius: 50%;
-    background-color: darkred;
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
-  }
-}
-
 @keyframes morphing-circle-square {
   0% {
     border-radius: 50%;
@@ -335,45 +600,6 @@ body {
 }
 .a-heart-beat {
   --animn: heart-beat;
-}
-
-@-webkit-keyframes heart-beat {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  30% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  32% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-  35% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  37% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-  40% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  95% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  98% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
 }
 
 @keyframes heart-beat {
