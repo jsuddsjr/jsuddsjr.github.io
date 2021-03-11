@@ -1,0 +1,213 @@
+[data-animation] {
+    // Had to use a shorter animation to synchronize with example GIF
+  animation: var(--animn, none) var(--animdur, 2.78s) var(--animtf, linear)
+    var(--animdel, 0s) var(--animic, infinite) var(--animdir, normal)
+    var(--animfm, none) var(--animps, running);
+}
+
+#pause-animation:checked ~ section [data-animation] {
+  --animps: paused;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+    background-color: #172e34;
+    color: white;
+}
+
+.examples {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  height: 25vmin;
+  width: 25vmin;
+  background-color: teal;
+}
+
+.container-one {
+  padding: 1vmin;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  height: 25%;
+  width: 25%;
+  background-color: darkred;
+  border-radius: 100%;
+}
+
+.half-circle {
+  border: 15px solid transparent;
+  border-left-color: darkred;
+  border-top-color: darkred;
+  border-radius: 50% / 50%;
+}
+
+.left {
+  transform: translateX(50%) rotate(-45deg);
+}
+
+.a-shift-left {
+  --animn: shift-left;
+}
+
+@keyframes shift-left {
+  0% {
+    transform: translateX(50%) rotate(-45deg);
+  }
+  25% {
+    transform: translate(50%) rotate(-45deg);
+  }
+  50% { // Bounce back a little.
+    transform: translate(25%) rotate(-45deg);
+  }
+  75% {
+    transform: translate(25%) rotate(-45deg);
+  }
+  100% {
+    transform: translate(50%) rotate(-45deg);
+  }
+}
+
+.right {
+  transform: translateX(-51%) rotate(135deg);
+}
+
+.a-shift-right {
+  --animn: shift-right;
+}
+
+@keyframes shift-right {
+  0% {
+    transform: translateX(-51%) rotate(135deg);
+  }
+  25% {
+    transform: translate(-51%) rotate(135deg);
+  }
+  50% {
+    transform: translate(-25%) rotate(135deg);
+  }
+  75% {
+    transform: translate(-25%) rotate(135deg);
+  }
+  100% {
+    transform: translate(-51%) rotate(135deg);
+  }
+}
+
+.a-orbiting {
+  --animn: orbit;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate(0, 0);
+  }
+  5% {
+    transform: translate(0, 0);
+  } /* don't change for 5% of the time...pause */
+  25% {
+    transform: translate(300%, 0%);
+  } /* start moving again */
+  30% {
+    transform: translate(300%, 0%);
+  } /* pause */
+  50% {
+    transform: translate(300%, 300%);
+  } /* move */
+  55% {
+    transform: translate(300%, 300%);
+  }
+  75% {
+    transform: translate(0%, 300%);
+  }
+  80% {
+    transform: translate(0%, 300%);
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+.a-morphing {
+  --animn: morphing-circle-square;
+}
+
+@keyframes morphing-circle-square {
+  0% {
+    border-radius: 50%;
+  }
+  25% {
+    /*(if you don't add both red and circle here it will start 
+       changing one or the other before you are ready) */
+    border-radius: 50%;
+    background-color: darkred;
+  }
+  50% {
+    /* now change to white square...but don't start rotating yet! */
+    border-radius: 0%;
+    background-color: white;
+    transform: rotate(0deg);
+  }
+  75% {
+    /* stay a white square, but rotate 90deg */
+    border-radius: 0%;
+    background-color: white;
+    transform: rotate(90deg);
+  }
+  100% {
+    /* stay rotated at 90, but change back to a circle */
+    border-radius: 50%;
+    background-color: darkred;
+    transform: rotate(90deg);
+  }
+}
+
+.a-heart-beat {
+    --animn: heart-beat;
+}
+
+@keyframes heart-beat {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1);
+    }
+    32% {
+        transform: scale(1.2);
+    }
+    35% {
+        transform: scale(1);
+    }
+    37% {
+        transform: scale(1.2);
+    }
+    40% {
+        transform: scale(1);
+    }
+    95% {
+        transform: scale(1);
+    }
+    98% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+
+}

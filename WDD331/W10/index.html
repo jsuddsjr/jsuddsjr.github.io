@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trapped Week 10</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- See https://css-tricks.com/how-to-play-and-pause-css-animations-with-css-custom-properties/ -->
+    <input type="checkbox" id="pause-animation" />
+    <label for="pause-animation">Toggle animation on/off</label>
+
+    <section class="examples">
+      <div class="container container-one">
+        <div class="circle a-orbiting" data-animation></div>
+      </div>
+      <div class="container flex">
+        <div class="circle a-morphing" data-animation></div>
+      </div>
+      <div class="container flex">
+        <div class="half-circle left a-shift-left" data-animation></div>
+        <div class="half-circle right a-shift-right" data-animation></div>
+      </div>
+      <div class="container flex">
+        <div class="circle a-heart-beat" data-animation></div>
+      </div>
+    </section>
+
+    <div>
+      <img
+        src="https://byui-cit.github.io/advcss/images/trap-animation.gif"
+        alt="Example GIF"
+      />
+    </div>
+  </body>
+</html>
