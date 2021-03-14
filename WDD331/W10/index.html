@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sliding Curtain</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- The parent component -->
+    <div class="curtain">
+      <!-- The component wrapper -->
+      <div class="curtain__wrapper">
+        <!-- The checkbox hack! -->
+        <input type="checkbox" checked />
+
+        <!-- The curtain panels -->
+        <div class="curtain__panel"></div>
+        <div class="curtain__panel"></div>
+        <div class="curtain__panel"></div>
+        <div class="curtain__panel"></div>
+
+        <!-- The prize behind the curtain panels -->
+        <div class="curtain__prize">
+            <svg viewBox="0 0 220 220" class="shine">
+                <polygon points="144.93 212.9 107.9 113.31 69.91 212.54 105.56 112.45 12.67 164.05 104.33 110.28 0 90.11 104.77 107.83 37.83 25.32 106.69 106.24 108.45 0 109.18 106.25 178.82 25.99 111.08 107.86 216.02 91.15 111.5 110.32 202.63 164.96 110.24 112.47 144.93 212.9" fill="white"/>
+            </svg>
+            <svg viewBox="0 0 220 220" class="shine">
+                <polygon points="144.93 212.9 107.9 113.31 69.91 212.54 105.56 112.45 12.67 164.05 104.33 110.28 0 90.11 104.77 107.83 37.83 25.32 106.69 106.24 108.45 0 109.18 106.25 178.82 25.99 111.08 107.86 216.02 91.15 111.5 110.32 202.63 164.96 110.24 112.47 144.93 212.9" fill="white"/>
+            </svg>
+            <svg viewBox="0 0 220 220" class="shine">
+                <polygon points="144.93 212.9 107.9 113.31 69.91 212.54 105.56 112.45 12.67 164.05 104.33 110.28 0 90.11 104.77 107.83 37.83 25.32 106.69 106.24 108.45 0 109.18 106.25 178.82 25.99 111.08 107.86 216.02 91.15 111.5 110.32 202.63 164.96 110.24 112.47 144.93 212.9" fill="white"/>
+            </svg>
+        </div>
+
+      </div>
+      <!-- curtain__wrapper -->
+    </div>
+    <!-- curtain -->
+  </body>
+</html>
