@@ -59,7 +59,8 @@
   z-index: 4;
 }
 .curtain__prize {
-  background: no-repeat 50%/50% url();
+  background: no-repeat 50%/50% url("http://jsuddsjr.github.io/files/surprise.jpg");
+  background-size: cover;
   position: absolute;
   /* Forces the prize position into the container start */
   z-index: -1;
@@ -70,11 +71,10 @@
   transition: opacity 1s ease-out;
 }
 .curtain__prize .shine {
-  background: no-repeat url("http://jsuddsjr.github.io/files/vector_shines_vector-shines.svg");
-  background-size: cover;
+  background: no-repeat url("http://jsuddsjr.github.io/files/vector-shine.svg");
   position: absolute;
-  height: 100px;
-  width: 100px;
+  height: calc(100vw * 5%);
+  width: calc(100vw * 5%);
   -webkit-animation: sparkle 2s ease-in-out infinite;
           animation: sparkle 2s ease-in-out infinite;
 }
@@ -112,6 +112,22 @@ input[type=checkbox] {
 input[type=checkbox]:checked ~ div.curtain__panel {
   -webkit-transform: translateX(0);
           transform: translateX(0);
+}
+input[type=checkbox]:checked ~ div.curtain__panel:nth-of-type(1) {
+  -webkit-transition-delay: 0ms;
+          transition-delay: 0ms;
+}
+input[type=checkbox]:checked ~ div.curtain__panel:nth-of-type(2) {
+  -webkit-transition-delay: 500ms;
+          transition-delay: 500ms;
+}
+input[type=checkbox]:checked ~ div.curtain__panel:nth-of-type(3) {
+  -webkit-transition-delay: 1000ms;
+          transition-delay: 1000ms;
+}
+input[type=checkbox]:checked ~ div.curtain__panel:nth-of-type(4) {
+  -webkit-transition-delay: 1500ms;
+          transition-delay: 1500ms;
 }
 input[type=checkbox]:checked ~ div.curtain__prize {
   opacity: 0;

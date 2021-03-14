@@ -18,19 +18,20 @@ $panels: 4;
     transition: all 1s ease-out; /* Animates the sliding transition */
   }
 
-  @for $index from 1 through 4 {
+  @for $index from 1 through $panels {
     &__panel:nth-of-type(#{$index}) {
       left: 25% * ($index - 1);
       background-color: adjust-hue($color: #39a5db, $degrees: $index * 10);
       transform: translateX(-100% * $index);
-      transition-delay: 500ms * (4 - $index);
+      transition-delay: 500ms * ($panels - $index);
       z-index: $index;
     }
   }
 
   &__prize {
     background: no-repeat 50% / 50%
-      url();
+      url("http://jsuddsjr.github.io/files/surprise.jpg");
+    background-size: cover;
     position: absolute; /* Forces the prize position into the container start */
     z-index: -1; /* Places the prize behind the panels, which are z-index 2 */
     width: 100%;
@@ -38,11 +39,11 @@ $panels: 4;
     transition: opacity 1s ease-out;
 
     .shine {
-      background: no-repeat url("http://jsuddsjr.github.io/files/vector_shines_vector-shines.svg");
-      background-size: cover;
+      background: no-repeat
+        url("http://jsuddsjr.github.io/files/vector-shine.svg");
       position: absolute;
-      height: 100px;
-      width: 100px;
+      height: calc(100vw * 5%);
+      width: calc(100vw * 5%);
       animation: sparkle 2s ease-in-out infinite;
 
       &:nth-child(1) {
@@ -75,6 +76,13 @@ input[type="checkbox"] {
 
   &:checked ~ div.curtain__panel {
     transform: translateX(0);
+
+    @for $index from 1 through $panels {
+      &:nth-of-type(#{$index}) {
+        transition-delay: 500ms * ($index - 1);
+      }
+    }
+  
   }
 
   &:checked ~ div.curtain__prize {
