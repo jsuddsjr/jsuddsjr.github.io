@@ -1,0 +1,100 @@
+$bar-width: 50px
+$bar-height: 5px
+$bar-offset: $bar-width / 4
+$anim-duration: 300ms
+
+*,
+*:before,
+*:after
+    box-sizing: border-box
+
+body
+    padding: 0
+    margin: 10px
+    font-size: 18pt
+
+.menu-slide
+    position: absolute
+    top: 0
+    height: 100%
+    width: $bar-width * 5.5
+    background-color: #333
+    color: white
+    transform: translateX(-110%)
+    transition: transform $anim-duration ease-in-out
+
+.menu-icon
+    width: $bar-width
+    height: $bar-width
+    position: relative
+    cursor: pointer
+    transition: transform $anim-duration ease-in-out
+    z-index: 1
+
+    span,
+    span:before,
+    span:after
+        position: absolute
+        display: block
+        width: $bar-width
+        height: $bar-height
+        border-radius: $bar-height
+        background: #aaa
+        transition: transform $anim-duration ease-in-out
+
+    span
+        top: 50%
+
+        &:before
+            content: ""
+            transform: translateY(-$bar-offset)
+
+        &:after
+            content: ""
+            transform: translateY($bar-offset)
+
+    &:hover 
+        span,
+        span:before,
+        span:after
+            background-color: black
+        
+
+.menu-icon.open
+
+    transform: translateX($bar-width * 4)
+
+    span
+        transform: rotate(45deg)
+
+    span:before
+        transform: translateY(0)
+
+    span:after
+        transform: translateY(0) rotate(90deg)
+
+    & ~ .menu-slide
+        transform: translateX(-10px)
+
+    &:hover 
+        span,
+        span:before,
+        span:after
+            background-color: white
+
+nav
+    ul
+        list-style: none
+        margin-top: 3em
+
+    li
+        font-size: 2rem
+        margin-bottom: .8em
+
+    a
+        display: block
+        text-decoration: none
+        color: rgba(white, .7)
+
+        &:hover
+            color: white
