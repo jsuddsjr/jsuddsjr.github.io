@@ -1,4 +1,5 @@
 $panels: 4;
+$panel-speed: 300ms;
 
 .curtain {
   width: 100%; /* Ensures the component is the full screen width */
@@ -23,15 +24,14 @@ $panels: 4;
       left: 25% * ($index - 1);
       background-color: adjust-hue($color: #39a5db, $degrees: $index * 10);
       transform: translateX(-100% * $index);
-      transition-delay: 500ms * ($panels - $index);
+      transition-delay: $panel-speed * ($panels - $index);
       z-index: $index;
     }
   }
 
   &__prize {
-    background: no-repeat 50% / 50%
+    background: no-repeat 50% 50% / 800px
       url("http://jsuddsjr.github.io/files/surprise.jpg");
-    background-size: cover;
     position: absolute; /* Forces the prize position into the container start */
     z-index: -1; /* Places the prize behind the panels, which are z-index 2 */
     width: 100%;
@@ -42,24 +42,27 @@ $panels: 4;
       background: no-repeat
         url("http://jsuddsjr.github.io/files/vector-shine.svg");
       position: absolute;
-      height: calc(100vw * 5%);
-      width: calc(100vw * 5%);
+      height: 100px;
+      width: 100px;
       animation: sparkle 2s ease-in-out infinite;
 
+      // Windshield
       &:nth-child(1) {
-        top: 20%;
-        left: 60%;
+        top: calc(50vh - 300px);
+        left: calc(50vw + 120px);
       }
 
+      // Hood
       &:nth-child(2) {
-        top: 35%;
-        left: 35%;
+        top: calc(50vh - 120px);
+        left: calc(50vw - 320px);
         animation-delay: 500ms;
       }
 
+      // Bumper
       &:nth-child(3) {
-        top: 60%;
-        left: 60%;
+        top: calc(50vh + 120px);
+        left: calc(50vw + 150px);
         animation-delay: 250ms;
       }
     }
@@ -79,10 +82,9 @@ input[type="checkbox"] {
 
     @for $index from 1 through $panels {
       &:nth-of-type(#{$index}) {
-        transition-delay: 500ms * ($index - 1);
+        transition-delay: $panel-speed * ($index - 1);
       }
     }
-  
   }
 
   &:checked ~ div.curtain__prize {
@@ -99,6 +101,6 @@ input[type="checkbox"] {
   }
   50% {
     opacity: 1;
-    transform: rotate(360deg);
+    transform: rotate(180deg);
   }
 }
