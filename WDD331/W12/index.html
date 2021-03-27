@@ -33,6 +33,12 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="main.css" />
   </head>
 
@@ -233,7 +239,7 @@
                       data-toggle="modal"
                       data-target=".kf-modal-lg"
                     >
-                      Kickflip
+                      Kickflipg
                     </button>
                   </div>
                 </div>
@@ -274,7 +280,7 @@
       </div>
 
       <!--Footer-->
-      <footer class="footer bg-inverse">
+      <footer class="footer bg-dark">
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-12 col-lg-3">
@@ -290,119 +296,83 @@
           </div>
         </div>
       </footer>
+    </div>
 
-      <!-- Modal -->
+    <!--Modals-->
 
-      <!--Cool Stuff Modal-->
-
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="coolStuffModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
+    <!--Cool Stuff Modal-->
+    <div
+      class="modal fade"
+      id="coolStuffModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Get Exclusive Content
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-      </div>
-
-      <div
-        class="modal fade"
-        id="coolStuffModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="coolStuffLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="coolStuffLabel">
-                Get Exclusive Content
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="conatiner-fluid">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <img class="img-fluid" src="assets/KFS_modal.png" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="modalFormWrapper">
-                      <form>
-                        <div class="form-group">
-                          <label for="forName">What's your name?</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="formName"
-                            placeholder="Name"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <label for="formEmail"
-                            >Where should we send your cool content?</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="formEmail"
-                            placeholder="Email"
-                          />
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12">
+                  <img
+                    class="img-fluid"
+                    src="assets/KFS_modal.png"
+                    alt="KFS-modal"
+                  />
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="modalFormWrapper">
+                  <form>
+                    <div class="form-group">
+                      <label for="formName">What's your name?</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formName"
+                        placeholder="Name"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="formEmail"
+                        >Where should we send your cool content?</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formEmail"
+                        placeholder="Email"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
