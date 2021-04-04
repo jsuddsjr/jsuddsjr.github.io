@@ -1,0 +1,22 @@
+
+  h1 {
+    font-size: $heading-size;
+    font-family: $heading-font;
+    white-space: nowrap;
+    color: $pink;
+  }
+
+  h2 {
+    font-size: 2em;
+    font-family: $heading-font;
+    color: $pink;
+    white-space: nowrap;
+    position: absolute;
+    top: 2.1em;
+  }
+
+h3 {
+  font-size: $subheading-size;
+  font-family: $heading-font;
+  color: $pink;
+}

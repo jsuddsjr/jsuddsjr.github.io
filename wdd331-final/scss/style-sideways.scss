@@ -1,0 +1,40 @@
+@import "variables";
+@import "sidescroll";
+@import "rem";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 10px;
+}
+
+body {
+  color: white;
+  background-color: $wallpaper-color;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@include sidescroll-animate;
+
+.page-wrapper {
+  @include sidescroll-root(rem(750px));
+}
+
+#zen-intro {
+  @include sidescroll-section(rem(750px));
+}
+
+#zen-supporting {
+  @include sidescroll-section(rem(3020px));
+}
+
+aside {
+  @include sidescroll-section(rem(900px), rem(3020px - 750px));
+}

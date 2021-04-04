@@ -1,0 +1,102 @@
+@import "rem";
+
+@function with-zero($n) {
+  @if $n < 10 {
+    @return "0" + $n;
+  }
+  @return $n;
+}
+
+:root {
+  $art-idx: 1;
+  @each $url
+    in (
+      "../assets/art/AdaLovelaceSVG.svg",
+      "../assets/art/BirdcageGirlSVG.svg",
+      "../assets/art/DeerSkull640x637PNGcolor.png",
+      "../assets/art/FloralLady366x519PNG.png",
+      "../assets/art/Gargoyle469x426JPG.jpg",
+      "../assets/art/GeorgeDragonSVG.svg",
+      "../assets/art/GothicAngelJPG.jpg",
+      "../assets/art/KnightHorseSVG.svg",
+      "../assets/art/MermaidWoodcutSVG.svg",
+      "../assets/art/SkullClockPNG.png",
+      "../assets/art/smokySkull377x577JPG.png",
+      "../assets/art/VictorianLadyCollageJPG.png"
+    )
+  {
+    --art-#{$art-idx}: url(#{$url});
+    //   p:nth-of-type(n + #{$art-idx}):after {
+    //     background: no-repeat center url($url);
+    //     background-size: contain;
+    //   }
+
+    $art-idx: $art-idx + 1;
+  }
+
+  $furn-idx: 1;
+  @each $url
+    in (
+      "../assets/furniture/ChairLeftPNG.png",
+      "../assets/furniture/ChairRightPNG.png",
+      "../assets/furniture/couch640x435PNG.png"
+    )
+  {
+    --furn-#{$furn-idx}: url(#{$url});
+    $furn-idx: $furn-idx + 1;
+  }
+}
+
+@mixin bkg-cover($width) {
+  width: $width;
+  height: $width;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  outline: 2px solid red;
+  z-index: 100;
+}
+
+@mixin artwork($start, $end: 1, $offset: 40px, $width: rem(160px)) {
+  $count: 1;
+
+  @for $index from $start through ($start + $end) {
+    p:nth-child(#{$count}) {
+      position: relative;
+      overflow: visible !important;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: calc(50% - (#{$width} / 2));
+        right: calc((#{$offset} + #{$width}) * -1);
+
+        background-image: var(--art-#{$index});
+        @include bkg-cover($width);
+      }
+    }
+    $count: $count + 1;
+  }
+}
+
+@mixin furniture($index: 1, $width: rem(300)) {
+  &:after {
+    width: $width;
+    background-image: var(--furn-#{$index});
+
+    @include bkg-cover($width);
+    @content;
+  }
+}
+
+@mixin art-bottom($width: rem(240px)) {
+    &:before {
+        background-image: var(--art-1);
+        @include bkg-cover($width);
+    }
+
+    &:after {
+        background-image: var(--art-3);
+        @include bkg-cover($width);
+    }
+}

@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra&family=Titillium+Web:wght@900&display=swap');
+
+$wallpaper: url(https://jsuddsjr.github.io/files/Wallpaper90.png);
+$heading-size: 6em;
+$subheading-size: 3em;
+$heading-font: "Titillium Web";
+$text-font: "almendra";
+$frm: #2d1d29; // rgba(96, 63, 28);
+$frml: lighten($frm, 10%);
+$frmd: darken($frm, 10%);
+
+$pic: #e9d2b7;
+
+//$navImage: url("/wdd331-final/src/assets/window5.png");
+//$nightImage: url("/wdd331-final/src/assets/astronomy-4551793_640.jpg");
+
+
+
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  background-color: #300;
+  font-size: 0.8em;
+}
+
+p {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $heading-font;
+  font-size: $heading-size;
+}
+
+#zen-intro {
+  padding-top: 120px;
+}
+
+header {
+  color: white;
+  margin-bottom: 80px;
+  margin-left: 80px;
+  font-size: 1.2rem;
+}
+
+.page-wrapper {
+  width: 100vh;
+  height: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform-origin: right top;
+  transform: rotate(-90deg) translate3d(0, -100vh, 0);
+}
+
+#zen-intro,
+#zen-supporting {
+  background: repeat-y top right $wallpaper;
+
+  &>div p {
+    transform-origin: left top;
+    transform: rotate(90deg) translate3d(-60px, calc(-100vh + 40px), 0);
+
+    background-color: $pic;
+    margin-bottom: 40vh;
+    max-width: 50vh;
+
+    border: solid 4vmin $frm {
+      bottom-color: $frml;
+      top-color: $frmd;
+      radius: 2px;
+    }
+
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.45) inset,
+    0 5px 10px 5px rgba(0, 0, 0, 0.65);
+
+    display: inline-block;
+    padding: 4vmin;
+    position: relative;
+    text-align: center;
+
+    border-image: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/frame.png') 93 92 87 92 stretch stretch;
+
+    &:before {
+      content: "";
+      border: 40px solid black;
+      position: absolute;
+      bottom: -120px;
+      left: -110px;
+    }
+
+
+    // &:before {
+    //   border-radius: 25px;
+    //   bottom: -2vmin;
+    //   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.8) inset;
+    //   content: "";
+    //   left: -2vmin;
+    //   position: absolute;
+    //   right: -2vmin;
+    //   top: -2vmin;
+    // }
+
+    // &:after {
+    //   border-radius: 2px;
+    //   bottom: -2.5vmin;
+    //   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.8);
+    //   content: "";
+    //   left: -2.5vmin;
+    //   position: absolute;
+    //   right: -2.5vmin;
+    //   top: -2.5vmin;
+    // }
+
+    /* "Random" pictures are hung at different locations */
+    &:nth-of-type(2n + 1) {
+      transform: rotate(90deg) translate3d(-20px, calc(-100vh + 80px), 0);
+    }
+
+    &:nth-child(3n) {
+      transform: rotate(90deg) translate3d(60px, calc(-100vh + 140px), 0);
+    }
+  }
+}
+
+#zen-supporting {
+  .participation {
+    min-width: 25vh;
+  }
+
+  .requirements {
+    min-width: 75vh;
+  }
+
+  .benefits {
+    min-width: 10vh;
+  }
+}
+
+
+/*********************Navigation****************************/
+
+aside {
+  width: 100%;
+  height: auto;
+  border: 1px solid transparent;
+  color: black;
+  //background: no-repeat top right $navImage, no-repeat top right $nightImage, repeat-y top right $wallpaper;
+  background: repeat-y top right $wallpaper;
+
+
+}
+
+#design-selection {
+  border-image: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/frame.png') 93 92 87 92 stretch stretch;
+  border-color: #f4be52;
+  border-style: inset;
+  border-width: 4em;
+  display: block;
+  width: 15em;
+  height: 400px;
+  background-color: rgb(218, 218, 193);
+  box-shadow: 4px 4px 50px rgba(black, .7);
+  order: 1;
+  transform: rotate(90deg);
+  margin-left: 40em;
+  margin-top: 15em;
+
+  h3 {
+    margin-right: 150px;
+    width: 200px;
+    padding: 5px;
+  }
+
+
+  nav {
+
+
+    ul {
+      width: auto;
+      height: 300px;
+      list-style: none;
+
+      li {
+        padding: 1%;
+
+
+        a {
+          color: black;
+          font-size: 1.2em;
+          line-height: 1.4em;
+          text-decoration: none;
+
+          &:hover {
+            color: red;
+
+          }
+
+          &:active {
+            color: purple;
+
+          }
+        }
+      }
+
+    }
+  }
+}
+
+
+
+/**********Archives***************/
+
+#design-archives {
+  border-image: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/frame.png') 93 92 87 92 stretch stretch;
+  border-color: #f4be52;
+  border-style: inset;
+  border-width: 4em;
+  display: block;
+  width: 20%;
+  height: auto;
+  background-color: rgb(218, 218, 193);
+  margin-left: 40em;
+  margin-bottom: 5em;
+  box-shadow: 4px 4px 50px rgba(black, .7);
+  order: 0;
+  transform: rotate(90deg);
+
+  h3 {
+    height: auto;
+    width: 100%;
+  }
+
+  nav ul {
+    width: 100%;
+    padding: 2%;
+    margin-bottom: 25%;
+
+    li {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        color: black;
+        line-height: 1.6em;
+        font-size: 1.4em;
+
+        &:hover {
+          color: red;
+        }
+      }
+
+    }
+  }
+}
+
+
+/***********Resources****************/
+
+#zen-resources {
+  border-image: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/frame.png') 93 92 87 92 stretch stretch;
+  border-color: #f4be52;
+  border-style: inset;
+  border-width: 4em;
+  display: block;
+  width: 30%;
+  height: auto;
+  background-color: rgb(218, 218, 193);
+  margin-left: 40em;
+  margin-bottom: 5%;
+  box-shadow: 4px 4px 50px rgba(black, .7);
+  order: 0;
+  transform: rotate(90deg);
+
+  h3 {
+    width: 250px;
+
+  }
+
+  ul {
+
+    width: 150px;
+    padding: 10px;
+
+
+    li {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        line-height: 1.6em;
+        font-size: 16px;
+        color: black;
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-height: 550px) {
+  body {
+    font-size: .7em;
+  }
+
+  #zen-intro,
+  #zen-supporting {
+    &>div {
+      min-width: 70vh;
+    }
+  }
+
+  #design-selection {
+    min-width: 70vh;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  body {
+    font-size: 0.65em;
+  }
+}

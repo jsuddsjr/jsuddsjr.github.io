@@ -1,0 +1,53 @@
+$frame-color: #2d1d29;
+@mixin frame-shadows($size) {
+    box-shadow: 0 0 10px rgba(black, 0.4) inset,
+    calc(#{$size} / 2) calc(#{$size} / 2) calc(#{$size} * 2) rgba(black, 0.8);
+}
+
+@mixin border-frame($size: 20px, $url: "../assets/frames/frame1.png") {
+    border: $size solid transparent;
+    border-image: url($url) 120 round;
+    border-radius: calc(#{$size} / 4);
+    overflow: hidden;
+    &:hover {
+        overflow: visible;
+    }
+    @include frame-shadows($size);
+}
+
+@mixin frame($size: 20px, $frm: $frame-color) {
+    $frml: lighten($frm, 10%);
+    $frmd: darken($frm, 10%);
+    border: solid $size $frm {
+        bottom-color: $frml;
+        top-color: $frmd;
+        radius: ($size / 5);
+    }
+    @include frame-shadows($size) //   &:before {
+    //     content: "";
+    //     border: 40px solid black;
+    //     position: absolute;
+    //     bottom: -120px;
+    //     left: -110px;
+    //   }
+    //   &:before {
+    //     --position: absolute;
+    //     border-radius: 25px;
+    //     box-shadow: 0 2px 5px 0 rgba(black, 0.8) inset;
+    //     content: "";
+    //     top: -2vmin;
+    //     right: -2vmin;
+    //     bottom: -2vmin;
+    //     left: -2vmin;
+    //   }
+    //   &:after {
+    //     border-radius: 2px;
+    //     bottom: -2.5vmin;
+    //     box-shadow: 0 2px 5px 0 rgba(black, 0.8);
+    //     content: "";
+    //     left: -2.5vmin;
+    //     --position: absolute;
+    //     right: -2.5vmin;
+    //     top: -2.5vmin;
+    //   }
+}

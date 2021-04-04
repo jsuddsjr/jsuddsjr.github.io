@@ -1,0 +1,440 @@
+@import url("https://fonts.googleapis.com/css2?family=Almendra&family=Titillium+Web:wght@900&display=swap");
+@import "variables";
+@import "glitch";
+@import "rem";
+@import "sidescroll";
+@import "frames";
+@import "headings";
+@import "artwork";
+@import "ellipsis";
+@mixin wallpaper() {
+    background: border-box $wallpaper-image;
+    background-color: rgba($wallpaper-color, 0.5);
+}
+
+@mixin balcony() {
+    background-image: url("../assets/furniture/MoonlitWindow583x632PNG.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: contrast(75%);
+    filter: grayscale(50%);
+}
+
+
+/*@mixin combined() {
+    background-image: url("../assets/MoonlitWindow583x632PNG.png") no-repeat contain, url($wallpaper-image) $wallpaper-color;
+}*/
+
+
+/*@mixin exit() {
+    background-image: url(/wdd331-final/src/assets/old-wooden-door-png-download-wood-arch-doors-11562925739qvwekc1tfh.png);
+    background-repeat: no-repeat;
+    background-size: 200px 100%;
+    
+}*/
+
+@mixin couch() {
+    background-image: url('../assets/furniture/couch640x435PNG.png'), $wallpaper-image;
+    background-position: right bottom, top left;
+    background-repeat: no-repeat, repeat;
+}
+
+@mixin participation() {
+    background-image: url('../assets/furniture/couch640x435PNG.png'), $wallpaper-image;
+    background-position: center bottom, top left;
+    background-repeat: no-repeat, repeat;
+}
+
+@mixin benefits1() {
+    background-image: url('../assets/art/smokySkull377x577JPG.png'), $wallpaper-image;
+    background-position: right top, top left;
+    background-repeat: no-repeat, repeat;
+}
+
+
+/*@mixin benefits2() {
+    background-image: url('../assets/furniture/ChairLeftPNG.png'), $wallpaper-image;
+    background-position: left bottom, top left;
+    background-repeat: no-repeat, repeat;
+}*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 9px;
+}
+
+body {
+    height: 100vh;
+    background-image: linear-gradient( black, $purple, $dark-blue, darken($dark-blue, 20%));
+}
+
+p {
+    line-height: 1.3;
+    background-color: $beige;
+    padding: rem(5px) rem(8px);
+    text-align: center;
+    font-family: $text-font;
+    //@include ellipsis();
+    // @include frame(rem(20px));
+    @include border-frame(rem(30px));
+}
+
+$top-row: rem(120px);
+.page-wrapper {
+    @include sidescroll-root(rem(800px));
+}
+
+// Grid #1
+#zen-intro {
+    @include sidescroll-section(rem(800px+205px));
+    @include wallpaper();
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: $top-row 1fr;
+    gap: rem(20px);
+    padding-right: rem(200px);
+    header {
+        grid-column: 1 / 3;
+        align-self: start;
+        padding: rem(10px) rem(15px);
+        line-height: 1.2;
+    }
+}
+
+#zen-summary {
+    grid-row-start: 2;
+    padding: rem(20px) rem(5px);
+    p {
+        margin-bottom: rem(100px);
+    }
+}
+
+#zen-preamble {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    padding: rem(20px) rem(15px);
+    p {
+        margin-bottom: rem(36px);
+    }
+    @include artwork(7,
+    3,
+    rem(60px));
+}
+
+// Grid #2
+#zen-supporting {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    height: 100%;
+    margin-right: rem(30px);
+    @include sidescroll-section(rem(3240px),
+    rem(205px));
+}
+
+.explanation {
+    display: grid;
+    grid-template-rows: rem(70px) repeat(2, rem(210px)) 1fr;
+    row-gap: rem(20px);
+    width: rem(840px);
+    padding-top: $top-row;
+
+    @include wallpaper();
+}
+
+.participation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: rem(225px) rem(100px) rem(350px);
+    gap: rem(20px);
+    width: rem(1470px);
+    h3 {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        justify-self: center;
+        align-self: center;
+    }
+    @include wallpaper();
+    @include wallpaper();
+    p:nth-of-type(1) {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        margin-left: rem(50px);
+    }
+    p:nth-of-type(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    p:nth-of-type(3) {
+        grid-column: 3;
+        grid-row: 3;
+    }
+}
+
+// Grid #3
+.benefits {
+    width: rem(850px);
+    height: rem(800px);
+    padding: rem(240px) rem(120px);
+    text-align: center;
+    
+    @include wallpaper();
+    @include benefits1();
+    //@include benefits2();
+}
+
+// Grid #4
+.requirements {
+    height: rem(800px);
+    width: rem(1500px);
+    font-size: 0.9rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr rem(200px) 1fr 1fr 1fr;
+    grid-template-rows: rem(180px) rem(240px) rem(260px) 1fr;
+    grid-auto-flow: column;
+    gap: rem(30px);
+    padding: 1rem;
+    h3 {
+        grid-column-start: 3;
+        grid-row-start: 2;
+        justify-self: center;
+    }
+    p {
+        padding: rem(20px) rem(10px);
+    }
+    p:nth-of-type(1) {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+    p:nth-of-type(2) {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+    p:nth-of-type(3) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+    }
+    p:nth-of-type(4) {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 3;
+    }
+    p:nth-of-type(5) {
+        grid-column-start: 2;
+        grid-row-start: 3;
+        justify-self: end;
+        width: rem(200px);
+    }
+    @include wallpaper();
+    @include couch();
+}
+
+footer {
+    width: rem(500px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include wallpaper();
+    //@include footer-background();
+    a {
+        margin: 20px auto;
+        margin-left: rem(70px);
+        color: black;
+        font-weight: bold;
+        line-height: 1.3;
+        background-color: $beige;
+        padding: rem(5px) rem(8px);
+        text-align: center;
+        font-family: $text-font;
+        //@include ellipsis();
+        // @include frame(rem(20px));
+        @include border-frame(rem(15px));
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+
+/*footer {
+    position: absolute;
+    top: rem(410px);
+    left: rem(3050px);
+    width: rem(370px);
+    height: rem(60px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    a {
+        color: white;
+        font-weight: bold;
+        &:hover {
+            color: red;
+        }
+    }
+}*/
+
+aside {
+    height: rem(380px);
+    width: rem(370px);
+    padding: rem(20px);
+    font-size: 0.75rem;
+    display: grid;
+    grid-template-rows: repeat(1, rem(250px)) rem(340px);
+    grid-template-columns: 1fr rem(200px) 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: rem(50px);
+    position: relative;
+    z-index: 0;
+    h3 {
+        font-size: 1.2rem;
+        text-align: center;
+        color: maroon;
+    }
+    .wrapper {
+        grid-row: span 2;
+    }
+    ul {
+        line-height: 1.1;
+        background-color: none;
+        padding: rem(5px) rem(8px);
+        list-style-type: none;
+        text-align: center;
+        color: rgb(235, 178, 33);
+    }
+    li {
+        margin-bottom: rem(12px);
+    }
+    a {
+        color: rgb(248, 209, 112);
+        font-size: 1rem;
+        text-decoration: none;
+        &:hover {
+            color: white;
+        }
+        &:active {
+            color: maroon;
+        }
+    }
+    @include balcony();
+    //@include combined();
+    @include sidescroll-section(rem(900px),
+    rem(3190px - 750px));
+    //@include wallpaper();
+}
+
+#design-selection {
+    margin-top: rem(290px);
+    margin-right: rem(100px);
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+#design-archives {
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+#zen-resources {
+    margin-bottom: rem(140px);
+    margin-left: rem(50px);
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+
+nav {
+    ul {
+        list-style-type: none;
+    }
+    li {
+        margin-bottom: rem(12px);
+    }
+}
+
+@import "breakpoints";
+// @media screen and (min-height: rem(820px)) {
+//   body {
+//     background-color: green;
+//     display: flex;
+//     align-items: center;
+//   }
+//   .page-wrapper {
+//     // @include sidescroll-root(rem(900px))
+//   }
+//   #zen-intro {
+//     width: rem(750px);
+//     height: 100%;
+//     margin-right: 0;
+//     padding-left: rem(30px);
+//     grid-template-rows: rem(110px) rem(210px) rem(110px) 1fr;
+//     grid-template-columns: 1fr 1.5fr 1fr;
+//     header {
+//       padding-left: rem(50px);
+//     }
+//     h1 {
+//       font-size: 2rem;
+//     }
+//   }
+//   #zen-summary {
+//     margin: 0;
+//   }
+//   #zen-preamble {
+//     grid-row: 2 / span 2;
+//     grid-column-start: 2;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//   #zen-supporting {
+//     padding-top: rem(60px);
+//     width: rem(3280px);
+//     margin-right: rem(80px);
+//   }
+//   #zen-participation {
+//     padding: rem(20px);
+//     grid-template-rows: rem(250px) rem(200px) 1fr;
+//     h3 {
+//       grid-row-start: 1;
+//     }
+//     p:nth-of-type(2) {
+//       grid-row-start: 2;
+//       grid-column-start: 2;
+//     }
+//     p:nth-of-type(3) {
+//       grid-column-start: 3;
+//     }
+//   }
+//   #zen-benefits {
+//     width: rem(925px);
+//     padding: rem(100px) rem(320px);
+//   }
+//   #zen-requirements {
+//     width: rem(1500px);
+//     gap: rem(100px);
+//     padding: rem(50px) 0;
+//     [role="contentinfo"] {
+//       margin-top: rem(-50px);
+//       width: rem(300px);
+//     }
+//   }
+//   footer {
+//     left: rem(3360px);
+//     top: rem(550px);
+//   }
+//   aside {
+//     padding-top: rem(120px);
+//   }
+// }

@@ -1,0 +1,93 @@
+@property --sidescroll-x {
+  initial-value: 100;
+  inherits: true;
+  syntax: "<integer>";
+}
+
+@property --sidescroll-y {
+  initial-value: 750px;
+  inherits: true;
+  syntax: "<integer>";
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 10px;
+}
+
+body {
+  color: white;
+  background-color: #13315C;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@-webkit-keyframes animate-x {
+  0% {
+    --sidescroll-x: 0;
+  }
+  100% {
+    --sidescroll-x: 100;
+  }
+}
+
+@keyframes animate-x {
+  0% {
+    --sidescroll-x: 0;
+  }
+  100% {
+    --sidescroll-x: 100;
+  }
+}
+
+:root {
+  animation: animate-x 4s ease-in-out infinite alternate-reverse;
+}
+
+.page-wrapper {
+  --sidescroll-y: 46.875rem;
+  height: 100vw !important;
+  width: calc(46.875rem + 16px) !important;
+  margin: -16px;
+  overflow: hidden auto;
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transform: rotate(calc(-0.9deg * var(--sidescroll-x))) translateY(calc(-46.875rem * var(--sidescroll-x) / 100));
+          transform: rotate(calc(-0.9deg * var(--sidescroll-x))) translateY(calc(-46.875rem * var(--sidescroll-x) / 100));
+}
+
+#zen-intro {
+  width: 46.875rem !important;
+  height: var(--sidescroll-y) !important;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(calc(0.9deg * var(--sidescroll-x))) translate3d(calc(0px * var(--sidescroll-x) / 100), calc(var(--sidescroll-y) * var(--sidescroll-x) / -100), 0);
+          transform: rotate(calc(0.9deg * var(--sidescroll-x))) translate3d(calc(0px * var(--sidescroll-x) / 100), calc(var(--sidescroll-y) * var(--sidescroll-x) / -100), 0);
+}
+
+#zen-supporting {
+  width: 188.75rem !important;
+  height: var(--sidescroll-y) !important;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(calc(0.9deg * var(--sidescroll-x))) translate3d(calc(0px * var(--sidescroll-x) / 100), calc(var(--sidescroll-y) * var(--sidescroll-x) / -100), 0);
+          transform: rotate(calc(0.9deg * var(--sidescroll-x))) translate3d(calc(0px * var(--sidescroll-x) / 100), calc(var(--sidescroll-y) * var(--sidescroll-x) / -100), 0);
+}
+
+aside {
+  width: 56.25rem !important;
+  height: var(--sidescroll-y) !important;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(calc(0.9deg * var(--sidescroll-x))) translate3d(calc(141.875rem * var(--sidescroll-x) / 100), calc(var(--sidescroll-y) * var(--sidescroll-x) / -100), 0);
+          transform: rotate(calc(0.9deg * var(--sidescroll-x))) translate3d(calc(141.875rem * var(--sidescroll-x) / 100), calc(var(--sidescroll-y) * var(--sidescroll-x) / -100), 0);
+}
+/*# sourceMappingURL=style-sideways.css.map */

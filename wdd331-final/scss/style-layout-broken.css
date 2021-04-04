@@ -1,0 +1,689 @@
+@import url("https://fonts.googleapis.com/css2?family=Almendra&family=Titillium+Web:wght@900&display=swap");
+header {
+  position: relative;
+}
+
+h1,
+h3 {
+  text-transform: uppercase;
+  text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+  -webkit-animation: glitch .5s infinite;
+          animation: glitch .5s infinite;
+}
+
+h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+h1::before,
+h1::after {
+  content: "CSS Zen Garden";
+  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+h1::before {
+  -webkit-animation: glitch 0.8s infinite;
+          animation: glitch 0.8s infinite;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50%, 0 30%);
+          clip-path: polygon(0 0, 100% 0, 100% 50%, 0 30%);
+  -webkit-transform: translate(-0.025em, -0.025em);
+          transform: translate(-0.025em, -0.025em);
+  opacity: .8;
+}
+
+h1::after {
+  -webkit-animation: glitch 0.1s infinite;
+          animation: glitch 0.1s infinite;
+  -webkit-clip-path: polygon(0 50%, 100% 60%, 100% 100%, 0 100%);
+          clip-path: polygon(0 50%, 100% 60%, 100% 100%, 0 100%);
+  -webkit-transform: translate(0.025em, 0.025em);
+          transform: translate(0.025em, 0.025em);
+  opacity: .8;
+}
+
+@-webkit-keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+  }
+  14% {
+    text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+  }
+  15% {
+    text-shadow: -0.05em -0.075 0 var(--red), 0.025em 0.025em 0 var(--green), -0.075em -0.05em 0 var(--blue);
+  }
+  49% {
+    text-shadow: -0.05em -0.075 0 var(--red), 0.025em 0.025em 0 var(--green), -0.075em -0.05em 0 var(--blue);
+  }
+  50% {
+    text-shadow: 0.075em 0.05em 0 var(--red), 0.05em 0.075em 0 var(--green), 0 -0.05em 0.025em var(--blue);
+  }
+  99% {
+    text-shadow: 0.075em 0.05em 0 var(--red), 0.05em 0.075em 0 var(--green), 0 -0.05em 0.025em var(--blue);
+  }
+  100% {
+    text-shadow: -0.075em 0 0 var(--red), -0.075em -0.025em 0 var(--green), -0.025em -0.05em 0 var(--blue);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+  }
+  14% {
+    text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+  }
+  15% {
+    text-shadow: -0.05em -0.075 0 var(--red), 0.025em 0.025em 0 var(--green), -0.075em -0.05em 0 var(--blue);
+  }
+  49% {
+    text-shadow: -0.05em -0.075 0 var(--red), 0.025em 0.025em 0 var(--green), -0.075em -0.05em 0 var(--blue);
+  }
+  50% {
+    text-shadow: 0.075em 0.05em 0 var(--red), 0.05em 0.075em 0 var(--green), 0 -0.05em 0.025em var(--blue);
+  }
+  99% {
+    text-shadow: 0.075em 0.05em 0 var(--red), 0.05em 0.075em 0 var(--green), 0 -0.05em 0.025em var(--blue);
+  }
+  100% {
+    text-shadow: -0.075em 0 0 var(--red), -0.075em -0.025em 0 var(--green), -0.025em -0.05em 0 var(--blue);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    -webkit-animation-delay: -1ms !important;
+            animation-delay: -1ms !important;
+    -webkit-animation-duration: 1ms !important;
+            animation-duration: 1ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    -webkit-transition-duration: 0s !important;
+            transition-duration: 0s !important;
+    -webkit-transition-delay: 0s !important;
+            transition-delay: 0s !important;
+  }
+}
+
+h1 {
+  font-size: 4em;
+  font-family: "Titillium Web";
+  white-space: nowrap;
+  color: #D1B9B9;
+}
+
+h2 {
+  font-size: 2em;
+  font-family: "Titillium Web";
+  color: #D1B9B9;
+  white-space: nowrap;
+  position: absolute;
+  top: 2.1em;
+}
+
+h3 {
+  font-size: 2em;
+  font-family: "Titillium Web";
+  color: #D1B9B9;
+}
+
+:root {
+  --art-1: url(../assets/art/AdaLovelaceSVG.svg);
+  --art-2: url(../assets/art/BirdcageGirlSVG.svg);
+  --art-3: url(../assets/art/DeerSkull640x637PNGcolor.png);
+  --art-4: url(../assets/art/FloralLady366x519PNG.png);
+  --art-5: url(../assets/art/Gargoyle469x426JPG.jpg);
+  --art-6: url(../assets/art/GeorgeDragonSVG.svg);
+  --art-7: url(../assets/art/GothicAngelJPG.jpg);
+  --art-8: url(../assets/art/KnightHorseSVG.svg);
+  --art-9: url(../assets/art/MermaidWoodcutSVG.svg);
+  --art-10: url(../assets/art/SkullClockPNG.png);
+  --art-11: url(../assets/art/smokySkull377x577JPG.png);
+  --art-12: url(../assets/art/VictorianLadyCollageJPG.png);
+  --furn-1: url(../assets/furniture/ChairLeftPNG.png);
+  --furn-2: url(../assets/furniture/ChairRightPNG.png);
+  --furn-3: url(../assets/furniture/couch640x435PNG.png);
+}
+
+/*@mixin combined() {
+    background-image: url("../assets/MoonlitWindow583x632PNG.png") no-repeat contain, url($wallpaper-image) $wallpaper-color;
+}*/
+/*@mixin exit() {
+    background-image: url(/wdd331-final/src/assets/old-wooden-door-png-download-wood-arch-doors-11562925739qvwekc1tfh.png);
+    background-repeat: no-repeat;
+    background-size: 200px 100%;
+    
+}*/
+/*@mixin footer-background() {
+    background-image: url('../assets/furniture/kisspng-shelf-bookcase-cupboard-old-bookcase-5b46bec647bca0.1323109215313630142938.jpg'), $wallpaper-image;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+}*/
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 9px;
+}
+
+body {
+  height: 100vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(#32283E), color-stop(#0B2545), to(black));
+  background-image: linear-gradient(black, #32283E, #0B2545, black);
+}
+
+p {
+  line-height: 1.3;
+  background-color: #D1CFC7;
+  padding: 0.3125rem 0.5rem;
+  text-align: center;
+  font-family: "Almendra";
+  border: 1.875rem solid transparent;
+  -o-border-image: url("../assets/frames/frame1.png") 120 round;
+     border-image: url("../assets/frames/frame1.png") 120 round;
+  border-radius: calc(1.875rem / 4);
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) inset, calc(1.875rem / 2) calc(1.875rem / 2) calc(1.875rem * 2) rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) inset, calc(1.875rem / 2) calc(1.875rem / 2) calc(1.875rem * 2) rgba(0, 0, 0, 0.8);
+}
+
+p:hover {
+  overflow: visible;
+}
+
+.page-wrapper {
+  --sidescroll-height: 46.875rem;
+  --sidescroll-shift: -46.875rem;
+  height: 100vw !important;
+  width: calc(46.875rem + 16px) !important;
+  margin: -16px;
+  overflow: hidden auto;
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+  -webkit-transform: rotate(-90deg) translateY(-46.875rem);
+          transform: rotate(-90deg) translateY(-46.875rem);
+}
+
+#zen-intro {
+  width: 56.875rem !important;
+  height: var(--sidescroll-height) !important;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(90deg) translate3d(0px, var(--sidescroll-shift), 0);
+          transform: rotate(90deg) translate3d(0px, var(--sidescroll-shift), 0);
+  background: border-box url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%23d1b9b9' fill-opacity='0.4'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-color: rgba(19, 49, 92, 0.2);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 7.5rem 1fr;
+      grid-template-rows: 7.5rem 1fr;
+  gap: 1.25rem;
+  padding-right: 12.5rem;
+}
+
+#zen-intro header {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  padding: 0.625rem 0.9375rem;
+  line-height: 1.2;
+}
+
+#zen-summary {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  padding: 1.25rem 0.3125rem;
+}
+
+#zen-summary p {
+  margin-bottom: 6.25rem;
+}
+
+#zen-preamble {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  padding: 1.25rem 0.9375rem;
+}
+
+#zen-preamble p {
+  margin-bottom: 2.25rem;
+}
+
+#zen-preamble p:nth-child(1) {
+  position: relative;
+  overflow: visible !important;
+}
+
+#zen-preamble p:nth-child(1):after {
+  content: "";
+  position: absolute;
+  top: calc(50% - (10rem / 2));
+  right: calc((3.75rem + 10rem) * -1);
+  background-image: var(--art-7);
+  width: 10rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  outline: 2px solid red;
+  z-index: 100;
+}
+
+#zen-preamble p:nth-child(2) {
+  position: relative;
+  overflow: visible !important;
+}
+
+#zen-preamble p:nth-child(2):after {
+  content: "";
+  position: absolute;
+  top: calc(50% - (10rem / 2));
+  right: calc((3.75rem + 10rem) * -1);
+  background-image: var(--art-8);
+  width: 10rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  outline: 2px solid red;
+  z-index: 100;
+}
+
+#zen-preamble p:nth-child(3) {
+  position: relative;
+  overflow: visible !important;
+}
+
+#zen-preamble p:nth-child(3):after {
+  content: "";
+  position: absolute;
+  top: calc(50% - (10rem / 2));
+  right: calc((3.75rem + 10rem) * -1);
+  background-image: var(--art-9);
+  width: 10rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  outline: 2px solid red;
+  z-index: 100;
+}
+
+#zen-preamble p:nth-child(4) {
+  position: relative;
+  overflow: visible !important;
+}
+
+#zen-preamble p:nth-child(4):after {
+  content: "";
+  position: absolute;
+  top: calc(50% - (10rem / 2));
+  right: calc((3.75rem + 10rem) * -1);
+  background-image: var(--art-10);
+  width: 10rem;
+  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  outline: 2px solid red;
+  z-index: 100;
+}
+
+#zen-supporting {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  height: 100%;
+  margin-right: 1.875rem;
+  width: 202.5rem !important;
+  height: var(--sidescroll-height) !important;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(90deg) translate3d(10rem, var(--sidescroll-shift), 0);
+          transform: rotate(90deg) translate3d(10rem, var(--sidescroll-shift), 0);
+}
+
+.explanation {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 7.5rem 16.875rem 18.125rem;
+      grid-template-rows: 7.5rem 16.875rem 18.125rem;
+  row-gap: 1.25rem;
+  width: 30.3125rem;
+  padding: 0 3.4375rem;
+  background: border-box url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%23d1b9b9' fill-opacity='0.4'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-color: rgba(19, 49, 92, 0.2);
+}
+
+.participation {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 14.0625rem 6.25rem 1fr;
+      grid-template-rows: 14.0625rem 6.25rem 1fr;
+  gap: 1.25rem;
+  width: 65.625rem;
+  padding-top: 7.5rem;
+  background: border-box url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%23d1b9b9' fill-opacity='0.4'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-color: rgba(19, 49, 92, 0.2);
+}
+
+.participation p {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+}
+
+.participation p:nth-of-type(2) {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
+
+.participation h3 {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.participation:after {
+  width: 56.25rem;
+  background-image: var(--furn-3);
+  width: 56.25rem;
+  height: 56.25rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  outline: 2px solid red;
+  z-index: 100;
+  grid-column: 1 / -1;
+  -ms-grid-row: 3;
+      grid-row-start: 3;
+  background: red !important;
+}
+
+.benefits {
+  width: 51.5625rem;
+  height: 46.875rem;
+  padding: 6.25rem 11.25rem;
+  text-align: center;
+  background: border-box url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%23d1b9b9' fill-opacity='0.4'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-color: rgba(19, 49, 92, 0.2);
+}
+
+.requirements {
+  height: 46.875rem;
+  width: 81.25rem;
+  font-size: 0.9rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 12.5rem 1fr;
+      grid-template-columns: 1fr 12.5rem 1fr;
+  -ms-grid-rows: 11.25rem 10rem 5rem 1fr;
+      grid-template-rows: 11.25rem 10rem 5rem 1fr;
+  grid-auto-flow: column;
+  gap: 1.25rem;
+  padding-top: 7.5rem;
+  background: border-box url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%23d1b9b9' fill-opacity='0.4'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-color: rgba(19, 49, 92, 0.2);
+}
+
+.requirements h3 {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.requirements p:nth-of-type(2) {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  grid-row: 2 / 4;
+}
+
+.requirements p:nth-of-type(3) {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+}
+
+.requirements p:nth-of-type(4) {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+}
+
+.requirements p:nth-of-type(5) {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  grid-row: 3 / -1;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  width: 18.75rem;
+}
+
+footer {
+  width: 25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: border-box url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%23d1b9b9' fill-opacity='0.4'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-color: rgba(19, 49, 92, 0.2);
+}
+
+footer a {
+  margin: 20px auto;
+  margin-left: 4.375rem;
+  color: black;
+  font-weight: bold;
+  line-height: 1.3;
+  background-color: #eef4ed;
+  padding: 0.3125rem 0.5rem;
+  text-align: center;
+  font-family: "Almendra";
+  border: 0.9375rem solid transparent;
+  -o-border-image: url("../assets/frames/frame1.png") 120 round;
+     border-image: url("../assets/frames/frame1.png") 120 round;
+  border-radius: calc(0.9375rem / 4);
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) inset, calc(0.9375rem / 2) calc(0.9375rem / 2) calc(0.9375rem * 2) rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) inset, calc(0.9375rem / 2) calc(0.9375rem / 2) calc(0.9375rem * 2) rgba(0, 0, 0, 0.8);
+}
+
+footer a:hover {
+  overflow: visible;
+}
+
+footer a:hover {
+  color: red;
+}
+
+aside {
+  height: 23.75rem;
+  width: 23.125rem;
+  padding: 1.25rem;
+  font-size: 0.75rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (15.625rem)[1] 18.75rem;
+      grid-template-rows: repeat(1, 15.625rem) 18.75rem;
+  -ms-grid-columns: 1fr 12.5rem 1fr;
+      grid-template-columns: 1fr 12.5rem 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3.125rem;
+  position: relative;
+  z-index: 0;
+  background-image: url("../assets/furniture/MoonlitWindow583x632PNG.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-filter: contrast(75%);
+          filter: contrast(75%);
+  -webkit-filter: grayscale(50%);
+          filter: grayscale(50%);
+  width: 56.25rem !important;
+  height: var(--sidescroll-height) !important;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(90deg) translate3d(165.625rem, var(--sidescroll-shift), 0);
+          transform: rotate(90deg) translate3d(165.625rem, var(--sidescroll-shift), 0);
+}
+
+aside h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  color: maroon;
+}
+
+aside .wrapper {
+  grid-row: span 2;
+}
+
+aside ul {
+  line-height: 1.1;
+  background-color: none;
+  padding: 0.3125rem 0.5rem;
+  list-style-type: none;
+  text-align: center;
+  color: #ebb221;
+}
+
+aside li {
+  margin-bottom: 0.75rem;
+}
+
+aside a {
+  color: #f8d170;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+aside a:hover {
+  color: white;
+}
+
+aside a:active {
+  color: maroon;
+}
+
+#design-selection {
+  margin-top: 18.125rem;
+  margin-right: 6.25rem;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+}
+
+#design-archives {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+}
+
+#zen-resources {
+  margin-bottom: 8.75rem;
+  margin-left: 3.125rem;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav li {
+  margin-bottom: 0.75rem;
+}
+
+@media screen and (min-height: 500px) {
+  :root {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-height: 900px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-height: 1200px) {
+  :root {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-height: 1400px) {
+  :root {
+    font-size: 24px;
+  }
+}
+/*# sourceMappingURL=style-layout-broken.css.map */

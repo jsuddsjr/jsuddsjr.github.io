@@ -1,0 +1,51 @@
+@property --sidescroll-x {
+  initial-value: 100;
+  inherits: true;
+  syntax: "<integer>";
+}
+
+@property --sidescroll-y {
+  initial-value: 750px;
+  inherits: true;
+  syntax: "<integer>";
+}
+
+@mixin sidescroll-animate {
+  @keyframes animate-x {
+    0% {
+      --sidescroll-x: 0;
+    }
+    100% {
+      --sidescroll-x: 100;
+    }
+  }
+  :root {
+    animation: animate-x 4s ease-in-out infinite alternate-reverse;
+  }
+}
+
+@mixin sidescroll-root($height: 100vw) {
+  --sidescroll-y: #{$height};
+
+  height: 100vw !important;
+  width: calc(#{$height} + 16px) !important;
+  margin: -16px;
+  overflow: hidden auto;
+  transform-origin: top right;
+  transform: rotate(calc(-0.9deg * var(--sidescroll-x)))
+    translateY(calc(-#{$height} * var(--sidescroll-x) / 100));
+  // outline: solid green 2px;
+}
+
+@mixin sidescroll-section($width, $offset: 0px) {
+  width: $width !important;
+  height: var(--sidescroll-y) !important;
+  transform-origin: top left;
+  transform: rotate(calc(0.9deg * var(--sidescroll-x)))
+    translate3d(
+      calc(#{$offset} * var(--sidescroll-x) / 100),
+      calc(var(--sidescroll-y) * var(--sidescroll-x) / -100),
+      0
+    );
+  // outline: solid yellow 2px;
+}

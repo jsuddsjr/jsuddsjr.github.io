@@ -1,0 +1,10 @@
+@mixin dark-shadows {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(black, .3), rgba(black, .1), rgba(black, .9));
+    pointer-events: none;
+    z-index: 100;
+}

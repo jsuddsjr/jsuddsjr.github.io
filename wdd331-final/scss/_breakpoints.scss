@@ -1,0 +1,48 @@
+@media screen and (min-height: 500px) {
+  :root {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-height: 900px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-height: 1200px) {
+  :root {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-height: 1400px) {
+  :root {
+    font-size: 24px;
+  }
+}
+
+// I would like to put the hallway in the middle of the screen, but I need to work on that.
+// @media screen and (min-height: 900px) {
+//   .page-wrapper {
+//     margin-top: calc(50vh - 400px);
+//   }
+// }

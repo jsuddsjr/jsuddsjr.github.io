@@ -1,0 +1,95 @@
+
+
+header {
+    position: relative;
+}
+
+//Glitchy text efffect
+h1,
+h3 {
+    text-transform: uppercase;
+    text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+    animation: glitch .5s infinite;
+}
+
+
+h1{
+    position: absolute;
+    top: 0;
+    left:0;
+    margin: 0;
+}   
+
+h1::before,
+h1::after {
+    content: "CSS Zen Garden";
+    position: relative;
+    position: absolute;
+    top: 0;
+    left:0;    
+}
+
+h1::before {
+    animation: glitch 0.8s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 30%);
+    transform: translate(-0.025em, -0.025em);
+    opacity: .8;
+}
+
+h1::after {
+    animation: glitch 0.1s infinite;
+    clip-path: polygon(0 50%, 100% 60%, 100% 100%, 0 100%);
+    transform: translate(0.025em, 0.025em);
+    opacity: .8;
+}
+
+@keyframes glitch {
+    0% {
+        
+        text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+    }
+
+    14% {
+        text-shadow: 0.05em 0 0 red, -0.075em -0.075em 0 green, 0.075em 0.075em 0 blue;
+    }
+
+    15% {
+        text-shadow: -0.05em -0.075 0 var(--red), 0.025em 0.025em 0 var(--green),
+            -0.075em -0.05em 0 var(--blue);
+    }
+
+    49% {
+        text-shadow: -0.05em -0.075 0 var(--red), 0.025em 0.025em 0 var(--green),
+            -0.075em -0.05em 0 var(--blue);
+    }
+
+    50% {
+        text-shadow: 0.075em 0.05em 0 var(--red), 0.05em 0.075em 0 var(--green),
+            0 -0.05em .025em var(--blue);
+    }
+
+    99% {
+        text-shadow: 0.075em 0.05em 0 var(--red), 0.05em 0.075em 0 var(--green),
+            0 -0.05em .025em var(--blue);
+    }
+
+    100% {
+        text-shadow: -0.075em 0 0 var(--red), -0.075em -0.025em 0 var(--green),
+            -0.025em -0.05em 0 var(--blue);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+}
