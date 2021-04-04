@@ -45,7 +45,7 @@
     background-repeat: no-repeat, repeat;
 }
 
-@mixin benefits1() {
+@mixin skull-mirror() {
     background-image: url('../assets/art/smokySkull377x577JPG.png'), $wallpaper-image;
     background-position: right top, top left;
     background-repeat: no-repeat, repeat;
@@ -145,16 +145,15 @@ $top-row: rem(120px);
     row-gap: rem(20px);
     width: rem(840px);
     padding-top: $top-row;
-
     @include wallpaper();
 }
 
 .participation {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
     grid-template-rows: rem(225px) rem(100px) rem(350px);
     gap: rem(20px);
-    width: rem(1470px);
+    width: rem(1350px);
     h3 {
         grid-column-start: 2;
         grid-row-start: 2;
@@ -162,10 +161,10 @@ $top-row: rem(120px);
         align-self: center;
     }
     @include wallpaper();
-    @include wallpaper();
+    @include skull-mirror();
     p:nth-of-type(1) {
         grid-column: 1;
-        grid-row: 2 / 4;
+        grid-row: 3;
         margin-left: rem(50px);
     }
     p:nth-of-type(2) {
@@ -184,9 +183,8 @@ $top-row: rem(120px);
     height: rem(800px);
     padding: rem(240px) rem(120px);
     text-align: center;
-    
     @include wallpaper();
-    @include benefits1();
+    @include couch();
     //@include benefits2();
 }
 
@@ -236,11 +234,10 @@ $top-row: rem(120px);
         width: rem(200px);
     }
     @include wallpaper();
-    @include couch();
 }
 
 footer {
-    width: rem(500px);
+    width: rem(600px);
     display: flex;
     flex-direction: column;
     justify-content: center;
