@@ -1,0 +1,22 @@
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: aqua;
+}
+
+h1 {
+    color: white;
+    background-color: aqua;
+    padding: .5em 1em;
+}
+
+a {
+    color: aqua;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: aquamarine;
+    text-decoration: underline;
+}

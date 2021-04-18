@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Story Writer</title>
+    <script>
+      function readStories() {
+        for (var i = 0; i < localStorage.length; i++) {
+          addStory(localStorage.key(i));
+        }
+        document.getElementById("name_input").selectedIndex = 0;
+        document.getElementById("last_action").innerText =
+          "Read stories from cache.";
+      }
+      function addStory(storyName) {
+        var storySelect = document.getElementById("name_input");
+        var option = document.createElement("OPTION");
+        option.innerText = storyName;
+        storySelect.appendChild(option);
+        storySelect.value = storyName;
+      }
+      function loadStory() {
+        var storySelect = document.getElementById("name_input");
+        var storyHTML = "";
+        if (storySelect.selectedIndex !== 0) {
+          storyHTML = localStorage.getItem(storySelect.value);
+          document.getElementById(
+            "last_action"
+          ).innerText = `Loaded ${storySelect.value}.`;
+        } else {
+          document.getElementById("last_action").innerText = "New story.";
+        }
+        document.getElementById("story_editor").value = storyHTML;
+      }
+      function saveStory() {
+        /** @type HTMLSelectElement */
+        var storySelect = document.getElementById("name_input");
+        var storyName = storySelect.value;
+        if (storySelect.selectedIndex === 0) {
+          storyName = prompt("Enter a new story name");
+          if (!storyName || storyName.trim() === "") return;
+          addStory(storyName.trim());
+        }
+        var storyHTML = document.getElementById("story_editor").value;
+        localStorage.setItem(storyName, storyHTML);
+        document.getElementById("last_action").innerText = "Saved.";
+      }
+      function displayStory() {
+        var storyHTML = document.getElementById("story_editor").value;
+        document.getElementById("story_display").innerHTML = storyHTML;
+        document.getElementById("last_action").innerText = "Displayed.";
+      }
+      function clearLastAction() {
+        document.getElementById("last_action").innerText = "";
+      }
+    </script>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      section {
+        width: 800px;
+      }
+      textarea {
+        width: 800px;
+        height: 250px;
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+  <body onload="readStories()">
+    <section>
+      <h1>Story Editor</h1>
+      <label for="name_input">Story Name:</label>
+      <select id="name_input" onchange="loadStory()">
+        <option>-- New Story --</option>
+      </select>
+    </section>
+    <section>
+      <button onclick="loadStory()">Find and Edit It</button>
+      <button onclick="saveStory()">Save It</button>
+      <button onclick="displayStory()">Display It</button>
+      <span id="last_action"></span>
+    </section>
+    <textarea
+      id="story_editor"
+      placeholder="Write a totally awesome story here."
+      onchange="clearLastAction()"
+    ></textarea>
+    <section id="story_display"></section>
+  </body>
+</html>
