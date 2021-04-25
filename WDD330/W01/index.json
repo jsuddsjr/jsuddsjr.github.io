@@ -6,6 +6,11 @@
       "info": "Embedded JavaScript. <i>Yuck</i>. "
     },
     {
+      "url": "W01/fancy_button.html",
+      "label": "A fancy, clickable button (from Doing Stuff with Web Things)",
+      "info": "Updating the page from JavaScript. "
+    },
+    {
       "url": "W01/story_editor.html",
       "label": "Story Editor (from Doing Stuff with Web Things)",
       "info": "Using <code>localStorage</code> to load and save stories. I updated the original example with a drop-down to select values. "
