@@ -1,9 +1,9 @@
 {
   "links": [
     {
-      "url": "W01/story_editor.html",
-      "label": "Story Editor (from Doing Stuff with Web Things)",
-      "info": "Using <code>localStorage</code> to load and save strings. I updated the original example with a drop-down to select values. "
+      "url": "W01/first_event.html",
+      "label": "A clickable button (from Doing Stuff with Web Things)",
+      "info": "Embedded JavaScript. <i>Yuck</i>. "
     },
     {
       "url": "W01/story_editor.html",
@@ -11,5 +11,10 @@
       "info": "Using <code>localStorage</code> to load and save strings. I updated the original example with a drop-down to select values. "
     }
   ],
-  "questions": ["How can I amaze the teacher for a good grade?"]
+  "questions": [
+    "How does localStorage compare to other caching strategies like Service Workers or IndexedDB?",
+    "If I decide to use localStorage in my application, should I warn the user like I sometimes see done with cookies?",
+    "How can I amaze the teacher for a good grade? 😎",
+    "<q>If you design for the smallest, least powerful device first, then you will focus on the content and your core functionality. That leads to simple, beautiful apps. If you do it the other way around, it'll be like trying to put a marshmallow into a piggy bank, which is neither simple, nor beautiful.</q> -- <code>Joel Marsh</code>"
+  ]
 }

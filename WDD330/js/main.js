@@ -110,7 +110,7 @@ Number.prototype.pad = function (size) {
     for (let q of report.questions) {
       /** @type HTMLListItemElement */
       const li = d.createElement("LI");
-      li.innerText = q;
+      li.innerHTML = q;
       olq.appendChild(li);
     }
   }

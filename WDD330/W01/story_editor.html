@@ -5,57 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Story Writer</title>
-    <script>
-      function readStories() {
-        for (var i = 0; i < localStorage.length; i++) {
-          addStory(localStorage.key(i));
-        }
-        document.getElementById("name_input").selectedIndex = 0;
-        document.getElementById("last_action").innerText =
-          "Read stories from cache.";
-      }
-      function addStory(storyName) {
-        var storySelect = document.getElementById("name_input");
-        var option = document.createElement("OPTION");
-        option.innerText = storyName;
-        storySelect.appendChild(option);
-        storySelect.value = storyName;
-      }
-      function loadStory() {
-        var storySelect = document.getElementById("name_input");
-        var storyHTML = "";
-        if (storySelect.selectedIndex !== 0) {
-          storyHTML = localStorage.getItem(storySelect.value);
-          document.getElementById(
-            "last_action"
-          ).innerText = `Loaded ${storySelect.value}.`;
-        } else {
-          document.getElementById("last_action").innerText = "New story.";
-        }
-        document.getElementById("story_editor").value = storyHTML;
-      }
-      function saveStory() {
-        /** @type HTMLSelectElement */
-        var storySelect = document.getElementById("name_input");
-        var storyName = storySelect.value;
-        if (!storySelect?.selectedIndex) {
-          storyName = prompt("Enter a new story name");
-          if (!storyName || storyName.trim() === "") return;
-          addStory(storyName.trim());
-        }
-        var storyHTML = document.getElementById("story_editor").value;
-        localStorage.setItem(storyName, storyHTML);
-        document.getElementById("last_action").innerText = "Saved.";
-      }
-      function displayStory() {
-        var storyHTML = document.getElementById("story_editor").value;
-        document.getElementById("story_display").innerHTML = storyHTML;
-        document.getElementById("last_action").innerText = "Displayed.";
-      }
-      function clearLastAction() {
-        document.getElementById("last_action").innerText = "";
-      }
-    </script>
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -67,6 +16,9 @@
         max-width: 600px;
         width: 100%;
         margin-bottom: 1em;
+      }
+      .btn-delete {
+        color: rgb(128, 25, 0);
       }
       #last_action {
         font-size: 0.6em;
@@ -90,6 +42,9 @@
       <!-- <button onclick="loadStory()">Find and Edit It</button> -->
       <button onclick="saveStory()">Save It</button>
       <button onclick="displayStory()">Display It</button>
+      <button onclick="deleteStory()" disabled class="btn-delete">
+        Delete It
+      </button>
       <span id="last_action"></span>
     </section>
     <section>
@@ -100,5 +55,70 @@
       ></textarea>
     </section>
     <section id="story_display"></section>
+    <script>
+      /** @type HTMLSelectElement */
+      var storySelect = document.getElementById("name_input");
+      function readStories() {
+        for (var i = 0; i < localStorage.length; i++) {
+          addStory(localStorage.key(i));
+        }
+        document.getElementById("name_input").selectedIndex = 0;
+        setLastAction("Read stories from cache.");
+      }
+      function addStory(storyName) {
+        var option = document.createElement("OPTION");
+        option.innerText = storyName;
+        storySelect.appendChild(option);
+        storySelect.value = storyName;
+      }
+      function loadStory() {
+        var storyHTML = "";
+        if (storySelect.selectedIndex !== 0) {
+          storyHTML = localStorage.getItem(storySelect.value);
+          setLastAction(`Loaded ${storySelect.value}.`);
+          setCanDelete(true);
+        } else {
+          setLastAction("New story.");
+          setCanDelete(false);
+        }
+        document.getElementById("story_editor").value = storyHTML;
+      }
+      function saveStory() {
+        var storyName = storySelect.value;
+        if (!storySelect?.selectedIndex) {
+          storyName = prompt("What are you going to call it?");
+          if (!storyName || storyName.trim() === "") return;
+          addStory(storyName.trim());
+        }
+        var storyHTML = document.getElementById("story_editor").value;
+        localStorage.setItem(storyName, storyHTML);
+        setLastAction("Saved.");
+      }
+      function displayStory() {
+        var storyHTML = document.getElementById("story_editor").value;
+        document.getElementById("story_display").innerHTML = storyHTML;
+        setLastAction("Displayed.");
+      }
+      /** @param {Boolean} canDelete */
+      function setCanDelete(canDelete) {
+        /** @type HTMLButtonElement */
+        var btn = document.querySelector(".btn-delete");
+        btn.disabled = !canDelete;
+      }
+      function deleteStory() {
+        var storyName = storySelect.value;
+        localStorage.removeItem(storyName);
+        storySelect.selectedIndex = 0;
+        setLastAction("Deleted.");
+        setCanDelete(false);
+      }
+      /** @param {String} message */
+      function setLastAction(message) {
+        document.getElementById("last_action").innerText = message;
+      }
+      function clearLastAction() {
+        document.getElementById("last_action").innerText = "";
+      }
+    </script>
   </body>
 </html>

@@ -46,6 +46,11 @@ li {
   font-size: 0.8em;
 }
 
+q {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
+}
+
 a,
 a:visited {
   color: #4263bd;

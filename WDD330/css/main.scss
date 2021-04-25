@@ -34,7 +34,7 @@ header {
     line-height: 1;
   }
 
-  p{
+  p {
     line-height: 1.1;
   }
 }
@@ -45,6 +45,11 @@ li {
 
 .info {
   font-size: 0.8em;
+}
+
+q {
+  font-style: italic;
+  color: rgba(black, 0.5);
 }
 
 a,
