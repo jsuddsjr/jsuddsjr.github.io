@@ -1,4 +1,4 @@
-$body-color: rgb(66, 99, 189);
+$body-color: rgb(0, 0, 80);
 
 *,
 *:before,
@@ -16,6 +16,11 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+
+  // Add space so footer doesn't cover text.
+  & > section:last-of-type {
+    padding-bottom: 5em;
+  }
 }
 
 section {
@@ -45,11 +50,12 @@ li {
 
 .info {
   font-size: 0.8em;
+  margin-top: 0.5em;
 }
 
 q {
   font-style: italic;
-  color: rgba(black, 0.5);
+  color: rgba(black, 0.6);
 }
 
 a,
@@ -80,5 +86,6 @@ footer {
 
   p {
     font-size: 0.8rem;
+    text-align: right;
   }
 }
