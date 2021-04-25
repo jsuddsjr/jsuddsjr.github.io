@@ -17,7 +17,7 @@
         width: 100%;
         margin-bottom: 1em;
       }
-      .btn-delete {
+      .btn-delete:enabled {
         color: rgb(128, 25, 0);
       }
       #last_action {
@@ -93,6 +93,7 @@
         var storyHTML = document.getElementById("story_editor").value;
         localStorage.setItem(storyName, storyHTML);
         setLastAction("Saved.");
+        setCanDelete(true);
       }
       function displayStory() {
         var storyHTML = document.getElementById("story_editor").value;

@@ -23,9 +23,6 @@ Number.prototype.pad = function (size) {
 };
 
 (async function (d) {
-  /** @type HTMLOListElement */
-  const ol = d.querySelector(".js-links");
-
   /**
    * Attempts to open the _index.json_ file for the specified week.
    * If the file cannot be opened, a default set of data is returned.
@@ -41,7 +38,7 @@ Number.prototype.pad = function (size) {
       const links = await request.json();
       return links;
     } catch (error) {
-      const weeks = parseInt(ol.dataset["weeks"] || 1);
+      const weeks = parseInt(d.body.dataset["weeks"] || 1);
       return {
         links: [...weeks].map((n) => {
           return { url: "index.html?W" + n.pad(2), label: `Week ${n}` };
@@ -86,19 +83,24 @@ Number.prototype.pad = function (size) {
 
   const report = await getWeeklyReport();
 
-  // Create list item for each link.
-  for (let entry of report.links) {
-    /** @type HTMLListItemElement */
-    const li = d.createElement("LI");
-    /** @type HTMLAnchorElement */
-    const a = d.createElement("A");
-    a.href = entry.url;
-    a.innerText = entry.label;
-    li.appendChild(a);
-    if (entry.info) {
-      li.innerHTML += `<div class="info">${entry.info}</div>`
+  if (report.links?.length && (await insertTemplate("#links", "links"))) {
+    /** @type HTMLOListElement */
+    const ol = d.querySelector(".js-links");
+
+    // Create list item for each link.
+    for (let entry of report.links) {
+      /** @type HTMLListItemElement */
+      const li = d.createElement("LI");
+      /** @type HTMLAnchorElement */
+      const a = d.createElement("A");
+      a.href = entry.url;
+      a.innerText = entry.label;
+      li.appendChild(a);
+      if (entry.info) {
+        li.innerHTML += `<div class="info">${entry.info}</div>`;
+      }
+      ol.appendChild(li);
     }
-    ol.appendChild(li);
   }
 
   // Append questions, if any.

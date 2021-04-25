@@ -23,6 +23,11 @@ body {
   }
 }
 
+h2,
+h3 {
+  margin: 0 auto;
+}
+
 section {
   max-width: 48em;
   margin: 0 auto;
@@ -32,6 +37,7 @@ section {
 header {
   color: white;
   background-color: rgba($body-color, 0.8);
+  box-shadow: 0 5px 5px rgba(black, 0.6);
 
   h1 {
     font-size: 2em;

@@ -21,6 +21,11 @@ body > section:last-of-type {
   padding-bottom: 5em;
 }
 
+h2,
+h3 {
+  margin: 0 auto;
+}
+
 section {
   max-width: 48em;
   margin: 0 auto;
@@ -30,6 +35,8 @@ section {
 header {
   color: white;
   background-color: rgba(0, 0, 80, 0.8);
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
 }
 
 header h1 {
