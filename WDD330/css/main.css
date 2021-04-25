@@ -30,10 +30,20 @@ header {
 
 header h1 {
   font-size: 2em;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+header p {
+  line-height: 1.1;
+}
+
+li {
+  margin: 1em 0;
 }
 
 .info {
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 a,
@@ -43,6 +53,8 @@ a:visited {
   text-decoration: none;
   padding: 1px 3px;
   margin: 0 -3px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 a:hover, a:focus, a:active,
@@ -51,8 +63,6 @@ a:visited:focus,
 a:visited:active {
   color: white;
   background-color: #4263bd;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
 }
 
 footer {
