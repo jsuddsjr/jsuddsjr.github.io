@@ -41,6 +41,8 @@ a:visited {
   color: #4263bd;
   background-color: rgba(66, 99, 189, 0.1);
   text-decoration: none;
+  padding: 1px 3px;
+  margin: 0 -3px;
 }
 
 a:hover, a:focus, a:active,

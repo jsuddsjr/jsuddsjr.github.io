@@ -42,6 +42,9 @@ a:visited {
   color: $body-color;
   background-color: rgba($body-color, 0.1);
   text-decoration: none;
+  padding: 1px 3px;
+  margin: 0 -3px;
+
   &:hover,
   &:focus,
   &:active {
