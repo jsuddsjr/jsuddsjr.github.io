@@ -27,17 +27,27 @@ section {
 header {
   color: white;
   background-color: rgba($body-color, 0.8);
-  padding: 0.5em 1em;
 
+  h1 {
+    font-size: 2em;
+  }
 }
 
-a {
+.info {
+  font-size: .8em;
+}
+
+a,
+a:visited {
+  color: $body-color;
+  background-color: rgba($body-color, 0.1);
   text-decoration: none;
   &:hover,
   &:focus,
   &:active {
-    color: aquamarine;
-    text-decoration: underline;
+    color: white;
+    background-color: $body-color;
+    transition: all .2s ease-in-out;
   }
 }
 
@@ -51,6 +61,6 @@ footer {
   width: 100%;
 
   p {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }

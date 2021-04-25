@@ -38,7 +38,7 @@
         /** @type HTMLSelectElement */
         var storySelect = document.getElementById("name_input");
         var storyName = storySelect.value;
-        if (storySelect.selectedIndex === 0) {
+        if (!storySelect?.selectedIndex) {
           storyName = prompt("Enter a new story name");
           if (!storyName || storyName.trim() === "") return;
           addStory(storyName.trim());
@@ -64,10 +64,16 @@
         align-items: center;
       }
       section {
-        width: 800px;
+        max-width: 600px;
+        width: 100%;
+        margin-bottom: 1em;
+      }
+      #last_action {
+        font-size: 0.6em;
       }
       textarea {
-        width: 800px;
+        display: block;
+        width: 100%;
         height: 250px;
         background-color: lightyellow;
       }
@@ -80,18 +86,19 @@
       <select id="name_input" onchange="loadStory()">
         <option>-- New Story --</option>
       </select>
-    </section>
-    <section>
-      <button onclick="loadStory()">Find and Edit It</button>
+      <!-- Turns out that I don't need this button if I load when selection changes. -->
+      <!-- <button onclick="loadStory()">Find and Edit It</button> -->
       <button onclick="saveStory()">Save It</button>
       <button onclick="displayStory()">Display It</button>
       <span id="last_action"></span>
     </section>
-    <textarea
-      id="story_editor"
-      placeholder="Write a totally awesome story here."
-      onchange="clearLastAction()"
-    ></textarea>
+    <section>
+      <textarea
+        id="story_editor"
+        placeholder="Write a totally awesome story here."
+        onchange="clearLastAction()"
+      ></textarea>
+    </section>
     <section id="story_display"></section>
   </body>
 </html>

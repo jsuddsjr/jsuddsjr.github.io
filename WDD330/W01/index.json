@@ -2,7 +2,8 @@
   "links": [
     {
       "url": "W01/story_editor.html",
-      "label": "Story Editor (from Doing Stuff with Web Things)"
+      "label": "Story Editor (from Doing Stuff with Web Things)",
+      "info": "Using <code>localStorage</code> to load and save strings. I updated the original example with a drop-down to select values. "
     }
   ],
   "questions": ["How can I amaze the teacher for a good grade?"]

@@ -2,6 +2,7 @@
  * @typedef {Object} LinkEntry
  * @property {String} url     Relative path to resource
  * @property {String} label   Description of resource
+ * @property {String} info    Optional HTML to explain link
  */
 
 /**
@@ -94,6 +95,9 @@ Number.prototype.pad = function (size) {
     a.href = entry.url;
     a.innerText = entry.label;
     li.appendChild(a);
+    if (entry.info) {
+      li.innerHTML += `<div class="info">${entry.info}</div>`
+    }
     ol.appendChild(li);
   }
 

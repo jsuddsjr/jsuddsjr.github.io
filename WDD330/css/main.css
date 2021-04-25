@@ -26,16 +26,31 @@ section {
 header {
   color: white;
   background-color: rgba(66, 99, 189, 0.8);
-  padding: 0.5em 1em;
 }
 
-a {
+header h1 {
+  font-size: 2em;
+}
+
+.info {
+  font-size: .8em;
+}
+
+a,
+a:visited {
+  color: #4263bd;
+  background-color: rgba(66, 99, 189, 0.1);
   text-decoration: none;
 }
 
-a:hover, a:focus, a:active {
-  color: aquamarine;
-  text-decoration: underline;
+a:hover, a:focus, a:active,
+a:visited:hover,
+a:visited:focus,
+a:visited:active {
+  color: white;
+  background-color: #4263bd;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 footer {
@@ -48,6 +63,6 @@ footer {
 }
 
 footer p {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 /*# sourceMappingURL=main.css.map */
