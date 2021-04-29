@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Activity Week 2</title>
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+  <body>
+    <section>
+        <h1>Team Activity - Week 2</h1>
+        <input type="text" />
+        <button onclick="displayInput()">Display</button>
+        <button onclick="displaySum()">Sum</button>
+        <br />
+        <input type="number" />
+        <button onclick="executeFunction(addNumbers)">&nbsp;+&nbsp;</button>
+        <button onclick="executeFunction(multiplyNumbers)">&nbsp;x&nbsp;</button>
+        <button onclick="executeFunction(subtractNumbers)">&nbsp;-&nbsp;</button>
+        <button onclick="executeFunction(divideNumbers)">&nbsp;/&nbsp;</button>
+        <div id="output"></div>
+    </section>
+
+    <script>
+      // Exercise #1
+      function displayInput() {
+        const input = document.querySelector("input");
+        document.querySelector("#output").innerText = input.value;
+      }
+
+      // Exercise #2
+      function displaySum() {
+        const input = document.querySelector("input");
+        const number = parseInt(input.value) || 0;
+        document.querySelector("#output").innerText = sumNumbers(number);
+      }
+
+      /**
+       * @param {Number} number
+       */
+      function sumNumbers(number) {
+        let sum = 0;
+        for (let i = 1; i <= number; i++) {
+          sum += i;
+        }
+        return sum;
+      }
+
+      // Exercise #3
+
+      /**
+       * A mathematical function.
+       * @callback mathFunction
+       * @param {Number} n1
+       * @param {Number} n2
+       * @returns {Number}
+       */
+
+      /**
+       * @param {mathFunction} oper
+       */
+      function executeFunction(oper) {
+        const inputs = document.querySelectorAll("input");
+        const n1 = parseFloat(inputs[0].value) || 0;
+        const n2 = parseFloat(inputs[1].value) || 0;
+        const sum = oper(n1, n2);
+        document.querySelector("#output").innerText = sum;
+      }
+
+      /**
+       * Add two numbers.
+       * @type {mathFunction}
+       */
+      function addNumbers(n1, n2) {
+        let result = n1 + n2;
+        return result;
+      }
+      /**
+       * Multiply two numbers.
+       * @type {mathFunction}
+       */
+      function multiplyNumbers(n1, n2) {
+        let result = n1 * n2;
+        return result;
+      }
+      /**
+       * Subtract two numbers.
+       * @type {mathFunction}
+       */
+      function subtractNumbers(n1, n2) {
+        let result = n1 - n2;
+        return result;
+      }
+      /**
+       * Divide two numbers.
+       * @type {mathFunction}
+       */
+      function divideNumbers(n1, n2) {
+        let result = n1 / n2;
+        return result;
+      }
+    </script>
+  </body>
+</html>

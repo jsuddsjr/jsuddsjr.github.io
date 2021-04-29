@@ -1,12 +1,13 @@
 {
   "links": [
     {
-      "url": "W01/story_editor.html",
-      "label": "Story Editor (from Doing Stuff with Web Things)"
+      "url": "W02/team-activity.html",
+      "label": "Team Activity",
+      "info": "Fun with number inputs."
     }
   ],
   "questions": [
-    "How can I amaze the teacher for a good grade?"
+    "Which is better: to limit the user input to a number before they submit, or check the value afterward and throw an error?"
   ]
 
 }
