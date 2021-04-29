@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Activity Week 2</title>
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #output {
+        margin-top: 1em;
+        background-color: #0d0208;
+        color: #7eff9e;
+        font-family: "Major Mono Display", monospace;
+        border-radius: 0.5em;
+        font-size: 2em;
+        height: 2em;
+        padding: 0.5em;
+        text-align: right;
+      }
+    </style>
   </head>
   <body>
     <section>
@@ -26,31 +44,40 @@
       // Exercise #1
       function displayInput() {
         const input = document.querySelector("input");
-        document.querySelector("#output").innerText = input.value;
+        writeOutput(input.value);
+      }
+
+      /**
+       * Helper function to write to output DIV.
+       * @param {String|Number} text
+       */
+      function writeOutput(text) {
+        /** @type {HTMLDivElement} */
+        const div = document.querySelector("#output");
+        div.innerText = text;
       }
 
       // Exercise #2
       function displaySum() {
         const input = document.querySelector("input");
         const number = parseInt(input.value) || 0;
-        document.querySelector("#output").innerText = sumNumbers(number);
+        writeOutput(sumIntegers(number));
       }
 
       /**
+       * Calculates sum of integers between 1 and number using Gauss technique.
+       * Number must be positive.
        * @param {Number} number
        */
-      function sumNumbers(number) {
-        let sum = 0;
-        for (let i = 1; i <= number; i++) {
-          sum += i;
-        }
-        return sum;
+      function sumIntegers(number) {
+        if (number < 1) return 0;
+        return Math.trunc(((1 + number) * number) / 2);
       }
 
       // Exercise #3 - Keeping it DRY using callbacks.
 
       /**
-       * A mathematical function.
+       * A mathematical operation on two numbers.
        * @callback mathFunction
        * @param {Number} n1
        * @param {Number} n2
@@ -65,7 +92,7 @@
         const n1 = parseFloat(inputs[0].value) || 0;
         const n2 = parseFloat(inputs[1].value) || 0;
         const result = oper(n1, n2);
-        document.querySelector("#output").innerText = result;
+        writeOutput(result);
       }
 
       /**
@@ -93,7 +120,7 @@
        */
       const divideNumbers = (n1, n2) => {
         if (n2 === 0) return "Nice try.";
-        else return n1 / n2;
+        return n1 / n2;
       };
     </script>
   </body>
