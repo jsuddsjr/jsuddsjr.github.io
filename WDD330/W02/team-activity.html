@@ -5,21 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Activity Week 2</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
     <section>
-        <h1>Team Activity - Week 2</h1>
-        <input type="text" />
-        <button onclick="displayInput()">Display</button>
-        <button onclick="displaySum()">Sum</button>
-        <br />
-        <input type="number" />
-        <button onclick="executeFunction(addNumbers)">&nbsp;+&nbsp;</button>
-        <button onclick="executeFunction(multiplyNumbers)">&nbsp;x&nbsp;</button>
-        <button onclick="executeFunction(subtractNumbers)">&nbsp;-&nbsp;</button>
-        <button onclick="executeFunction(divideNumbers)">&nbsp;/&nbsp;</button>
-        <div id="output"></div>
+      <h1>Team Activity - Week 2</h1>
+      <input type="text" placeholder="Enter text or a number" />
+      <button onclick="displayInput()">Display</button>
+      <button onclick="displaySum()">Sum</button>
+      <br />
+      <input type="number" value="0" />
+      <button onclick="executeFunction(addNumbers)">&nbsp;+&nbsp;</button>
+      <button onclick="executeFunction(multiplyNumbers)">&nbsp;x&nbsp;</button>
+      <button onclick="executeFunction(subtractNumbers)">&nbsp;-&nbsp;</button>
+      <button onclick="executeFunction(divideNumbers)">&nbsp;/&nbsp;</button>
+      <div id="output"></div>
     </section>
 
     <script>
@@ -47,7 +47,7 @@
         return sum;
       }
 
-      // Exercise #3
+      // Exercise #3 - Keeping it DRY using callbacks.
 
       /**
        * A mathematical function.
@@ -64,42 +64,37 @@
         const inputs = document.querySelectorAll("input");
         const n1 = parseFloat(inputs[0].value) || 0;
         const n2 = parseFloat(inputs[1].value) || 0;
-        const sum = oper(n1, n2);
-        document.querySelector("#output").innerText = sum;
+        const result = oper(n1, n2);
+        document.querySelector("#output").innerText = result;
       }
 
       /**
-       * Add two numbers.
-       * @type {mathFunction}
-       */
-      function addNumbers(n1, n2) {
-        let result = n1 + n2;
-        return result;
-      }
-      /**
-       * Multiply two numbers.
-       * @type {mathFunction}
-       */
-      function multiplyNumbers(n1, n2) {
-        let result = n1 * n2;
-        return result;
-      }
-      /**
-       * Subtract two numbers.
+       * Subtract two numbers. (NOTE: Function declaration.)
        * @type {mathFunction}
        */
       function subtractNumbers(n1, n2) {
-        let result = n1 - n2;
-        return result;
+        return n1 - n2;
       }
+      /**
+       * Add two numbers. (NOTE: Function expression.)
+       * @type {mathFunction}
+       */
+      const addNumbers = function (n1, n2) {
+        return n1 + n2;
+      };
+      /**
+       * Multiply two numbers. (NOTE: Arrow function.)
+       * @type {mathFunction}
+       */
+      const multiplyNumbers = (n1, n2) => n1 * n2;
       /**
        * Divide two numbers.
        * @type {mathFunction}
        */
-      function divideNumbers(n1, n2) {
-        let result = n1 / n2;
-        return result;
-      }
+      const divideNumbers = (n1, n2) => {
+        if (n2 === 0) return "Nice try.";
+        else return n1 / n2;
+      };
     </script>
   </body>
 </html>

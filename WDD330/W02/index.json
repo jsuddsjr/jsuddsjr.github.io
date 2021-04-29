@@ -3,7 +3,7 @@
     {
       "url": "W02/team-activity.html",
       "label": "Team Activity",
-      "info": "Fun with number inputs."
+      "info": "Fun with number inputs, plus keeping it <acronym title=\"Don't Repeat Yourself\">DRY</acronym> with callbacks."
     }
   ],
   "questions": [
