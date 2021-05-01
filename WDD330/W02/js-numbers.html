@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Numbers</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Numbers</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "typeof 42",
+        "typeof 3.14159",
+        "Number.isInteger(42)",
+        "Number.isInteger(3.142)",
+        "typeof Number(3)",
+        "typeof new Number(3)",
+        "0xbadbeef",
+        "0x42",
+        "0o42",
+        "0b10101",
+        "1e6",
+        "2E3",
+        "2.5e-3",
+        "5.toExponential()",
+        "5..toExponential()",
+        "5 .toExponential()",
+        "(5).toExponential()",
+        "const number = 5; number.toExponential()",
+        "325678..toPrecision(2)",
+        "2.459.toPrecision(2)",
+        "1e308",
+        "2e308",
+        "-1e309",
+        "1/0",
+        "5e-324",
+        "3e-324",
+        "2e-325",
+        "'hello' * 5",
+        "typeof NaN",
+        "Number.isFinite(1/0)",
+        "Number.isFinite(-Infinity)",
+        "Number.isFinite(NaN)",
+        "Number.isFinite(42)",
+      ]);
+    </script>
+  </body>
+</html>

@@ -4,10 +4,42 @@
       "url": "W02/team-activity.html",
       "label": "Team Activity",
       "info": "Fun with number inputs, plus keeping it <acronym title=\"Don't Repeat Yourself\">DRY</acronym> with callbacks."
+    },
+    {
+      "url": "W02/js-types.html",
+      "label": "JavaScript types",
+      "info": "Using eval to run a line of code and return the value."
+    },
+    {
+      "url": "W02/js-functions.html",
+      "label": "JavaScript functions"
+    },
+    {
+      "url": "W02/js-symbols.html",
+      "label": "JavaScript symbols"
+    },
+    {
+      "url": "W02/js-numbers.html",
+      "label": "JavaScript numbers"
+    },
+    {
+      "url": "W02/js-operations.html",
+      "label": "JavaScript operations"
+    },
+    {
+      "url": "W02/js-conversions.html",
+      "label": "JavaScript conversions"
+    },
+    {
+      "url": "W02/js-booleans.html",
+      "label": "JavaScript booleans"
     }
   ],
   "questions": [
-    "Which is better: to limit the user input to a number before they submit, or check the value afterward and throw an error?"
+    "Which is better: to limit the user input to a number before they submit, or check the value afterward and throw an error?",
+    "I'm surprised by the reserved words like <code>byte</code>, <code>int</code>, and <code>double</code>. I've never used these before.",
+    "Are any of these JavaScript types <em>reserved for future expansion</em> and not currently used?",
+    "Doubt I'll ever need this, but <code>5..toExponential()</code> requires the extra dot. Why? Because JavaScript will confuse a single dot with a decimal point.",
+    "Neat trick that you can parse short words into numbers using base 36, but you lose fidelity after ~9 letters. (See <a href='W02/js-conversions.html'>JavaScript conversions</a>)"
   ]
-
 }

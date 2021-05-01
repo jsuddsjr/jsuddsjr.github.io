@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Conversions</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Conversions</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "'2' * 8 // Coercion",
+        "'2' + 8 // Concatenation",
+        "Number('23')",
+        "Number('hello')",
+        "'5' * 1",
+        "+'5'",
+        "String(3)",
+        "3 + ''",
+        "16..toString()",
+        "16..toString(2)",
+        "28101..toString(36)",
+        "parseInt('1010', 2)",
+        "parseInt('omg', 36)",
+        "parseInt('supercalifragilisticexpialidocious', 36)",
+        "6.579192521673444e+52.toString(36)",
+        "parseInt('221B Baker Street')",
+        "Number('221B Baker Street')",
+        "parseInt(2.4)",
+        "parseInt(2.9)",
+        "parseFloat(2.9)",
+      ]);
+    </script>
+  </body>
+</html>

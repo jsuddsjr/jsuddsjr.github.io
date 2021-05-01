@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Symbols</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Symbols</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+    
+    <script>
+      runCode([
+        "var uniqueID = Symbol('this is a unique ID')",
+        "uniqueID",
+        "typeof uniqueID",
+        "String(uniqueID)",
+        "uniqueID.toString()",
+        "var A = Symbol.for('shared symbol')",
+        "var B = Symbol.for('shared symbol')",
+        "A == B"
+      ]);
+    </script>
+  </body>
+</html>

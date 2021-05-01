@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Functions</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Functions</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "name = 'Alexa'",
+        "name.length",
+        "name.toUpperCase()",
+        "name.toLowerCase()",
+        "name.charAt(1)",
+        "name.indexOf('A')",
+        "name.lastIndexOf('a')",
+        "name.includes('a')",
+        "name.includes('z')",
+        "name.startsWith('A')",
+        "name.startsWith('a')",
+        "name.endsWith('A')",
+        "name.endsWith('a')",
+        "'JavaScript'.concat('Ninja')",
+        "'    Hello     '.trim()",
+        "'Hello'.repeat(2)",
+        "`Hello ${name}!`",
+      ]);
+    </script>
+  </body>
+</html>

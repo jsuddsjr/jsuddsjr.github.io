@@ -32,19 +32,6 @@ section {
   padding: 1em;
 }
 
-#output {
-  margin-top: 1em;
-  background-color: black;
-  color: #66ff66;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bolder;
-  border-radius: .5em;
-  font-size: 2em;
-  height: 2em;
-  padding: .5em;
-  text-align: right;
-}
-
 header {
   color: white;
   background-color: rgba(0, 0, 80, 0.8);
