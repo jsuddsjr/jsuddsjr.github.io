@@ -13,10 +13,12 @@
     </style>
   </head>
   <body>
-    <h1>JavaScript Symbols</h1>
-    <div id="output"></div>
+    <section>
+      <h1>JavaScript Symbols</h1>
+      <div id="output"></div>
+    </section>
     <script src="js/run.js"></script>
-    
+
     <script>
       runCode([
         "var uniqueID = Symbol('this is a unique ID')",
@@ -26,7 +28,7 @@
         "uniqueID.toString()",
         "var A = Symbol.for('shared symbol')",
         "var B = Symbol.for('shared symbol')",
-        "A == B"
+        "A == B",
       ]);
     </script>
   </body>

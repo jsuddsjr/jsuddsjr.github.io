@@ -94,7 +94,7 @@ Number.prototype.pad = function (size) {
       /** @type HTMLAnchorElement */
       const a = d.createElement("A");
       a.href = entry.url;
-      a.innerText = entry.label;
+      a.innerHTML = entry.label;
       li.appendChild(a);
       if (entry.info) {
         li.innerHTML += `<div class="info">${entry.info}</div>`;

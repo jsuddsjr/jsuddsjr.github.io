@@ -13,17 +13,19 @@
     </style>
   </head>
   <body>
-    <h1>JavaScript Booleans</h1>
-    <div id="output"></div>
-    <script src="js/run.js"></script>
+    <section>
+      <h1>JavaScript Booleans</h1>
+      <div id="output"></div>
+    </section>
 
+    <script src="js/run.js"></script>
     <script>
       runCode([
         "Boolean('hello')",
         "Boolean(42)",
         "// 'Falsy' values...",
         "Boolean(0)",
-        "Boolean(\"\")",
+        'Boolean("")',
         "Boolean('')",
         "Boolean(``)",
         "Boolean(-0)",
@@ -47,7 +49,7 @@
         "a = 0",
         "false && (a = 1)",
         "a",
-        "false || (a = 1)"
+        "false || (a = 1)",
       ]);
     </script>
   </body>

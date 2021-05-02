@@ -42,30 +42,33 @@ const log = (msg) => {
  * @param {Array<String|Function>} code
  */
 const runCode = (code) => {
-  output = document.getElementById("output");
-  let result;
-  for (let c of code) {
-    if (typeof c === "string") {
-      if (!c || c.startsWith("//")) {
-        output.innerHTML += `<br/><code>${c}</code><br/>`;
+  /** @type {HTMLDivElement} */
+  const output = document.getElementById("output");
+  let html = "";
+  for (let line of code) {
+    if (typeof line === "string") {
+      if (!line || line.startsWith("//")) {
+        html += `<br/><code>${line}</code><br/>`;
       } else {
         try {
-          result = toTypeString(eval(c));
+          result = toTypeString(eval(line));
         } catch (err) {
           result = err;
         }
+        html += `<code>${line} -> ${result}</code><br/>`;
       }
-      output.innerHTML += `<code>${c} -> ${result}</code><br />`;
-    } else if (c instanceof Function) {
+    } else if (line instanceof Function) {
       startLog();
-      const result = (c() || globalLog.map(toTypeString)).join("<br/>");
-      let body = c.toString().split("\n");
+      const result = (line() || globalLog.map(toTypeString)).join("<br/>");
+      let body = line.toString().split("\n");
       body = body
         .splice(1, body.length - 2)
         .join("</br/>")
         .replace(/\n/g, "<br/>")
         .replace(/ /g, "&nbsp;");
-      output.innerHTML += `<h4>${c.name}</h4><code>${body}</code><br/><h4>Output</h4><code>${result}</code><hr/>`;
+      html += `<h4>${line.name}</h4><code>${body}</code><br/><h4>Output</h4><code>${result}</code><hr/>`;
     }
   }
+
+  output.innerHTML = html + "<br/><br/>"
 };
