@@ -49,6 +49,10 @@
     {
       "url": "W02/js-sets.html",
       "label": "JavaScript sets"
+    },
+    {
+      "url": "W02/js-maps.html",
+      "label": "JavaScript maps"
     }
   ],
   "questions": [

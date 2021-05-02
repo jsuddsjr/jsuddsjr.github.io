@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Maps</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Maps</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "romanNumerals = new Map()",
+        "romanNumerals.set(1,'I')",
+        "romanNumerals.set(2,'II').set(3,'III').set(4,'IV').set(5,'V')",
+        "romanNumerals.get(4)",
+        "romanNumerals.has(5)",
+        "romanNumerals.has(10)",
+        "heroes = new Map([['Clark Kent','Superman'], ['Bruce Wayne','Batman']])",
+        "heroes.size",
+        "heroes.delete('Clark Kent')",
+        "heroes.size",
+        "heroes.clear()",
+        "[...romanNumerals]",
+        "Array.from(romanNumerals)",
+        "// Weak Maps",
+        "weak = new WeakMap()"
+      ]);
+    </script>
+  </body>
+</html>
