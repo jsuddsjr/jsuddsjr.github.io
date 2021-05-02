@@ -60,8 +60,8 @@ const runCode = (code) => {
     } else if (line instanceof Function) {
       startLog();
       const result = (line() || globalLog.map(toTypeString)).join('\n');
-      let body = line.toString().split("\n");
-      body = body.splice(1, body.length - 2).join('');
+      let body = line.toString().split('\n');
+      body = body.splice(1, body.length - 2).join('\n');
       html.push(
         `<hr/><h4>${line.name}</h4><pre>${body}</pre>`+
         `<h4>Output</h4><pre>${result}</pre>`
