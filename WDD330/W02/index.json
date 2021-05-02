@@ -41,6 +41,10 @@
     {
       "url": "W02/js-comparison.html",
       "label": "JavaScript comparison"
+    },
+    {
+      "url": "W02/js-arrays.html",
+      "label": "JavaScript arrays"
     }
   ],
   "questions": [

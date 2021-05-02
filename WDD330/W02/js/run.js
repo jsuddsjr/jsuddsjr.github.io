@@ -1,25 +1,38 @@
 /**
+ * @param {any} value
+ * @returns {String}
+ */
+const toTypeString = (value) => {
+  if (typeof value === "string") {
+    value = `'${value}'`;
+  } else if (Array.isArray(value)) {
+    const asStrings = [];
+    for (let i = 0; i < value.length; i++) {
+      asStrings[i] = toTypeString(value[i]);
+    }
+    value = `[${asStrings.join(", ")}]`;
+  } else {
+    value = String(value);
+  }
+  return value;
+};
+
+/**
  * @param {String[]} code
  */
 const runCode = (code) => {
   output = document.getElementById("output");
   let result;
   for (let line of code) {
-    if (line.startsWith('//')) {
+    if (!line || line.startsWith("//")) {
       output.innerHTML += `<br/><code>${line}</code><br/>`;
-      continue;
-    }
-
-    try {
-      result = eval(line);
-      if (typeof result === "string") {
-        result = `'${result}'`;
-      } else if (typeof result !== "undefined") {
-        result = result.toString();
+    } else {
+      try {
+        result = toTypeString(eval(line));
+      } catch (err) {
+        result = err;
       }
-    } catch (err) {
-      result = err;
+      output.innerHTML += `<code>${line} -> ${result}</code><br />`;
     }
-    output.innerHTML += `<code>${line} -> ${result}</code><br />`;
   }
 };

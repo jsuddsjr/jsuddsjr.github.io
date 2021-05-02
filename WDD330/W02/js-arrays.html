@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Arrays</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Arrays</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "myArray = []",
+        "myArray = new Array()",
+        "typeof []",
+        "heroes = []; heroes[0]",
+        "heroes[0] = 'Superman'",
+        "heroes",
+        "heroes[0] = 'Batman'",
+        "heroes[1] = 'Wonder Woman'",
+        "heroes[2] = 'Flash'",
+        "heroes[5] = 'Aquaman'",
+        "heroes",
+        "// Array literals",
+        "mixedArray = [ null, 1, [], 'two', true ]",
+        "avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk']",
+        "avengers.length",
+        "avengers[avengers.length - 1]",
+        "delete avengers[3]",
+        "avengers.length",
+        "avengers",
+        "avengers.length = 6",
+        "avengers",
+        "avengers.length = 3",
+        "avengers",
+        "// Destructuring",
+        "[x, y] = [1, 2]",
+        "x",
+        "y",
+        "[x, y] = [y, x]",
+        "x",
+        "y",
+        "// Pop, Push, Shift, Unshift",
+        "avengers.pop()",
+        "avengers.shift()",
+        "avengers.push('Captain America')",
+        "avengers.unshift('Thor')",
+        "avengers",
+        "// Merging arrays",
+        ""
+      ]);
+    </script>
+  </body>
+</html>
