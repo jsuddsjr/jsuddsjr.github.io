@@ -59,16 +59,15 @@ const runCode = (code) => {
       }
     } else if (line instanceof Function) {
       startLog();
-      const result = (line() || globalLog.map(toTypeString)).join("<br/>");
+      const result = (line() || globalLog.map(toTypeString)).join('\n');
       let body = line.toString().split("\n");
-      body = body
-        .splice(1, body.length - 2)
-        .join("</br/>")
-        .replace(/\n/g, "<br/>")
-        .replace(/ /g, "&nbsp;");
-      html.push(`<h4>${line.name}</h4><code>${body}</code><br/><h4>Output</h4><code>${result}</code><hr/>`);
+      body = body.splice(1, body.length - 2).join('');
+      html.push(
+        `<hr/><h4>${line.name}</h4><pre>${body}</pre>`+
+        `<h4>Output</h4><pre>${result}</pre>`
+      );
     }
   }
 
-  output.innerHTML = html.join('') + "<br/><br/>"
+  output.innerHTML = html.join("") + "<br/><br/>";
 };
