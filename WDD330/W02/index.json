@@ -45,6 +45,10 @@
     {
       "url": "W02/js-arrays.html",
       "label": "JavaScript arrays"
+    },
+    {
+      "url": "W02/js-sets.html",
+      "label": "JavaScript sets"
     }
   ],
   "questions": [

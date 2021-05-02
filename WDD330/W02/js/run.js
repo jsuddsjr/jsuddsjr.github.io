@@ -11,6 +11,11 @@ const toTypeString = (value) => {
       asStrings[i] = toTypeString(value[i]);
     }
     value = `[${asStrings.join(", ")}]`;
+  } else if (value instanceof Set) {
+    const asArray = toTypeString([...value]);
+    value = `Set { ${asArray.substr(1, asArray.length - 2)} }`;
+  } else if (value instanceof WeakSet) {
+    value = "WeakSet {}";
   } else {
     value = String(value);
   }

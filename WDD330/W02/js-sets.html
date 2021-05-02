@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Sets</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Sets</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "list = new Set()",
+        "list.add(1)",
+        "list.add(2).add(3).add(4)",
+        "list.add(1)",
+        "numbers = new Set([1, 2, 3])",
+        "moreNumbers = new Set([7,7,7,7,7,8,8,8,9,9])",
+        "letters = new Set('hello')",
+        "words = new Set().add('the').add('quick').add('brown').add('fox')",
+        "arrays = new Set().add([1]).add([1])",
+        "mixedTypes = new Set().add(2).add('2')",
+        "// Set methods",
+        "jla = new Set().add('Superman').add('Batman').add('Wonder Woman')",
+        "jla.has('Superman')",
+        "jla.has('Green Lantern')",
+        "jla.delete('Superman')",
+        "jla.delete('Flash')",
+        "jla.clear()",
+        "jla.size",
+        "// Converting to array",
+        "shoppingSet = new Set().add('Apples').add('Bananas').add('Beans')",
+        "[...shoppingSet]",
+        "Array.from(shoppingSet)",
+        "duplicate = [3,1,4,1,5,9,2,6,5,3,5,9]",
+        "unique = [...new Set(duplicate)]",
+        "// Weak Sets",
+        "array = [1,2,3]",
+        "strong = new Set().add(array)",
+        "array = null",
+        "strong",
+        "array = [...strong][0]",
+        "weak = new WeakSet()",
+        "weak.add(2)",
+        "weak.add(array)",
+        "weak.has(array)",
+        "weak.delete(array)"
+      ]);
+    </script>
+  </body>
+</html>
