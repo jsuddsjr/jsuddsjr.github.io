@@ -44,18 +44,18 @@ const log = (msg) => {
 const runCode = (code) => {
   /** @type {HTMLDivElement} */
   const output = document.getElementById("output");
-  let html = "";
+  let html = [];
   for (let line of code) {
     if (typeof line === "string") {
       if (!line || line.startsWith("//")) {
-        html += `<br/><code>${line}</code><br/>`;
+        html.push(`<br/><code>${line}</code><br/>`);
       } else {
         try {
           result = toTypeString(eval(line));
         } catch (err) {
           result = err;
         }
-        html += `<code>${line} -> ${result}</code><br/>`;
+        html.push(`<code>${line} -> ${result}</code><br/>`);
       }
     } else if (line instanceof Function) {
       startLog();
@@ -66,9 +66,9 @@ const runCode = (code) => {
         .join("</br/>")
         .replace(/\n/g, "<br/>")
         .replace(/ /g, "&nbsp;");
-      html += `<h4>${line.name}</h4><code>${body}</code><br/><h4>Output</h4><code>${result}</code><hr/>`;
+      html.push(`<h4>${line.name}</h4><code>${body}</code><br/><h4>Output</h4><code>${result}</code><hr/>`);
     }
   }
 
-  output.innerHTML = html + "<br/><br/>"
+  output.innerHTML = html.join('') + "<br/><br/>"
 };
