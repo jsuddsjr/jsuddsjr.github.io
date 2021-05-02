@@ -24,7 +24,7 @@ const toTypeString = (value) => {
   } else if (value instanceof WeakSet || value instanceof WeakMap) {
     value = `${myType(value)} {}`;
   } else if (value instanceof Object) {
-    value = myType(value);
+    value = JSON.stringify(value);
   } else {
     value = String(value);
   }
@@ -33,10 +33,10 @@ const toTypeString = (value) => {
 
 const startLog = () => {
   globalLog = [];
-}
+};
 const log = (msg) => {
   globalLog.push(msg);
-}
+};
 
 /**
  * @param {Array<String|Function>} code
@@ -45,7 +45,7 @@ const runCode = (code) => {
   output = document.getElementById("output");
   let result;
   for (let c of code) {
-    if (typeof c === 'string') {
+    if (typeof c === "string") {
       if (!c || c.startsWith("//")) {
         output.innerHTML += `<br/><code>${c}</code><br/>`;
       } else {
@@ -57,10 +57,15 @@ const runCode = (code) => {
       }
       output.innerHTML += `<code>${c} -> ${result}</code><br />`;
     } else if (c instanceof Function) {
-      startLog()
-      result = (c() || globalLog).join('<br/>')
-      body = c.toString().replace(/\n/g,'<br/>').replace(/ /g,'&nbsp;');
-      output.innerHTML += `<code>${body}</code><br/><h4>Output</h4><code>${result}</code><br />`;
+      startLog();
+      const result = (c() || globalLog.map(toTypeString)).join("<br/>");
+      let body = c.toString().split("\n");
+      body = body
+        .splice(1, body.length - 2)
+        .join("</br/>")
+        .replace(/\n/g, "<br/>")
+        .replace(/ /g, "&nbsp;");
+      output.innerHTML += `<h4>${c.name}</h4><code>${body}</code><br/><h4>Output</h4><code>${result}</code><hr/>`;
     }
   }
 };
