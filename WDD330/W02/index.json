@@ -53,6 +53,11 @@
     {
       "url": "W02/js-maps.html",
       "label": "JavaScript maps"
+    },
+    {
+      "url": "W02/js-loops.html",
+      "label": "JavaScript loops",
+      "info": "This one displays the body of the script and the captured output. Pretty slick!"
     }
   ],
   "questions": [

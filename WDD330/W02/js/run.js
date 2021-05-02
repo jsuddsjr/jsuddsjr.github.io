@@ -31,22 +31,36 @@ const toTypeString = (value) => {
   return value;
 };
 
+const startLog = () => {
+  globalLog = [];
+}
+const log = (msg) => {
+  globalLog.push(msg);
+}
+
 /**
- * @param {String[]} code
+ * @param {Array<String|Function>} code
  */
 const runCode = (code) => {
   output = document.getElementById("output");
   let result;
-  for (let line of code) {
-    if (!line || line.startsWith("//")) {
-      output.innerHTML += `<br/><code>${line}</code><br/>`;
-    } else {
-      try {
-        result = toTypeString(eval(line));
-      } catch (err) {
-        result = err;
+  for (let c of code) {
+    if (typeof c === 'string') {
+      if (!c || c.startsWith("//")) {
+        output.innerHTML += `<br/><code>${c}</code><br/>`;
+      } else {
+        try {
+          result = toTypeString(eval(c));
+        } catch (err) {
+          result = err;
+        }
       }
-      output.innerHTML += `<code>${line} -> ${result}</code><br />`;
+      output.innerHTML += `<code>${c} -> ${result}</code><br />`;
+    } else if (c instanceof Function) {
+      startLog()
+      result = (c() || globalLog).join('<br/>')
+      body = c.toString().replace(/\n/g,'<br/>').replace(/ /g,'&nbsp;');
+      output.innerHTML += `<code>${body}</code><br/><h4>Output</h4><code>${result}</code><br />`;
     }
   }
 };
