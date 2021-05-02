@@ -33,6 +33,14 @@
     {
       "url": "W02/js-booleans.html",
       "label": "JavaScript booleans"
+    },
+    {
+      "url": "W02/js-bitwise.html",
+      "label": "JavaScript bitwise"
+    },
+    {
+      "url": "W02/js-comparison.html",
+      "label": "JavaScript comparison"
     }
   ],
   "questions": [

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Comparision</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Comparision</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "// Soft equality (type coercion)",
+        "' ' == 0",
+        "' ' == '0'",
+        "false == '0'",
+        "'1' == true",
+        "'2' == true",
+        "'true' == true",
+        "null == undefined",
+        "16 != '16'",
+        "// Hard equality",
+        "answer = 5",
+        "answer === 5",
+        "answer === '5'",
+        "null === undefined",
+        "16 !== '16'",
+        "// Quirky NaN",
+        "NaN === NaN",
+        "isNaN(NaN)",
+        "Number.isNaN(NaN)",
+        "isNaN('hello')",
+        "Number.isNaN('hello')",
+        "// Greater Than and Less Than",
+        "8 > 4",
+        "8 < 4",
+        "8 >= 4",
+        "8 >= 8",
+        "8 >= '8'",
+        "8 > 8 || 8 === 8",
+        "8 > '8' || 8 === '8'",
+        "'apples' < 'bananas'",
+        "'apples' < 'Bananas'"
+      ]);
+    </script>
+  </body>
+</html>

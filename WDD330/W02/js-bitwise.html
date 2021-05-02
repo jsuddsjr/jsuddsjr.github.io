@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Bitwise</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      #output {
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Bitwise</h1>
+    <div id="output"></div>
+    <script src="js/run.js"></script>
+
+    <script>
+      runCode([
+        "0b00000000000000000000100110101100",
+        "0b11111111111111111111011001010011",
+        "~2476",
+        "12 & 10",
+        "12 | 10",
+        "12 ^ 10",
+        "1 ^ 0",
+        "true ^ true",
+        "3 << 1   // multiply by 2",
+        "16 >> 1  // divide by 2",
+        "5 << 3   // multiple 2**3 (8)",
+      ]);
+    </script>
+  </body>
+</html>
