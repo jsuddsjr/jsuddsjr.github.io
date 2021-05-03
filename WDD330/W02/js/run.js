@@ -69,7 +69,13 @@ const runCode = (code) => {
         `<h4>Output</h4><pre>${result}</pre>`
       );
     }
+
+    // PERF: Share the results as we go.
+    if (html.length > 10) {
+      output.innerHTML += html.join("");
+      html.length = 0;
+    }
   }
 
-  output.innerHTML = html.join("") + "<br/><br/>";
+  output.innerHTML += html.join("") + "<br/><br/>";
 };
