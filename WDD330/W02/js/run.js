@@ -31,6 +31,7 @@ const toTypeString = (value) => {
   return value;
 };
 
+let globalLog;
 const startLog = () => {
   globalLog = [];
 };
@@ -47,9 +48,10 @@ const runCode = (code) => {
   let html = [];
   for (let line of code) {
     if (typeof line === "string") {
-      if (!line || line.startsWith("//")) {
+      if (!line.trim() || line.startsWith("//")) {
         html.push(`<br/><code>${line}</code><br/>`);
       } else {
+        let result;
         try {
           result = toTypeString(eval(line));
         } catch (err) {
@@ -60,8 +62,8 @@ const runCode = (code) => {
     } else if (line instanceof Function) {
       startLog();
       const result = (line() || globalLog.map(toTypeString)).join('\n');
-      let body = line.toString().split('\n');
-      body = body.splice(1, body.length - 2).join('\n');
+      const lines = line.toString().split('\n');
+      const body = lines.splice(1, lines.length - 2).join('\n');
       html.push(
         `<hr/><h4>${line.name}</h4><pre>${body}</pre>`+
         `<h4>Output</h4><pre>${result}</pre>`

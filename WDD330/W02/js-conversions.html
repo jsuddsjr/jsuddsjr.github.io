@@ -19,6 +19,8 @@
     </section>
 
     <script src="js/run.js"></script>
+    <script src="js/base36.js"></script>
+
     <script>
       runCode([
         "'2' * 8 // Coercion",
@@ -34,13 +36,20 @@
         "28101..toString(36)",
         "parseInt('1010', 2)",
         "parseInt('omg', 36)",
-        "parseInt('supercalifragilisticexpialidocious', 36)",
-        "6.579192521673444e+52.toString(36)",
         "parseInt('221B Baker Street')",
         "Number('221B Baker Street')",
         "parseInt(2.4)",
         "parseInt(2.9)",
         "parseFloat(2.9)",
+
+        "// Testing conversions to base 36",
+        "parseInt('supercalifragilisticexpialidocious', 36)",
+        "6.579192521673444e+52.toString(36)",
+
+        "// Extra credit, parse BigInt in base 36",
+        testParseBigIntBase36,
+        "65791925216734442002988169043447582627179158156970580n.toString(36)",
+
       ]);
     </script>
   </body>

@@ -8,15 +8,15 @@ function loopSet() {
 function loopMap() {
   const romanNumerals = new Map();
   romanNumerals.set(1, "I").set(2, "II").set(3, "III").set(4, "IV").set(5, "V");
-  
+
   for (const key of romanNumerals.keys()) {
     log(key);
   }
-  
+
   for (const value of romanNumerals.values()) {
     log(value);
   }
-  
+
   for (const [key, value] of romanNumerals.entries()) {
     log(`${key} in Roman numerals is ${value}`);
   }
