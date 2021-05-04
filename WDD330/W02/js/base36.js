@@ -1,12 +1,12 @@
 function testParseBigIntBase36() {
-    /**
-     * Parse string into BigInt in base 36.
-     * @param {String} numberString
-     * @param {String} keyspace
-     * @returns {BigInt}
-     */
+  /**
+   * Parse string into BigInt in base 36.
+   * @param {String} numberString
+   * @param {String} keyspace
+   * @returns {BigInt}
+   */
 
-    function parseBigInt(
+  function parseBigInt(
     numberString,
     keyspace = "0123456789abcdefghijklmnopqrstuvwxyz"
   ) {
@@ -20,8 +20,7 @@ function testParseBigIntBase36() {
     return result;
   }
 
-  log(parseInt("zzzzzzz", 36));
-  log(parseBigInt("zzzzzzz"));
-  log(parseBigInt("zzzzzzzzzzzzzzzzzzzzzzzzzz"));
+  log(parseInt("abcdefg", 36));
+  log(parseBigInt("abcdefg"));
   log(parseBigInt("supercalifragilisticexpialidocious"))
 }
