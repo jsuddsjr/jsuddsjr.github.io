@@ -15,11 +15,14 @@
     </section>
 
     <script src="js/run.js"></script>
+    <script src="js/scripts.js"></script>
     <script>
+        function dec2bin(dec) {
+          return (dec >>> 0).toString(2);
+        }
+
+
       runCode([
-        "0b00000000000000000000100110101100",
-        "0b11111111111111111111011001010011",
-        "~2476",
         "12 & 10",
         "12 | 10",
         "12 ^ 10",
@@ -28,6 +31,25 @@
         "3 << 1   // multiply by 2",
         "16 >> 1  // divide by 2",
         "5 << 3   // multiple 2**3 (8)",
+
+        "// How to display the true bitwise representation",
+        "0b00000000000000000000100110101100",
+        "0b11111111111111111111011001010011",
+        "~2476",
+        "2476..toString(2)",
+        "(~2476).toString(2)",
+        "-2477..toString(2)",
+        testDec2Bin,
+
+        "// More examples from W3Schools",
+        "dec2bin(5)",
+        "dec2bin(5 & 1)",
+        "dec2bin(5 | 1)",
+        "dec2bin(~ 5)",
+        "dec2bin(5 << 1)",
+        "dec2bin(5 ^ 1)",
+        "dec2bin(5 >> 1)",
+        "dec2bin(5 >>> 1)",
       ]);
     </script>
   </body>

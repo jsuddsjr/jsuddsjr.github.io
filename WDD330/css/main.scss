@@ -1,4 +1,15 @@
 $body-color: rgb(0, 0, 80);
+$mq-small: 60em;
+$mq-medium: 80em;
+$mq-large: 96em;
+
+@mixin mq($width) {
+  @media screen and (min-width: $width) {
+    & {
+      @content;
+    }
+  }
+}
 
 *,
 *:before,
@@ -8,6 +19,15 @@ $body-color: rgb(0, 0, 80);
 
 :root {
   height: 100vh;
+  font-size: 12px;
+
+  @include mq($mq-small) {
+    font-size: 14px;
+  }
+
+  @include mq($mq-medium) {
+    font-size: 16px;
+  }
 }
 
 body {
@@ -33,18 +53,13 @@ section {
   margin: 0 auto;
   padding: 1em;
 
-  @media screen and (min-width: 80em) {
-    & {
-      max-width: 80em;
-    }
+  @include mq($mq-medium) {
+    max-width: $mq-medium;
   }
 
-  @media screen and (min-width: 96em) {
-    & {
-      max-width: 96em;
-    }
+  @include mq($mq-large) {
+    max-width: $mq-large;
   }
-
 }
 
 header {

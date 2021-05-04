@@ -5,6 +5,15 @@ function loopSet() {
   }
 }
 
+function testDec2Bin() {
+  function dec2bin(dec) {
+    return (dec >>> 0).toString(2);
+  }
+
+  log(dec2bin(2476));
+  log(dec2bin(-2477));
+}
+
 function loopMap() {
   const romanNumerals = new Map();
   romanNumerals.set(1, "I").set(2, "II").set(3, "III").set(4, "IV").set(5, "V");
