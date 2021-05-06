@@ -1,10 +1,10 @@
 {
   "links": [
     {
-      "url": "W03/team-activity.html",
+      "url": "W03/index-START.html",
       "label": "Team Activity",
-      "info": "."
-    },
+      "info": "Fun with arrays!"
+    }
   ],
   "questions": [
   ]
