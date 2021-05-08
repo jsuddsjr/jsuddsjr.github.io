@@ -7,5 +7,7 @@
     }
   ],
   "questions": [
+    "What's the easiest way to count strings in an array?",
+    "I tend to JSDoc to apply types to vanilla JavaScript. Should I be using <code>interface</code> instead?"
   ]
 }
