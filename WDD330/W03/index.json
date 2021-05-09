@@ -34,6 +34,10 @@
     {
       "url": "W03/js-object-math.html",
       "label": "Math object (from JavaScript: Novice to Ninja)"
+    },
+    {
+      "url": "W03/js-object-date.html",
+      "label": "Date object (from JavaScript: Novice to Ninja)"
     }
   ],
   "questions": [

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Date object</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Date object</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+
+    <script>
+      runCode([
+        "// Date object",
+        "today = new Date()",
+        "today.toString()",
+        "christmas = new Date('2020 12 25')",
+        "chanukah = new Date('12 December 2020')",
+        "eid = new Date('Sunday, June 25')",
+        "solstice = new Date(2017, 5, 21)",
+        "diwali = new Date(1508367600000)",
+        "epoch = new Date(0)",
+
+        "// Getter methods",
+        "diwali.getDay()",
+        "diwali.getDate()",
+        "diwali.getMonth()",
+        "diwali.getYear()",
+        "diwali.getFullYear()",
+        "diwali.getTime()",
+
+        "christmasEve = new Date(christmas.getTime() - 1000 * 60 * 60 * 24)",
+        "new Date().getTimezoneOffset() // Difference in minutes from UTC",
+
+        "// Setter methods",
+        "diwali.setDate(7)",
+        "diwali.setMonth(10)",
+        "diwali.setFullYear(2018)",
+      ]);
+    </script>
+  </body>
+</html>
