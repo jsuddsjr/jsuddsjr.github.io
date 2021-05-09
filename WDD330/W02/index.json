@@ -65,7 +65,7 @@
     "I'm surprised by the reserved words like <code>byte</code>, <code>int</code>, and <code>double</code>. I've never used these before.",
     "Are any of these JavaScript types <em>reserved for future expansion</em> and not currently used?",
     "Doubt I'll ever need this, but <code>5..toExponential()</code> requires the extra dot. Why? Because JavaScript will confuse a single dot with a decimal point.",
-    "Neat trick that you can parse short words into numbers using base 36, but you lose fidelity after ~9 letters. (See <a href='W02/js-conversions.html'>JavaScript conversions</a>)",
+    "Neat trick that you can parse short words into numbers using base 36, but you lose fidelity after ~9 letters. (See <a href='W02/js-conversions.html#testParseBigIntBase36'>JavaScript conversions</a>)",
     "NOTE: The pages above are not static. They evaluate the code from a string input and format the output for display. <small>I even found a few places where the book had mistakes.</small>"
   ]
 }

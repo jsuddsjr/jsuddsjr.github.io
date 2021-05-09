@@ -39,24 +39,38 @@ const log = (msg) => {
   globalLog.push(msg);
 };
 /**
- * @param {Function} fn 
- * @returns {String?}  
+ * @param {Function} fn
  */
 const executeWithTry = (fn) => {
   try {
-    return fn();
+    const result = fn();
+    if (result !== undefined) {
+      log(result);
+    }
   } catch (err) {
-    return String(err);
+    log(String(err));
   }
 };
 
+/** @type {HTMLDivElement} */
+const output = document.getElementById("output");
+
+/**
+ *
+ * @param {Array<String>} html
+ */
+const writeToOutput = (html) => {
+  const div = document.createElement("DIV")
+  div.innerHTML += html.join("");
+  output.appendChild(div);
+
+  html.length = 0;
+};
 
 /**
  * @param {Array<String|Function>} code
  */
 const runCode = (code) => {
-  /** @type {HTMLDivElement} */
-  const output = document.getElementById("output");
   let html = [];
   for (let line of code) {
     if (typeof line === "string") {
@@ -72,28 +86,27 @@ const runCode = (code) => {
         html.push(`<code>${line} -> ${result}</code><br/>`);
       }
     } else if (line instanceof Function) {
-      startLog();
-      const result = (executeWithTry(line) || globalLog.map(toTypeString)).join("\n");
       // Remove the wrapper function from code block.
-      const code = line.toString().split("\n");
+      const code = line.toString().split("\n").filter(l => l.indexOf("/**/") === -1);
       const body = code.splice(1, code.length - 2).join("\n");
       const functionName = line.name
         // Remove leading "test" if exists.
         .replace(/^test/, "")
         // Split the function name into words at capital letters.
-        .replace(/([A-Z0-9])/g, " $1");
-      html.push(
-        `<hr/><h4>${functionName}</h4><pre>${body}</pre>` +
-          `<h4>Output</h4><pre>${result}</pre>`
-      );
-    }
+        .replace(/([A-Z]|[0-9]+)/g, " $1");
+      html.push(`<hr/><a id="${line.name}"></a><h4>${functionName}</h4><pre>${body}</pre>`);
 
-    // PERF: Share the results as we go.
-    if (html.length > 10) {
-      output.innerHTML += html.join("");
-      html.length = 0;
+      writeToOutput(html);
+
+      startLog();
+      executeWithTry(line);
+      const result = globalLog.map(toTypeString).join("\n");
+      if (result) {
+        html.push(`<h4>Output</h4><pre>${result}</pre>`);
+      }
     }
   }
 
-  output.innerHTML += html.join("") + "<br/><br/>";
+  html.push("<br/><br/>");
+  writeToOutput(html);
 };

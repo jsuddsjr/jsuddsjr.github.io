@@ -13,10 +13,20 @@
     {
       "url": "W03/js-object-calculator.html",
       "label": "A calculator object"
+    },
+    {
+      "url": "W03/js-object-ladder.html",
+      "label": "A chainable ladder object"
+    },
+    {
+      "url": "W03/js-this-context.html",
+      "label": "The six contexts of <code>this</code>"
     }
   ],
   "questions": [
     "What's the easiest way to count strings in an array?",
-    "I tend to JSDoc to apply types to vanilla JavaScript to enable Intellisense in my IDE (VS Code). I'm still learning that sometimes the IntelliSense works without it, but it's a hard habit to break. "
+    "I tend to JSDoc to apply types to vanilla JavaScript to enable Intellisense in my IDE (VS Code). I'm still learning that sometimes the IntelliSense works without it, but it's a hard habit to break. ",
+    "There are six different ways where <code>this</code> can take on new values! <ul><li><code>this</code> in global context</li><li><code>this</code> in object construction</li><li><code>this</code> in object method</li><li><code>this</code> in simple function</li><li><code>this</code> in an arrow function</li><li><code>this</code> in an event listener</li></ol>",
+    "Event listeners appear to depend on the type of callback definition. <pre>button.addEventListener(\"click\", function () {\n  alert(this); // button\n});\n\nbutton.addEventListener(\"click\", () => {\n  alert(this); // Window\n});</pre>See <a href='W03/js-this-context.html#testThisInEventListener'>The six contexts of <code>this</code></a>."
   ]
 }
