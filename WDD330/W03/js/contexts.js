@@ -113,3 +113,30 @@ function testThisInEventListener() {
     alert(this); // button
   };
 }
+
+function testLeetSpeaker() {
+  /**/ const b1 = document.createElement("BUTTON");
+  /**/ b1.textContent = "Speak L33T!";
+  /**/ b1.className = "leetButton";
+  /**/ document.querySelector("#output").appendChild(b1);
+
+  function LeetSpeaker(elem) {
+    return {
+      listenClick() {
+        this.listener = this.speakLeet.bind(this);
+        elem.addEventListener("click", this.listener);
+      },
+
+      speakLeet(e) {
+        const elem = e.currentTarget;
+        alert(`1337 15 4W350M3`);
+        elem.removeEventListener("click", this.listener);
+      },
+    };
+  }
+
+  const button = document.querySelector(".leetButton");
+  const leetSpeaker = new LeetSpeaker(button);
+  leetSpeaker.listenClick();
+
+}

@@ -86,7 +86,7 @@ const runCode = (code) => {
         html.push(`<code>${line} -> ${result}</code><br/>`);
       }
     } else if (line instanceof Function) {
-      // Remove the wrapper function from code block.
+      // Remove the wrapper function from code block and ignore setup lines.
       const code = line.toString().split("\n").filter(l => l.indexOf("/**/") === -1);
       const body = code.splice(1, code.length - 2).join("\n");
       const functionName = line.name
