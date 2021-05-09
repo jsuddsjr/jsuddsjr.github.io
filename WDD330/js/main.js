@@ -48,42 +48,10 @@ Number.prototype.pad = function (size) {
     }
   };
 
-  /**
-   * Convert text to document fragment
-   * @param {String} text
-   */
-  const asFragment = (text) => {
-    return d.createRange().createContextualFragment(text);
-  };
-
-  /**
-   * Insert template HTML inside specified element
-   * @param {String} selector
-   * @param {String} template
-   */
-  const insertTemplate = async (selector, template = null) => {
-    template = template || selector;
-
-    /** @type Element */
-    const el = d.querySelector(selector);
-    if (!el) return false;
-
-    const response = await fetch(`${template}.template.html`);
-    const text = await response.text();
-
-    // Parse text as HTML
-    const parser = new DOMParser();
-    const html = parser.parseFromString(text, "text/html");
-
-    el.parentElement.replaceChild(asFragment(html.body.innerHTML), el);
-    d.head.appendChild(asFragment(html.head.innerHTML));
-
-    return true;
-  };
 
   const report = await getWeeklyReport();
 
-  if (report.links?.length && (await insertTemplate("#links", "links"))) {
+  if (report.links?.length && (await insertTemplate("#links"))) {
     /** @type HTMLOListElement */
     const ol = d.querySelector(".js-links");
 
@@ -106,7 +74,7 @@ Number.prototype.pad = function (size) {
   // Append questions, if any.
   if (
     report.questions?.length &&
-    (await insertTemplate("#questions", "questions"))
+    (await insertTemplate("#questions"))
   ) {
     const olq = d.querySelector(".js-questions");
     for (let q of report.questions) {

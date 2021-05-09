@@ -8,6 +8,6 @@
   ],
   "questions": [
     "What's the easiest way to count strings in an array?",
-    "I tend to JSDoc to apply types to vanilla JavaScript. Should I be using <code>interface</code> instead?"
+    "I tend to JSDoc to apply types to vanilla JavaScript to enable Intellisense in my IDE (VS Code). I'm still learning that sometimes the IntelliSense works without it, but it's a hard habit to break. "
   ]
 }
