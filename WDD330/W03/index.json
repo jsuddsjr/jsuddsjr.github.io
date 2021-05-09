@@ -26,6 +26,14 @@
       "url": "W03/js-object-literals.html",
       "label": "Objects (from JavaScript: Novice to Ninja)",
       "info": "More fun with objects!"
+    },
+    {
+      "url": "W03/js-object-this.html",
+      "label": "More objects (from JavaScript: Novice to Ninja)"
+    },
+    {
+      "url": "W03/js-object-math.html",
+      "label": "Math object (from JavaScript: Novice to Ninja)"
     }
   ],
   "questions": [
