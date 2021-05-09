@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Object Literals</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Object Literals</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script src="js/objects.js"></script>
+
+    <script>
+      runCode([
+        testSupermanObject,
+        "superman.name",
+        "superman['name']",
+        "superman['real' + ' ' + 'name']",
+        "superman.city",
+        testHulkObject,
+        "hulk",
+        testSuperGirlObject,
+        "supergirl[nameSymbol]",
+        "supergirl[realName] = 'Kara Danvers'",
+        "daredevil = { [nameSymbol]: 'Daredevil', [realName]: 'Matt Murdoch' }",
+        "daredevil[realName]",
+        "// Calling methods",
+        "superman.fly()",
+        "superman['fly']()",
+        "// Checking if properties exist",
+        "'city' in superman",
+        "superman.city !== undefined",
+        "superman.hasOwnProperty('city')",
+        "superman.hasOwnProperty('name')",
+        "// Adding properties",
+        "superman.city = 'Metropolis'",
+        "// Changing properties",
+        "superman['real name'] = 'Kal-El'",
+        "// Removing properties",
+        "delete superman.fly",
+        testSupermanProps,
+        testJla,
+        "jla.wonderWoman.realName",
+        "jla['flash']['realName']",
+        "jla.aquaman['realName']",
+        testPassingObjects
+      ]);
+    </script>
+  </body>
+</html>
