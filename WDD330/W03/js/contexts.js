@@ -2,6 +2,8 @@ function testGlobalContext() {
   return myType(this);
 }
 
+testGlobalContext.title = "<code>this</code> in the global context";
+
 function testObjectContstruction() {
   function Human(age) {
     this.age = age;
@@ -13,6 +15,8 @@ function testObjectContstruction() {
   log(greg); // this.age = 22
   log(thomas); // this.age = 24
 }
+
+testObjectContstruction.title = "<code>this</code> in object construction";
 
 function testObjectMethod() {
   function Human(name) {
@@ -31,6 +35,8 @@ function testObjectMethod() {
   log(vincy.getName()); // Vincy
 }
 
+testObjectMethod.title = "<code>this</code> in an object method";
+
 function testSimpleFunction() {
   function simpleFunction() {
     log(myType(this));
@@ -45,6 +51,8 @@ function testSimpleFunction() {
   simpleFunction(); // Window
   o.sayThis(); // Window
 }
+
+testSimpleFunction.title = "<code>this</code> in a simple function";
 
 function testSetTimeoutError() {
   const o = {
@@ -65,6 +73,9 @@ function testSetTimeoutError() {
   o.doSomethingLater();
 }
 
+testSetTimeoutError.title =
+  "<code>setTimeout</code> doesn't preserve the <code>this</code> reference";
+
 function testSetTimeoutCorrect() {
   const o = {
     doSomethingLater() {
@@ -80,6 +91,8 @@ function testSetTimeoutCorrect() {
 
   o.doSomethingLater();
 }
+
+testSetTimeoutCorrect.title = "Saving a reference to <code>this</code>";
 
 function testThisInArrowFunction() {
   const o = {
@@ -114,7 +127,9 @@ function testThisInEventListener() {
   };
 }
 
-function testLeetSpeaker() {
+testThisInEventListener.title = "<code>this</code> in an event listener";
+
+function testLeetSpeakerWithBoundThis() {
   /**/ const b1 = document.createElement("BUTTON");
   /**/ b1.textContent = "Speak L33T!";
   /**/ b1.className = "leetButton";
@@ -138,5 +153,7 @@ function testLeetSpeaker() {
   const button = document.querySelector(".leetButton");
   const leetSpeaker = new LeetSpeaker(button);
   leetSpeaker.listenClick();
-
 }
+
+testLeetSpeakerWithBoundThis.title =
+  "LeetSpeaker Object with bound <code>this</code>";

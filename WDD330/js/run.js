@@ -89,7 +89,7 @@ const runCode = (code) => {
       // Remove the wrapper function from code block and ignore setup lines.
       const code = line.toString().split("\n").filter(l => l.indexOf("/**/") === -1);
       const body = code.splice(1, code.length - 2).join("\n");
-      const functionName = line.name
+      const functionName = line.title || line.name
         // Remove leading "test" if exists.
         .replace(/^test/, "")
         // Split the function name into words at capital letters.
