@@ -24,7 +24,7 @@ const toTypeString = (value) => {
   } else if (value instanceof WeakSet || value instanceof WeakMap) {
     value = `${myType(value)} {}`;
   } else if (value instanceof Object) {
-    value = JSON.stringify(value);
+    value = JSON.stringify(value, null, 2);
   } else {
     value = String(value);
   }
@@ -38,6 +38,18 @@ const startLog = () => {
 const log = (msg) => {
   globalLog.push(msg);
 };
+/**
+ * @param {Function} fn 
+ * @returns {String?}  
+ */
+const executeWithTry = (fn) => {
+  try {
+    return fn();
+  } catch (err) {
+    return String(err);
+  }
+};
+
 
 /**
  * @param {Array<String|Function>} code
@@ -61,12 +73,18 @@ const runCode = (code) => {
       }
     } else if (line instanceof Function) {
       startLog();
-      const result = (line() || globalLog.map(toTypeString)).join('\n');
-      const lines = line.toString().split('\n');
-      const body = lines.splice(1, lines.length - 2).join('\n');
+      const result = (executeWithTry(line) || globalLog.map(toTypeString)).join("\n");
+      // Remove the wrapper function from code block.
+      const code = line.toString().split("\n");
+      const body = code.splice(1, code.length - 2).join("\n");
+      const functionName = line.name
+        // Remove leading "test" if exists.
+        .replace(/^test/, "")
+        // Split the function name into words at capital letters.
+        .replace(/([A-Z0-9])/g, " $1");
       html.push(
-        `<hr/><h4>${line.name}</h4><pre>${body}</pre>`+
-        `<h4>Output</h4><pre>${result}</pre>`
+        `<hr/><h4>${functionName}</h4><pre>${body}</pre>` +
+          `<h4>Output</h4><pre>${result}</pre>`
       );
     }
 

@@ -4,27 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Symbols</title>
+    <title>JavaScript Operations</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/common.css" />
   </head>
   <body>
     <section>
-      <h1>JavaScript Symbols</h1>
+      <h1>JavaScript Operations</h1>
       <div id="output"></div>
     </section>
     <script src="../js/run.js"></script>
+    <script src="js/scripts.js"></script>
 
     <script>
       runCode([
-        "var uniqueID = Symbol('this is a unique ID')",
-        "uniqueID",
-        "typeof uniqueID",
-        "String(uniqueID)",
-        "uniqueID.toString()",
-        "var A = Symbol.for('shared symbol')",
-        "var B = Symbol.for('shared symbol')",
-        "A == B",
+        testObjectDeclaration,
+        testMethod,
+        testMethodWithThis,
+        testThisIsNotBound,
+        testArrowFunctionsHaveNoThis,
+        testThisInObjectLiteral,
       ]);
     </script>
   </body>

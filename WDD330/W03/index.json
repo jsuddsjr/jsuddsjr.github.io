@@ -4,6 +4,11 @@
       "url": "W03/index-START.html",
       "label": "Team Activity",
       "info": "Fun with arrays!"
+    },
+    {
+      "url": "W03/js-object-methods.html",
+      "label": "Object methods, this (from JavaScript.info)",
+      "info": "Source: <a href='https://javascript.info/object-methods' target='_blank'>javascript.info</a>"
     }
   ],
   "questions": [
