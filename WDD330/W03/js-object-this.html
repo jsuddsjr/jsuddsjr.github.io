@@ -14,6 +14,7 @@
       <div id="output"></div>
     </section>
     <script src="../js/run.js"></script>
+    <script src="../js/template.js"></script>
     <script src="js/this.js"></script>
 
     <script>
@@ -22,12 +23,25 @@
         "dice.roll()",
         "dice.roll()",
         "dice.roll()",
+        () => {
+          /**/ rollDiceButton(6, 2);
+        },
 
         "// Set sides property",
         "dice.sides = 20",
         "dice.roll()",
         "dice.roll()",
         "dice.roll()",
+        () => {
+          /**/ rollDiceButton(20);
+        },
+
+        "// Extra credit: Roll 3 six-sided dice",
+        "dice.roll(3)",
+
+        () => {
+          /**/ rollDiceInput();
+        },
 
         testMathsObject,
         "myMaths.square(3)",

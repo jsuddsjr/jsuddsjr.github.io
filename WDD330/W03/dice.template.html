@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dice template</title>
+    <style>
+        section.dice {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: .5em;
+            border: 2px solid black;
+        } 
+        label {
+          justify-self: end;
+          font-weight: bold;
+        }
+    </style>
+  </head>
+  <body>
+    <section class="dice">
+      <label for="sides">Sides</label>
+      <input type="number" value="6" name="sides" id="sides" />
+
+      <label for="count">Dice</label>
+      <input type="number" value="1" name="dice" id="dice" />
+
+      <button onclick="rollTheDice()">Roll the dice</button>
+      <div>Result: <span id="result"></span></div>
+    </section>
+
+    <script>
+      function rollTheDice() {
+        dice.sides = +document.querySelector("#sides").value;
+        const total = dice.roll(+document.querySelector("#dice").value);
+        document.querySelector("#result").textContent = total;
+      }
+    </script>
+  </body>
+</html>

@@ -94,7 +94,7 @@ const runCode = (code) => {
         .replace(/^test/, "")
         // Split the function name into words at capital letters.
         .replace(/([A-Z]|[0-9]+)/g, " $1");
-      html.push(`<hr/><a id="${line.name}"></a><h4>${functionName}</h4><pre>${body}</pre>`);
+      html.push(`<a id="${line.name}"></a><h4>${functionName}</h4><pre>${body}</pre>`);
 
       writeToOutput(html);
 

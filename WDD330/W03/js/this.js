@@ -1,10 +1,31 @@
 function testDiceObject() {
   dice = {
     sides: 6,
-    roll() {
-      return Math.floor(this.sides * Math.random()) + 1;
+    roll(die = 1) {
+      return Array.from({ length: die }, (_) =>
+        Math.ceil(this.sides * Math.random())
+      ).reduce((a, b) => a + b);
     },
   };
+}
+
+function rollDiceButton(sides, count = 1) {
+  const button = document.createElement("BUTTON");
+  button.textContent = `Roll ${count} x ${sides}-side die`;
+  button.addEventListener("click", () => {
+    dice.sides = sides;
+    alert(dice.roll(count));
+  });
+  document.querySelector("#output").appendChild(button);
+}
+
+async function rollDiceInput() {
+  const div = document.createElement("div");
+  const output = document.getElementById("output");
+  output.appendChild(div);
+
+  div.id = "dice";
+  await insertTemplate("#dice");
 }
 
 function testMathsObject() {

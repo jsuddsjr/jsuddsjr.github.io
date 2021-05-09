@@ -29,7 +29,8 @@
     },
     {
       "url": "W03/js-object-this.html",
-      "label": "More objects, plus JSON"
+      "label": "More objects, plus JSON",
+      "info": "<strong>BONUS</strong>: Roll any quantity of dice with any number of sides!"
     },
     {
       "url": "W03/js-object-math.html",
