@@ -9,6 +9,10 @@
       "url": "W03/js-object-methods.html",
       "label": "Object methods, this (from JavaScript.info)",
       "info": "Source: <a href='https://javascript.info/object-methods' target='_blank'>javascript.info</a>"
+    },
+    {
+      "url": "W03/js-object-calculator.html",
+      "label": "A calculator object"
     }
   ],
   "questions": [
