@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript RegExp object</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript RegExp object</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+
+    <script>
+      runCode([
+        "// RegExp object",
+        "pattern = /[a-zA-Z]+ing$/",
+        "pattern.test('joke')",
+        "pattern.test('joking')",
+        "pattern.test('jokingly')",
+        "pattern.exec('joke')",
+        "pattern.exec('you are joking') // Array with properties",
+        "pattern.exec('you are joking').index",
+
+        "// Character groups",
+        "vowels = /[aeiou]/",
+        "vowels.test('hymn')",
+        "vowels.test('him')",
+
+        "// Properties",
+        ""
+      ]);
+    </script>
+  </body>
+</html>
