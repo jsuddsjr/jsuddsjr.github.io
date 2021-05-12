@@ -14,6 +14,7 @@
       <div id="output"></div>
     </section>
     <script src="../js/run.js"></script>
+    <script src="js/regexp.js"></script>
 
     <script>
       runCode([
@@ -32,7 +33,40 @@
         "vowels.test('him')",
 
         "// Properties",
-        ""
+        "pattern = /java/i",
+        "pattern.test('JavaScript')",
+        "pattern.ignoreCase",
+        "pattern.ignoreCase = false",
+        "pattern.ignoreCase",
+
+        "// Special characters",
+        "str = 'JavaScript/ES6'",
+        "/./.exec(str)",
+        "/\\w/.exec(str) // Word",
+        "/\\W/.exec(str) // Non-word",
+        "/\\d/.exec(str) // Numeric",
+        "/\\D/.exec(str) // Non-numeric",
+        "/\\s/.exec(str) // Whitespace",
+        "/\\S/.exec(str) // Non-whitespace",
+
+        "// Modifiers",
+        "pattern = /^J[aeiou]+\\w+ing$/",
+        "pattern.test('Joking')",
+        "pattern.test('Jeering')",
+
+        "// Greedy",
+        "str = 'abracadabra'",
+        "/a.+a/.exec(str)",
+        "/a.+?a/.exec(str)",
+
+        "// String methods",
+        "'Hello World!'.split(/\\s+/)",
+        "'JavaScript'.match(/[aeiou]/)",
+        "\"I'm learning JavaScript\".search(/java/i)",
+        "\"I'm learning JavaScript\".search(/ruby/i)",
+        "'JavaScript'.replace(/[aeiou]/ig, '*')",
+
+        testMatchedGroups
       ]);
     </script>
   </body>

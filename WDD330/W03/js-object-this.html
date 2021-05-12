@@ -24,7 +24,7 @@
         "dice.roll()",
         "dice.roll()",
         () => {
-          /**/ rollDiceButton(6, 2);
+          /**/ output.appendChild(rollDiceButton(6, 2));
         },
 
         "// Set sides property",
@@ -33,7 +33,7 @@
         "dice.roll()",
         "dice.roll()",
         () => {
-          /**/ rollDiceButton(20);
+          /**/ output.appendChild(rollDiceButton(20));
         },
 
         "// Extra credit: Roll 3 six-sided dice",
@@ -46,6 +46,7 @@
         testMathsObject,
         "myMaths.square(3)",
         "myMaths.mean([1,2,3])",
+        "myMaths.mean([1,2,3], myMaths.square)",
 
         testObjectFromString,
         testObjectToString,

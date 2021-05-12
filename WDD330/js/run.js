@@ -52,8 +52,8 @@ const executeWithTry = (fn) => {
   }
 };
 
-/** @type {HTMLDivElement} */
-const output = document.getElementById("output");
+/** @type {HTMLDivElement} Output region */
+const output = document.querySelector("#output") || document.createElement('div');
 
 /**
  *
@@ -88,8 +88,8 @@ const runCode = (code) => {
     } else if (line instanceof Function) {
       // Remove the wrapper function from code block and ignore setup lines.
       const code = line.toString().split("\n").filter(l => l.indexOf("/**/") === -1);
-      const body = code.splice(1, code.length - 2).join("\n");
-      const functionName = line.title || line.name
+      const body = code.splice(1, code.length - 2).join("\n").replace(/</g, '&lt;');
+      const functionName = line["title"] || line.name
         // Remove leading "test" if exists.
         .replace(/^test/, "")
         // Split the function name into words at capital letters.

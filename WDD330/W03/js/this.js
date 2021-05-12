@@ -16,7 +16,7 @@ function rollDiceButton(sides, count = 1) {
     dice.sides = sides;
     alert(dice.roll(count));
   });
-  document.querySelector("#output").appendChild(button);
+  return button;
 }
 
 async function rollDiceInput() {
@@ -35,7 +35,7 @@ function testMathsObject() {
     },
     mean(array, callback) {
       if (callback) {
-        array.map(callback);
+        array = array.map(callback);
       }
       const total = array.reduce((a, b) => a + b);
       return total / array.length;
