@@ -51,10 +51,8 @@ Number.prototype.pad = function (size) {
         const request = await fetch(`./${week}/index.json`);
         /** @type WeeklyReport */
         const report = await request.json();
-        if (report.title) {
-          const title = d.querySelector(".report-title");
-          if (title) title.innerHTML = report.title;
-        }
+        const title = d.querySelector(".report-title");
+        if (title) title.innerHTML = report.title || `Report for ${week}`;
         return report;
       } catch (error) {
         // Ignore error.
