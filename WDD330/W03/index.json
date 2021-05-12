@@ -53,6 +53,10 @@
       "url": "W03/js-object-dom2.html",
       "label": "DOM objects (continued)",
       "info": "Who needs heroes when you have a squad?"
+    },
+    {
+      "url": "W03/js-events.html",
+      "label": "JavaScript events"
     }
   ],
   "questions": [

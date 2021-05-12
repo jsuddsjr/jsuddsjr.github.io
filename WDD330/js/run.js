@@ -104,10 +104,9 @@ const output =
  * @param {Array<String>} html
  */
 const writeToOutput = (html) => {
-  const div = document.createElement("DIV");
+  const div = document.createElement("div");
   div.innerHTML += html.join("");
   output.appendChild(div);
-
   html.length = 0;
 };
 
@@ -149,7 +148,8 @@ const runCode = (code) => {
       html.push(
         `<a id="${line.name}"></a><h4>${functionName}</h4><pre>${unHtml(
           body
-        )}</pre>`
+        )}</pre>`,
+        line["associatedHtml"] || ''
       );
 
       writeToOutput(html);

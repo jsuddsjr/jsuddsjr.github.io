@@ -70,11 +70,16 @@ function testSetTimeoutError() {
     },
   };
 
-  o.doSomethingLater();
+  document
+    .querySelector(".timeoutButton")
+    ?.addEventListener("click", () => { o.doSomethingLater() });
 }
 
 testSetTimeoutError.title =
   "<code>setTimeout</code> doesn't preserve the <code>this</code> reference";
+testSetTimeoutError.associatedHtml = `
+  <button class="timeoutButton">Do something later</button>
+`;
 
 function testSetTimeoutCorrect() {
   const o = {
@@ -89,10 +94,15 @@ function testSetTimeoutCorrect() {
     },
   };
 
-  o.doSomethingLater();
+  document
+    .querySelector(".timeoutWithRef")
+    ?.addEventListener("click", () => { o.doSomethingLater() });
 }
 
 testSetTimeoutCorrect.title = "Saving a reference to <code>this</code>";
+testSetTimeoutCorrect.associatedHtml = `
+  <button class="timeoutWithRef">Do something later</button>
+`
 
 function testThisInArrowFunction() {
   const o = {
@@ -104,37 +114,33 @@ function testThisInArrowFunction() {
     },
   };
 
-  o.doSomethingLater();
+  document
+    .querySelector(".timeoutArrowFunc")
+    ?.addEventListener("click", () => { o.doSomethingLater() });
 }
 
+testThisInArrowFunction.associatedHtml = `
+<button class="timeoutArrowFunc">Do something later</button>
+`
+
 function testThisInEventListener() {
-  /**/ const b1 = document.createElement("BUTTON");
-  /**/ b1.textContent = "Click Me!";
-  /**/ document.querySelector("#output").appendChild(b1);
+  const button = document.querySelector(".eventButton");
 
-  const button = document.querySelector("button");
-
-  button.addEventListener("click", function () {
+  button?.addEventListener("click", function () {
     alert(this); // button
   });
 
-  button.addEventListener("click", () => {
+  button?.addEventListener("click", () => {
     alert(this); // Window
   });
-
-  button.onclick = function () {
-    alert(this); // button
-  };
 }
 
 testThisInEventListener.title = "<code>this</code> in an event listener";
+testThisInEventListener.associatedHtml = `
+  <button class="eventButton">Click me!</button>
+`;
 
 function testLeetSpeakerWithBoundThis() {
-  /**/ const b1 = document.createElement("BUTTON");
-  /**/ b1.textContent = "Speak L33T!";
-  /**/ b1.className = "leetButton";
-  /**/ document.querySelector("#output").appendChild(b1);
-
   function LeetSpeaker(elem) {
     return {
       listenClick() {
@@ -157,3 +163,6 @@ function testLeetSpeakerWithBoundThis() {
 
 testLeetSpeakerWithBoundThis.title =
   "LeetSpeaker Object with bound <code>this</code>";
+testLeetSpeakerWithBoundThis.associatedHtml = `
+  <button class="leetButton">Speak L33T</button>
+`;

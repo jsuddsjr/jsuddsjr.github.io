@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Events</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <style>
+      section > p {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        padding: 10px;
+        background-color: #ccc;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .highlight {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Events</h1>
+      <button onclick="alert('You Clicked Me!')">Click Me</button>
+      <div id="output"></div>
+    </section>
+
+    <script src="../js/run.js"></script>
+    <script src="js/events.js"></script>
+
+    <script>
+      runCode([
+        testEventHighlights,
+        testRemoveEvent,
+        testTouchEvents,
+        testKeyboardEvents,
+        testPreventDefaultBehavior,
+        testEventPropagation
+      ]);
+    </script>
+  </body>
+</html>
