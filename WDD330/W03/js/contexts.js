@@ -1,10 +1,10 @@
 function testGlobalContext() {
-  return myType(this);
+  return this;
 }
 
 testGlobalContext.title = "<code>this</code> in the global context";
 
-function testObjectContstruction() {
+function testObjectConstruction() {
   function Human(age) {
     this.age = age;
   }
@@ -16,7 +16,7 @@ function testObjectContstruction() {
   log(thomas); // this.age = 24
 }
 
-testObjectContstruction.title = "<code>this</code> in object construction";
+testObjectConstruction.title = "<code>this</code> in object construction";
 
 function testObjectMethod() {
   function Human(name) {
@@ -28,8 +28,8 @@ function testObjectMethod() {
     };
   }
 
-  const zell = new Human("Zell");
-  const vincy = new Human("Vincy");
+  const zell = Human("Zell");
+  const vincy = Human("Vincy");
 
   log(zell.getName()); // Zell
   log(vincy.getName()); // Vincy
@@ -39,7 +39,7 @@ testObjectMethod.title = "<code>this</code> in an object method";
 
 function testSimpleFunction() {
   function simpleFunction() {
-    log(myType(this));
+    log(this);
   }
 
   const o = {
@@ -151,7 +151,7 @@ function testLeetSpeakerWithBoundThis() {
   }
 
   const button = document.querySelector(".leetButton");
-  const leetSpeaker = new LeetSpeaker(button);
+  const leetSpeaker = LeetSpeaker(button);
   leetSpeaker.listenClick();
 }
 

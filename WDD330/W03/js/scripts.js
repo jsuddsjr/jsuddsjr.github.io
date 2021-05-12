@@ -77,5 +77,5 @@ function testThisInObjectLiteral() {
   let user = makeUser();
 
   log(user.ref.name); // What's the result?
-  log(Object.prototype.toString.call(user.ref));    // What object is this?
+  log(user.ref);      // What object is this?
 }

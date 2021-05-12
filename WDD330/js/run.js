@@ -36,9 +36,13 @@ const toTypeString = (unknown) => {
   } else if (unknown instanceof RegExp) {
     result = unknown.toString();
   } else if (unknown instanceof HTMLElement) {
-    result = unknown.outerHTML;
+    result = unknown.outerHTML.replace(/</g, "&lt;");
+  } else if (unknown instanceof HTMLCollection) {
+    result = toTypeString(Array.from(unknown));
+  } else if (unknown instanceof Window) {
+    result = "Window { ... }";
   } else if (unknown instanceof Object) {
-    result = JSON.stringify(unknown, null, 2);
+    result = myType(unknown) + " " + JSON.stringify(unknown, null, 2);
   } else {
     result = String(unknown);
   }

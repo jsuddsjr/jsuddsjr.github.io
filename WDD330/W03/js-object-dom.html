@@ -4,31 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Context of this</title>
+    <title>JavaScript DOM Objects</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/common.css" />
   </head>
   <body>
+    <header>
+      <h1 id="title">Justice League</h1>
+    </header>
+    <ul id="roster">
+      <li class="hero">Superman</li>
+      <li class="vigilante hero" id="bats">Batman</li>
+      <li class="hero">Wonder Woman</li>
+    </ul>
     <section>
-      <h1>JavaScript Context of this</h1>
+      <h1>JavaScript DOM Objects</h1>
       <div id="output"></div>
     </section>
     <script src="../js/run.js"></script>
-    <script src="js/contexts.js"></script>
 
     <script>
       runCode([
-        testGlobalContext,
-        testObjectConstruction,
-        testObjectMethod,
-        testSimpleFunction,
-        testSetTimeoutError,
-        testSetTimeoutCorrect,
-        testThisInArrowFunction,
-        testThisInEventListener,
-        testLeetSpeakerWithBoundThis,
+        "typeof document.body",
+        "document.body.nodeType",
+        "document.body.nodeName",
+        "document.getElementById('title')",
+        "document.getElementsByTagName('li')"
       ]);
     </script>
-
   </body>
 </html>

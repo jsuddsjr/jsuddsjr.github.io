@@ -43,6 +43,10 @@
     {
       "url": "W03/js-object-regexp.html",
       "label": "RegExp object"
+    },
+    {
+      "url": "W03/js-object-dom.html",
+      "label": "DOM objects"
     }
   ],
   "questions": [
