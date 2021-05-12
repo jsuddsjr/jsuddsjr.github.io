@@ -55,9 +55,9 @@ const toTypeString = (unknown) => {
   } else if (unknown instanceof RegExp) {
     result = unknown.toString();
   } else if (unknown instanceof HTMLElement) {
-    result = preWrap(unHtml(unknown.outerHTML));
+    result = unHtml(unknown.outerHTML);
   } else if (unknown instanceof Text) {
-    result = preWrap(`#text "${unknown.textContent}"`);
+    result = `#text "${unknown.textContent}"`;
   } else if (unknown instanceof HTMLCollection || unknown instanceof NodeList) {
     result = objectName(unknown) + toTypeString(Array.from(unknown));
   } else if (unknown instanceof Window) {
@@ -65,8 +65,8 @@ const toTypeString = (unknown) => {
   } else if (unknown instanceof Object) {
     console.log(myType(unknown));
     result = objectName(unknown) + JSON.stringify(unknown, null, 2);
-    if (result.length > 200) {
-      result = result.substr(0, 200) + "... }";
+    if (result.length > 512) {
+      result = result.substr(0, 512) + "... }";
     }
   } else {
     result = String(unknown);
@@ -127,7 +127,7 @@ const runCode = (code) => {
         } catch (err) {
           result = err;
         }
-        html.push(`<code>${unHtml(line)} -> ${result}</code><br/>`);
+        html.push(preWrap(`<code>${unHtml(line)} -> ${result}</code><br/>`));
       }
     } else if (line instanceof Function) {
       // Remove the wrapper function from code block and ignore setup lines.

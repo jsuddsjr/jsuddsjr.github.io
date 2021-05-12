@@ -9,14 +9,16 @@
     <link rel="stylesheet" href="../css/common.css" />
   </head>
   <body>
-    <header>
-      <h1 id="title">Justice League</h1>
-    </header>
-    <ul id="roster">
-      <li class="hero">Superman</li>
-      <li class="vigilante hero" id="bats">Batman</li>
-      <li class="hero">Wonder Woman</li>
-    </ul>
+    <section>
+      <header>
+        <h1 id="title">Justice League</h1>
+      </header>
+      <ul id="roster">
+        <li class="hero">Superman</li>
+        <li class="vigilante hero" id="bats">Batman</li>
+        <li class="hero">Wonder Woman</li>
+      </ul>
+    </section>
     <section>
       <h1>JavaScript DOM Objects</h1>
       <div id="output"></div>
@@ -26,7 +28,6 @@
 
     <script>
       runCode([
-
         "// InnerHTML property",
         "heroes = document.querySelector('ul')",
         "heroes.innerHTML",
@@ -46,8 +47,7 @@
         "cs.color",
 
         "document.head.appendChild(document.createElement('style')).textContent = '.highlight { color: red }'",
-        "heroes.lastChild.classList.toggle('highlight')"
-
+        "heroes.lastChild.classList.toggle('highlight')",
       ]);
     </script>
   </body>

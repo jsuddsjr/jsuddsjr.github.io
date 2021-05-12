@@ -12,5 +12,5 @@ function testReplaceTitleElement() {
   const h1 = document.getElementById("title");
   const oldText = h1.firstChild;
   const newText = document.createTextNode("Justice League of America");
-  h1.replaceChild(newText, oldText);
+  return h1.replaceChild(newText, oldText);
 }
