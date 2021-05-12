@@ -2,6 +2,11 @@
   "title": "Week 4: More JavaScript",
   "links": [
     {
+      "url": "W04/tic-tac-toe.html",
+      "label": "Team Project",
+      "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
+    },
+    {
       "url": "W04/quiz-ninja.html",
       "label": "Quiz Ninja",
       "info": "How many superhero secret identities do you know?"

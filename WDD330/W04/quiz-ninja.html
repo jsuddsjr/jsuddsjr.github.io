@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Ninja (from JavaScript: Novice to Ninja)</title>
-    <link rel="stylesheet" href="css/quiz-ninja.css">
+    <link rel="stylesheet" href="css/quiz-ninja.css" />
     <meta
       name="description"
       content="A quiz framework shamelessly stolen from the book JavaScript: Novice to Ninja. "
@@ -21,8 +21,10 @@
         <div id="question"></div>
         <div id="result"></div>
         <div id="info"></div>
+        <button id="start">Click to Start</button>
       </div>
     </section>
+
     <script>
       const quiz = [
         { name: "Superman", realName: "Clark Kent" },
@@ -32,6 +34,7 @@
 
       // View Object
       const view = {
+        start: document.getElementById("start"),
         score: document.querySelector("#score strong"),
         question: document.getElementById("question"),
         result: document.getElementById("result"),
@@ -42,11 +45,18 @@
           }
           target.innerHTML = content;
         },
+        show(element) {
+          element.style.display = "block";
+        },
+        hide(element) {
+          element.style.display = "none";
+        },
       };
 
       // Game object
       const game = {
         start(quiz) {
+          view.hide(view.start);
           this.questions = [...quiz];
           this.score = 0;
           // main game loop
@@ -89,7 +99,7 @@
         },
       };
 
-      game.start(quiz);
+      view.start.addEventListener("click", () => game.start(quiz), false);
     </script>
   </body>
 </html>
