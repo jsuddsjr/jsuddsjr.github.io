@@ -1,5 +1,5 @@
 /**
- * Convert text to document fragment
+ * Convert text to document fragment.
  * @param {String} text
  */
 const asFragment = (text) => {
@@ -7,14 +7,13 @@ const asFragment = (text) => {
 };
 
 /**
- * Insert template HTML inside specified element
+ * Insert template HTML inside specified element.
  * @param {String} selector
  * @param {String} template
  */
-const insertTemplate = async (selector, template = null) => {
+export const insertTemplate = async (selector, template = '') => {
   template = template || selector.replace(/^\W/,"");
 
-  /** @type Element */
   const el = document.querySelector(selector);
   if (!el) return false;
 
@@ -25,7 +24,7 @@ const insertTemplate = async (selector, template = null) => {
   const parser = new DOMParser();
   const html = parser.parseFromString(text, "text/html");
 
-  el.parentElement.replaceChild(asFragment(html.body.innerHTML), el);
+  el.parentElement?.replaceChild(asFragment(html.body.innerHTML), el);
   document.head.appendChild(asFragment(html.head.innerHTML));
 
   return true;
