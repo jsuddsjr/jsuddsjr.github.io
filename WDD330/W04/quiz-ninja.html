@@ -29,6 +29,7 @@
         { name: "Wonder Woman", realName: "Diana Prince" },
         { name: "Batman", realName: "Bruce Wayne" },
       ];
+
       // View Object
       const view = {
         score: document.querySelector("#score strong"),
@@ -42,6 +43,8 @@
           target.innerHTML = content;
         },
       };
+
+      // Game object
       const game = {
         start(quiz) {
           this.questions = [...quiz];
