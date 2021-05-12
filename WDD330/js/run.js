@@ -1,18 +1,37 @@
 /**
- * Get the reported name of any object.
  * @param {Object} obj
- * @returns
+ * @returns Reported name of any object
  */
 const myType = (obj) => Object.prototype.toString.call(obj).slice(8, -1);
 
 /**
+ * Ensure strings with line breaks are displayed preformatted.
+ * @param {String} str
+ * @returns A string with PRE tags, if needed.
+ */
+const preWrap = (str) => (str.indexOf("\n") !== -1 ? `<pre>${str}</pre>` : str);
+
+const objectName = (obj) => {
+  const typeName = myType(obj);
+  return typeName !== "Object" ? `<i>${typeName}</i> ` : "";
+};
+
+/**
+ * Prepare opening HTML tags for display.
+ * @param {String} html
+ * @returns String with opening tags replaced.
+ */
+const unHtml = (html) => html.replace(/</g, "&lt;");
+
+/**
  * @param {any} unknown
- * @returns {String}
+ * @returns String representation of type.
  */
 const toTypeString = (unknown) => {
   let result;
   if (typeof unknown === "string") {
-    result = `'${unknown}'`;
+    let q = unknown.indexOf('"') !== -1 ? "'" : '"';
+    result = preWrap(`${q}${unHtml(unknown)}${q}`);
   } else if (Array.isArray(unknown)) {
     const asStrings = [];
     for (let i = 0; i < unknown.length; i++) {
@@ -36,13 +55,19 @@ const toTypeString = (unknown) => {
   } else if (unknown instanceof RegExp) {
     result = unknown.toString();
   } else if (unknown instanceof HTMLElement) {
-    result = unknown.outerHTML.replace(/</g, "&lt;");
-  } else if (unknown instanceof HTMLCollection) {
-    result = toTypeString(Array.from(unknown));
+    result = preWrap(unHtml(unknown.outerHTML));
+  } else if (unknown instanceof Text) {
+    result = preWrap(`#text "${unknown.textContent}"`);
+  } else if (unknown instanceof HTMLCollection || unknown instanceof NodeList) {
+    result = objectName(unknown) + toTypeString(Array.from(unknown));
   } else if (unknown instanceof Window) {
     result = "Window { ... }";
   } else if (unknown instanceof Object) {
-    result = myType(unknown) + " " + JSON.stringify(unknown, null, 2);
+    console.log(myType(unknown));
+    result = objectName(unknown) + JSON.stringify(unknown, null, 2);
+    if (result.length > 200) {
+      result = result.substr(0, 200) + "... }";
+    }
   } else {
     result = String(unknown);
   }
@@ -56,6 +81,7 @@ const startLog = () => {
 const log = (msg) => {
   globalLog.push(msg);
 };
+
 /**
  * @param {Function} fn
  */
@@ -75,7 +101,6 @@ const output =
   document.querySelector("#output") || document.createElement("div");
 
 /**
- *
  * @param {Array<String>} html
  */
 const writeToOutput = (html) => {
@@ -94,7 +119,7 @@ const runCode = (code) => {
   for (let line of code) {
     if (typeof line === "string") {
       if (!line.trim() || line.startsWith("//")) {
-        html.push(`<br/><code>${line}</code><br/>`);
+        html.push(`<br/><h4>${line}</h4>`);
       } else {
         let result;
         try {
@@ -102,7 +127,7 @@ const runCode = (code) => {
         } catch (err) {
           result = err;
         }
-        html.push(`<code>${line} -> ${result}</code><br/>`);
+        html.push(`<code>${unHtml(line)} -> ${result}</code><br/>`);
       }
     } else if (line instanceof Function) {
       // Remove the wrapper function from code block and ignore setup lines.
@@ -122,7 +147,9 @@ const runCode = (code) => {
           // Split the function name into words at capital letters.
           .replace(/([A-Z]|[0-9]+)/g, " $1");
       html.push(
-        `<a id="${line.name}"></a><h4>${functionName}</h4><pre>${body}</pre>`
+        `<a id="${line.name}"></a><h4>${functionName}</h4><pre>${unHtml(
+          body
+        )}</pre>`
       );
 
       writeToOutput(html);

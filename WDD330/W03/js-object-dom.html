@@ -22,14 +22,64 @@
       <div id="output"></div>
     </section>
     <script src="../js/run.js"></script>
+    <script src="js/dom.js"></script>
 
     <script>
       runCode([
         "typeof document.body",
         "document.body.nodeType",
         "document.body.nodeName",
-        "document.getElementById('title')",
-        "document.getElementsByTagName('li')"
+        "h1 = document.getElementById('title')",
+        "listItems = document.getElementsByTagName('li')",
+        "listItems[0]",
+        "document.getElementsByClassName('hero')",
+        "document.getElementsByClassName('vigilante')",
+        "document.getElementsByClassName('villain')",
+
+        "// Query selectors",
+        "wonderWoman = document.querySelector('li:last-child')",
+        "heroes = document.querySelector('ul#roster')",
+        "heroes.querySelector('li#bats')",
+
+        "// Node lists",
+        "heroes.childNodes",
+        "heroes.children",
+        "heroes.children.length",
+        "heroes.firstChild",
+        "heroes.lastChild",
+
+        "wonderWoman.nextSibling",
+        'wonderWoman.previousSibling',
+        "textNode = wonderWoman.firstChild",
+        "textNode.nodeValue",
+        "textNode.textContent",
+
+        "// Attributes",
+        "wonderWoman.getAttribute('class')",
+        "wonderWoman.getAttribute('src')",
+        "wonderWoman.setAttribute('class', 'villain')",
+        "wonderWoman.setAttribute('id', 'amazon')",
+        "wonderWoman",
+
+        "// Working with classes",
+        "wonderWoman.className",
+        "wonderWoman.className = 'hero'",
+        "wonderWoman.classList.add('warrior')",
+        "wonderWoman.classList.toggle('hero')",
+        "wonderWoman.classList.contains('warrior')",
+        "wonderWoman",
+
+        "// Creating an element",
+        "flash = document.createElement('li')",
+        "flashText = document.createTextNode('Flash')",
+        "flash.appendChild(flashText)",
+        "flash",
+
+        "heroes.appendChild(flash)",
+        "heroes.appendChild(wonderWoman) // Moves to end",
+
+        testCreateDomElement,
+        testReplaceTitleElement,
       ]);
     </script>
   </body>

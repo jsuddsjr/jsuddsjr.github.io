@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript DOM Objects</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <header>
+      <h1 id="title">Justice League</h1>
+    </header>
+    <ul id="roster">
+      <li class="hero">Superman</li>
+      <li class="vigilante hero" id="bats">Batman</li>
+      <li class="hero">Wonder Woman</li>
+    </ul>
+    <section>
+      <h1>JavaScript DOM Objects</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script src="js/dom.js"></script>
+
+    <script>
+      runCode([
+
+        "// InnerHTML property",
+        "heroes = document.querySelector('ul')",
+        "heroes.innerHTML",
+
+        "h1 = document.getElementById('title')",
+        "h1.innerHTML = 'Suicide Squad'",
+        "heroes.innerHTML = '<li>Harley Quinn</li><li>Deadshot</li><li>Killer Croc</li><li>Enchantress</li><li>Captain Boomerang</li><li>Katana</li><li>Slipknot</li>'",
+
+        "// Updating styles",
+        "quinn = heroes.children[0]",
+        "quinn.style.border = '2px solid red'",
+        "quinn.style.backgroundColor = 'blue'",
+        "quinn.style.color = 'white'",
+        "quinn.style['font-weight'] = 'bold'",
+
+        "cs = getComputedStyle(quinn)",
+        "cs.color",
+
+        "document.head.appendChild(document.createElement('style')).textContent = '.highlight { color: red }'",
+        "heroes.lastChild.classList.toggle('highlight')"
+
+      ]);
+    </script>
+  </body>
+</html>
