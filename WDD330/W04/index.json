@@ -4,6 +4,11 @@
       "url": "W04/quiz-ninja.html",
       "label": "Quiz Ninja",
       "info": "How many superhero secret identities do you know?"
+    },
+    {
+      "url": "W04/js-weird.html",
+      "label": "Weird JavaScript",
+      "info": "This shouldn't work, but it does. (Source <a href='https://bluewings.github.io/en/writing-a-sentence-without-using-the-alphabet'>Writing a sentence without using the alphabet</a>.)"
     }
   ],
   "questions": [
