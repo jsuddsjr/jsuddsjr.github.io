@@ -22,5 +22,7 @@ function testParseBigIntBase36() {
 
   log(parseInt("abcdefg", 36));
   log(parseBigInt("abcdefg"));
-  log(parseBigInt("supercalifragilisticexpialidocious"))
+  log(parseBigInt("supercalifragilisticexpialidocious"));
 }
+
+testParseBigIntBase36.title = "Parsing BigInt in Base 36";

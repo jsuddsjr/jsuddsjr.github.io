@@ -8,11 +8,11 @@ const asFragment = (text) => {
 
 /**
  * Insert template HTML inside specified element.
- * @param {String} selector
- * @param {String} template
+ * @param {String} selector A selector expression.
+ * @param {String} template Template file name prefix (i.e. _prefix_.template.html). If not specified, the `selector` is used.
  */
-export const insertTemplate = async (selector, template = '') => {
-  template = template || selector.replace(/^\W/,"");
+export const insertTemplate = async (selector, template = "") => {
+  template = template || selector.replace(/^\W/, "");
 
   const el = document.querySelector(selector);
   if (!el) return false;

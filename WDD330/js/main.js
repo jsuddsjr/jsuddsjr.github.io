@@ -15,23 +15,19 @@ import { insertTemplate } from "./template.js";
  */
 
 Number.prototype[Symbol.iterator] = function* () {
-  // const self = this;
-  // let value = 0;
-  // return {
-  //   next: function() {
-  //     const result = { value, done: false}
-  //     result.done = ++value >= self;
-  //     return result;
-  //   }
-  // }
   for (let i = 0; i < this; i++) {
     yield i;
   }
 };
 
-Number.prototype.pad = function (size) {
+/**
+ * Prefix character to create a string of specified size.
+ * @param {Number} size Length of final string.
+ * @param {String} char The character to duplicate. Default: 0
+ */
+Number.prototype.pad = function (size, char = '0') {
   var s = String(this);
-  return "0".repeat(size - s.length) + s;
+  return char.repeat(Math.max(0, size - s.length)) + s;
 };
 
 (async function (d) {
@@ -44,23 +40,38 @@ Number.prototype.pad = function (size) {
    * @returns
    */
   function replaceTokens(str, report) {
-    return str.replace(/!!(.+?)!!/g, (sub, capture) => {
-      const [command, ...rest] = capture.split(" ");
-      switch (command) {
-        // Format: LINK number [fragment] [remaining text is label]
-        case "LINK": {
-          const [index, fragment, ...text] = rest;
-          if (index !== undefined) {
-            const link = report.links[+index];
-            if (link) {
-              const label = text.join(' ') || link.label;
-              sub = `<a href="${link.url}#${fragment}">${label}</a>`;
+    return str.replace(
+      /!!(.+?)!!/g,
+      /**
+       * Process matches.
+       * @param {String} sub
+       * @param {String} capture
+       * @returns
+       */
+      (sub, capture) => {
+        const [command, ...rest] = capture.split(/\s+/);
+        switch (command) {
+          // Format: LINK number [#fragment] [remaining text is label]
+          case "LINK": {
+            const index = rest.shift();
+            if (index !== undefined) {
+              const link = report.links[+index];
+              if (link) {
+                let fragment = rest.shift() || '';
+                // fragment must start with "#"
+                if (fragment && fragment[0] !== '#') {
+                  rest.unshift(fragment);
+                  fragment = ''
+                }
+                const label = rest.join(" ") || link.label;
+                sub = `<a href="${link.url}${fragment}">${label}</a>`;
+              }
             }
           }
         }
+        return sub;
       }
-      return sub;
-    });
+    );
   }
 
   /**
