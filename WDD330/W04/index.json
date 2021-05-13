@@ -3,7 +3,7 @@
   "links": [
     {
       "url": "W04/tic-tac-toe.html",
-      "label": "Tic-Tac-Toe Game (Team Activity)",
+      "label": "Tic-Tac-Toe Game",
       "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
     },
     {
@@ -15,9 +15,15 @@
       "url": "W04/js-weird.html",
       "label": "Weird JavaScript",
       "info": "This shouldn't work, but it does. (Source <a href='https://bluewings.github.io/en/writing-a-sentence-without-using-the-alphabet'>Writing a sentence without using the alphabet</a>.)"
+    },
+    {
+      "url": "W03/js-events.html",
+      "label": "JavaScript events",
+      "info": "Working examples with events."
     }
   ],
   "questions": [
-    "<strong>Found online</strong>: There are two meanings for {}: an object or a block. This is a problem for arrow functions that return an object. In order to differentiate between a code  block, we need to use () => ({}) to return an object. <pre>(n) => {n}   // undefined\n(n) => ({n}) // object</pre>"
+    "<strong>Found online</strong>: There are two meanings for {}: an object or a block. This is a problem for arrow functions that return an object. In order to differentiate between a code  block, we need to use () => ({}) to return an object. <pre>(n) => {n}   // undefined\n(n) => ({n}) // object</pre>",
+    "Check out my !!LINK 0!!! It's got animations, custom cursors, and a whole lotta style."
   ]
 }

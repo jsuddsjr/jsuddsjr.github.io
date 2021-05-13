@@ -38,6 +38,32 @@ Number.prototype.pad = function (size) {
   "use strict";
 
   /**
+   * Replace tokens in string from weekly report.
+   * @param {String} str
+   * @param {WeeklyReport} report
+   * @returns
+   */
+  function replaceTokens(str, report) {
+    return str.replace(/!!(.+?)!!/g, (sub, capture) => {
+      const [command, ...rest] = capture.split(" ");
+      switch (command) {
+        // Format: LINK number [fragment] [remaining text is label]
+        case "LINK": {
+          const [index, fragment, ...text] = rest;
+          if (index !== undefined) {
+            const link = report.links[+index];
+            if (link) {
+              const label = text.join(' ') || link.label;
+              sub = `<a href="${link.url}#${fragment}">${label}</a>`;
+            }
+          }
+        }
+      }
+      return sub;
+    });
+  }
+
+  /**
    * Attempts to open the _index.json_ file for the specified week.
    * If the file cannot be opened, a default set of data is returned.
    * This code reads the _data-weeks_ attr set on the parent OL element
@@ -95,7 +121,7 @@ Number.prototype.pad = function (size) {
     if (olq) {
       for (let q of report.questions) {
         const li = d.createElement("li");
-        li.innerHTML = q;
+        li.innerHTML = replaceTokens(q, report);
         olq.appendChild(li);
       }
     }

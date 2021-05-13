@@ -20,14 +20,24 @@
   margin: 0 auto;
   cursor: url("../images/x-cursor.gif"), pointer;
   -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 .board.cursor {
   cursor: url("../images/o-cursor.gif"), pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .board {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .board {
+    width: 220px;
+    height: 220px;
+  }
 }
 
 .cell {
@@ -54,7 +64,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 5rem;
+  font-size: 7rem;
   height: 100%;
   width: 100%;
   -webkit-transform-origin: center;
@@ -63,6 +73,18 @@
           transform: scale(0);
   -webkit-transition: all 350ms ease-in-out;
   transition: all 350ms ease-in-out;
+}
+
+@media screen and (max-width: 500px) {
+  .cell:before {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .cell:before {
+    font-size: 4rem;
+  }
 }
 
 .cell.played:before {
