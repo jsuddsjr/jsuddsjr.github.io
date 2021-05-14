@@ -43,7 +43,7 @@ function gameOver(winningCombo, player) {
     cells.forEach((el, n) =>
       el.classList.add(winningCombo.includes(n) ? CLASS_WINNER : CLASS_LOSER)
     );
-    addPointFor(player);
+    startPointUpdate(player);
   } else {
     cells.forEach((el) => el.classList.add(CLASS_LOSER));
   }
@@ -51,24 +51,32 @@ function gameOver(winningCombo, player) {
 }
 
 /**
- * Update score board.f
+ * Start update score board.
  * @param {String} player
  */
-function addPointFor(player) {
+function startPointUpdate(player) {
   const score = document.querySelector(`.js-player-${player}`);
   if (score instanceof HTMLElement) {
-    const points = +(score.dataset.points || 0);
-    score.dataset.points = String(points + 1);
+    score.classList.add(CLASS_WINNER);
+    setTimeout(updatePointFor.bind(null, score), 300);
   }
+}
+
+/**
+ * Finish update score board.
+ * @param {HTMLElement} score
+ */
+function updatePointFor(score) {
+  const points = +(score.dataset.points || 0);
+  score.dataset.points = String(points + 1);
+  score.classList.remove(CLASS_WINNER)
 }
 
 /**
  * Intermediate step in resetting the board.
  */
 function clearBoard() {
-  cells.forEach((el) => {
-    el.className = "cell";
-  });
+  cells.forEach((el) => el.className = "cell");
   setTimeout(resetBoard, 250);
 }
 
@@ -131,11 +139,9 @@ function updateBoard(cell) {
   if (cell.dataset.player) {
     return; // This cell is already occupied.
   }
-
   cell.classList.add(CLASS_PLAYED);
   cell.dataset.player = players[activePlayer];
   setActivePlayer();
-
   setTimeout(checkWinners, 250);
 }
 

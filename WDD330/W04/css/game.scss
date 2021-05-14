@@ -1,7 +1,6 @@
 $mq-small: 350px;
 $mq-medium: 500px;
 
-
 *,
 *:before,
 *:after {
@@ -104,7 +103,15 @@ $mq-medium: 500px;
 
   .points:before {
     content: attr(data-points);
+    display: inline-block;
     font-size: 2rem;
+    transform-origin: center;
+    transform: scale(1) rotate(0deg);
+    transition: all 350ms cubic-bezier(0, 0.5, 0.5, 1.5);
+  }
+
+  .winner:before {
+    transform: scale(1.8) rotate(180deg);
   }
 }
 
