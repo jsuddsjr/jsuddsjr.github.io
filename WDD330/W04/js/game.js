@@ -1,3 +1,5 @@
+"use strict";
+
 const CLASS_PLAYED = "played";
 const CLASS_WINNER = "winner";
 const CLASS_LOSER = "loser";
@@ -5,7 +7,7 @@ const CLASS_CURSOR = "cursor";
 
 const board = document.querySelector(".board");
 const cells = Array.from(board?.querySelectorAll("div") || []);
-const nextPlayer = document.querySelector(".player");
+const nextPlayer = document.querySelector(".js-active-player");
 const players = ["X", "O"];
 const combos = [
   [0, 1, 2],
@@ -18,6 +20,17 @@ const combos = [
   [2, 5, 8],
 ];
 let activePlayer = 0;
+let startWithLastPlayer = false;
+
+/**
+ * Enable or disable pointer events on the board.
+ * @param {Boolean} enabled
+ */
+function allowPointerEvents(enabled) {
+  if (board instanceof HTMLElement) {
+    board.style.pointerEvents = enabled ? "" : "none";
+  }
+}
 
 /**
  * Display the winner.
@@ -25,9 +38,7 @@ let activePlayer = 0;
  * @param {String} [player]
  */
 function gameOver(winningCombo, player) {
-  if (board instanceof HTMLElement) {
-    board.style.pointerEvents = "none";
-  }
+  allowPointerEvents(false);
   if (winningCombo && player) {
     cells.forEach((el, n) =>
       el.classList.add(winningCombo.includes(n) ? CLASS_WINNER : CLASS_LOSER)
@@ -44,7 +55,7 @@ function gameOver(winningCombo, player) {
  * @param {String} player
  */
 function addPointFor(player) {
-  const score = document.querySelector(`.player-${player}`);
+  const score = document.querySelector(`.js-player-${player}`);
   if (score instanceof HTMLElement) {
     const points = +(score.dataset.points || 0);
     score.dataset.points = String(points + 1);
@@ -66,10 +77,8 @@ function clearBoard() {
  */
 function resetBoard() {
   cells.forEach((el) => (el.dataset.player = ""));
-  setActivePlayer(0);
-  if (board instanceof HTMLElement) {
-    board.style.pointerEvents = "auto";
-  }
+  if (!startWithLastPlayer) setActivePlayer(0);
+  allowPointerEvents(true);
 }
 
 /**
@@ -142,4 +151,15 @@ cells.forEach((el) => {
   el.addEventListener("click", play);
 });
 
-document.querySelector(".reset")?.addEventListener("click", clearBoard);
+document
+  .querySelector(".js-reset-button")
+  ?.addEventListener("click", clearBoard);
+
+document
+  .querySelector(".js-loser-starts-checkbox")
+  ?.addEventListener("change", (event) => {
+    const checkbox = event.target;
+    if (checkbox instanceof HTMLInputElement) {
+      startWithLastPlayer = checkbox.checked;
+    }
+  });

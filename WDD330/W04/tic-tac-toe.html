@@ -5,33 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Touch Tic-Tac-Toe</title>
+    <meta name="description" content="A touch-enabled Tic-Tac-Toe game." />
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="css/game.css" />
   </head>
   <body>
     <section>
-      <h1><em>Touch</em> Tic-Tac-Toe</h1>
+      <h1><em>Touch-em</em> Tic-Tac-Toe</h1>
       <div class="score">
         <div>X</div>
         <div>O</div>
-        <div class="player-X points" data-points="0"></div>
-        <div class="player-O points" data-points="0"></div>
+        <div class="js-player-X points" data-points="0"></div>
+        <div class="js-player-O points" data-points="0"></div>
       </div>
-        <div class="board">
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-          <div class="cell" data-player=""></div>
-        </div>
-        <p>Next player is <span class="player">X</span>.</p>
-        <button class="reset">Start over</button>
+      <div class="board">
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+        <div class="cell" data-player=""></div>
+      </div>
+      <p>Next player is <span class="js-active-player">X</span>.</p>
+      <div class="controls">
+        <button class="js-reset-button">Start over</button>
+        <label
+          >Last player starts next round
+          <input type="checkbox" class="js-loser-starts-checkbox" />
+        </label>
       </div>
     </section>
-    <script src="js/game.js"></script>
+    <script src="js/game.js" async></script>
   </body>
 </html>

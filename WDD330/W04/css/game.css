@@ -118,4 +118,17 @@
   content: attr(data-points);
   font-size: 2rem;
 }
+
+.controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  width: 100%;
+}
 /*# sourceMappingURL=game.css.map */

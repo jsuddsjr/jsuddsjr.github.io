@@ -107,3 +107,10 @@ $mq-medium: 500px;
     font-size: 2rem;
   }
 }
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
