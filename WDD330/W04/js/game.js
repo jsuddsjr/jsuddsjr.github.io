@@ -9,6 +9,7 @@ const board = document.querySelector(".board");
 const cells = Array.from(board?.querySelectorAll("div") || []);
 const nextPlayer = document.querySelector(".js-active-player");
 const players = ["X", "O"];
+const playerSkins = ["🍰", "🥧"]
 const combos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -21,6 +22,12 @@ const combos = [
 ];
 let activePlayer = 0;
 let startWithLastPlayer = false;
+
+function updateSkins() {
+  const divList = document.querySelectorAll('.score div');
+  playerSkins.forEach((skin, n) => divList[n].textContent = skin);
+  setActivePlayer(0);
+}
 
 /**
  * Enable or disable pointer events on the board.
@@ -52,9 +59,10 @@ function gameOver(winningCombo, player) {
 
 /**
  * Start update score board.
- * @param {String} player
+ * @param {String} playerSkin
  */
-function startPointUpdate(player) {
+function startPointUpdate(playerSkin) {
+  const player = players[playerSkins.indexOf(playerSkin)]
   const score = document.querySelector(`.js-player-${player}`);
   if (score instanceof HTMLElement) {
     score.classList.add(CLASS_WINNER);
@@ -105,7 +113,7 @@ function setActivePlayer(current) {
     board?.classList.remove(CLASS_CURSOR);
   }
   if (nextPlayer) {
-    nextPlayer.textContent = players[activePlayer];
+    nextPlayer.textContent = playerSkins[activePlayer];
   }
 }
 
@@ -140,7 +148,7 @@ function updateBoard(cell) {
     return; // This cell is already occupied.
   }
   cell.classList.add(CLASS_PLAYED);
-  cell.dataset.player = players[activePlayer];
+  cell.dataset.player = playerSkins[activePlayer];
   setActivePlayer();
   setTimeout(checkWinners, 250);
 }
@@ -151,6 +159,7 @@ cells.forEach((el) => {
   function play(evt) {
     if (evt.target instanceof HTMLElement) {
       updateBoard(evt.target);
+      evt.stopPropagation();
     }
   }
   el.addEventListener("touchend", play);
@@ -169,3 +178,5 @@ document
       startWithLastPlayer = checkbox.checked;
     }
   });
+
+  updateSkins();
