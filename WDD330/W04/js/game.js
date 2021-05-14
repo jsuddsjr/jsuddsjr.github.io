@@ -164,6 +164,9 @@ cells.forEach((el) => {
   }
   el.addEventListener("touchend", play);
   el.addEventListener("click", play);
+  el.addEventListener('keypress', (evt) => {
+    if (evt.key === ' ') play(evt);
+  });
 });
 
 document
@@ -179,4 +182,4 @@ document
     }
   });
 
-  updateSkins();
+updateSkins();

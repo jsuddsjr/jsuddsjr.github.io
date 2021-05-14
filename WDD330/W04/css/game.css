@@ -40,6 +40,13 @@
   }
 }
 
+@media screen and (min-width: 96em) {
+  .board {
+    width: 600px;
+    height: 600px;
+  }
+}
+
 .cell {
   width: 33.3333%;
   height: 33.3333%;
@@ -64,7 +71,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 6rem;
+  font-size: 5rem;
   height: 100%;
   width: 100%;
   -webkit-transform-origin: center;
@@ -77,13 +84,19 @@
 
 @media screen and (max-width: 500px) {
   .cell:before {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 }
 
 @media screen and (max-width: 350px) {
   .cell:before {
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 96em) {
+  .cell:before {
+    font-size: 6rem;
   }
 }
 
@@ -111,13 +124,13 @@
       grid-template-columns: 1fr 1fr;
   text-align: center;
   width: 100px;
-  margin: 1rem auto;
+  margin: 3rem auto;
 }
 
 .score .points:before {
   content: attr(data-points);
   display: inline-block;
-  font-size: 2rem;
+  font-size: 3rem;
   -webkit-transform-origin: center;
           transform-origin: center;
   -webkit-transform: scale(1) rotate(0deg);
@@ -129,6 +142,19 @@
 .score .winner:before {
   -webkit-transform: scale(1.8) rotate(180deg);
           transform: scale(1.8) rotate(180deg);
+}
+
+@media screen and (min-width: 500px) {
+  .score {
+    font-size: 3rem;
+    width: 150px;
+  }
+}
+
+@media screen and (min-width: 96em) {
+  .score {
+    width: 300px;
+  }
 }
 
 .controls {
