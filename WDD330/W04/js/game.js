@@ -59,11 +59,12 @@ function gameOver(winningCombo, player) {
 
 /**
  * Start update score board.
- * @param {String} playerSkin
+ * @param {String} playerSkin Character for the current player.
  */
 function startPointUpdate(playerSkin) {
   const player = players[playerSkins.indexOf(playerSkin)]
-  const score = document.querySelector(`.js-player-${player}`);
+  const selector = `.js-player-${player}.points`;
+  const score = document.querySelector(selector);
   if (score instanceof HTMLElement) {
     score.classList.add(CLASS_WINNER);
     setTimeout(updatePointFor.bind(null, score), 300);
