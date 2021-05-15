@@ -23,7 +23,7 @@ const playerSkins = [
   ["🥛", "🧋"],
   ["🔪", "🪚"],
   ["🔒", "🔓"],
-  ["📁", "📂"]
+  ["📁", "📂"],
 ];
 
 const winningCombos = [
@@ -39,10 +39,12 @@ const winningCombos = [
 
 const board = document.querySelector(".board");
 const cells = Array.from(board?.querySelectorAll("div") || []);
+const skinButton = document.querySelector(".js-skin-button");
 
 let players = playerSkins[1];
 let activePlayer = 0;
 let startWithLastPlayer = false;
+let canRotate = true;
 
 /**
  * Select the next skin in the array.
@@ -50,7 +52,17 @@ let startWithLastPlayer = false;
 function rotateSkin() {
   let index = playerSkins.indexOf(players) + 1;
   index %= playerSkins.length;
-  updateSkins(index);
+  setTimeout(updateSkins.bind(null, index), 250);
+
+  if (canRotate) {
+    const classList = skinButton.classList;
+    classList.add(CLASS_PLAYED);
+    setTimeout(() => {
+      classList.remove(CLASS_PLAYED);
+      canRotate = true;
+    }, 1000);
+    canRotate = false;
+  }
 }
 
 /**
@@ -59,20 +71,19 @@ function rotateSkin() {
  */
 function updateSkins(index) {
   const newSkins = playerSkins[index];
-  if (newSkins) {
-    // Mapping old to new skins, for quick lookup.
-    const mapSkins = new Map(players.map((s, i) => [s, newSkins[i]]));
-    cells.forEach((el) => {
-      const oldPlayer = el.dataset.player;
-      if (oldPlayer) {
-        el.dataset.player = mapSkins.get(oldPlayer);
-      }
-    });
-    players = newSkins;
-    const list = document.querySelectorAll(".score .skin");
-    list.forEach((el, n) => (el.dataset.skin = players[n]));
-    setActivePlayer(activePlayer);
-  }
+
+  // Change skins on the board.
+  const mapSkins = new Map(players.map((s, i) => [s, newSkins[i]]));
+  cells.forEach((el) => {
+    const oldPlayer = el.dataset.player;
+    if (oldPlayer) el.dataset.player = mapSkins.get(oldPlayer);
+  });
+
+  // Replace skins everywhere else.
+  players = newSkins;
+  const list = document.querySelectorAll(".score .skin");
+  list.forEach((el, n) => (el.dataset.skin = players[n]));
+  setActivePlayer(activePlayer);
 }
 
 /**
@@ -111,20 +122,27 @@ function startPointUpdate(playerSkin) {
   const player = ["X", "O"][players.indexOf(playerSkin)];
   const selector = `.js-player-${player}.points`;
   const score = document.querySelector(selector);
-  if (score instanceof HTMLElement) {
-    score.classList.add(CLASS_WINNER);
-    setTimeout(updatePointFor.bind(null, score), 300);
-  }
+  score.classList.add(CLASS_WINNER);
+  setTimeout(updatePointFor.bind(null, score), 300);
 }
 
 /**
  * Finish update score board.
- * @param {HTMLElement} score
+ * @param {Element} scoreElement
  */
-function updatePointFor(score) {
-  const points = +(score.dataset.points || 0);
-  score.dataset.points = String(points + 1);
-  score.classList.remove(CLASS_WINNER);
+function updatePointFor(scoreElement) {
+  const points = +(scoreElement.dataset.points || 0);
+  scoreElement.dataset.points = String(points + 1);
+  scoreElement.classList.remove(CLASS_WINNER);
+}
+
+/**
+ * Start game from the beginning.
+ */
+function restartGame() {
+  const points = document.querySelectorAll('.points');
+  points.forEach(el => el.dataset.points = "0");
+  clearBoard();
 }
 
 /**
@@ -221,7 +239,7 @@ cells.forEach((el) => {
 
 document
   .querySelector(".js-reset-button")
-  ?.addEventListener("click", clearBoard);
+  ?.addEventListener("click", restartGame);
 
 document
   .querySelector(".js-skin-button")
