@@ -7,6 +7,10 @@
 
 :root {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .board {
@@ -18,12 +22,6 @@
   width: 400px;
   height: 400px;
   margin: 0 auto;
-  cursor: url("../images/x-cursor.gif"), pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.board.cursor {
-  cursor: url("../images/o-cursor.gif"), pointer;
 }
 
 @media screen and (max-width: 350px) {
@@ -44,6 +42,16 @@
   .board {
     width: 600px;
     height: 600px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .board {
+    cursor: url("../images/x-cursor.gif"), pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .board.cursor {
+    cursor: url("../images/o-cursor.gif"), pointer;
   }
 }
 

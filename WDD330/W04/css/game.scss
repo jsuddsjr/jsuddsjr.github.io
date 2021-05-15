@@ -11,6 +11,8 @@ $mq-large: 96em;
 :root {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  // Disable accidental user selection of elements.
+  user-select: none;
 }
 
 .board {
@@ -19,14 +21,6 @@ $mq-large: 96em;
   width: 400px;
   height: 400px;
   margin: 0 auto;
-  cursor: url("../images/x-cursor.gif"), pointer;
-
-  &.cursor {
-    cursor: url("../images/o-cursor.gif"), pointer;
-  }
-
-  // Disable flash when touching div with cursor property applied.
-  -webkit-tap-highlight-color: transparent;
 
   @media screen and (max-width: $mq-small) {
     & {
@@ -47,6 +41,15 @@ $mq-large: 96em;
       width: 600px;
       height: 600px;
     }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    cursor: url("../images/x-cursor.gif"), pointer;
+    &.cursor {
+      cursor: url("../images/o-cursor.gif"), pointer;
+    }
+    // Disable flash when touching div with cursor property applied.
+    -webkit-tap-highlight-color: transparent;
   }
 }
 

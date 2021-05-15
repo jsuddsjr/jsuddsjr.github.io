@@ -18,8 +18,9 @@ $mq-large: 96em;
 }
 
 :root {
-  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
+  height: 100vh;
 
   @include mq($mq-small) {
     font-size: 14px;
@@ -31,7 +32,6 @@ $mq-large: 96em;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
   color: $body-color;
   margin: 0;
   padding: 0;
