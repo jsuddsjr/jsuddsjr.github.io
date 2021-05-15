@@ -6,7 +6,6 @@ const CLASS_LOSER = "loser";
 const CLASS_CURSOR = "cursor";
 
 const playerSkins = [
-  ["X", "O"],
   ["🥧", "🍰"],
   ["🐶", "🐱"],
   ["😂", "😭"],
@@ -24,6 +23,7 @@ const playerSkins = [
   ["🔪", "🪚"],
   ["🔒", "🔓"],
   ["📁", "📂"],
+  ["X", "O"],
 ];
 
 const winningCombos = [
@@ -41,7 +41,7 @@ const board = document.querySelector(".board");
 const cells = Array.from(board?.querySelectorAll("div") || []);
 const skinButton = document.querySelector(".js-skin-button");
 
-let players = playerSkins[1];
+let players = playerSkins[0];
 let activePlayer = 0;
 let startWithLastPlayer = false;
 let canRotate = true;

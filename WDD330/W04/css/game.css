@@ -17,8 +17,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 400px;
   height: 400px;
   margin: 0 auto;
@@ -140,7 +140,7 @@
 
 .score > * {
   width: 33.3333%;
-  height: 4.5rem;
+  height: 4.2rem;
 }
 
 .score .skin:before {
@@ -215,8 +215,8 @@
             transform: scale(1) rotate(0);
   }
   to {
-    -webkit-transform: scale(0.8) rotate(720deg);
-            transform: scale(0.8) rotate(720deg);
+    -webkit-transform: scale(0.8) rotate(-720deg);
+            transform: scale(0.8) rotate(-720deg);
   }
 }
 
@@ -226,8 +226,8 @@
             transform: scale(1) rotate(0);
   }
   to {
-    -webkit-transform: scale(0.8) rotate(720deg);
-            transform: scale(0.8) rotate(720deg);
+    -webkit-transform: scale(0.8) rotate(-720deg);
+            transform: scale(0.8) rotate(-720deg);
   }
 }
 
