@@ -158,7 +158,11 @@ function clearBoard() {
  */
 function resetBoard() {
   cells.forEach((el) => (el.dataset.player = ""));
-  if (!startWithLastPlayer) switchActivePlayer(0);
+  if (startWithLastPlayer) {
+    switchActivePlayer(); // Changes as normal.
+  } else {
+    switchActivePlayer(0); // Forces X to start.
+  }
   allowPointerEvents(true);
 }
 
@@ -237,16 +241,15 @@ function ariaAnnounce(message, element) {
 
 /**
  * Move focus around the board with arrow keys.
- * @param {String} direction 
- * @param {Element} current 
+ * @param {String} direction
+ * @param {Element} current
  */
 function moveFocus(direction, current) {
   if (boardDirections.has(direction)) {
     const focus = cells.indexOf(current) + boardDirections.get(direction);
-    if(focus >= 0 && focus < cells.length) {
+    if (focus >= 0 && focus < cells.length) {
       cells[focus].focus();
-    }
-    else {
+    } else {
       ariaAnnounce("Can't move that direction.");
     }
   }
