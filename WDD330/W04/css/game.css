@@ -261,6 +261,8 @@
 }
 
 .aria-announce {
-  opacity: 0.01;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
 }
 /*# sourceMappingURL=game.css.map */
