@@ -47,11 +47,12 @@ let canRotate = true;
 /**
  * Select the next skin in the array.
  */
-function rotateSkin() {
+function rotateSkins() {
   let index = playerSkins.indexOf(players) + 1;
   index %= playerSkins.length;
   setTimeout(updateSkins.bind(null, index), 250);
 
+  // Play rotation animation.
   if (canRotate) {
     const classList = skinButton.classList;
     classList.add(CLASS_PLAYED);
@@ -81,7 +82,7 @@ function updateSkins(index) {
   players = newSkins;
   const list = document.querySelectorAll(".score .skin");
   list.forEach((el, n) => (el.dataset.skin = players[n]));
-  setActivePlayer(activePlayer);
+  switchActivePlayer(activePlayer);
 }
 
 /**
@@ -101,6 +102,7 @@ function allowPointerEvents(enabled) {
  */
 function gameOver(winningCombo, player) {
   allowPointerEvents(false);
+  ariaAnnounce(player + " wins");
   if (winningCombo && player) {
     cells.forEach((el, n) =>
       el.classList.add(winningCombo.includes(n) ? CLASS_WINNER : CLASS_LOSER)
@@ -156,7 +158,7 @@ function clearBoard() {
  */
 function resetBoard() {
   cells.forEach((el) => (el.dataset.player = ""));
-  if (!startWithLastPlayer) setActivePlayer(0);
+  if (!startWithLastPlayer) switchActivePlayer(0);
   allowPointerEvents(true);
 }
 
@@ -164,7 +166,7 @@ function resetBoard() {
  * Switch active player.
  * @param {Number} [current] If defined, set active player.
  */
-function setActivePlayer(current) {
+function switchActivePlayer(current) {
   if (current !== undefined) {
     activePlayer = current;
   } else {
@@ -201,6 +203,8 @@ function checkWinners() {
   // Is the board filled?
   if (cells.every((el) => el.dataset.player)) {
     gameOver();
+  } else {
+    switchActivePlayer();
   }
   return false;
 }
@@ -215,9 +219,45 @@ function updateBoard(cell) {
   }
   cell.classList.add(CLASS_PLAYED);
   cell.dataset.player = players[activePlayer];
-  setActivePlayer();
+  ariaAnnounce(players[activePlayer] + " played", cell);
   setTimeout(checkWinners, 250);
 }
+
+/**
+ * For the enjoyment of everyone.
+ * @param {String} message
+ * @param {Element} element
+ */
+function ariaAnnounce(message, element) {
+  if (element) {
+    message += " in " + element.getAttribute("aria-label");
+  }
+  document.querySelector(".aria-announce").textContent = message;
+}
+
+/**
+ * Move focus around the board with arrow keys.
+ * @param {String} direction 
+ * @param {Element} current 
+ */
+function moveFocus(direction, current) {
+  if (boardDirections.has(direction)) {
+    const focus = cells.indexOf(current) + boardDirections.get(direction);
+    if(focus >= 0 && focus < cells.length) {
+      cells[focus].focus();
+    }
+    else {
+      ariaAnnounce("Can't move that direction.");
+    }
+  }
+}
+
+const boardDirections = new Map([
+  ["ArrowUp", -3],
+  ["ArrowDown", 3],
+  ["ArrowLeft", -1],
+  ["ArrowRight", 1],
+]);
 
 // Attach event listeners
 cells.forEach((el) => {
@@ -230,9 +270,19 @@ cells.forEach((el) => {
   }
   el.addEventListener("touchend", play);
   el.addEventListener("click", play);
-  el.addEventListener("keypress", (evt) => {
-    if (evt.key === " ") play(evt);
+  el.addEventListener("keydown", (evt) => {
+    switch (evt.code) {
+      case "Space":
+        play(evt);
+        break;
+      default:
+        moveFocus(evt.code, evt.target);
+        break;
+    }
   });
+  el.addEventListener("focusin", (evt) =>
+    ariaAnnounce(evt.target.dataset.player, evt.target)
+  );
 });
 
 document
@@ -241,7 +291,7 @@ document
 
 document
   .querySelector(".js-skin-button")
-  ?.addEventListener("click", rotateSkin);
+  ?.addEventListener("click", rotateSkins);
 
 document
   .querySelector(".js-loser-starts-checkbox")
@@ -252,4 +302,4 @@ document
     }
   });
 
-setTimeout(rotateSkin, 500);
+setTimeout(rotateSkins, 500);

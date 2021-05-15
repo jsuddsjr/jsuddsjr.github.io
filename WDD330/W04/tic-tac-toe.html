@@ -19,8 +19,8 @@
         <div class="js-player-X skin" data-skin="X"></div>
         <button class="js-skin-button" title="Switch it up!"></button>
         <div class="js-player-X skin" data-skin="O"></div>
-        <div class="js-player-X points" data-points="0"></div>
-        <div class="js-player-O points" data-points="0"></div>
+        <div class="js-player-X points" data-points="0" aria-label="points"></div>
+        <div class="js-player-O points" data-points="0" aria-label="points"></div>
       </div>
       <div class="board">
         <div class="cell" data-player="" tabindex="0" role="button" aria-label="upper left"></div>
@@ -33,7 +33,7 @@
         <div class="cell" data-player="" tabindex="0" role="button" aria-label="lower middle"></div>
         <div class="cell" data-player="" tabindex="0" role="button" aria-label="lower right"></div>
       </div>
-      <p class="turn">It's your turn, <span class="js-active-player">X</span>.</p>
+      <p class="turn" role="alert">It's your turn, <span class="js-active-player">X</span>.</p>
       <div class="controls">
         <button class="js-reset-button">Reset the score</button>
         <label
@@ -41,6 +41,7 @@
           <input type="checkbox" class="js-loser-starts-checkbox" />
         </label>
       </div>
+      <p class="aria-announce" role="alert"></p>
     </section>
     <script src="js/game.js" async></script>
   </body>

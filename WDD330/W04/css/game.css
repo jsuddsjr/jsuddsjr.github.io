@@ -259,4 +259,8 @@
           align-items: baseline;
   width: 100%;
 }
+
+.aria-announce {
+  opacity: 0.01;
+}
 /*# sourceMappingURL=game.css.map */
