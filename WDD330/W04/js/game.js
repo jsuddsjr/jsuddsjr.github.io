@@ -6,24 +6,22 @@ const CLASS_LOSER = "loser";
 const CLASS_CURSOR = "cursor";
 
 const playerSkins = [
+  ["X", "O"],
   ["🥧", "🍰"],
   ["🐶", "🐱"],
   ["😂", "😭"],
   ["🦈", "🦑"],
-  ["👍", "👎"],
-  ["❌", "✔️"],
   ["😎", "🥸"],
   ["🕷️", "🕸️"],
   ["👶", "🧷"],
   ["😇", "😈"],
   ["🐲", "🦄"],
   ["🐇", "🍀"],
-  ["📪", "📫"],
-  ["🥛", "🧋"],
+  ["☕", "🧋"],
   ["🔪", "🪚"],
+  ["📪", "📫"],
+  ["👍", "👎"],
   ["🔒", "🔓"],
-  ["📁", "📂"],
-  ["X", "O"],
 ];
 
 const winningCombos = [
@@ -140,8 +138,8 @@ function updatePointFor(scoreElement) {
  * Start game from the beginning.
  */
 function restartGame() {
-  const points = document.querySelectorAll('.points');
-  points.forEach(el => el.dataset.points = "0");
+  const points = document.querySelectorAll(".points");
+  points.forEach((el) => (el.dataset.points = "0"));
   clearBoard();
 }
 
@@ -254,4 +252,4 @@ document
     }
   });
 
-updateSkins(1);
+setTimeout(rotateSkin, 500);
