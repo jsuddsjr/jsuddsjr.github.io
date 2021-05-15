@@ -11,6 +11,11 @@ const playerSkins = [
   ["🐶", "🐱"],
   ["😂", "😭"],
   ["🦈", "🦑"],
+  ["👍", "👎"],
+  ["❌", "✔️"],
+  ["😎", "🥸"],
+  ["🕷️", "🕸️"],
+  ["🥷", "🐱‍👤"],
 ];
 
 const winningCombos = [
@@ -32,22 +37,32 @@ let activePlayer = 0;
 let startWithLastPlayer = false;
 
 /**
- *
- * @param {Number} index
+ * Select the next skin in the array.
+ */
+function rotateSkin() {
+  let index = playerSkins.indexOf(players) + 1;
+  index %= playerSkins.length;
+  updateSkins(index);
+}
+
+/**
+ * Apply a new skin to the board.
+ * @param {Number} index Index of new player skins
  */
 function updateSkins(index) {
   const newSkins = playerSkins[index];
   if (newSkins) {
+    // Mapping old to new skins, for quick lookup.
     const mapSkins = new Map(players.map((s, i) => [s, newSkins[i]]));
     cells.forEach((el) => {
       const oldPlayer = el.dataset.player;
       if (oldPlayer) {
-        el.dataset.player = mapSkins.get(oldplayer);
+        el.dataset.player = mapSkins.get(oldPlayer);
       }
     });
-    const list = document.querySelectorAll(".score .skin");
-    players.forEach((skin, n) => (list[n].dataset.skin = skin));
     players = newSkins;
+    const list = document.querySelectorAll(".score .skin");
+    list.forEach((el, n) => (el.dataset.skin = players[n]));
     setActivePlayer(activePlayer);
   }
 }
@@ -199,6 +214,10 @@ cells.forEach((el) => {
 document
   .querySelector(".js-reset-button")
   ?.addEventListener("click", clearBoard);
+
+document
+  .querySelector(".js-skin-button")
+  ?.addEventListener("click", rotateSkin);
 
 document
   .querySelector(".js-loser-starts-checkbox")
