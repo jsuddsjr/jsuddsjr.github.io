@@ -102,13 +102,14 @@ function allowPointerEvents(enabled) {
  */
 function gameOver(winningCombo, player) {
   allowPointerEvents(false);
-  ariaAnnounce(player + " wins");
   if (winningCombo && player) {
+    ariaAnnounce(player + " wins");
     cells.forEach((el, n) =>
       el.classList.add(winningCombo.includes(n) ? CLASS_WINNER : CLASS_LOSER)
     );
     startPointUpdate(player);
   } else {
+    ariaAnnounce("The game is a draw.")
     cells.forEach((el) => el.classList.add(CLASS_LOSER));
   }
   setTimeout(clearBoard, 1000);

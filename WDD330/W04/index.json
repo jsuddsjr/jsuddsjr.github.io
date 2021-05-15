@@ -24,6 +24,6 @@
   ],
   "questions": [
     "<strong>Found online</strong>: There are two meanings for {}: an object or a block. This is a problem for arrow functions that return an object. In order to differentiate between a code  block, we need to use () => ({}) to return an object. <pre>(n) => {n}   // undefined\n(n) => ({n}) // object</pre>",
-    "Check out my !!LINK 0!!! It's got animations, custom cursors, and a whole lotta 🥧 and 🍰. <small>Plus, it's a lot of fun.</small>"
+    "Check out the !!LINK 0!!! It's got animations, custom cursors, and a whole lotta 🥧 and 🍰. <small>Plus, it's fully accessible... (HINT: Turn on NVDA.)</small>"
   ]
 }
