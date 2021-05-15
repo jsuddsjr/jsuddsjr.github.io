@@ -60,12 +60,17 @@
   height: 33.3333%;
 }
 
+.cell:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .cell:nth-child(3n + 2), .cell:nth-child(3n + 3) {
-  border-left: 1px solid black;
+  border-left: 2px solid black;
 }
 
 .cell:nth-last-child(n + 4) {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
 }
 
 .cell:before {
@@ -184,6 +189,12 @@
 .js-skin-button {
   border: none;
   background: none;
+}
+
+.js-skin-button:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
 }
 
 .js-skin-button:before {

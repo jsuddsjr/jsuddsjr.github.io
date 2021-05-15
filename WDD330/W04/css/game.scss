@@ -51,13 +51,18 @@ $mq-large: 96em;
   width: 33.3333%;
   height: 33.3333%;
 
+  &:focus {
+    outline: none;
+    background-color: rgba(black, 0.1 );
+  }
+
   &:nth-child(3n + 2),
   &:nth-child(3n + 3) {
-    border-left: 1px solid black;
+    border-left: 2px solid black;
   }
 
   &:nth-last-child(n + 4) {
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
   }
 
   &:before {
@@ -145,6 +150,12 @@ $mq-large: 96em;
 .js-skin-button {
   border: none;
   background: none;
+
+  &:focus {
+    outline: none;
+    background-color: rgba(black, 0.1 );
+    border-radius: 50%;
+  }
 
   &:before {
     content: "";
