@@ -24,6 +24,10 @@
     {
       "url": "W04/js-forms.html",
       "label": "JavaScript forms"
+    },
+    {
+      "url": "W04/js-form-controls.html",
+      "label": "JavaScript form controls"
     }
   ],
   "questions": [

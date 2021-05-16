@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Form Controls</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <style>
+      form > div {
+        display: grid;
+        row-gap: 0.4rem;
+      }
+      .error {
+        background: #f99;
+        border: #900 1px solid;
+        display: none;
+      }
+      button {
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <header></header>
+      <form id="heroForm">
+        <div>
+          <label for="heroName"
+            >Name:
+            <input
+              type="text"
+              id="heroName"
+              name="heroName"
+              autofocus
+              placeholder="Your Super Hero Name"
+              maxlength="32"
+              required
+            />
+          </label>
+          <label for="realName"
+            >Real Name:
+            <input
+              type="password"
+              name="realName"
+              id="realName"
+              placeholder="Secret Real Name"
+          /></label>
+          <h4>Super Powers</h4>
+          <label for="flight">
+            <input
+              type="checkbox"
+              id="flight"
+              value="Flight"
+              name="powers"
+              checked
+            />
+            Flight
+          </label>
+          <label for="strength">
+            <input
+              type="checkbox"
+              id="strength"
+              value="Strength"
+              name="powers"
+            />
+            Super Strength
+          </label>
+          <label for="speed">
+            <input
+              type="checkbox"
+              id="speed"
+              value="Super Speed"
+              name="powers"
+            />
+            Super Speed
+          </label>
+          <label for="energy">
+            <input
+              type="checkbox"
+              id="energy"
+              value="Energy Blasts"
+              name="powers"
+            />
+            Energy Blasts
+          </label>
+          <label for="telekinesis">
+            <input
+              type="checkbox"
+              id="telekinesis"
+              value="Telekinesis"
+              name="powers"
+            />
+            Telekinesis
+          </label>
+          <p>What type of hero are you?</p>
+          <label for="hero"
+            >Hero:
+            <input
+              type="radio"
+              name="category"
+              value="Hero"
+              id="hero"
+              checked
+            />
+          </label>
+          <label for="villain"
+            >Villain:
+            <input type="radio" name="category" value="Villain" id="villain" />
+          </label>
+          <label for="anti-hero"
+            >Anti-Hero:
+            <input
+              type="radio"
+              name="category"
+              value="Antihero"
+              id="anti-hero"
+            />
+          </label>
+          <h4>Particulars</h4>
+          <label for="age"
+            >Age: <input type="number" id="age" name="age" min="0" step="1"
+          /></label>
+          <label for="City"
+            >Base of Operations:
+            <select name="city" id="city" required>
+              <option value="" selected>Choose a City</option>
+              <option value="Metropolis">Metropolis</option>
+              <option value="Gotham City">Gotham City</option>
+              <option value="Keystone City">Keystone City</option>
+              <option value="Coast City">Coast City</option>
+              <option value="Star City">Star City</option>
+            </select>
+          </label>
+          <h4>Origin Story</h4>
+          <textarea id="origin" name="origin" rows="20" cols="60"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+    </section>
+    <section>
+      <h1>JavaScript Form Controls</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script src="js/forms.js"></script>
+
+    <script>
+      runCode([
+        testFormValidation,
+        testFormValidationInline,
+        testMakeHero,
+        "document.forms[0].origin.value = 'Born as Kal-El on the planet Krypton...'",
+      ]);
+    </script>
+  </body>
+</html>
