@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Object-Oriented Programming</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Object-Oriented Programming</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script src="js/oop.js"></script>
+
+    <script>
+      runCode([
+        testConstructorFunction,
+        "whiteDice = new Dice",
+        "whiteDice instanceof Dice",
+
+        "// Built-in Constructors",
+        "literalObject = {}",
+        "constructedObject = new Object()",
+        "literalObject instanceof Object",
+        "literalArray = [1,2,3]",
+        "constructedArray = new Array(1,2,3)",
+
+        "new Array(5)",
+        "new Array(2.5)",
+
+        testES6ClassDeclaration,
+
+        "blueDice = new DiceClass(20)",
+        "blueDice instanceof DiceClass",
+        "blueDice.sides",
+        "blueDice.roll()",
+
+        "noDice = Dice()",
+        "noDice = DiceClass()",
+
+        "// Static methods",
+        "DiceClass.description = 'A way of choosing random numbers'",
+        "blueDice.description = 'Won't work'"
+
+      ]);
+    </script>
+  </body>
+</html>

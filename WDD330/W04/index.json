@@ -7,17 +7,12 @@
       "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
     },
     {
-      "url": "W04/quiz-ninja.html",
-      "label": "Quiz Ninja",
-      "info": "Now with FORM input!"
-    },
-    {
       "url": "W04/js-weird.html",
       "label": "Weird JavaScript",
       "info": "This shouldn't work, but it does. (Source <a href='https://bluewings.github.io/en/writing-a-sentence-without-using-the-alphabet'>Writing a sentence without using the alphabet</a>.)"
     },
     {
-      "url": "W03/js-events.html",
+      "url": "W03/js-events.html (from JavaScript: Novice to Ninja)",
       "label": "JavaScript events",
       "info": "Working examples with events. (From last week.)"
     },
@@ -28,6 +23,16 @@
     {
       "url": "W04/js-form-controls.html",
       "label": "JavaScript form controls"
+    },
+    {
+      "url": "W04/js-oop.html",
+      "label": "JavaScript Object Oriented Programming",
+      "info": "(OOPs!)"
+    },
+    {
+      "url": "W04/quiz-ninja.html",
+      "label": "Quiz Ninja!",
+      "info": "Now with FORM input!"
     }
   ],
   "questions": [

@@ -64,13 +64,21 @@ const toTypeString = (unknown) => {
     result = "Window { ... }";
   } else if (unknown instanceof Object) {
     console.log(myType(unknown));
-    result = objectName(unknown) + JSON.stringify(unknown, null, 2);
+    const clone = Object.assign({}, unknown);
+    Object.keys(clone).forEach((k) => {
+      const value = clone[k];
+      if (value instanceof Function) {
+        clone[k] = "[Function]";
+      }
+    });
+    result = objectName(unknown) + JSON.stringify(clone, null, 2);
     if (result.length > 512) {
       result = result.substr(0, 512) + "... }";
     }
   } else {
     result = String(unknown);
   }
+
   return result;
 };
 
@@ -149,7 +157,7 @@ const runCode = (code) => {
         `<a id="${line.name}"></a><h4>${functionName}</h4><pre>${unHtml(
           body
         )}</pre>`,
-        line["associatedHtml"] || ''
+        line["associatedHtml"] || ""
       );
 
       writeToOutput(html);
