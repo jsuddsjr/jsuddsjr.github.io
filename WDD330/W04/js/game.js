@@ -70,6 +70,8 @@ function rotateSkins() {
  * @param {String[]} newSkins New player skins
  */
 function updateSkins(newSkins) {
+  ariaAnnounce(`${newSkins[0]} versus ${newSkins[1]}`);
+
   // Change skins on the board.
   const mapSkins = new Map(players.map((s, i) => [s, newSkins[i]]));
   cells.forEach((el) => {
@@ -119,25 +121,28 @@ function gameOver(winningCombo, player) {
  * @param {String} playerSkin Character for the current player.
  */
 function startPointUpdate(playerSkin) {
-  const player = ["X", "O"][players.indexOf(playerSkin)];
-  const selector = `.js-player-${player}.points`;
-  const scoreElement = document.querySelector(selector);
+  const scores = document.querySelectorAll(".points");
+  const winner = scores[players.indexOf(playerSkin)];
 
   // Block multiple events from assigning points.
-  if (!scoreElement.classList.contains(CLASS_WINNER)) {
-    scoreElement.classList.add(CLASS_WINNER);
-    setTimeout(updatePointFor.bind(null, scoreElement), 300);
+  if (!winner.classList.contains(CLASS_WINNER)) {
+    winner.classList.add(CLASS_WINNER);
+    setTimeout(endPointUpdate.bind(null, winner, scores), 300);
   }
 }
 
 /**
  * Finish update score board.
- * @param {Element} scoreElement
+ * @param {Element} winner
+ * @param {Element[]} scores
  */
-function updatePointFor(scoreElement) {
-  const points = +(scoreElement.dataset.points || 0);
-  scoreElement.dataset.points = String(points + 1);
-  scoreElement.classList.remove(CLASS_WINNER);
+function endPointUpdate(winner, scores) {
+  const points = +(winner.dataset.points || 0) + 1;
+  winner.dataset.points = points.toString();
+  winner.classList.remove(CLASS_WINNER);
+
+  const values = [...scores].map((el) => el.dataset.points);
+  ariaAnnounce(`Score is ${values[0]} to ${values[1]}`);
 }
 
 /**
@@ -175,11 +180,14 @@ function resetBoard() {
  * @param {Number} [current] If defined, set active player.
  */
 function switchActivePlayer(current) {
-  if (current === undefined) {
-    activePlayer ^= 1;
-  } else {
-    activePlayer = current;
+  if (activePlayer === current) {
+    ariaAnnounce(`${players[current]} plays again`);
+    return;
   }
+
+  // Swap the active player.
+  activePlayer ^= 1;
+
   // Swap the active cursor.
   if (activePlayer === 1) {
     board?.classList.add(CLASS_CURSOR);

@@ -16,31 +16,31 @@ $mq-large: 96em;
 }
 
 .board {
+  --board-size: 400px;
+
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
-  height: 400px;
+  width: var(--board-size);
+  height: var(--board-size);
   margin: 0 auto;
 
-  @media screen and (max-width: $mq-small) {
-    width: 220px;
-    height: 220px;
+  @media screen and (max-width: $mq-medium) {
+    --board-size: 300px;
   }
 
-  @media screen and (max-width: $mq-medium) {
-    width: 300px;
-    height: 300px;
+  @media screen and (max-width: $mq-small) {
+    --board-size: 220px;
   }
 
   @media screen and (min-width: $mq-large) {
-    width: 600px;
-    height: 600px;
+    --board-size: 600px;
   }
 
   @media (hover: hover) and (pointer: fine) {
-    cursor: url("../images/x-cursor.gif"), pointer;
+    --cursor-url: url("../images/x-cursor.gif");
+    cursor: var(--cursor-url), pointer;
     &.cursor {
-      cursor: url("../images/o-cursor.gif"), pointer;
+      --cursor-url: url("../images/o-cursor.gif");
     }
     // Disable flash when touching div with cursor property applied.
     -webkit-tap-highlight-color: transparent;
@@ -58,11 +58,11 @@ $mq-large: 96em;
 
   &:nth-child(3n + 2),
   &:nth-child(3n + 3) {
-    border-left: 2px solid black;
+    border-left: 3px solid black;
   }
 
   &:nth-last-child(n + 4) {
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
   }
 
   &:before {
@@ -76,12 +76,12 @@ $mq-large: 96em;
     transform: scale(0);
     transition: all 350ms ease-in-out;
 
-    @media screen and (max-width: $mq-small) {
-      font-size: 3rem;
-    }
-
     @media screen and (max-width: $mq-medium) {
       font-size: 4rem;
+    }
+
+    @media screen and (max-width: $mq-small) {
+      font-size: 3rem;
     }
 
     @media screen and (min-width: $mq-large) {
@@ -132,14 +132,12 @@ $mq-large: 96em;
     transform: scale(1.8) rotate(180deg);
   }
 
-  @media screen and (max-width: $mq-small) {
-    font-size: 4rem;
-    width: 200px;
+  @media screen and (max-width: $mq-medium) {
+    width: 250px;
   }
 
-  @media screen and (max-width: $mq-medium) {
-    font-size: 3rem;
-    width: 250px;
+  @media screen and (max-width: $mq-small) {
+    width: 200px;
   }
 
   @media screen and (min-width: $mq-large) {
@@ -181,7 +179,7 @@ $mq-large: 96em;
     from {
       transform: scale(0.8) rotate(0);
     }
-    7% {
+    10% {
       transform: scale(1) rotate(0);
     }
     to {
@@ -198,12 +196,13 @@ $mq-large: 96em;
 .controls {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  column-gap: 1.5rem;
+  align-items: flex-start;
   width: 100%;
 }
 
 .aria-announce {
-  // Invisible, but not taking up space.
+  // Technically visible, but not taking up space.
   margin: 0;
   height: 0;
   overflow: hidden;
