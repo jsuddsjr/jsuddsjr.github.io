@@ -45,13 +45,13 @@
     },
     {
       "url": "W04/quiz-ninja-objects.html",
-      "label": "Quiz Ninja! with options",
+      "label": "Quiz Ninja! with option buttons",
       "info": "Once more, with feeling!"
     }
   ],
   "questions": [
     "<strong>Found online</strong>: There are two meanings for {}: an object or a block. This is a problem for arrow functions that return an object. In order to differentiate between a code  block, we need to use () => ({}) to return an object. <pre>(n) => {n}   // undefined\n(n) => ({n}) // object</pre>",
-    "<strong>Also found online</strong>: A way to use the idosyncracies of JavaScript to generate text. See !!LINK 2!!.",
-    "You should definitely check out the !!LINK 0!!! It's got animations, custom cursors, and a whole lotta 🥧 and 🍰. <small>Plus, it's fully accessible... (HINT: Try it with your favorite screen reader.)</small>"
+    "<strong>Also found online</strong>: A way to use the idosyncracies of JavaScript to generate text. See !!LINK 1!!.",
+    "You should definitely check out the !!LINK 0!!! It's got animations, custom cursors, and a whole lotta 🥧 and 🍰. <small>Plus, it's fully accessible... (HINT: Try it with your favorite screen reader.)</small> It's your turn, 👶."
   ]
 }
