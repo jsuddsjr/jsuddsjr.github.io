@@ -83,7 +83,7 @@ function updateSkins(newSkins) {
   players = newSkins;
   const list = document.querySelectorAll(".score .skin");
   list.forEach((el, n) => (el.dataset.skin = players[n]));
-  updateActivePlayer();
+  showActivePlayer();
 }
 
 /**
@@ -184,7 +184,7 @@ function switchActivePlayer(current) {
     // Swap the active player.
     activePlayer ^= 1;
     board.classList.toggle(CLASS_CURSOR);
-    updateActivePlayer();
+    showActivePlayer();
   }
   else {
     ariaAnnounce(`${players[current]} plays again`);
@@ -192,12 +192,11 @@ function switchActivePlayer(current) {
 }
 
 /**
- * Update the active player.
+ * Update the active player indicator.
  */
-function updateActivePlayer() {
-  // Always update in case player emojis are switched.
+function showActivePlayer() {
   setTimeout(() => {
-    // Announce later.
+    // This is an announcement region, so delay after other events.
     const nextPlayer = document.querySelector(".js-active-player");
     nextPlayer.textContent = players[activePlayer];
   }, 250);
