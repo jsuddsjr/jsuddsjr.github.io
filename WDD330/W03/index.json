@@ -53,6 +53,11 @@
       "url": "W03/js-object-dom2.html",
       "label": "DOM objects (continued)",
       "info": "Who needs heroes when you have a squad?"
+    },
+    {
+      "url": "W04/quiz-ninja.html",
+      "label": "Quiz Ninja",
+      "info": "How many superhero secret identities do you know?"
     }
   ],
   "questions": [
