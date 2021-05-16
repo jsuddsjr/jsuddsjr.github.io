@@ -36,6 +36,13 @@ const winningCombos = [
   [2, 5, 8],
 ];
 
+const boardDirections = new Map([
+  ["ArrowUp", -3],
+  ["ArrowDown", 3],
+  ["ArrowLeft", -1],
+  ["ArrowRight", 1],
+]);
+
 const board = document.querySelector(".board");
 const cells = Array.from(board?.querySelectorAll("div") || []);
 const skinButton = document.querySelector(".js-skin-button");
@@ -44,6 +51,34 @@ let players = playerSkins[0];
 let activePlayer = 0;
 let startWithLastPlayer = false;
 let canRotate = true;
+
+/**
+ * For the enjoyment of everyone.
+ * @param {String} message
+ * @param {Element} element
+ */
+ function ariaAnnounce(message, element) {
+  if (element) {
+    message += " in " + element.getAttribute("aria-label");
+  }
+  document.querySelector(".aria-announce").textContent = message;
+}
+
+/**
+ * Move focus around the board with arrow keys.
+ * @param {String} direction
+ * @param {Element} current
+ */
+function moveFocus(direction, current) {
+  if (boardDirections.has(direction)) {
+    const focus = cells.indexOf(current) + boardDirections.get(direction);
+    if (focus >= 0 && focus < cells.length) {
+      cells[focus].focus();
+    } else {
+      ariaAnnounce("can't move that direction");
+    }
+  }
+}
 
 /**
  * Select the next skin in the array.
@@ -149,6 +184,7 @@ function endPointUpdate(winner, scores) {
  * Start game from the beginning.
  */
 function restartGame() {
+  ariaAnnounce("game reset");
   const points = document.querySelectorAll(".points");
   points.forEach((el) => (el.dataset.points = "0"));
   startClearBoard();
@@ -185,8 +221,7 @@ function switchActivePlayer(current) {
     activePlayer ^= 1;
     board.classList.toggle(CLASS_CURSOR);
     showActivePlayer();
-  }
-  else {
+  } else {
     ariaAnnounce(`${players[current]} plays again`);
   }
 }
@@ -251,41 +286,6 @@ function updateBoard(cell) {
   }
 }
 
-/**
- * For the enjoyment of everyone.
- * @param {String} message
- * @param {Element} element
- */
-function ariaAnnounce(message, element) {
-  if (element) {
-    message += " in " + element.getAttribute("aria-label");
-  }
-  document.querySelector(".aria-announce").textContent = message;
-}
-
-/**
- * Move focus around the board with arrow keys.
- * @param {String} direction
- * @param {Element} current
- */
-function moveFocus(direction, current) {
-  if (boardDirections.has(direction)) {
-    const focus = cells.indexOf(current) + boardDirections.get(direction);
-    if (focus >= 0 && focus < cells.length) {
-      cells[focus].focus();
-    } else {
-      ariaAnnounce("Can't move that direction.");
-    }
-  }
-}
-
-const boardDirections = new Map([
-  ["ArrowUp", -3],
-  ["ArrowDown", 3],
-  ["ArrowLeft", -1],
-  ["ArrowRight", 1],
-]);
-
 // Attach event listeners
 cells.forEach((el) => {
   /** @type {EventListener} */
@@ -298,13 +298,10 @@ cells.forEach((el) => {
   el.addEventListener("touchend", play);
   el.addEventListener("click", play);
   el.addEventListener("keydown", (evt) => {
-    switch (evt.code) {
-      case "Space":
-        play(evt);
-        break;
-      default:
-        moveFocus(evt.code, evt.target);
-        break;
+    if (evt.code === "Space") {
+      play(evt);
+    } else {
+      moveFocus(evt.code, evt.target);
     }
   });
   el.addEventListener("focusin", (evt) =>
@@ -329,4 +326,5 @@ document
     }
   });
 
+// Pie VS. Cake!!
 setTimeout(rotateSkins, 500);
