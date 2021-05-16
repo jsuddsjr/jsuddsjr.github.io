@@ -100,7 +100,6 @@ function allowPointerEvents(enabled) {
  * @param {String} [player]
  */
 function gameOver(winningCombo, player) {
-  allowPointerEvents(false);
   if (winningCombo && player) {
     ariaAnnounce(player + " wins");
     cells.forEach((el, n) =>
@@ -121,9 +120,13 @@ function gameOver(winningCombo, player) {
 function startPointUpdate(playerSkin) {
   const player = ["X", "O"][players.indexOf(playerSkin)];
   const selector = `.js-player-${player}.points`;
-  const score = document.querySelector(selector);
-  score.classList.add(CLASS_WINNER);
-  setTimeout(updatePointFor.bind(null, score), 300);
+  const scoreElement = document.querySelector(selector);
+
+  // Block multiple events from assigning points.
+  if (!scoreElement.classList.contains(CLASS_WINNER)) {
+    scoreElement.classList.add(CLASS_WINNER)
+    setTimeout(updatePointFor.bind(null, scoreElement), 300);
+  }
 }
 
 /**
@@ -171,23 +174,23 @@ function resetBoard() {
  * @param {Number} [current] If defined, set active player.
  */
 function switchActivePlayer(current) {
-  if (current !== undefined) {
-    activePlayer = current;
-  } else {
+  if (current === undefined) {
     activePlayer ^= 1;
+  } else {
+    activePlayer = current;
   }
   // Swap the active cursor.
-  if (activePlayer) {
+  if (activePlayer === 1) {
     board?.classList.add(CLASS_CURSOR);
   } else {
     board?.classList.remove(CLASS_CURSOR);
   }
 
   setTimeout(() => {
-    // Show next turn.
+    // Announce later.
     const nextPlayer = document.querySelector(".js-active-player");
     nextPlayer.textContent = players[activePlayer];
-  }, 150);
+  }, 250);
 }
 
 /**
@@ -208,10 +211,11 @@ function checkWinners() {
   }
   // Is the board filled?
   if (cells.every((el) => el.dataset.player)) {
+    allowPointerEvents(false);
     setTimeout(gameOver, 250);
-  } else {
-    switchActivePlayer();
+    return true;
   }
+  
   return false;
 }
 
@@ -227,9 +231,11 @@ function updateBoard(cell) {
   const currentPlayer = players[activePlayer];
   cell.classList.add(CLASS_PLAYED);
   cell.dataset.player = currentPlayer;
-  checkWinners();
-
   ariaAnnounce(currentPlayer + " played");
+
+  if (!checkWinners()) {
+    switchActivePlayer();
+  }
 }
 
 /**
