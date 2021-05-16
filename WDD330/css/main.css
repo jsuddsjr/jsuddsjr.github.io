@@ -62,8 +62,8 @@ header {
   margin-bottom: 2rem;
   color: white;
   background-color: rgba(0, 0, 80, 0.8);
-  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
 }
 
 header h1 {
