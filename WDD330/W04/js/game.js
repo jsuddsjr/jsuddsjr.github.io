@@ -12,11 +12,12 @@ const playerSkins = [
   ["😂", "😭"],
   ["🦈", "🦑"],
   ["😎", "🥸"],
+  ["☀️", "🌙"],
   ["🕷️", "🕸️"],
   ["👶", "🧷"],
   ["😇", "😈"],
   ["🐲", "🦄"],
-  ["🐇", "🍀"],
+  ["🐇", "🥕"],
   ["☕", "🧋"],
   ["🔪", "🪚"],
   ["📪", "📫"],
@@ -50,7 +51,7 @@ let canRotate = true;
 function rotateSkins() {
   let index = playerSkins.indexOf(players) + 1;
   index %= playerSkins.length;
-  setTimeout(updateSkins.bind(null, index), 250);
+  setTimeout(updateSkins.bind(null, playerSkins[index]), 250);
 
   // Play rotation animation.
   if (canRotate) {
@@ -66,11 +67,9 @@ function rotateSkins() {
 
 /**
  * Apply a new skin to the board.
- * @param {Number} index Index of new player skins
+ * @param {String[]} newSkins New player skins
  */
-function updateSkins(index) {
-  const newSkins = playerSkins[index];
-
+function updateSkins(newSkins) {
   // Change skins on the board.
   const mapSkins = new Map(players.map((s, i) => [s, newSkins[i]]));
   cells.forEach((el) => {
@@ -109,7 +108,7 @@ function gameOver(winningCombo, player) {
     );
     startPointUpdate(player);
   } else {
-    ariaAnnounce("The game is a draw.")
+    ariaAnnounce("The game is a draw.");
     cells.forEach((el) => el.classList.add(CLASS_LOSER));
   }
   setTimeout(clearBoard, 1000);
@@ -183,11 +182,12 @@ function switchActivePlayer(current) {
   } else {
     board?.classList.remove(CLASS_CURSOR);
   }
-  // Show next turn.
-  const nextPlayer = document.querySelector(".js-active-player");
-  if (nextPlayer) {
+
+  setTimeout(() => {
+    // Show next turn.
+    const nextPlayer = document.querySelector(".js-active-player");
     nextPlayer.textContent = players[activePlayer];
-  }
+  }, 150);
 }
 
 /**
@@ -201,13 +201,14 @@ function checkWinners() {
       thisPlayer === cells[y].dataset.player &&
       thisPlayer === cells[z].dataset.player
     ) {
-      gameOver([x, y, z], thisPlayer);
+      allowPointerEvents(false);
+      setTimeout(gameOver.bind(null, [x, y, z], thisPlayer), 250);
       return true;
     }
   }
   // Is the board filled?
   if (cells.every((el) => el.dataset.player)) {
-    gameOver();
+    setTimeout(gameOver, 250);
   } else {
     switchActivePlayer();
   }
@@ -222,10 +223,13 @@ function updateBoard(cell) {
   if (cell.dataset.player) {
     return; // This cell is already occupied.
   }
+
+  const currentPlayer = players[activePlayer];
   cell.classList.add(CLASS_PLAYED);
-  cell.dataset.player = players[activePlayer];
-  ariaAnnounce(players[activePlayer] + " played", cell);
-  setTimeout(checkWinners, 250);
+  cell.dataset.player = currentPlayer;
+  checkWinners();
+
+  ariaAnnounce(currentPlayer + " played");
 }
 
 /**
