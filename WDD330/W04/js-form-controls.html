@@ -124,7 +124,7 @@
           /></label>
           <label for="City"
             >Base of Operations:
-            <select name="city" id="city" required>
+            <select name="city" id="city">
               <option value="" selected>Choose a City</option>
               <option value="Metropolis">Metropolis</option>
               <option value="Gotham City">Gotham City</option>
@@ -136,7 +136,7 @@
           <h4>Origin Story</h4>
           <textarea id="origin" name="origin" rows="20" cols="60"></textarea>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit" disabled>Submit</button>
         <button type="reset">Reset</button>
       </form>
     </section>
@@ -151,6 +151,7 @@
       runCode([
         testFormValidation,
         testFormValidationInline,
+        testBlockSubmitIfEmptyField,
         testMakeHero,
         "document.forms[0].origin.value = 'Born as Kal-El on the planet Krypton...'",
       ]);
