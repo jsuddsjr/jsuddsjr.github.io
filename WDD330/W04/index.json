@@ -35,6 +35,10 @@
       "info": "One of the coolest JavaScript features."
     },
     {
+      "url": "W04/js-methods.html",
+      "label": "JavaScript Public and Private methods"
+    },
+    {
       "url": "W04/quiz-ninja.html",
       "label": "Quiz Ninja!",
       "info": "Now with FORM input!"

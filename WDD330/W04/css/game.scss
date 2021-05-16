@@ -179,6 +179,9 @@ $mq-large: 96em;
 
   @keyframes spin {
     from {
+      transform: scale(0.8) rotate(0);
+    }
+    7% {
       transform: scale(1) rotate(0);
     }
     to {
