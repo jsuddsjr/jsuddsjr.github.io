@@ -2,7 +2,7 @@
  * @param {Object} obj
  * @returns Reported name of any object
  */
-const myType = (obj) => Object.prototype.toString.call(obj).slice(8, -1);
+const myType = (obj) => obj?.constructor?.name || Object.prototype.toString.call(obj).slice(8, -1);
 
 /**
  * Ensure strings with line breaks are displayed preformatted.
@@ -49,9 +49,9 @@ const toTypeString = (unknown) => {
     result = `[${asStrings.join(", ")}]`;
   } else if (unknown instanceof Set || unknown instanceof Map) {
     const asArray = toTypeString([...unknown]);
-    result = `${myType(unknown)} { ${asArray.substr(1, asArray.length - 2)} }`;
+    result = `${objectName(unknown)} { ${asArray.substr(1, asArray.length - 2)} }`;
   } else if (unknown instanceof WeakSet || unknown instanceof WeakMap) {
-    result = `${myType(unknown)} {}`;
+    result = `${objectName(unknown)} {}`;
   } else if (unknown instanceof RegExp) {
     result = unknown.toString();
   } else if (unknown instanceof HTMLElement) {
@@ -61,9 +61,8 @@ const toTypeString = (unknown) => {
   } else if (unknown instanceof HTMLCollection || unknown instanceof NodeList) {
     result = objectName(unknown) + toTypeString(Array.from(unknown));
   } else if (unknown instanceof Window) {
-    result = "Window { ... }";
-  } else if (unknown instanceof Object) {
-    console.log(myType(unknown));
+    result = "a<i>Window</i> { ... }";
+  } else if (typeof unknown === "object") {
     const clone = Object.assign({}, unknown);
     Object.keys(clone).forEach((k) => {
       const value = clone[k];
