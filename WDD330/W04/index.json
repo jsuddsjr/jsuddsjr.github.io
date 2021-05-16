@@ -42,6 +42,11 @@
       "url": "W04/quiz-ninja.html",
       "label": "Quiz Ninja!",
       "info": "Now with FORM input!"
+    },
+    {
+      "url": "W04/quiz-ninja-objects.html",
+      "label": "Quiz Ninja! with options",
+      "info": "Once more, with feeling!"
     }
   ],
   "questions": [

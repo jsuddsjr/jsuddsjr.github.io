@@ -4,76 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Prototypal Inheritance</title>
+    <title>JavaScript Public and Private methods</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/common.css" />
   </head>
   <body>
     <section>
-      <h1>JavaScript Prototypal Inheritance</h1>
+      <h1>JavaScript Public and Private methods</h1>
       <div id="output"></div>
     </section>
     <script src="../js/run.js"></script>
-    <script src="js/prototypes.js"></script>
+    <script src="js/methods.js"></script>
 
     <script>
       runCode([
-        testDeclareTurtle,
-        "leo = new Turtle('Leonardo')",
-        "leo.name",
-        "leo.sayHi()",
+        testDeclareTurtleClass,
+        "raph = new Turtle('Raphael','Red')",
+        "raph.getColor()",
+        "raph.setColor(4)",
 
-        "// Prototypes",
-        "Turtle.prototype",
-        "Turtle.prototype.weapon = 'Hands'",
-        function () {
-          Turtle.prototype.attack = function () {
-            return `Feel the power of my ${this.weapon}!`;
-          };
-        },
-        "raph = new Turtle('Raphael')",
-        "raph.name",
-        "raph.sayHi()",
-        "raph.weapon",
-        "raph.attack()",
-
-        "raph.constructor.prototype",
-        "Object.getPrototypeOf(raph)",
-        "Turtle.prototype.isPrototypeOf(raph)",
-        "raph.hasOwnProperty('name')",
-        "raph.hasOwnProperty('weapon')",
-
-        "don = new Turtle('Donatello')",
-        "don.weapon",
-
-        "// Live prototypes",
-        "leo.weapon",
-        "leo.attack()",
-        "Turtle.prototype.weapon = 'Feet'",
-        "leo.attack()",
-        "raph.attack()",
-        "don.attack()",
-
-        "// Own Properties Overwrite Prototype",
-        "leo.weapon = 'Katana Blades'",
-        "raph.weapon = 'Sai'",
-        "don.weapon = 'Bo Staff'",
-
-        "leo",
-        "leo.attack()",
-
-        "Turtle.prototype.food = 'Pizza'",
-        function () {
-          // TODO: Fix the indentation of this block.
-          Turtle.prototype.eat = function () {
-            return "Mmm, this ${this.food} tastes great!";
+        () => {
+          raph.setColor = (color) => {
+            if (typeof color === "string") {
+              return (_color = color);
+            } else {
+              throw new Error("Color must be a string");
+            }
           };
         },
 
-        "mike = new Turtle('Michelangelo')",
-        "mike.eat()",
-        "mike.weapon = 'Nunchakus'",
-        "mike.attack()"
+        "raph.setColor(4)"
       ]);
     </script>
   </body>
