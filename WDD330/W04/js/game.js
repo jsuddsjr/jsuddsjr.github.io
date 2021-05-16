@@ -89,9 +89,10 @@ function updateSkins(newSkins) {
  * @param {Boolean} enabled
  */
 function allowPointerEvents(enabled) {
-  if (board instanceof HTMLElement) {
-    board.style.pointerEvents = enabled ? "" : "none";
-  }
+  board.style.pointerEvents = enabled ? "" : "none";
+}
+function arePointerEventsDisabled() {
+  return board.pointerEvents === "none";
 }
 
 /**
@@ -124,7 +125,7 @@ function startPointUpdate(playerSkin) {
 
   // Block multiple events from assigning points.
   if (!scoreElement.classList.contains(CLASS_WINNER)) {
-    scoreElement.classList.add(CLASS_WINNER)
+    scoreElement.classList.add(CLASS_WINNER);
     setTimeout(updatePointFor.bind(null, scoreElement), 300);
   }
 }
@@ -215,7 +216,7 @@ function checkWinners() {
     setTimeout(gameOver, 250);
     return true;
   }
-  
+
   return false;
 }
 
@@ -226,6 +227,10 @@ function checkWinners() {
 function updateBoard(cell) {
   if (cell.dataset.player) {
     return; // This cell is already occupied.
+  }
+
+  if (arePointerEventsDisabled()) {
+    return; // Winner already declared.
   }
 
   const currentPlayer = players[activePlayer];
