@@ -83,7 +83,7 @@ function updateSkins(newSkins) {
   players = newSkins;
   const list = document.querySelectorAll(".score .skin");
   list.forEach((el, n) => (el.dataset.skin = players[n]));
-  switchActivePlayer(activePlayer);
+  updateActivePlayer();
 }
 
 /**
@@ -113,7 +113,7 @@ function gameOver(winningCombo, player) {
     ariaAnnounce("The game is a draw.");
     cells.forEach((el) => el.classList.add(CLASS_LOSER));
   }
-  setTimeout(clearBoard, 1000);
+  setTimeout(startClearBoard, 1000);
 }
 
 /**
@@ -151,21 +151,21 @@ function endPointUpdate(winner, scores) {
 function restartGame() {
   const points = document.querySelectorAll(".points");
   points.forEach((el) => (el.dataset.points = "0"));
-  clearBoard();
+  startClearBoard();
 }
 
 /**
  * Intermediate step in resetting the board.
  */
-function clearBoard() {
+function startClearBoard() {
   cells.forEach((el) => (el.className = "cell"));
-  setTimeout(resetBoard, 250);
+  setTimeout(endClearBoard, 250);
 }
 
 /**
  * Remove player data from board.
  */
-function resetBoard() {
+function endClearBoard() {
   cells.forEach((el) => (el.dataset.player = ""));
   if (startWithLastPlayer) {
     switchActivePlayer(); // Changes as normal.
@@ -177,24 +177,25 @@ function resetBoard() {
 
 /**
  * Switch active player.
- * @param {Number} [current] If defined, set active player.
+ * @param {Number} [current] If defined, sets active player.
  */
 function switchActivePlayer(current) {
-  if (activePlayer === current) {
+  if (activePlayer !== current) {
+    // Swap the active player.
+    activePlayer ^= 1;
+    board.classList.toggle(CLASS_CURSOR);
+    updateActivePlayer();
+  }
+  else {
     ariaAnnounce(`${players[current]} plays again`);
-    return;
   }
+}
 
-  // Swap the active player.
-  activePlayer ^= 1;
-
-  // Swap the active cursor.
-  if (activePlayer === 1) {
-    board?.classList.add(CLASS_CURSOR);
-  } else {
-    board?.classList.remove(CLASS_CURSOR);
-  }
-
+/**
+ * Update the active player.
+ */
+function updateActivePlayer() {
+  // Always update in case player emojis are switched.
   setTimeout(() => {
     // Announce later.
     const nextPlayer = document.querySelector(".js-active-player");
