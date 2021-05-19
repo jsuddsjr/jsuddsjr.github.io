@@ -2,7 +2,7 @@
  * @param {Object} obj
  * @returns Reported name of any object
  */
-const myType = (obj) => obj?.constructor?.name || Object.prototype.toString.call(obj).slice(8, -1);
+const myType = (obj) => obj.constructor.name || Object.prototype.toString.call(obj).slice(8, -1);
 
 /**
  * Ensure strings with line breaks are displayed preformatted.

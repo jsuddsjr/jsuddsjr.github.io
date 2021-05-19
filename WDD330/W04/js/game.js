@@ -44,7 +44,7 @@ const boardDirections = new Map([
 ]);
 
 const board = document.querySelector(".board");
-const cells = Array.from(board?.querySelectorAll("div") || []);
+const cells = Array.from(board.querySelectorAll("div") || []);
 const skinButton = document.querySelector(".js-skin-button");
 
 let players = playerSkins[0];
@@ -311,15 +311,15 @@ cells.forEach((el) => {
 
 document
   .querySelector(".js-reset-button")
-  ?.addEventListener("click", restartGame);
+  .addEventListener("click", restartGame);
 
 document
   .querySelector(".js-skin-button")
-  ?.addEventListener("click", rotateSkins);
+  .addEventListener("click", rotateSkins);
 
 document
   .querySelector(".js-loser-starts-checkbox")
-  ?.addEventListener("change", (event) => {
+  .addEventListener("change", (event) => {
     const checkbox = event.target;
     if (checkbox instanceof HTMLInputElement) {
       startWithLastPlayer = checkbox.checked;

@@ -26,16 +26,16 @@ function testEventHighlights() {
   }
 
   const clickParagraph = document.getElementById("click");
-  clickParagraph?.addEventListener("click", highlight);
-  clickParagraph?.addEventListener("mousedown", () => console.log("down"));
-  clickParagraph?.addEventListener("mouseup", () => console.log("up"));
+  clickParagraph.addEventListener("click", highlight);
+  clickParagraph.addEventListener("mousedown", () => console.log("down"));
+  clickParagraph.addEventListener("mouseup", () => console.log("up"));
 
   const dblclickParagraph = document.getElementById("dblclick");
-  dblclickParagraph?.addEventListener("dblclick", highlight);
+  dblclickParagraph.addEventListener("dblclick", highlight);
 
   const mouseParagraph = document.getElementById("mouse");
-  mouseParagraph?.addEventListener("mouseover", highlight);
-  mouseParagraph?.addEventListener("mouseout", highlight);
+  mouseParagraph.addEventListener("mouseover", highlight);
+  mouseParagraph.addEventListener("mouseout", highlight);
 }
 
 testEventHighlights.associatedHtml = `
@@ -48,7 +48,7 @@ testEventHighlights.associatedHtml = `
 
 function testRemoveEvent() {
   const onceParagraph = document.getElementById("once");
-  onceParagraph?.addEventListener("click", remove);
+  onceParagraph.addEventListener("click", remove);
 
   function remove(event) {
     alert("Enjoy this while it lasts!");
@@ -63,7 +63,7 @@ testRemoveEvent.associatedHtml = `
 
 function testPreventDefaultBehavior() {
   const brokenLink = document.getElementById("broken");
-  brokenLink?.addEventListener("click", (event) => {
+  brokenLink.addEventListener("click", (event) => {
     event.preventDefault();
     alert("Broken Link!");
   });
@@ -80,31 +80,31 @@ function testEventPropagation() {
   const liElement = document.querySelector("#list li");
 
   // capturing
-  ulElement?.addEventListener(
+  ulElement.addEventListener(
     "click",
     (event) => alert("CAPTURE: Clicked on ul"),
     true
   );
-  liElement?.addEventListener(
+  liElement.addEventListener(
     "click",
     (event) => alert("CAPTURE: Clicked on li"),
     true
   );
 
   // bubbling
-  ulElement?.addEventListener(
+  ulElement.addEventListener(
     "click",
     (event) => alert("BUBBLE: Clicked on ul"),
     false
   );
-  liElement?.addEventListener(
+  liElement.addEventListener(
     "click",
     (event) => alert("BUBBLE: Clicked on li"),
     false
   );
 
   // stop propagation
-  document.querySelector("#two")?.addEventListener(
+  document.querySelector("#two").addEventListener(
     "click",
     (event) => {
       alert("PREVENT DEFAULT: Clicked on two");

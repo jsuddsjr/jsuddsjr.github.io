@@ -108,7 +108,7 @@ Number.prototype.pad = function (size, char = '0') {
 
   const report = await getWeeklyReport();
 
-  if (report.links?.length && (await insertTemplate("#links"))) {
+  if (report.links.length && (await insertTemplate("#links"))) {
     const ol = d.querySelector(".js-links");
     if (ol) {
       // Create list item for each link.
@@ -127,7 +127,7 @@ Number.prototype.pad = function (size, char = '0') {
   }
 
   // Append questions, if any.
-  if (report.questions?.length && (await insertTemplate("#questions"))) {
+  if (report.questions.length && (await insertTemplate("#questions"))) {
     const olq = d.querySelector(".js-questions");
     if (olq) {
       for (let q of report.questions) {

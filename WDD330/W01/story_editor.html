@@ -85,7 +85,7 @@
       }
       function saveStory() {
         var storyName = storySelect.value;
-        if (!storySelect?.selectedIndex) {
+        if (!storySelect.selectedIndex) {
           storyName = prompt("What are you going to call it?");
           if (!storyName || storyName.trim() === "") return;
           addStory(storyName.trim());

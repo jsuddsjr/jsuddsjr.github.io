@@ -72,7 +72,7 @@ function testSetTimeoutError() {
 
   document
     .querySelector(".timeoutButton")
-    ?.addEventListener("click", () => { o.doSomethingLater() });
+    .addEventListener("click", () => { o.doSomethingLater() });
 }
 
 testSetTimeoutError.title =
@@ -96,7 +96,7 @@ function testSetTimeoutCorrect() {
 
   document
     .querySelector(".timeoutWithRef")
-    ?.addEventListener("click", () => { o.doSomethingLater() });
+    .addEventListener("click", () => { o.doSomethingLater() });
 }
 
 testSetTimeoutCorrect.title = "Saving a reference to <code>this</code>";
@@ -116,7 +116,7 @@ function testThisInArrowFunction() {
 
   document
     .querySelector(".timeoutArrowFunc")
-    ?.addEventListener("click", () => { o.doSomethingLater() });
+    .addEventListener("click", () => { o.doSomethingLater() });
 }
 
 testThisInArrowFunction.associatedHtml = `
@@ -126,11 +126,11 @@ testThisInArrowFunction.associatedHtml = `
 function testThisInEventListener() {
   const button = document.querySelector(".eventButton");
 
-  button?.addEventListener("click", function () {
+  button.addEventListener("click", function () {
     alert(this); // button
   });
 
-  button?.addEventListener("click", () => {
+  button.addEventListener("click", () => {
     alert(this); // Window
   });
 }

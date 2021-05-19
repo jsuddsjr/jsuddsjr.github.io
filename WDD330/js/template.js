@@ -24,7 +24,7 @@ export const insertTemplate = async (selector, template = "") => {
   const parser = new DOMParser();
   const html = parser.parseFromString(text, "text/html");
 
-  el.parentElement?.replaceChild(asFragment(html.body.innerHTML), el);
+  el.parentElement.replaceChild(asFragment(html.body.innerHTML), el);
   document.head.appendChild(asFragment(html.head.innerHTML));
 
   return true;
