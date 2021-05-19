@@ -25,7 +25,7 @@ Number.prototype[Symbol.iterator] = function* () {
  * @param {Number} size Length of final string.
  * @param {String} char The character to duplicate. Default: 0
  */
-Number.prototype.pad = function (size, char = '0') {
+Number.prototype.pad = function (size, char = "0") {
   var s = String(this);
   return char.repeat(Math.max(0, size - s.length)) + s;
 };
@@ -57,11 +57,11 @@ Number.prototype.pad = function (size, char = '0') {
             if (index !== undefined) {
               const link = report.links[+index];
               if (link) {
-                let fragment = rest.shift() || '';
+                let fragment = rest.shift() || "";
                 // fragment must start with "#"
-                if (fragment && fragment[0] !== '#') {
+                if (fragment && fragment[0] !== "#") {
                   rest.unshift(fragment);
-                  fragment = ''
+                  fragment = "";
                 }
                 const label = rest.join(" ") || link.label;
                 sub = `<a href="${link.url}${fragment}">${label}</a>`;
@@ -72,6 +72,53 @@ Number.prototype.pad = function (size, char = '0') {
         return sub;
       }
     );
+  }
+
+  /**
+   * Insert links sections.
+   * @param {WeeklyReport} report 
+   * @returns
+   */
+  async function insertLinks(report) {
+    if (report.links.length === 0) return;
+
+    await insertTemplate("#links");
+
+    const ol = d.querySelector(".js-links");
+    if (ol) {
+      // Create list item for each link.
+      for (let entry of report.links) {
+        const li = d.createElement("li");
+        const a = d.createElement("a");
+        a.href = entry.url;
+        a.innerHTML = entry.label;
+        li.appendChild(a);
+        if (entry.info) {
+          li.innerHTML += `<div class="info">${entry.info}</div>`;
+        }
+        ol.appendChild(li);
+      }
+    }
+  }
+
+/**
+ * Insert questions section
+ * @param {WeeklyReport} report 
+ * @returns 
+ */
+  async function insertQuestions(report) {
+    if (report.questions.length === 0) return;
+
+    await insertTemplate("#questions");
+
+    const olq = d.querySelector(".js-questions");
+    if (olq) {
+      for (let q of report.questions) {
+        const li = d.createElement("li");
+        li.innerHTML = replaceTokens(q, report);
+        olq.appendChild(li);
+      }
+    }
   }
 
   /**
@@ -107,34 +154,6 @@ Number.prototype.pad = function (size, char = '0') {
   };
 
   const report = await getWeeklyReport();
+  await Promise.all([insertLinks(report), insertQuestions(report)]);
 
-  if (report.links.length && (await insertTemplate("#links"))) {
-    const ol = d.querySelector(".js-links");
-    if (ol) {
-      // Create list item for each link.
-      for (let entry of report.links) {
-        const li = d.createElement("li");
-        const a = d.createElement("a");
-        a.href = entry.url;
-        a.innerHTML = entry.label;
-        li.appendChild(a);
-        if (entry.info) {
-          li.innerHTML += `<div class="info">${entry.info}</div>`;
-        }
-        ol.appendChild(li);
-      }
-    }
-  }
-
-  // Append questions, if any.
-  if (report.questions.length && (await insertTemplate("#questions"))) {
-    const olq = d.querySelector(".js-questions");
-    if (olq) {
-      for (let q of report.questions) {
-        const li = d.createElement("li");
-        li.innerHTML = replaceTokens(q, report);
-        olq.appendChild(li);
-      }
-    }
-  }
 })(document);

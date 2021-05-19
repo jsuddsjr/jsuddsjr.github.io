@@ -63,7 +63,7 @@ section {
 }
 
 header {
-  padding: .25em 1em;
+  padding: 0.25em 1em;
   margin-bottom: 2rem;
   color: white;
   background-color: rgba($body-color, 0.8);
@@ -87,6 +87,12 @@ li {
 .info {
   font-size: 0.8em;
   margin-top: 0.5em;
+}
+
+.spinner {
+  height: 3rem;
+  background:  url("../images/spinner.gif") left no-repeat;
+  background-size: contain;
 }
 
 q {
