@@ -11,6 +11,7 @@ import { insertTemplate } from "./template.js";
  * @typedef {Object} WeeklyReport
  * @property {String} [title]
  * @property {LinkEntry[]} links
+ * @property {LinkEntry} [challenge]
  * @property {String[]} questions
  */
 
@@ -76,8 +77,7 @@ Number.prototype.pad = function (size, char = "0") {
 
   /**
    * Insert links sections.
-   * @param {WeeklyReport} report 
-   * @returns
+   * @param {WeeklyReport} report
    */
   async function insertLinks(report) {
     if (report.links.length === 0) return;
@@ -101,11 +101,10 @@ Number.prototype.pad = function (size, char = "0") {
     }
   }
 
-/**
- * Insert questions section
- * @param {WeeklyReport} report 
- * @returns 
- */
+  /**
+   * Insert questions section
+   * @param {WeeklyReport} report
+   */
   async function insertQuestions(report) {
     if (report.questions.length === 0) return;
 
@@ -118,6 +117,21 @@ Number.prototype.pad = function (size, char = "0") {
         li.innerHTML = replaceTokens(q, report);
         olq.appendChild(li);
       }
+    }
+  }
+
+  /**
+   *
+   * @param {WeeklyReport} report
+   */
+  async function insertChallenge({ challenge }) {
+    if (!challenge) return;
+
+    await insertTemplate("#challenge");
+
+    const p = d.querySelector(".js-challenge");
+    if (p) {
+      p.innerHTML = `<a href="${challenge.url} target="_blank">${challenge.label}</a> &mdash; ${challenge.info}`;
     }
   }
 
@@ -154,6 +168,9 @@ Number.prototype.pad = function (size, char = "0") {
   };
 
   const report = await getWeeklyReport();
-  await Promise.all([insertLinks(report), insertQuestions(report)]);
-
+  await Promise.all([
+    insertLinks(report).then(insertChallenge.bind(null, report)),
+    // insertChallenge(report),
+    insertQuestions(report),
+  ]);
 })(document);
