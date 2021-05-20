@@ -131,7 +131,7 @@ Number.prototype.pad = function (size, char = "0") {
 
     const p = d.querySelector(".js-challenge");
     if (p) {
-      p.innerHTML = `<a href="${challenge.url} target="_blank">${challenge.label}</a> &mdash; ${challenge.info}`;
+      p.innerHTML = `<a href="${challenge.url}" target="_blank">${challenge.label}</a> &mdash; ${challenge.info}`;
     }
   }
 
