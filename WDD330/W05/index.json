@@ -5,9 +5,30 @@
       "url": "W05/hikes-mvc.html",
       "label": "Team Activity",
       "info": "Model-View-Controller (MVC) hiking app, with pizzazz."
+    },
+    {
+      "url": "W05/syntax.html?mvc/HikeModel.js",
+      "label": "HikeModel.js (source code)",
+      "info": "Syntax highlighting by <a href='https://highlightjs.org'>Highlight.js</a>."
+    },
+    {
+      "url": "W05/syntax.html?mvc/HikesController.js",
+      "label": "HikesController.js"
+    },
+    {
+      "url": "W05/syntax.html?mvc/HikesView.js",
+      "label": "HikesView.js"
+    },
+    {
+      "url": "W05/mvc/HikesView.js",
+      "label": "HikesView.js",
+      "info": "Without syntax highlighting."
     }
+
   ],
   "questions": [
-    "adipiscing elit"
+    "Test automation can save development time by reducing the number of bugs, so why don't I write tests more often?",
+    "Highlight.js gets confused by embedded HTML in the JavaScript code (see !!LINK 3!!). Wonder if they need some contributions to their code.",
+    "This week I learned how to import JSDoc types into other module files.<pre>/** @typedef {import('./HikeModel').Hike} Hike */</pre><strong>Very cool! 😎<strong>"
   ]
 }
