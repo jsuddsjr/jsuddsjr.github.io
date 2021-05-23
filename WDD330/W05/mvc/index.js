@@ -1,4 +1,4 @@
-import HikesController from './HikesController';
+import HikesController from './HikesController.js';
 
-const controller = new HikesController();
+const controller = new HikesController("hikeList");
 controller.showHikeList();

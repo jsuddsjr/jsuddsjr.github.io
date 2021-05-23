@@ -8,20 +8,20 @@ export default class HikesView {
    */
   constructor(listElementId) {
     // you will need this
-    this.imgBasePath = "//byui-cit.github.io/cit261/examples/";
+    this.imgBasePath = "images/";
     this.listElementId = listElementId;
   }
 
   /**
-   *
+   * Loop through our list of hikes building out the appropriate HTML
+   * for each and append it to the listElement
    * @param {Hike[]} hikeList
    * @param {HTMLOListElement | HTMLUListElement} [listElement]
    */
   renderHikeList(hikeList, listElement) {
-    // loop through our list of hikes building out the appropriate HTML
-    // for each and append it to the listElement
-
-    listElement = listElement || document.getElementById(this.listElementId);
+    listElement =
+      listElement ||
+      (this.listElementId && document.getElementById(this.listElementId));
 
     if (!listElement) {
       throw new Error("Can't render to missing `listElement`");
@@ -29,35 +29,34 @@ export default class HikesView {
 
     listElement.innerHTML =
       "<li>" +
-      hikeList.map(this.renderOneHikeLight).join("</li><li>") +
+      hikeList.map((hike) => this.renderOneHikeLight(hike)).join("</li><li>") +
       "</li>";
   }
 
   /**
-   *
+   * This method will be used to create the list of hikes with less detail:
+   * name, image, distance, difficulty.
    * @param {Hike} hike
    * @param {String[]} props
    */
   renderOneHikeLight(hike, ...props) {
-    // this method will be used to create the list of hikes with less detail:
-    // name, image, distance, difficulty.
-
-    props = props || ["name", "distance", "difficulty"];
+    props = props.length ? props : ["distance", "difficulty"];
 
     return (
-      "<div class='hikeLight'>" +
-      renderHikeImage(hike) +
-      props.map((prop) => renderHikeProperty(hike, prop)).join("") +
+      /*html*/ `<div class="hikeLight" data-name="${hike.name}"><h3>${hike.name}</h3>` +
+      this.renderHikeImage(hike, "thumb") +
+      props.map((prop) => this.renderHikeProperty(hike, prop)).join("") +
       "</div>"
     );
   }
 
   /**
-   *
+   * Displays all hike properties.
    * @param {Hike} hike
    * @param {HTMLElement} parentElement
+   * @param {String[]} [filter]
    */
-  renderOneHikeFull(hike, parentElement) {
+  renderOneHikeFull(hike, parentElement, filter = []) {
     // this method will be used to one hike with full detail...
     // you will need this for the stretch goal!
 
@@ -66,39 +65,40 @@ export default class HikesView {
     }
 
     parentElement.innerHTML =
-      "<div class='hikeFull'>" +
-      renderHikeImage(hike) +
+      /*html*/ `<div class='hikeFull' data-name="${hike.name}">` +
+      /*html*/ `<div class="header"><h2>${hike.name}</h2><button title="Close"></button></div>` +
+      this.renderHikeImage(hike, "detail") +
       Object.keys(hike)
-        .filter((prop) => !prop.startsWith("img"))
-        .map((prop) => renderHikeProperty(hike, prop))
+        .filter((prop) => !filter.includes(prop))
+        .map((prop) => this.renderHikeProperty(hike, prop))
         .join("") +
       "</div>";
   }
-}
 
-// PRIVATE METHODS
-
-/**
- *
- * @param {Hike} hike
- * @param {String} property
- */
-function renderHikeProperty(hike, property) {
-  if (!hike[property]) {
-    return "";
+  /**
+   *
+   * @param {Hike} hike
+   * @param {String} property
+   */
+  renderHikeProperty(hike, property) {
+    if (!hike[property]) {
+      return "";
+    }
+    const propTitle = property[0].toUpperCase() + property.substr(1);
+    return /*html*/ `<div class="property ${property}"><div>${propTitle}</div><p>${hike[property]}</p></div>`;
   }
-  const propTitle = property[0].toUpperCase() + property.substr(1);
-  return `<div class="${property}"><div>${propTitle}</div><div>${hike[property]}</div></div>`;
-}
 
-/**
- *
- * @param {Hike} hike
- * @returns
- */
-function renderHikeImage(hike) {
-  if (!hike.imgSrc) {
-    throw new Error("Hike missing `imgSrc` property.");
+  /**
+   *
+   * @param {Hike} hike
+   * @param {String} size
+   * @returns
+   */
+  renderHikeImage(hike, size) {
+    if (!hike.imgSrc) {
+      throw new Error("Hike missing `imgSrc` property.");
+    }
+    const src = hike.imgSrc.replace(/.jpg/,`-${size}.webp`);
+    return /*html*/ `<div class="image"><img src="${this.imgBasePath}${src}" alt="${hike.imgAlt}"/></div>`;
   }
-  return `<img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt} />`;
 }

@@ -1,0 +1,111 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, sans-serif;
+  color: #487928;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main {
+  max-width: 96rem;
+  margin: 0 auto;
+}
+
+#hikeList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#hikeList li {
+  width: 24em;
+  border: 2px solid #93ce6c;
+  border-radius: 20px;
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+#hikeList h3 {
+  color: #5f9f35;
+}
+
+#hikeList img {
+  max-width: 100%;
+}
+
+div.property {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-column-gap: 2em;
+          column-gap: 2em;
+}
+
+div.property div:first-child {
+  font-weight: bold;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-column-gap: 2em;
+          column-gap: 2em;
+}
+
+.header button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header button:before {
+  content: "  X";
+}
+
+.hikeFull {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 48rem) {
+  .hikeFull {
+    max-width: 50%;
+  }
+}
+
+.hikeFull div.property {
+  border-bottom: 1px solid black;
+  padding: 2px 5px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.hikeFull div.property div {
+  min-width: 30%;
+}
+/*# sourceMappingURL=hikes.css.map */

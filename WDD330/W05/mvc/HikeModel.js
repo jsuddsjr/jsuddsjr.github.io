@@ -31,7 +31,7 @@ const hikeList = [
   {
     name: "Teton Canyon",
     imgSrc: "falls.jpg",
-    imgAlt: "Image of Bechler Falls",
+    imgAlt: "Image of Teton Canyon",
     distance: "3 miles",
     difficulty: "Easy",
     description:
@@ -42,7 +42,7 @@ const hikeList = [
   {
     name: "Denanda Falls",
     imgSrc: "falls.jpg",
-    imgAlt: "Image of Bechler Falls",
+    imgAlt: "Image of Denanda Falls",
     distance: "3 miles",
     difficulty: "Easy",
     description:
@@ -59,7 +59,7 @@ export default class HikeModel {
   }
 
   /**
-   * @returns A copy of hike list.
+   * @returns {Hike[]} A copy of hike list.
    */
   getAllHikes() {
     // should return a list of all the hikes.
@@ -92,7 +92,7 @@ export default class HikeModel {
 
   /**
    * Remove specified hike. Hike must be reference to existing hike.
-   * @param {Hike} hike 
+   * @param {Hike} hike
    * @returns True if hike was deleted.
    */
   removeHike(hike) {

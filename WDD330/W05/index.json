@@ -2,15 +2,12 @@
   "title": "Week 5: More JavaScript",
   "links": [
     {
-      "url": "W04/tic-tac-toe.html",
-      "label": "Tic-Tac-Toe Game",
-      "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
+      "url": "W05/hikes-mvc.html",
+      "label": "Team Activity",
+      "info": "Model-View-Controller (MVC) hiking app, with pizzazz."
     }
   ],
-  "challenge": {
-    "url": "W04/tic-tac-toe.html",
-    "label": "Tic-Tac-Toe Game",
-    "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
-  },
-  "questions": []
+  "questions": [
+    "adipiscing elit"
+  ]
 }
