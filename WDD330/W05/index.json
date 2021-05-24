@@ -18,17 +18,10 @@
     {
       "url": "W05/syntax.html?mvc/HikesView.js",
       "label": "HikesView.js"
-    },
-    {
-      "url": "W05/mvc/HikesView.js",
-      "label": "HikesView.js",
-      "info": "Without syntax highlighting."
     }
-
   ],
   "questions": [
     "Test automation can save development time by reducing the number of bugs, so why don't I write tests more often?",
-    "Highlight.js gets confused by embedded HTML in the JavaScript code (see !!LINK 3!!). Wonder if they need some contributions to their code?",
     "This week I learned how to import JSDoc types into other module files.<pre>/** @typedef {import('./HikeModel').Hike} Hike */</pre><strong>Very cool! 😎<strong>"
   ]
 }

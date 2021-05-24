@@ -45,7 +45,7 @@
         let response = await fetch(url);
         let data = await response.text();
 
-        document.getElementById("external-code").innerHTML = data;
+        document.getElementById("external-code").textContent = data;
 
         document.querySelectorAll("pre code.external").forEach((block) => {
           hljs.highlightBlock(block);
