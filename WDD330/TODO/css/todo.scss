@@ -1,0 +1,121 @@
+$body-color: black;
+
+$mq-small: 60em;
+$mq-medium: 80em;
+$mq-large: 96em;
+
+@mixin mq($width) {
+  @media screen and (min-width: $width) {
+    & {
+      @content;
+    }
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+}
+
+body {
+  color: $body-color;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  // Add space so footer doesn't cover text.
+  & > section:last-of-type {
+    padding-bottom: 5em;
+  }
+}
+
+section {
+  max-width: 48em;
+  margin: 0 auto;
+  padding: 1em;
+
+  @include mq($mq-medium) {
+    max-width: $mq-medium;
+  }
+
+  @include mq($mq-large) {
+    max-width: $mq-large;
+  }
+}
+
+.app {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: start;
+  height: 100%;
+
+  h1 {
+      text-align: center;
+  }
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  border: 1px solid $body-color;
+
+  p {
+    width: 100%;
+    padding-left: 0.5em;
+    margin: 0;
+  }
+  input {
+    width: 2em;
+    height: 2em;
+  }
+  button {
+    border: 0;
+    background-color: transparent;
+    width: 3em;
+    font-size: 1.2em;
+  }
+
+  &.completed p {
+    text-decoration: line-through;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  p {
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+  button {
+    border: 0;
+    background-color: transparent;
+    &.selected {
+      border: 1px solid $body-color;
+    }
+  }
+}
+
+.entry {
+  display: flex;
+  margin-top: auto;
+  width: 100%;
+  button {
+    width: 2em;
+  }
+  input {
+    width: 100%;
+  }
+}

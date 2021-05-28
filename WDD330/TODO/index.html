@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App &mdash; Challenge #1</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/todo.css" />
+  </head>
+  <body>
+    <section class="app">
+      <h1>Todos</h1>
+      <div class="tasks">
+        <div class="task">
+          <input
+            type="checkbox"
+            name="complete"
+            title="Complete this task"
+          />
+          <p class="description">Task</p>
+          <button class="remove" title="Delete this task">X</button>
+        </div>
+      </div>
+      <div class="footer">
+        <p><span class="count">0</span> tasks left.</p>
+        <button class="all selected">All</button>
+        <button class="active">Active</button>
+        <button class="completed">Completed</button>
+      </div>
+      <div class="entry">
+        <input type="text" name="task" id="task" placeholder="What's next?" />
+        <button class="add">+</button>
+      </div>
+    </section>
+  </body>
+</html>

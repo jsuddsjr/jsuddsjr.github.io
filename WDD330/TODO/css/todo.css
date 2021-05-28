@@ -1,0 +1,134 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+}
+
+body {
+  color: black;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body > section:last-of-type {
+  padding-bottom: 5em;
+}
+
+section {
+  max-width: 48em;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+@media screen and (min-width: 80em) {
+  section {
+    max-width: 80em;
+  }
+}
+
+@media screen and (min-width: 96em) {
+  section {
+    max-width: 96em;
+  }
+}
+
+.app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: start;
+      align-content: start;
+  height: 100%;
+}
+
+.app h1 {
+  text-align: center;
+}
+
+.task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.task p {
+  width: 100%;
+  padding-left: 0.5em;
+  margin: 0;
+}
+
+.task input {
+  width: 2em;
+  height: 2em;
+}
+
+.task button {
+  border: 0;
+  background-color: transparent;
+  width: 3em;
+  font-size: 1.2em;
+}
+
+.task.completed p {
+  text-decoration: line-through;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.footer button {
+  border: 0;
+  background-color: transparent;
+}
+
+.footer button.selected {
+  border: 1px solid black;
+}
+
+.entry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: auto;
+  width: 100%;
+}
+
+.entry button {
+  width: 2em;
+}
+
+.entry input {
+  width: 100%;
+}
+/*# sourceMappingURL=todo.css.map */
