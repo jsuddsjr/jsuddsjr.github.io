@@ -7,16 +7,16 @@
       "info": "Model-View-Controller (MVC) hiking app, with pizzazz."
     },
     {
-      "url": "W05/syntax.html?mvc/HikeModel.js",
+      "url": "syntax.html?W05/mvc/HikeModel.js",
       "label": "HikeModel.js (source code)",
       "info": "Syntax highlighting by <a href='https://highlightjs.org'>Highlight.js</a>."
     },
     {
-      "url": "W05/syntax.html?mvc/HikesController.js",
+      "url": "syntax.html?W05/mvc/HikesController.js",
       "label": "HikesController.js"
     },
     {
-      "url": "W05/syntax.html?mvc/HikesView.js",
+      "url": "syntax.html?W05/mvc/HikesView.js",
       "label": "HikesView.js"
     }
   ],
