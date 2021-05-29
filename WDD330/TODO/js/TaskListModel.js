@@ -3,8 +3,12 @@ import TaskModel from "./TaskModel.js";
 const LOCAL_STORAGE_KEY = "__allTasks";
 
 export default class TaskListModel {
-  constructor() {
-    this.taskList = this.readTasks(); // taskList;
+  /**
+   * Constructor.
+   * @param {TaskModel[]} [taskList] Optional task list for testing.
+   */
+  constructor(taskList) {
+    this.taskList = taskList || this.readTasks();
   }
 
   /**
@@ -46,10 +50,9 @@ export default class TaskListModel {
 
   /**
    * Delete task by id.
-   * @param {Number} id Task id.
+   * @param {String} id Task id.
    */
   delTask(id) {
-    id = parseInt(id);
     const index = this.taskList.findIndex((task) => task.id === id);
     if (index !== -1) {
       const deletedTask = this.taskList.splice(index, 1)[0];

@@ -106,12 +106,15 @@ section {
   opacity: 0.1;
 }
 
-.task button:not(:disabled):hover {
+.task button:not(:disabled) {
   background-color: rgba(255, 0, 0, 0.2);
   cursor: pointer;
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
   opacity: 1;
+}
+
+.task button:not(:disabled):hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .task.complete input.description {

@@ -28,7 +28,7 @@ describe("TaskModel", () => {
 
   test("should not accept blank description", () => {
     const task = new TaskModel("desc");
-    task.setDescription("   ");
+    task.setDescription(" \n\t ");
     expect(task.desc).toEqual("desc");
   });
 

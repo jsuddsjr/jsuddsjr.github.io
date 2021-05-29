@@ -1,11 +1,11 @@
 {
   "type": "module",
   "jest": {
-    "testEnvironment": "jest-environment-node",
+    "testEnvironment": "jsdom",
     "transform": {},
     "verbose": true,
     "collectCoverage": true,
-    "coverageReports": [
+    "coverageReporters": [
       "lcov",
       "text"
     ]
