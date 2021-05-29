@@ -1,15 +1,22 @@
 {
   "title": "Week 5: More JavaScript",
-  "links": [
-    {
-      "url": "W/tic-tac-toe.html",
-      "label": "Tic-Tac-Toe Game",
-      "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
-    }
-  ],
   "challenge": {
     "url": "TODO/index.html",
     "label": "MID-TERM: To-do App"
   },
+  "links": [
+    {
+      "url": "syntax.html?TODO/js/TaskModel.js",
+      "label": "TaskModel.js"
+    },
+    {
+      "url": "syntax.html?TODO/js/TaskListModel.js",
+      "label": "TaskListModel.js"
+    },
+    {
+      "url": "syntax.html?TODO/js/TaskView.js",
+      "label": "TaskView.js"
+    }
+  ],
   "questions": []
 }
