@@ -5,8 +5,8 @@ const LOCAL_STORAGE_KEY = "__allTasks";
 export default class TaskListModel {
   constructor() {
     const taskList = [
-      new TaskModel("Testing", false, this.saveTasks.bind(this)),
-      new TaskModel("Finished", true, this.saveTasks.bind(this)),
+      new TaskModel("Testing", false),
+      new TaskModel("Finished", true),
     ];
 
     this.taskList = this.readTasks(); // taskList;
@@ -18,6 +18,15 @@ export default class TaskListModel {
    */
   getAllTasks() {
     return this.taskList;
+  }
+
+  /**
+   * Returns a task by id.
+   * @param {Number} id Task id.
+   * @returns {TaskModel} Task, if found.
+   */
+  getTask(id) {
+    return this.taskList.find((task) => task.id === id);
   }
 
   /**
@@ -51,15 +60,6 @@ export default class TaskListModel {
       this.saveTasks();
       return deletedTask;
     }
-  }
-
-  /**
-   * Find a task by id.
-   * @param {Number} id Task id.
-   * @returns {TaskModel} Task, if found.
-   */
-  findTask(id) {
-    return this.taskList.find((task) => task.id === id);
   }
 
   /**

@@ -1,37 +1,33 @@
 // A task object with callback.
+const UPDATE_EVENT = "update";
 
 export default class TaskModel {
   /**
-   * @callback UpdateCallback
-   * @returns {Void}
-   */
-  /**
    * Create a new task object.
-   * @param {Number} id
    * @param {String} description
    * @param {Boolean} completed
-   * @param {UpdateCallback} cbUpdated
+   * @param {String} id
    */
-  constructor(description, completed, cbUpdated) {
-    this.id = ++TaskModel.highestId;
+  constructor(description, completed, id) {
+    this.id = id || new Date().toISOString();
     this.desc = description;
     this.isComplete = completed;
-    this.cb = cbUpdated;
   }
-
-  static highestId = 0;
 
   setDescription(description) {
     const newValue = description.trim();
-    if (newValue) {
+    if (newValue && this.desc !== newValue) {
       this.desc = newValue;
-      this.isComplete = false;
-      this.cb();
+      this.sendEvent(UPDATE_EVENT);
     }
   }
 
   toggleComplete() {
     this.isComplete ^= true;
-    this.cb();
+    this.sendEvent(UPDATE_EVENT);
+  }
+
+  sendEvent(eventName) {
+    this.dispatchEvent(new Event(eventName));
   }
 }
