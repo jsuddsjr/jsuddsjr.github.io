@@ -33,10 +33,10 @@ export default class TaskListModel {
    * @param {String} description Task description.
    */
   addTask(description) {
-    const task = new TaskModel(description, false, this.saveTasks);
+    const task = new TaskModel(description, false, this.saveTasks.bind(this));
     this.taskList.push(task);
-    T.saveTasks();
-    return task.getId();
+    this.saveTasks();
+    return task;
   }
 
   /**
@@ -44,9 +44,10 @@ export default class TaskListModel {
    * @param {Number} id Task id.
    */
   delTask(id) {
+    id = parseInt(id);
     const index = this.taskList.findIndex((task) => task.id === id);
     if (index !== -1) {
-      const deletedTask = this.taskList.splice(index, 1, 0)[0];
+      const deletedTask = this.taskList.splice(index, 1)[0];
       this.saveTasks();
       return deletedTask;
     }

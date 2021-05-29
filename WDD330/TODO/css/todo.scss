@@ -57,8 +57,13 @@ section {
   height: 100%;
 
   h1 {
-      text-align: center;
+    text-align: center;
   }
+}
+
+.tasks {
+  border: 1px solid $body-color;
+  padding: 0.35em;
 }
 
 .task {
@@ -66,25 +71,45 @@ section {
   align-items: center;
   width: 100%;
 
-  border: 1px solid $body-color;
-
-  p {
-    width: 100%;
-    padding-left: 0.5em;
-    margin: 0;
-  }
-  input {
+  input.checkbox {
     width: 2em;
     height: 2em;
   }
-  button {
+  input.description {
+    width: 100%;
+    padding: 0 0.5em;
+    margin: 0;
     border: 0;
+    outline: 0;
     background-color: transparent;
-    width: 3em;
     font-size: 1.2em;
   }
 
-  &.complete p {
+  button {
+    $button-size: 2.5em;
+
+    border: 0;
+    background: center url("../images/cross.svg") no-repeat;
+    background-size: contain;
+
+    width: $button-size;
+    height: $button-size;
+    transform: scale(1);
+    opacity: 0.5;
+    transition: all 300ms ease-in-out;
+
+    &:disabled {
+      opacity: 0.1;
+    }
+    &:not(:disabled):hover {
+      background-color: rgba(red, 0.2);
+      cursor: pointer;
+      transform: scale(1.3);
+      opacity: 1;
+    }
+  }
+
+  &.complete input.description {
     text-decoration: line-through;
   }
 }
@@ -93,6 +118,7 @@ section {
   display: flex;
   align-items: center;
   width: 100%;
+  padding: 0 0.4em;
 
   p {
     font-size: 0.8rem;
@@ -112,10 +138,21 @@ section {
   display: flex;
   margin-top: auto;
   width: 100%;
+
+  border: 1px solid $body-color;
+
   button {
     width: 2em;
+    border: 0;
+    font-size: 2em;
+    background-color: transparent;
   }
+
   input {
+    outline: 0;
     width: 100%;
+    padding: 0.4em;
+    border: 0;
+    font-size: 1.2em;
   }
 }

@@ -21,16 +21,13 @@ export default class TaskModel {
 
   static highestId = 0;
 
-  getId() {
-    return this.id;
-  }
-
-  getDescription() {
-    return this.desc;
-  }
-
   setDescription(description) {
-    this.desc = description
+    const newValue = description.trim();
+    if (newValue) {
+      this.desc = newValue;
+      this.isComplete = false;
+      this.cb();
+    }
   }
 
   toggleComplete() {
