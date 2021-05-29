@@ -1,7 +1,17 @@
 {
   "type": "module",
   "jest": {
+    "testEnvironment": "jest-environment-node",
     "transform": {},
-    "verbose": true
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReports": [
+      "lcov",
+      "text"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "jest": "^27.0.3"
   }
 }

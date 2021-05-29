@@ -4,11 +4,6 @@ const LOCAL_STORAGE_KEY = "__allTasks";
 
 export default class TaskListModel {
   constructor() {
-    const taskList = [
-      new TaskModel("Testing", false),
-      new TaskModel("Finished", true),
-    ];
-
     this.taskList = this.readTasks(); // taskList;
   }
 
@@ -42,7 +37,8 @@ export default class TaskListModel {
    * @param {String} description Task description.
    */
   addTask(description) {
-    const task = new TaskModel(description, false, this.saveTasks.bind(this));
+    const task = new TaskModel(description);
+    task.subscribe(this.saveTasks.bind(this));
     this.taskList.push(task);
     this.saveTasks();
     return task;
@@ -68,7 +64,7 @@ export default class TaskListModel {
   saveTasks() {
     console.log("saveTasks called.");
 
-    const tasks = this.taskList.map(task => [task.desc, task.isComplete]);
+    const tasks = this.taskList.map((task) => [task.id, task.desc, task.isComplete]);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
   }
 
@@ -80,6 +76,8 @@ export default class TaskListModel {
 
     /** @type {(string | boolean)[][]} */
     const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
-    return tasks.map(([desc, isComplete]) => new TaskModel(desc, isComplete, this.saveTasks.bind(this)));
+    return tasks.map(([id, desc, isComplete]) =>
+      new TaskModel(desc, isComplete, id).subscribe(this.saveTasks.bind(this))
+    );
   }
 }

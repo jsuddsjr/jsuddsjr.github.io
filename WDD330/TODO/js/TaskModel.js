@@ -1,3 +1,6 @@
+import Subscribers from "./Subscribers.js";
+/** @typedef {import('./Subscribers').NotifyFunc} NotifyFunc */
+
 // A task object with callback.
 const UPDATE_EVENT = "update";
 
@@ -8,26 +11,45 @@ export default class TaskModel {
    * @param {Boolean} completed
    * @param {String} id
    */
-  constructor(description, completed, id) {
+  constructor(description, completed = false, id) {
     this.id = id || new Date().toISOString();
     this.desc = description;
     this.isComplete = completed;
+
+    this.subscribers = new Subscribers(this);
   }
 
+  /**
+   * Change description and notify subscribers.
+   * @param {String} description
+   * @returns A chainable reference.
+   */
   setDescription(description) {
     const newValue = description.trim();
     if (newValue && this.desc !== newValue) {
       this.desc = newValue;
-      this.sendEvent(UPDATE_EVENT);
+      this.subscribers.notify(UPDATE_EVENT);
     }
+    return this;
   }
 
+  /**
+   * Toggle completion and notify subscribers.
+   * @returns A chainable reference.
+   */
   toggleComplete() {
-    this.isComplete ^= true;
-    this.sendEvent(UPDATE_EVENT);
+    this.isComplete = !this.isComplete;
+    this.subscribers.notify(UPDATE_EVENT);
+    return this;
   }
 
-  sendEvent(eventName) {
-    this.dispatchEvent(new Event(eventName));
+  /**
+   * Subscribe to update events.
+   * @param {NotifyFunc} callback
+   * @return A chainable reference.
+   */
+  subscribe(callback) {
+    this.subscribers.subscribe(UPDATE_EVENT, callback);
+    return this;
   }
 }
