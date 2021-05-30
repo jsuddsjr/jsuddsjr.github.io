@@ -1,8 +1,9 @@
 {
-  "title": "Week 5: More JavaScript",
+  "title": "Week 6: Mid-term Project",
   "challenge": {
     "url": "TODO/index.html",
-    "label": "MID-TERM: To-do App"
+    "label": "MID-TERM: To-do App",
+    "info": "Model-View-Controller to the max."
   },
   "links": [
     {
@@ -16,6 +17,27 @@
     {
       "url": "syntax.html?TODO/js/TaskView.js",
       "label": "TaskView.js"
+    },
+    {
+      "url": "syntax.html?TODO/js/Subscribers.js",
+      "label": "Subscribers.js"
+    },
+    {
+      "url": "syntax.html?TODO/js/__tests__/TaskModel.tests.js",
+      "label": "TaskModel.test.js",
+      "info": "Because TDD is cool."
+    },
+    {
+      "url": "syntax.html?TODO/js/__tests__/TaskListModel.tests.js",
+      "label": "TaskListModel.test.js"
+    },
+    {
+      "url": "syntax.html?TODO/js/__tests__/TaskView.tests.js",
+      "label": "TaskView.test.js"
+    },
+    {
+      "url": "syntax.html?TODO/js/__tests__/Subscribers.tests.js",
+      "label": "Subscribers.test.js"
     }
   ],
   "questions": []

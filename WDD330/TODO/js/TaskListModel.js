@@ -1,6 +1,8 @@
 import TaskModel from "./TaskModel.js";
+import Subscribers from "./Subscribers.js";
 
 const LOCAL_STORAGE_KEY = "__allTasks";
+const RELOAD_EVENT = "reload";
 
 export default class TaskListModel {
   /**
@@ -8,7 +10,12 @@ export default class TaskListModel {
    * @param {TaskModel[]} [taskList] Optional task list for testing.
    */
   constructor(taskList) {
+    this.subscribers = new Subscribers(this);
     this.taskList = taskList || this.readTasks();
+
+    window.addEventListener("storage", (e) => {
+      if (e.key === LOCAL_STORAGE_KEY) this.readTasks();
+    });
   }
 
   /**
@@ -65,9 +72,11 @@ export default class TaskListModel {
    * Save tasks to storage after update.
    */
   saveTasks() {
-    console.log("saveTasks called.");
-
-    const tasks = this.taskList.map((task) => [task.id, task.desc, task.isComplete]);
+    const tasks = this.taskList.map((task) => [
+      task.id,
+      task.desc,
+      task.isComplete,
+    ]);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
   }
 
@@ -75,12 +84,22 @@ export default class TaskListModel {
    * Read list of tasks from storage.
    */
   readTasks() {
-    console.log("readTasks called.");
-
     /** @type {(string | boolean)[][]} */
     const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
-    return tasks.map(([id, desc, isComplete]) =>
+    this.taskList = tasks.map(([id, desc, isComplete]) =>
       new TaskModel(desc, isComplete, id).subscribe(this.saveTasks.bind(this))
     );
+    this.subscribers.notify(RELOAD_EVENT);
+    return this.taskList;
+  }
+
+  /**
+   * Subscribe to update events.
+   * @param {NotifyFunc} callback
+   * @return A chainable reference.
+   */
+  subscribe(callback) {
+    this.subscribers.subscribe(RELOAD_EVENT, callback);
+    return this;
   }
 }

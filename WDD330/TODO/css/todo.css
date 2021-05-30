@@ -74,9 +74,23 @@ section {
   width: 100%;
 }
 
-.task input.checkbox {
-  width: 2em;
-  height: 2em;
+.task .checkbox input {
+  display: none;
+}
+
+.task .checkbox input:checked + label {
+  background: center url("../images/cross.svg");
+  background-size: contain;
+  background-color: lightgreen;
+}
+
+.task .checkbox label {
+  display: block;
+  background-color: #ccc;
+  width: 1.2em;
+  height: 1.2em;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 .task input.description {
@@ -93,17 +107,15 @@ section {
   border: 0;
   background: center url("../images/cross.svg") no-repeat;
   background-size: contain;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  opacity: 0.5;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
 
 .task button:disabled {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .task button:not(:disabled) {
@@ -113,8 +125,7 @@ section {
 }
 
 .task button:not(:disabled):hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
 .task.complete input.description {

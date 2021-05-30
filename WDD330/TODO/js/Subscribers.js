@@ -5,7 +5,7 @@ export default class Subscribers {
   constructor(publisher) {
     this.publisher = publisher;
 
-    /** @type {Map<string, NotifyFunc[]} */
+    /** @type {Map<string, NotifyFunc[]>} */
     this.subscribers = new Map();
   }
 

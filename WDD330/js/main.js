@@ -169,8 +169,8 @@ Number.prototype.pad = function (size, char = "0") {
 
   const report = await getWeeklyReport();
   await Promise.all([
-    insertLinks(report).then(insertChallenge.bind(null, report)),
-    // insertChallenge(report),
+    insertLinks(report),
+    insertChallenge(report),
     insertQuestions(report),
   ]);
 })(document);

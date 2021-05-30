@@ -1,11 +1,11 @@
 {
   "title": "Week 4: More JavaScript",
+  "challenge": {
+    "url": "W04/tic-tac-toe.html",
+    "label": "Tic-Tac-Toe Game",
+    "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
+  },
   "links": [
-    {
-      "url": "W04/tic-tac-toe.html",
-      "label": "Tic-Tac-Toe Game",
-      "info": "You've heard of touch football. Now it's time for Touch TIC-TAC-TOE!"
-    },
     {
       "url": "W04/js-weird.html",
       "label": "Weird JavaScript",

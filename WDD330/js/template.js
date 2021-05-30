@@ -1,9 +1,19 @@
+const KEY_MAX = parseInt("zzzz", 36);
+const KEY_MIN = parseInt("aaaa", 36);
+const KEY_RND_MAX = KEY_MAX - KEY_MIN;
+
+const newTemplateKey = () =>
+  Math.trunc((Math.random() * KEY_RND_MAX) + KEY_MIN).toString(36);
+
 /**
  * Convert text to document fragment.
  * @param {String} text
+ * @param {String} key
  */
-const asFragment = (text) => {
-  return document.createRange().createContextualFragment(text);
+const asFragment = (text, key) => {
+  text = text.replace(/{key}/g, key);
+  const range = document.createRange();
+  return range.createContextualFragment(text);
 };
 
 /**
@@ -14,14 +24,18 @@ const asFragment = (text) => {
 const loadTemplate = async (el, template) => {
   const response = await fetch(`${template}.template.html`);
   const text = await response.text();
+  const key = newTemplateKey();
 
   // Parse text as HTML
   const parser = new DOMParser();
   const html = parser.parseFromString(text, "text/html");
 
-  document.head.appendChild(asFragment(html.head.innerHTML));
+  const headText = html.head.innerHTML;
+  if (headText) {
+    document.head.appendChild(asFragment(headText, key));
+  }
 
-  const frag = asFragment(html.body.innerHTML);
+  const frag = asFragment(html.body.innerHTML, key);
   const child = frag.children[0];
 
   el.parentElement.replaceChild(frag, el);

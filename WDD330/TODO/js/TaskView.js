@@ -16,6 +16,8 @@ export default class TaskView {
     }
     this.parentSelector = parentSelector;
     this.taskList = taskList;
+
+    taskList.subscribe(this.renderAllTasks.bind(this));
   }
 
   /**
@@ -49,7 +51,6 @@ export default class TaskView {
 
     input.addEventListener("change", (e) => {
       task.setDescription(input.value);
-      this.renderAllTasks();
     });
 
     checkbox.addEventListener("click", (e) => {
@@ -64,9 +65,15 @@ export default class TaskView {
       e.stopImmediatePropagation();
       const id = button.parentElement.dataset.taskId;
       this.taskList.delTask(id);
-      this.renderAllTasks();
+      el.parentElement.removeChild(el);
     });
 
+    this.updateTaskElement(el, task);
+    task.subscribe(this.updateTaskElement.bind(null, task));
+  }
+
+  updateTaskElement(el, task) {
+    const [checkbox, input] = el.querySelectorAll("input");
     el.dataset.taskId = task.id.toString();
     input.value = task.desc;
   }

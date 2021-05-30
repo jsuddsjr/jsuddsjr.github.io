@@ -2,12 +2,15 @@
 <html lang="en">
   <body>
     <div class="task">
-      <input
-        class="checkbox"
-        type="checkbox"
-        name="isComplete"
-        title="Complete this task"
-      />
+      <div class="checkbox">
+        <input
+          type="checkbox"
+          id="isComplete-{key}"
+          name="isComplete"
+          title="Complete this task"
+        />
+        <label for="isComplete-{key}"></label>
+      </div>
       <input
         class="description"
         type="text"
