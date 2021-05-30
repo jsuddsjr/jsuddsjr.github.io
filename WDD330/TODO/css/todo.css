@@ -156,8 +156,10 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 5rem;
+  margin-top: 2rem;
   width: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   border: 1px solid black;
   border-radius: 5px;
   overflow: hidden;

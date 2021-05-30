@@ -152,8 +152,9 @@ section {
 
 .entry {
   display: flex;
-  margin-top: 5rem;
+  margin-top: 2rem;
   width: 100%;
+  flex-shrink: 0;
 
   border: 1px solid $body-color;
   border-radius: 5px;
