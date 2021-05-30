@@ -94,7 +94,7 @@ export default class TaskView {
   }
 
   renderAllTasks() {
-    this.getParentElement().innerHTML = "";
+    this.parentElement.innerHTML = "";
     this.taskList.filterByState(this.filterState).forEach(this.renderSingleTask.bind(this));
   }
 }

@@ -90,7 +90,7 @@ export default class TaskListModel {
     /** @type {(string | boolean)[][]} */
     const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
     this.taskList = tasks.map(([id, desc, isComplete]) =>
-      new TaskModel(desc, isComplete, id).onReload(this.saveTasks.bind(this))
+      new TaskModel(desc, isComplete, id).onUpdate(this.saveTasks.bind(this))
     );
     this.subscribers.notify(RELOAD_EVENT);
   }
