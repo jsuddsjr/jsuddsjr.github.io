@@ -41,8 +41,6 @@ section {
 .app {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-content: start;
   height: 100%;
 
   max-width: $mq-small;
@@ -57,8 +55,8 @@ section {
   border: 1px solid $body-color;
   background-color: white;
   border-radius: 5px;
-  overflow: hidden;
-  padding: 0.5em;
+  padding: 0.8em;
+  overflow-y: auto;
 
   p {
     width: fit-content;
@@ -68,6 +66,7 @@ section {
 
 .task {
   $button-size: 1.5em;
+  margin-bottom: 0.1em;
 
   display: flex;
   align-items: center;
@@ -153,8 +152,7 @@ section {
 
 .entry {
   display: flex;
-  margin-top: auto;
-  margin-bottom: 4em;
+  margin-top: 5rem;
   width: 100%;
 
   border: 1px solid $body-color;

@@ -33,11 +33,6 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: start;
-      align-content: start;
   height: 100%;
   max-width: 60em;
 }
@@ -51,8 +46,8 @@ section {
   border: 1px solid black;
   background-color: white;
   border-radius: 5px;
-  overflow: hidden;
-  padding: 0.5em;
+  padding: 0.8em;
+  overflow-y: auto;
 }
 
 .tasks p {
@@ -63,6 +58,7 @@ section {
 }
 
 .task {
+  margin-bottom: 0.1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,8 +156,7 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: auto;
-  margin-bottom: 4em;
+  margin-top: 5rem;
   width: 100%;
   border: 1px solid black;
   border-radius: 5px;
