@@ -15,6 +15,7 @@ export default class TaskView {
       throw new Error("Missing required parameter.");
     }
     this.parentSelector = parentSelector;
+    this.filterState = undefined;
     this.taskList = taskList;
 
     taskList.subscribe(this.renderAllTasks.bind(this));
@@ -77,10 +78,24 @@ export default class TaskView {
     input.value = task.desc;
   }
 
-  async renderAllTasks() {
-    const el = document.body.querySelector(this.parentSelector);
-    el.innerHTML = "";
+  /**
+   * Filter view by isComplete state. Set to `undefined` for all tasks.
+   * @param {Boolean} [state]
+   */
+  setFilterState(state) {
+    this.filterState = state;
+  }
 
-    this.taskList.getAllTasks().forEach(this.renderSingleTask.bind(this));
+  renderAllTasks() {
+    this.getParentElement().innerHTML = "";
+    this.taskList.filterByState(this.filterState).forEach(this.renderSingleTask.bind(this));
+  }
+
+  getParentElement() {
+    const el = document.body.querySelector(this.parentSelector);
+    if (!el) {
+      throw new Error("Invalid parent selector for TaskView.")
+    }
+    return el;
   }
 }

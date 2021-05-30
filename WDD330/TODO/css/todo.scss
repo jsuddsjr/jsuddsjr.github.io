@@ -29,10 +29,7 @@ body {
   padding: 0;
   height: 100%;
 
-  // Add space so footer doesn't cover text.
-  & > section:last-of-type {
-    padding-bottom: 5em;
-  }
+  background-image: linear-gradient(white, #999);
 }
 
 section {
@@ -58,6 +55,7 @@ section {
 
   h1 {
     text-align: center;
+    margin: 0 0 1rem;
   }
 }
 
@@ -85,8 +83,8 @@ section {
     label {
       display: block;
       background-color: #ccc;
-      width: $button-size - .3;
-      height: $button-size - .3;
+      width: $button-size - 0.3;
+      height: $button-size - 0.3;
       cursor: pointer;
       border-radius: 3px;
     }
@@ -146,6 +144,7 @@ section {
     background-color: transparent;
     &.selected {
       border: 1px solid $body-color;
+      background-color: white;
     }
   }
 }
@@ -156,19 +155,22 @@ section {
   width: 100%;
 
   border: 1px solid $body-color;
+  border-radius: 5px;
+  overflow: hidden;
 
+  * {
+    background-color: white;
+    border-radius: 0;
+    border: 0;
+    outline: 0;
+  }
   button {
     width: 2em;
-    border: 0;
     font-size: 2em;
-    background-color: transparent;
   }
-
   input {
-    outline: 0;
     width: 100%;
     padding: 0.4em;
-    border: 0;
     font-size: 1.2em;
   }
 }

@@ -11,7 +11,9 @@ export default class TaskListModel {
    */
   constructor(taskList) {
     this.subscribers = new Subscribers(this);
-    this.taskList = taskList || this.readTasks();
+
+    if (taskList) this.taskList = taskList;
+    else this.readTasks();
 
     window.addEventListener("storage", (e) => {
       if (e.key === LOCAL_STORAGE_KEY) this.readTasks();
@@ -40,6 +42,7 @@ export default class TaskListModel {
    * @param {Boolean} isComplete
    */
   filterByState(isComplete) {
+    if (isComplete === undefined) return this.getAllTasks();
     return this.taskList.filter((task) => task.isComplete === isComplete);
   }
 
@@ -90,7 +93,6 @@ export default class TaskListModel {
       new TaskModel(desc, isComplete, id).subscribe(this.saveTasks.bind(this))
     );
     this.subscribers.notify(RELOAD_EVENT);
-    return this.taskList;
   }
 
   /**
