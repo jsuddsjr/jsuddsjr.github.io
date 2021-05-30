@@ -32,7 +32,7 @@ export default class Subscribers {
       try {
         notifyFunc(this.publisher);
       } catch (err) {
-        console.error.log(err);
+        console.log(err);
       }
     });
   }

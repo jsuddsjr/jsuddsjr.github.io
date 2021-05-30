@@ -68,12 +68,11 @@ export default class TaskView {
       el.parentElement.removeChild(el);
     });
 
-    this.updateTaskElement(el, task);
-    task.subscribe(this.updateTaskElement.bind(null, task));
+    this.updateTaskElement(el, input, task);
+    task.subscribe(this.updateTaskElement.bind(null, el, input));
   }
 
-  updateTaskElement(el, task) {
-    const [checkbox, input] = el.querySelectorAll("input");
+  updateTaskElement(el, input, task) {
     el.dataset.taskId = task.id.toString();
     input.value = task.desc;
   }

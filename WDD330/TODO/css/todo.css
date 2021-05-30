@@ -79,7 +79,7 @@ section {
 }
 
 .task .checkbox input:checked + label {
-  background: center url("../images/cross.svg");
+  background: center url("../images/check.svg");
   background-size: contain;
   background-color: lightgreen;
 }
