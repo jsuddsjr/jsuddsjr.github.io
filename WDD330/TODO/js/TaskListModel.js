@@ -52,7 +52,7 @@ export default class TaskListModel {
    */
   addTask(description) {
     const task = new TaskModel(description);
-    task.subscribe(this.saveTasks.bind(this));
+    task.onUpdate(this.saveTasks.bind(this));
     this.taskList.push(task);
     this.saveTasks();
     return task;
@@ -90,7 +90,7 @@ export default class TaskListModel {
     /** @type {(string | boolean)[][]} */
     const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
     this.taskList = tasks.map(([id, desc, isComplete]) =>
-      new TaskModel(desc, isComplete, id).subscribe(this.saveTasks.bind(this))
+      new TaskModel(desc, isComplete, id).onReload(this.saveTasks.bind(this))
     );
     this.subscribers.notify(RELOAD_EVENT);
   }
@@ -100,7 +100,7 @@ export default class TaskListModel {
    * @param {NotifyFunc} callback
    * @return A chainable reference.
    */
-  subscribe(callback) {
+  onReload(callback) {
     this.subscribers.subscribe(RELOAD_EVENT, callback);
     return this;
   }

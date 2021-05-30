@@ -48,7 +48,7 @@ export default class TaskModel {
    * @param {NotifyFunc} callback
    * @return A chainable reference.
    */
-  subscribe(callback) {
+  onUpdate(callback) {
     this.subscribers.subscribe(UPDATE_EVENT, callback);
     return this;
   }

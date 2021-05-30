@@ -35,7 +35,7 @@ describe("TaskModel", () => {
   test("should notify updates", () => {
     const task = new TaskModel("desc");
     const cb = jest.fn((task) => task);
-    task.subscribe(cb);
+    task.onUpdate(cb);
 
     task.toggleComplete();
 

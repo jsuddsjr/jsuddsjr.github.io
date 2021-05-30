@@ -14,11 +14,18 @@ export default class TaskView {
     if (!parentSelector || !taskList) {
       throw new Error("Missing required parameter.");
     }
+
     this.parentSelector = parentSelector;
+    this.parentElement = document.body.querySelector(parentSelector);
+
+    if (!this.parentElement) {
+      throw new Error("Invalid parent selector for TaskView.")
+    }
+
     this.filterState = undefined;
     this.taskList = taskList;
 
-    taskList.subscribe(this.renderAllTasks.bind(this));
+    taskList.onReload(this.renderAllTasks.bind(this));
   }
 
   /**
@@ -70,7 +77,7 @@ export default class TaskView {
     });
 
     this.updateTaskElement(el, input, task);
-    task.subscribe(this.updateTaskElement.bind(null, el, input));
+    task.onUpdate(this.updateTaskElement.bind(null, el, input));
   }
 
   updateTaskElement(el, input, task) {
@@ -89,13 +96,5 @@ export default class TaskView {
   renderAllTasks() {
     this.getParentElement().innerHTML = "";
     this.taskList.filterByState(this.filterState).forEach(this.renderSingleTask.bind(this));
-  }
-
-  getParentElement() {
-    const el = document.body.querySelector(this.parentSelector);
-    if (!el) {
-      throw new Error("Invalid parent selector for TaskView.")
-    }
-    return el;
   }
 }

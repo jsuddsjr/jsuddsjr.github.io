@@ -7,19 +7,24 @@ export default class TaskFooterView {
    * @param {TaskListModel} taskList
    */
   constructor(parentSelector, taskList) {
+    if (!parentSelector || !taskList) {
+      throw new Error("Missing required parameter for TaskFooterView.");
+    }
+
     this.parentSelector = parentSelector;
-    this.taskList = taskList;
+    this.parentElement = document.querySelector(parentSelector);
 
-    taskList.subscribe(this);
-  }
-
-  updateFooter() {
-    const el = document.querySelector(this.parentSelector);
-    if (!el) {
+    if (!this.parentElement) {
       throw new Error("Invalid parent selector for TaskFooterView.");
     }
 
-    const countSpan = el.querySelector("span.count");
-    countSpan.textContent = this.taskList.
+    this.taskList = taskList;
+
+    taskList.onReload(this);
+  }
+
+  updateFooter() {
+    const countSpan = this.parentElement.querySelector("span.count");
+    countSpan.textContent = this.taskList.filterByState(false).length;
   }
 }
