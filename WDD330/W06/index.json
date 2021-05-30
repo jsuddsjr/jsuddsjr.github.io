@@ -58,6 +58,7 @@
     }
   ],
   "questions": [
-    "Did you notice that you can open multiple app windows and that changes in one window will be reflected in the others? 😎"
+    "Finally got Jest working after some false starts. Unfortunately, the reading from last week didn't help much.",
+    "A few features you should check out:<ul><li>Empty lists have helpful text in them.</li><li>You can update a task once it's been added. Just click the text and start typing.</li><li>If you open multiple app windows, changes in one window will be reflected in the others. 😎</li></ul>"
   ]
 }
