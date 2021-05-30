@@ -10,7 +10,7 @@ export default class TaskController {
   }
 
   run() {
-    this.taskView.renderAllTasks();
+    this.taskView.renderAllTasks("Add a task to get started! 👇");
 
     document.forms[0].addEventListener("submit", (e) => {
       e.preventDefault();

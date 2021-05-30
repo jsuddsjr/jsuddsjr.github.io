@@ -7,20 +7,39 @@
   },
   "links": [
     {
-      "url": "syntax.html?TODO/js/TaskModel.js",
-      "label": "TaskModel.js"
+      "url": "syntax.html?TODO/js/Subscribers.js",
+      "label": "Subscribers.js",
+      "info": "Keeping everyone informed of changes in the system."
+    },
+    {
+      "url": "syntax.html?TODO/js/TaskController.js",
+      "label": "TaskController.js",
+      "info": "Setting up the app."
+    },
+    {
+      "url": "syntax.html?TODO/js/TaskFooterView.js",
+      "label": "TaskFooterView.js",
+      "info": "A controller for a view? Does that even make sense?"
     },
     {
       "url": "syntax.html?TODO/js/TaskListModel.js",
-      "label": "TaskListModel.js"
+      "label": "TaskListModel.js",
+      "info": "Managing the list and storage."
+    },
+    {
+      "url": "syntax.html?TODO/js/TaskModel.js",
+      "label": "TaskModel.js",
+      "info": "<q>Because an object should control its own destiny.</q> ~~ Me."
     },
     {
       "url": "syntax.html?TODO/js/TaskView.js",
-      "label": "TaskView.js"
+      "label": "TaskView.js",
+      "info": "Most of the application events live here."
     },
     {
-      "url": "syntax.html?TODO/js/Subscribers.js",
-      "label": "Subscribers.js"
+      "url": "syntax.html?TODO/js/todo.js",
+      "label": "todo.js",
+      "info": "Setting up the controller and kicking it off. Not much to see here."
     },
     {
       "url": "syntax.html?TODO/js/__tests__/TaskModel.tests.js",
@@ -29,16 +48,16 @@
     },
     {
       "url": "syntax.html?TODO/js/__tests__/TaskListModel.tests.js",
-      "label": "TaskListModel.test.js"
-    },
-    {
-      "url": "syntax.html?TODO/js/__tests__/TaskView.tests.js",
-      "label": "TaskView.test.js"
+      "label": "TaskListModel.test.js",
+      "info": "Because Jest is awesome."
     },
     {
       "url": "syntax.html?TODO/js/__tests__/Subscribers.tests.js",
-      "label": "Subscribers.test.js"
+      "label": "Subscribers.test.js",
+      "info": "Because patterns rule."
     }
   ],
-  "questions": []
+  "questions": [
+    "Did you notice that you can open multiple app windows and that changes in one window will be reflected in the others? 😎"
+  ]
 }

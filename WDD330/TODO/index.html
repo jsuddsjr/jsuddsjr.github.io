@@ -13,18 +13,8 @@
   </head>
   <body>
     <section class="app">
-      <h1>Todos</h1>
-      <div class="tasks">
-        <div class="task">
-          <input
-            type="checkbox"
-            name="complete"
-            title="Complete this task"
-          />
-          <p class="description">Task</p>
-          <button class="remove" title="Delete this task">X</button>
-        </div>
-      </div>
+      <h1>Ta-Da!</h1>
+      <div class="tasks"></div>
       <div class="footer">
         <p><span class="count">0</span> tasks left.</p>
         <button class="all selected">All</button>
@@ -32,7 +22,13 @@
         <button class="completed">Completed</button>
       </div>
       <form class="entry" id="entry">
-        <input type="text" name="task" id="task" autofocus placeholder="What's next?" />
+        <input
+          type="text"
+          name="task"
+          id="task"
+          autofocus
+          placeholder="What's next?"
+        />
         <button type="submit" class="add">+</button>
       </form>
     </section>

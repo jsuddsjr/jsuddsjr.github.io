@@ -37,6 +37,10 @@ export default class TaskView {
    * @returns
    */
   async renderSingleTask(task) {
+    // Clear out the welcome text.
+    const message = this.parentElement.querySelector('.message');
+    if (message) this.parentElement.removeChild(message);
+
     const el = await appendTemplate(this.parentSelector, "task");
     if (!el) return;
 
@@ -72,6 +76,11 @@ export default class TaskView {
       const id = button.parentElement.dataset.taskId;
       this.taskList.delTask(id);
       el.parentElement.removeChild(el);
+
+      // No one likes an empty list.
+      if (this.isEmpty()) {
+        this.parentElement.innerHTML = `<p class="message">Great work!! 🥳 </p>`;
+      }
     });
 
     this.updateTaskElement(el, input, task);
@@ -100,6 +109,13 @@ export default class TaskView {
   }
 
   /**
+   * @returns True, if current filter options result in empty list.
+   */
+  isEmpty() {
+    return this.taskList.filterByState(this.filterState).length === 0;
+  }
+
+  /**
    * @returns Number of active tasks.
    */
   countActiveTasks() {
@@ -108,14 +124,15 @@ export default class TaskView {
 
   /**
    * Re-render all tasks.
+   * @param {String} emptyMessage
    */
-  renderAllTasks() {
+  renderAllTasks(emptyMessage = "Nothing to see here.") {
     const activeTasks = this.taskList.filterByState(this.filterState);
     if (activeTasks.length) {
       this.parentElement.innerHTML = "";
       activeTasks.forEach(this.renderSingleTask.bind(this));
     } else {
-      this.parentElement.innerHTML = "<p>Nothing to see here.</p>";
+      this.parentElement.innerHTML = `<p class="message">${emptyMessage}</p>`;
     }
     this.subscribers.notify(REFRESH_EVENT);
   }
