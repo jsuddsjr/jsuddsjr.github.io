@@ -33,17 +33,9 @@ body {
 }
 
 section {
-  max-width: 48em;
+  max-width: $mq-medium;
   margin: 0 auto;
   padding: 1em;
-
-  @include mq($mq-medium) {
-    max-width: $mq-medium;
-  }
-
-  @include mq($mq-large) {
-    max-width: $mq-large;
-  }
 }
 
 .app {
@@ -53,6 +45,8 @@ section {
   align-content: start;
   height: 100%;
 
+  max-width: $mq-small;
+
   h1 {
     text-align: center;
     margin: 0 0 1rem;
@@ -61,6 +55,9 @@ section {
 
 .tasks {
   border: 1px solid $body-color;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
   padding: 0.35em;
 }
 

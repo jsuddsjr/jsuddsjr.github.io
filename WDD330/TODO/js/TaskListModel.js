@@ -1,8 +1,10 @@
 import TaskModel from "./TaskModel.js";
 import Subscribers from "./Subscribers.js";
+/** @typedef {import("./Subscribers").NotifyFunc} NotifyFunc */
 
 const LOCAL_STORAGE_KEY = "__allTasks";
 const RELOAD_EVENT = "reload";
+const SAVE_EVENT = "save";
 
 export default class TaskListModel {
   /**
@@ -81,6 +83,7 @@ export default class TaskListModel {
       task.isComplete,
     ]);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+    this.subscribers.notify(SAVE_EVENT);
   }
 
   /**
@@ -102,6 +105,16 @@ export default class TaskListModel {
    */
   onReload(callback) {
     this.subscribers.subscribe(RELOAD_EVENT, callback);
+    return this;
+  }
+
+  /**
+   * Subscribe to save events.
+   * @param {NotifyFunc} callback
+   * @returns
+   */
+  onSave(callback) {
+    this.subscribers.subscribe(SAVE_EVENT, callback);
     return this;
   }
 }

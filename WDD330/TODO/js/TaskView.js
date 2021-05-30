@@ -1,8 +1,10 @@
 import TaskModel from "./TaskModel.js";
 import TaskListModel from "./TaskListModel.js";
+import Subscribers from "./Subscribers.js";
 import { appendTemplate } from "../../js/template.js";
 
 const COMPLETED_CLASS = "complete";
+const REFRESH_EVENT = "refresh";
 
 export default class TaskView {
   /**
@@ -19,9 +21,10 @@ export default class TaskView {
     this.parentElement = document.body.querySelector(parentSelector);
 
     if (!this.parentElement) {
-      throw new Error("Invalid parent selector for TaskView.")
+      throw new Error("Invalid parent selector for TaskView.");
     }
 
+    this.subscribers = new Subscribers(this);
     this.filterState = undefined;
     this.taskList = taskList;
 
@@ -48,11 +51,6 @@ export default class TaskView {
       button.disabled = true;
     }
 
-    // el.addEventListener("click", (e) => {
-    //   checkbox.checked = !checkbox.checked;
-    //   checkbox.dispatchEvent(new Event("click"));
-    // });
-
     input.addEventListener("click", (e) => {
       e.stopImmediatePropagation();
     });
@@ -77,12 +75,19 @@ export default class TaskView {
     });
 
     this.updateTaskElement(el, input, task);
-    task.onUpdate(this.updateTaskElement.bind(null, el, input));
+    task.onUpdate(this.updateTaskElement.bind(this, el, input));
   }
 
+  /**
+   * Helper callback for updating the details of a single task.
+   * @param {HTMLElement} el
+   * @param {HTMLInputElement} input
+   * @param {TaskModel} task
+   */
   updateTaskElement(el, input, task) {
-    el.dataset.taskId = task.id.toString();
+    el.dataset.taskId = task.id;
     input.value = task.desc;
+    this.subscribers.notify(REFRESH_EVENT);
   }
 
   /**
@@ -91,10 +96,35 @@ export default class TaskView {
    */
   setFilterState(state) {
     this.filterState = state;
+    this.renderAllTasks();
   }
 
+  /**
+   * @returns Number of active tasks.
+   */
+  countActiveTasks() {
+    return this.taskList.filterByState(false).length;
+  }
+
+  /**
+   * Re-render all tasks.
+   */
   renderAllTasks() {
-    this.parentElement.innerHTML = "";
-    this.taskList.filterByState(this.filterState).forEach(this.renderSingleTask.bind(this));
+    const activeTasks = this.taskList.filterByState(this.filterState);
+    if (activeTasks.length) {
+      this.parentElement.innerHTML = "";
+      activeTasks.forEach(this.renderSingleTask.bind(this));
+    } else {
+      this.parentElement.innerHTML = "<p>Nothing to see here.</p>";
+    }
+    this.subscribers.notify(REFRESH_EVENT);
+  }
+
+  /**
+   * Get notifications for refresh events.
+   * @param {NotifyFunc} callback
+   */
+  onRefresh(callback) {
+    this.subscribers.subscribe(REFRESH_EVENT, callback);
   }
 }

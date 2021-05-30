@@ -1,13 +1,13 @@
-import TaskListModel from "./TaskListModel.js";
+import TaskView from "./TaskView.js";
 
 export default class TaskFooterView {
   /**
    *
    * @param {String} parentSelector
-   * @param {TaskListModel} taskList
+   * @param {TaskView} taskView
    */
-  constructor(parentSelector, taskList) {
-    if (!parentSelector || !taskList) {
+  constructor(parentSelector, taskView) {
+    if (!parentSelector || !taskView) {
       throw new Error("Missing required parameter for TaskFooterView.");
     }
 
@@ -18,13 +18,37 @@ export default class TaskFooterView {
       throw new Error("Invalid parent selector for TaskFooterView.");
     }
 
-    this.taskList = taskList;
+    this.taskView = taskView;
+    taskView.onRefresh(this.updateActiveCount.bind(this));
 
-    taskList.onReload(this);
+    this.attachEventListeners();
   }
 
-  updateFooter() {
+  updateActiveCount() {
     const countSpan = this.parentElement.querySelector("span.count");
-    countSpan.textContent = this.taskList.filterByState(false).length;
+    countSpan.textContent = this.taskView.countActiveTasks();
+  }
+
+  attachEventListeners() {
+    const SELECTED_CLASS = "selected";
+    const allButtons = this.parentElement.querySelectorAll("button");
+    function setActiveButton(btn) {
+      allButtons.forEach((el) => el.classList.remove(SELECTED_CLASS));
+      btn.classList.add(SELECTED_CLASS);
+    }
+
+    const [all, active, completed] = allButtons;
+    all.addEventListener("click", () => {
+      this.taskView.setFilterState();
+      setActiveButton(all);
+    });
+    active.addEventListener("click", () => {
+      this.taskView.setFilterState(false);
+      setActiveButton(active);
+    });
+    completed.addEventListener("click", () => {
+      this.taskView.setFilterState(true);
+      setActiveButton(completed);
+    });
   }
 }
