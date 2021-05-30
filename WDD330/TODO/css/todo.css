@@ -161,6 +161,7 @@ section {
   display: -ms-flexbox;
   display: flex;
   margin-top: auto;
+  margin-bottom: 4em;
   width: 100%;
   border: 1px solid black;
   border-radius: 5px;
