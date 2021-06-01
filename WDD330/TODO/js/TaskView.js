@@ -1,6 +1,7 @@
 import TaskModel from "./TaskModel.js";
 import TaskListModel from "./TaskListModel.js";
 import Subscribers from "./Subscribers.js";
+/** @typedef {import('./Subscribers').NotifyFunc} NotifyFunc */
 import { appendTemplate } from "../../js/template.js";
 
 const COMPLETED_CLASS = "complete";
@@ -42,10 +43,11 @@ export default class TaskView {
     if (message) this.parentElement.removeChild(message);
 
     const el = await appendTemplate(this.parentSelector, "task");
-    if (!el) return;
+    if (!(el instanceof HTMLElement)) return;
 
     const [checkbox, input] = el.querySelectorAll("input");
     const button = el.querySelector("button");
+    if (!button) return;
 
     if (task.isComplete) {
       el.classList.add(COMPLETED_CLASS);
@@ -73,9 +75,11 @@ export default class TaskView {
 
     button.addEventListener("click", (e) => {
       e.stopImmediatePropagation();
-      const id = button.parentElement.dataset.taskId;
-      this.taskList.delTask(id);
-      el.parentElement.removeChild(el);
+      if (button.parentElement && el.parentElement) {
+        const id = button.parentElement.dataset.taskId || '';
+        this.taskList.delTask(id);
+        el.parentElement.removeChild(el);
+      }
 
       // No one likes an empty list.
       if (this.isEmpty()) {

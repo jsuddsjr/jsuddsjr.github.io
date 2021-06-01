@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Syntax Highlighter</title>
+    <title>Syntax Colorer</title>
     <style>
       :root,
       body,
@@ -18,10 +18,19 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai.css"
-      type="text/css"
+      integrity="sha384-73eWpPxnqQ/UqA0lQvi8sREZeujM6Zg+qo5TrX2xpWY6h327ijikhc2Fas5MWK8H"
+      crossorigin="anonymous"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"
+      integrity="sha384-dSBu9vnTtiIBRG9l6/RbsNFx80ZZrQL7mX+/q/nBwaEPaZJkp9vBCWJq4ypEiqCt"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"
+      integrity="sha384-+ch8x/dgaV//v6Sa8m4v5+7KScnpCuxHqilN8njQ013CEKg3Fbd8Q3oN9tfpouLh"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="highlight">
@@ -35,17 +44,21 @@
     <script>
       const sourceFile = location.search.substr(1);
       if (sourceFile && sourceFile.endsWith(".js")) {
+        document.title = sourceFile;
         fetchAsync(sourceFile);
       } else {
-        document.getElementById("external-code").innerText =
-          "Must specify a code file.";
+        document.querySelector(".highlight").innerText =
+          "No code file specified.";
       }
 
       async function fetchAsync(url) {
         let response = await fetch(url);
         let data = await response.text();
 
-        document.getElementById("external-code").innerHTML = data.replace(/</g, "&lt;");
+        document.getElementById("external-code").innerHTML = data.replace(
+          /</g, // > Because my syntax color is broken by open tag symbol.
+          "&lt;"
+        );
 
         document.querySelectorAll("pre code.external").forEach((block) => {
           hljs.highlightBlock(block);

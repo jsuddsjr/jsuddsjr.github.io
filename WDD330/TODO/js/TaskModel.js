@@ -8,8 +8,8 @@ export default class TaskModel {
   /**
    * Create a new task object.
    * @param {String} description
-   * @param {Boolean} completed
-   * @param {String} id
+   * @param {Boolean} [completed]
+   * @param {String} [id]
    */
   constructor(description, completed = false, id) {
     this.id = id || new Date().toISOString();

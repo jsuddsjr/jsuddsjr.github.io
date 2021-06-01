@@ -14,8 +14,8 @@ export default class TaskListModel {
   constructor(taskList) {
     this.subscribers = new Subscribers(this);
 
-    if (taskList) this.taskList = taskList;
-    else this.readTasks();
+    /** @type {TaskModel[]} */
+    this.taskList = taskList || this.readTasks();
 
     window.addEventListener("storage", (e) => {
       if (e.key === LOCAL_STORAGE_KEY) this.readTasks();
@@ -32,8 +32,8 @@ export default class TaskListModel {
 
   /**
    * Returns a task by id.
-   * @param {Number} id Task id.
-   * @returns {TaskModel} Task, if found.
+   * @param {String} id Task id.
+   * @returns Task, if found.
    */
   getTask(id) {
     return this.taskList.find((task) => task.id === id);
@@ -41,7 +41,7 @@ export default class TaskListModel {
 
   /**
    * Returns tasks matching specified state.
-   * @param {Boolean} isComplete
+   * @param {Boolean | undefined} isComplete
    */
   filterByState(isComplete) {
     if (isComplete === undefined) return this.getAllTasks();
@@ -92,10 +92,12 @@ export default class TaskListModel {
   readTasks() {
     /** @type {(string | boolean)[][]} */
     const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
-    this.taskList = tasks.map(([id, desc, isComplete]) =>
-      new TaskModel(desc, isComplete, id).onUpdate(this.saveTasks.bind(this))
+    const taskList = tasks.map(([id, desc, isComplete]) =>
+      new TaskModel(desc.toString(), !!isComplete, id.toString()).onUpdate(this.saveTasks.bind(this))
     );
+    this.taskList = taskList;
     this.subscribers.notify(RELOAD_EVENT);
+    return taskList;
   }
 
   /**

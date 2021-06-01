@@ -150,7 +150,10 @@ Number.prototype.pad = function (size, char = "0") {
         /** @type WeeklyReport */
         const report = await request.json();
         const title = d.querySelector(".report-title");
-        if (title) title.innerHTML = report.title || `Report for ${week}`;
+        if (title) {
+          title.innerHTML = report.title || `Report for ${week}`;
+          d.title = title.textContent + ' -- WDD330 Portfolio';
+        }
         return report;
       } catch (error) {
         // Ignore error.

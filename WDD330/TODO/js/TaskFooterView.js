@@ -25,8 +25,8 @@ export default class TaskFooterView {
   }
 
   updateActiveCount() {
-    const countSpan = this.parentElement.querySelector("span.count");
-    countSpan.textContent = this.taskView.countActiveTasks();
+    const countSpan = this.parentElement.querySelector("span");
+    if (countSpan) countSpan.textContent = this.taskView.countActiveTasks().toFixed();
   }
 
   attachEventListeners() {

@@ -16,7 +16,7 @@ export default class TaskController {
       e.preventDefault();
 
       /** @type {HTMLInputElement} */
-      const input = document.forms[0].elements[0];
+      const input = document.forms['entry'].elements['task'];
       const desc = input.value.trim();
       if (desc) {
         const task = this.taskList.addTask(desc);
