@@ -1,0 +1,91 @@
+$green-100: rgb(147, 206, 108);
+$green-50: darken($green-100, 20);
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, sans-serif;
+  color: darken($green-50, 10);
+  display: flex;
+}
+
+main {
+  max-width: 96rem;
+  margin: 0 auto;
+}
+
+#hikeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    width: 24em;
+    border: 2px solid $green-100;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(black, 0.5);
+    padding: 20px;
+  }
+
+  h3 {
+    color: $green-50;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+div.property {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: 2em;
+
+  & div:first-child {
+    font-weight: bold;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 2em;
+
+  & button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:before {
+      content: "  X";
+    }
+  }
+}
+
+.hikeFull {
+  max-width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: 48rem) {
+    max-width: 50%;
+  }
+
+  div.property {
+    border-bottom: 1px solid black;
+    padding: 2px 5px;
+    justify-content: flex-start;
+
+    div {
+      min-width: 30%;
+    }
+  }
+}

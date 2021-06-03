@@ -1,6 +1,6 @@
 import TaskView from "./TaskView.js";
 
-export default class TaskFooterView {
+export class TaskFooterView {
   /**
    *
    * @param {String} parentSelector

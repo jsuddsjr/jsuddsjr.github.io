@@ -1,4 +1,4 @@
-import TaskFooterView from "./TaskFooterView.js";
+import { TaskFooterView } from "./TaskFooterView.js";
 import TaskListModel from "./TaskListModel.js";
 import TaskView from "./TaskView.js";
 
@@ -6,7 +6,7 @@ export default class TaskController {
   constructor() {
     this.taskList = new TaskListModel();
     this.taskView = new TaskView("div.tasks", this.taskList);
-    this.taskFooterView = new TaskFooterView("div.footer", this.taskView);
+    this.taskFooterView = new Task("div.footer", this.taskView);
   }
 
   run() {
