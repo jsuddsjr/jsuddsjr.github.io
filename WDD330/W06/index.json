@@ -42,6 +42,11 @@
       "info": "Setting up the controller and kicking it off. Not much to see here."
     },
     {
+      "url": "syntax.html?TODO/css/todo.scss",
+      "label": "todo.scss",
+      "info": "Sassy styling."
+    },
+    {
       "url": "syntax.html?TODO/js/__tests__/TaskModel.tests.js",
       "label": "TaskModel.test.js",
       "info": "Because TDD is cool."
