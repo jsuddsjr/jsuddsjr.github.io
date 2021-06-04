@@ -1,0 +1,36 @@
+$box-size: 40px;
+
+* {
+  box-sizing: border-box;
+}
+
+section {
+  max-width: 48em;
+  margin: 0 auto;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: ($box-size * 15) + 1px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  .cell {
+    position: relative;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    width: $box-size;
+    height: $box-size;
+    background-color: transparent;
+
+    &.blocked {
+      background-color: black;
+    }
+
+    .number {
+      font-size: 0.5em;
+      margin-left: 0.1em;
+    }
+  }
+}

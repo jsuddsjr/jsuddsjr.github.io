@@ -5,20 +5,36 @@ export default class CellModel {
    */
   constructor(cellElement) {
     this.cellElement = cellElement;
-
     /** @type {CellModel?} */
     this.partnerCell = null;
     this.blocked = false;
+    this.content = "";
+
+    cellElement.classList.add("cell");
+
+    const div = document.createElement("div");
+    div.classList.add("number");
+    cellElement.appendChild(div);
+
+    this.numberElement = div;
   }
 
   setPartner(cell) {
-    this.partnerCell = cell;
+    if (cell !== this) this.partnerCell = cell;
   }
 
-  setBlocked(value) {
-    if (this.blocked !== value) {
-      this.blocked = value;
-      this.partnerCell?.setBlocked(value);
+  setNumber(num) {
+    this.numberElement.textContent = num > 0 ? num : "";
+  }
+
+  /**
+   * @param {Boolean} [value]
+   */
+  toggleBlocked(value) {
+    if (value == undefined || this.blocked !== value) {
+      this.blocked = !this.blocked;
+      this.cellElement.classList.toggle("blocked");
+      this.partnerCell?.toggleBlocked(this.blocked);
     }
   }
 }
