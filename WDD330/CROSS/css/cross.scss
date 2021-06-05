@@ -4,6 +4,10 @@ $box-size: 40px;
   box-sizing: border-box;
 }
 
+body {
+  font-family: Geneva, Verdana, sans-serif
+}
+
 section {
   max-width: 48em;
   margin: 0 auto;
@@ -18,17 +22,30 @@ section {
 
   .cell {
     position: relative;
+    display: grid;
+    place-content: center;
+
     border-top: 1px solid black;
     border-left: 1px solid black;
     width: $box-size;
     height: $box-size;
-    background-color: transparent;
+    background-color: white;
+
+    &:before {
+      content: attr(data-letter);
+      font-size: $box-size / 1.8;
+    }
 
     &.blocked {
       background-color: black;
     }
 
+    &.error {
+      background-color: rgba(red, 0.3);
+    }
+
     .number {
+      position: absolute;
       font-size: 0.5em;
       margin-left: 0.1em;
     }

@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {},
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ]
+  },
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --watch"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "cross-env": "^7.0.3",
+    "jest": "^27.0.3"
+  }
+}

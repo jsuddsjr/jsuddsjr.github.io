@@ -3,6 +3,10 @@
           box-sizing: border-box;
 }
 
+body {
+  font-family: Geneva, Verdana, sans-serif;
+}
+
 section {
   max-width: 48em;
   margin: 0 auto;
@@ -21,18 +25,31 @@ section {
 
 .board .cell {
   position: relative;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
   border-top: 1px solid black;
   border-left: 1px solid black;
   width: 40px;
   height: 40px;
-  background-color: transparent;
+  background-color: white;
+}
+
+.board .cell:before {
+  content: attr(data-letter);
+  font-size: 22.22222px;
 }
 
 .board .cell.blocked {
   background-color: black;
 }
 
+.board .cell.error {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
 .board .cell .number {
+  position: absolute;
   font-size: 0.5em;
   margin-left: 0.1em;
 }
