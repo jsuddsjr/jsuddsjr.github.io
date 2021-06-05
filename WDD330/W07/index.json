@@ -20,6 +20,11 @@
       "url": "W07/js-immediate.html",
       "label": "JavaScript immediately invoked function expressions (IIFE)",
       "info": "Not so <em>iffy</em> after all."
+    },
+    {
+      "url": "W07/js-lazy-def.html",
+      "label": "JavaScript lazy definition pattern",
+      "info": "You can call it a pattern, but it still feels like a hack. 💩"
     }
   ],
   "questions": [

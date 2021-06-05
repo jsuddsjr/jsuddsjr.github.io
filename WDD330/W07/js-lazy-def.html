@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Lazy Definition Pattern</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Lazy Definition Pattern</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script>
+      function resetParty() {
+        return function lazyParty() {
+          party = function () {
+            return "Been there, got the T-Shirt";
+          };
+          return "Wow this is amazing!";
+        };
+      }
+      function ride() {
+        if (window.unicorn) {
+          ride = function () {
+            // some code that uses the brand new and sparkly unicorn methods
+            return "Riding on a unicorn is the best!";
+          };
+        } else {
+          ride = function () {
+            // some code that uses the older pony methods
+            return "Riding on a pony is still pretty good";
+          };
+        }
+        return ride();
+      }
+    </script>
+    <script>
+      runCode([
+        () => (party = resetParty()),
+        "party()",
+        () => party,
+        "party()",
+        "party()",
+
+        "// Only works if you use the same-named variable.",
+        () => (beachParty = resetParty()),
+        "beachParty()",
+        "beachParty()",
+        () => beachParty,
+
+        "// You will lose custom properties when the reference is redefined.",
+        () => (party = resetParty()),
+        "party.music = 'Classical Jazz'",
+        "party()",
+        "party.music",
+
+        "// Rewrite based on ambient window properties.",
+        () => ride,
+        "ride()"
+      ]);
+    </script>
+  </body>
+</html>
