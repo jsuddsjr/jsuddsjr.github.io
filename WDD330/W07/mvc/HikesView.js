@@ -76,6 +76,7 @@ export default class HikesView {
         .filter((prop) => !filter.includes(prop))
         .map((prop) => this.renderHikeProperty(hike, prop))
         .join("") +
+        
       "</div>";
   }
 

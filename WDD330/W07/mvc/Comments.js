@@ -19,6 +19,9 @@ export default class Comments {
     this.comments = comments || readLocal(this.type) || [];
   }
 
+  /**
+   * Save comments. Called automatically when adding comments.
+   */
   saveComments() {
     storeLocal(this.type, this.comments);
   }
@@ -40,18 +43,33 @@ export default class Comments {
     return this.comments.filter((comment) => comment.hikeName === hikeName);
   }
 
+  /**
+   * Add a comment to the FRONT of the list.
+   * @param {String} hikeName
+   * @param {CommentModel} comment
+   */
   addComment(hikeName, comment) {
-    this.comments.push(new CommentModel(hikeName, comment));
+    this.comments.unshift(new CommentModel(hikeName, comment));
     this.saveComments();
   }
 }
 
+/**
+ * Read data from local storage.
+ * @param {String} key
+ * @returns Object parsed from storage.
+ */
 function readLocal(key) {
   return JSON.parse(window.localStorage.getItem(key));
 }
 
+/**
+ * Stores data in local storage.
+ * @param {String} key
+ * @param {*} data
+ */
 function storeLocal(key, data) {
-  return window.localStorage.setItem(key, JSON.stringify(data));
+  window.localStorage.setItem(key, JSON.stringify(data));
 }
 
 export class CommentListView {
@@ -77,19 +95,9 @@ export class CommentListView {
     }
 
     this.data = data;
-    this.attachListener();
     this.hideCommentForm();
-  }
 
-  attachListener() {
-    this.form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const comment = this.textarea.value;
-      const hikeName = this.form.dataset.hikeName || "unknown";
-      this.data.addComment(hikeName, comment);
-      this.textarea.value = "";
-      this.renderCommentList();
-    });
+    attachSubmitListener(this);
   }
 
   /**
@@ -97,8 +105,12 @@ export class CommentListView {
    * @param {String} hikeName
    */
   showCommentForm(hikeName) {
-    this.form.dataset.hikeName = hikeName;
-    this.form.style.display = "";
+    if (hikeName) {
+      this.form.dataset.hikeName = hikeName;
+      this.form.style.display = "";
+    } else {
+      this.hideCommentForm();
+    }
   }
 
   /**
@@ -125,7 +137,23 @@ export class CommentListView {
     });
 
     this.container.innerHTML = html.join("");
+    this.showCommentForm(hikeName);
   }
+}
+
+/**
+ *
+ * @param {CommentListView} listView
+ */
+function attachSubmitListener(listView) {
+  listView.form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const comment = listView.textarea.value;
+    const hikeName = listView.form.dataset.hikeName || "unknown";
+    listView.data.addComment(hikeName, comment);
+    listView.textarea.value = "";
+    listView.renderCommentList();
+  });
 }
 
 const COMMENT_TITLE = 1;

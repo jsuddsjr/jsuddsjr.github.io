@@ -13,6 +13,7 @@ export default class HikesController {
   constructor(parentId) {
     /** @type {HTMLUListElement|HTMLOListElement} */
     this.parentElement = document.getElementById(parentId);
+
     // this is how our controller will know about the model and view...we add them right into the class as members.
     this.hikeModel = new HikeModel();
     this.hikesView = new HikesView(parentId);
@@ -34,7 +35,7 @@ export default class HikesController {
       this.hikeModel.getAllHikes(),
       this.parentElement
     );
-    this.addHikeListener();
+    addHikeListener(this);
     this.commentListView.renderCommentList();
   }
 
@@ -43,22 +44,28 @@ export default class HikesController {
     const hike = this.hikeModel.getHikeByName(hikeName);
     this.hikesView.renderOneHikeFull(hike, this.parentElement);
   }
+}
 
-  addHikeListener() {
-    // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend.
-    [...this.parentElement.querySelectorAll("div[data-name]")].forEach((el) =>
+/**
+ * Attach event listener. PRIVATE.
+ * @param {HikesController} controller
+ */
+function addHikeListener(controller) {
+  // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend.
+  [...controller.parentElement.querySelectorAll("div[data-name]")].forEach(
+    (el) =>
       ["touchend", "click"].forEach((eventName) =>
         el.addEventListener(eventName, (event) => {
           /** @type {HTMLLIElement} */
           const li = event.currentTarget;
-          this.showOneHike(li.dataset.name);
-          this.parentElement
+          controller.showOneHike(li.dataset.name);
+          controller.commentListView.renderCommentList(li.dataset.name)
+          controller.parentElement
             .querySelector("button")
             .addEventListener("click", () => {
-              this.showHikeList();
+              controller.showHikeList();
             });
         })
       )
-    );
-  }
+  );
 }
