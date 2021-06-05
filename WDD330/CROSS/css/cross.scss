@@ -1,24 +1,55 @@
-$box-size: 40px;
+$mq-small: 26em;
+$mq-medium: 35em;
+$mq-large: 56em;
+
+@mixin mq($min-width) {
+  @media screen and (min-width: $min-width) {
+    & {
+      @content;
+    }
+  }
+}
 
 * {
   box-sizing: border-box;
 }
 
+:root {
+  --box-size: 20px;
+  font-size: 12px;
+
+  @include mq($mq-medium) {
+    --box-size: 30px;
+    font-size: 16px;
+  }
+
+  @include mq($mq-large) {
+    --box-size: 40px;
+    font-size: 18px;
+  }
+}
+
 body {
   font-family: Geneva, Verdana, sans-serif;
+  margin: 10px;
 }
 
 section {
-  max-width: 48em;
   margin: 0 auto;
+  max-width: $mq-small;
+
+  @include mq($mq-medium) {
+    max-width: $mq-medium;
+  }
 }
 
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: ($box-size * 15) + 1px;
+  width: calc((var(--box-size) * 15) + 1px);
   border-right: 1px solid black;
   border-bottom: 1px solid black;
+  margin: 0 auto;
 
   .cell {
     position: relative;
@@ -27,13 +58,13 @@ section {
 
     border-top: 1px solid black;
     border-left: 1px solid black;
-    width: $box-size;
-    height: $box-size;
+    width: var(--box-size);
+    height: var(--box-size);
     background-color: white;
 
     &:before {
       content: attr(data-letter);
-      font-size: $box-size / 1.8;
+      font-size: calc(var(--box-size) / 1.8);
     }
 
     &.blocked {
@@ -53,7 +84,6 @@ section {
 }
 
 .clues {
-  columns: 2;
   margin-top: 2em;
 
   h2 {
@@ -64,5 +94,9 @@ section {
 
   .across {
     margin-bottom: 1em;
+  }
+
+  @include mq($mq-medium) {
+    columns: 2;
   }
 }

@@ -3,13 +3,39 @@
           box-sizing: border-box;
 }
 
+:root {
+  --box-size: 20px;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 35em) {
+  :root {
+    --box-size: 30px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 56em) {
+  :root {
+    --box-size: 40px;
+    font-size: 18px;
+  }
+}
+
 body {
   font-family: Geneva, Verdana, sans-serif;
+  margin: 10px;
 }
 
 section {
-  max-width: 48em;
   margin: 0 auto;
+  max-width: 26em;
+}
+
+@media screen and (min-width: 35em) {
+  section {
+    max-width: 35em;
+  }
 }
 
 .board {
@@ -18,9 +44,10 @@ section {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 601px;
+  width: calc((var(--box-size) * 15) + 1px);
   border-right: 1px solid black;
   border-bottom: 1px solid black;
+  margin: 0 auto;
 }
 
 .board .cell {
@@ -30,14 +57,14 @@ section {
   place-content: center;
   border-top: 1px solid black;
   border-left: 1px solid black;
-  width: 40px;
-  height: 40px;
+  width: var(--box-size);
+  height: var(--box-size);
   background-color: white;
 }
 
 .board .cell:before {
   content: attr(data-letter);
-  font-size: 22.22222px;
+  font-size: calc(var(--box-size) / 1.8);
 }
 
 .board .cell.blocked {
@@ -55,8 +82,6 @@ section {
 }
 
 .clues {
-  -webkit-columns: 2;
-          columns: 2;
   margin-top: 2em;
 }
 
@@ -68,5 +93,12 @@ section {
 
 .clues .across {
   margin-bottom: 1em;
+}
+
+@media screen and (min-width: 35em) {
+  .clues {
+    -webkit-columns: 2;
+            columns: 2;
+  }
 }
 /*# sourceMappingURL=cross.css.map */

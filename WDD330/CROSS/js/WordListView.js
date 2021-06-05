@@ -38,7 +38,7 @@ export default class WordListView {
 }
 
 const clueTemplate = [
-  '<li class="number" start="',
+  '<li class="number" value="',
   null,
   '"><span class="clue">',
   null,
