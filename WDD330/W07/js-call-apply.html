@@ -17,6 +17,11 @@
     <script src="js/functions.js"></script>
 
     <script>
+      function square(x) {
+        x * x;
+      }
+    </script>
+    <script>
       runCode([
         () => sayHello,
         "clark = { name: 'Clark' }",
@@ -27,6 +32,7 @@
         "sayHelloWithGreeting.call(clark, 'How do you do')",
         "sayHelloWithGreeting.call(bruce)",
 
+        "// SQUARE function",
         () => square,
         "square.length // One parameter",
         "// You can call without a this pointer",
@@ -34,8 +40,7 @@
         "// Apply requires an array of arguments",
         "square.apply(null, [4])",
         "// You can even apply custom properties to a function",
-        "square.description = 'Squares a number.'"
-
+        "square.description = 'Squares a number.'",
       ]);
     </script>
   </body>

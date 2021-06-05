@@ -2,7 +2,8 @@
  * @param {Object} obj
  * @returns Reported name of any object
  */
-const myType = (obj) => obj.constructor.name || Object.prototype.toString.call(obj).slice(8, -1);
+const myType = (obj) =>
+  obj.constructor.name || Object.prototype.toString.call(obj).slice(8, -1);
 
 /**
  * Ensure strings with line breaks are displayed preformatted.
@@ -14,6 +15,22 @@ const preWrap = (str) => (str.indexOf("\n") !== -1 ? `<pre>${str}</pre>` : str);
 const objectName = (obj) => {
   const typeName = myType(obj);
   return typeName !== "Object" ? `<i>${typeName}</i> ` : "";
+};
+
+/**
+ * Trim beginning space from multi-line string.
+ * @param {string} str
+ */
+const trimFromAllLines = (str) => {
+  if (/\n/.test(str)) {
+    const lines = str.split("\n");
+    // Looking at the last line is the safest option.
+    if ((m = /^\s+/.exec(lines[lines.length - 1]))) {
+      const leadingMatch = new RegExp(`^${m[0]}`);
+      return lines.map((s) => s.replace(leadingMatch, "")).join("\n");
+    }
+  }
+  return str.trimStart();
 };
 
 /**
@@ -49,7 +66,10 @@ const toTypeString = (unknown) => {
     result = `[${asStrings.join(", ")}]`;
   } else if (unknown instanceof Set || unknown instanceof Map) {
     const asArray = toTypeString([...unknown]);
-    result = `${objectName(unknown)} { ${asArray.substr(1, asArray.length - 2)} }`;
+    result = `${objectName(unknown)} { ${asArray.substr(
+      1,
+      asArray.length - 2
+    )} }`;
   } else if (unknown instanceof WeakSet || unknown instanceof WeakMap) {
     result = `${objectName(unknown)} {}`;
   } else if (unknown instanceof RegExp) {
@@ -62,6 +82,8 @@ const toTypeString = (unknown) => {
     result = objectName(unknown) + toTypeString(Array.from(unknown));
   } else if (unknown instanceof Window) {
     result = "a<i>Window</i> { ... }";
+  } else if (unknown instanceof Function) {
+    result = trimFromAllLines(unknown.toString());
   } else if (typeof unknown === "object") {
     const clone = Object.assign({}, unknown);
     Object.keys(clone).forEach((k) => {
@@ -141,31 +163,35 @@ const runCode = (code) => {
         .toString()
         .split("\n")
         .filter((l) => l.indexOf("/**/") === -1);
-      const body = code
-        .splice(1, code.length - 2)
-        .join("\n")
-        .replace(/</g, "&lt;");
-      const functionName =
-        line["title"] ||
-        line.name
-          // Remove leading "test" if exists.
-          .replace(/^test/, "")
-          // Split the function name into words at capital letters.
-          .replace(/([A-Z]|[0-9]+)/g, " $1");
-      html.push(
-        `<a id="${line.name}"></a><h4>${functionName}</h4><pre>${unHtml(
-          body
-        )}</pre>`,
-        line["associatedHtml"] || ""
-      );
 
-      writeToOutput(html);
+      // Do we have a body?
+      if (code.length > 2) {
+        const body = code
+          .splice(1, code.length - 2)
+          .join("\n")
+          .replace(/</g, "&lt;");
+        const functionName =
+          line["title"] ||
+          line.name
+            // Remove leading "test" if exists.
+            .replace(/^test/, "")
+            // Split the function name into words at capital letters.
+            .replace(/([A-Z]|[0-9]+)/g, " $1");
+        html.push(
+          `<a id="${line.name}"></a><h4>${functionName}</h4><pre>${unHtml(
+            body
+          )}</pre>`,
+          line["associatedHtml"] || "",
+          "<h4>Output</h4>"
+        );
+        writeToOutput(html);
+      }
 
       startLog();
       executeWithTry(line);
       const result = globalLog.map(toTypeString).join("\n");
       if (result) {
-        html.push(`<h4>Output</h4><pre>${result}</pre>`);
+        html.push(`<pre>${result}</pre>`);
       }
     }
   }

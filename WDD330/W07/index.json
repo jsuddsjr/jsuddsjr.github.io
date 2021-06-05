@@ -5,6 +5,16 @@
       "url": "W07/hikes-mvc.html",
       "label": "Team Project (Great Hikes Revisited)",
       "info": "Leaving comments: Tell us what you think!"
+    },
+    {
+      "url": "W07/js-call-apply.html",
+      "label": "JavaScript call &amp; apply",
+      "info": "Another way to invoke methods."
+    },
+    {
+      "url": "W07/js-memoization.html",
+      "label": "JavaScript memoization",
+      "info": "Leave me a memo."
     }
   ],
   "questions": [
