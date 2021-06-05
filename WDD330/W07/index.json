@@ -2,11 +2,12 @@
   "title": "Week 7: TBD",
   "links": [
     {
-      "url": "syntax.html?TODO/js/Subscribers.js",
-      "label": "Subscribers.js",
-      "info": "Keeping everyone informed of changes in the system."
+      "url": "W07/hikes-mvc.html",
+      "label": "Team Project (Great Hikes Revisited)",
+      "info": "Leaving comments: Tell us what you think!"
     }
   ],
   "questions": [
+    "It's frustrating to find CSS properties with low to zero support among browser vendors. Such is the situation with <code>break-inside: avoid-column</code>. Fortunately, setting <code>display: inline-block</code> seems to fix the issue, but it doesn't make me happy. 👎"
   ]
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Object Call and Apply</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Object Call and Apply</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script src="js/functions.js"></script>
+
+    <script>
+      runCode([
+        () => sayHello,
+        "clark = { name: 'Clark' }",
+        "bruce = { name: 'Bruce' }",
+        "sayHello.call(clark)",
+        "sayHello.call(bruce)",
+        () => sayHelloWithGreeting,
+        "sayHelloWithGreeting.call(clark, 'How do you do')",
+        "sayHelloWithGreeting.call(bruce)",
+
+        () => square,
+        "square.length // One parameter",
+        "// You can call without a this pointer",
+        "square.call(null, 4)",
+        "// Apply requires an array of arguments",
+        "square.apply(null, [4])",
+        "// You can even apply custom properties to a function",
+        "square.description = 'Squares a number.'"
+
+      ]);
+    </script>
+  </body>
+</html>
