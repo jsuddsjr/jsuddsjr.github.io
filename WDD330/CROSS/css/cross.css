@@ -71,6 +71,10 @@ section {
   background-color: black;
 }
 
+.board .cell.warning {
+  background-color: rgba(255, 255, 0, 0.3);
+}
+
 .board .cell.error {
   background-color: rgba(255, 0, 0, 0.3);
 }
@@ -100,5 +104,10 @@ section {
     -webkit-columns: 2;
             columns: 2;
   }
+}
+
+.total {
+  font-size: 0.8rem;
+  line-height: 0.8;
 }
 /*# sourceMappingURL=cross.css.map */

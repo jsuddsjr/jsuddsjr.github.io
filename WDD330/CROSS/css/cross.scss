@@ -71,6 +71,10 @@ section {
       background-color: black;
     }
 
+    &.warning {
+      background-color: rgba(yellow, 0.3);
+    }
+
     &.error {
       background-color: rgba(red, 0.3);
     }
@@ -99,4 +103,9 @@ section {
   @include mq($mq-medium) {
     columns: 2;
   }
+}
+
+.total {
+  font-size: 0.8rem;
+  line-height: 0.8;
 }

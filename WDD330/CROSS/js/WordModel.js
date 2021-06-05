@@ -1,7 +1,8 @@
 import CellModel from "./CellModel.js";
 
 const ERROR_CLASS = "error";
-const ALL_STATES = [ERROR_CLASS];
+const WARNING_CLASS = "warning";
+const ALL_STATES = [ERROR_CLASS, WARNING_CLASS];
 
 export default class WordModel {
   /**
@@ -17,6 +18,8 @@ export default class WordModel {
 
     if (this.length < 3) {
       this.setState(ERROR_CLASS);
+    } else if (this.length > 8) {
+      this.setState(WARNING_CLASS);
     }
 
     // TODO: Testing
@@ -27,7 +30,10 @@ export default class WordModel {
    * @param {WordModel} word
    */
   clearStates() {
-    this.cells.forEach((c) => c.cellElement.classList.remove(ALL_STATES));
+    this.cells.forEach((c) => {
+      c.cellElement.classList.remove(...ALL_STATES);
+      // c.cellElement.dataset.letter = "";
+    });
   }
 
   /**

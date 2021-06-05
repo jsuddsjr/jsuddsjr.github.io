@@ -7,23 +7,28 @@ export default class WordListView {
    * @param {BoardView} board
    * @param {HTMLElement} acrossElement
    * @param {HTMLElement} downElement
+   * @param {HTMLElement} countElement
    */
-  constructor(board, acrossElement, downElement) {
+  constructor(board, acrossElement, downElement, countElement) {
     this.board = board.onLayout(this.update.bind(this));
     this.acrossElement = acrossElement;
     this.downElement = downElement;
+    this.countElement = countElement;
   }
 
   update() {
     this.acrossElement.innerHTML = "";
     this.downElement.innerHTML = "";
-    this.board.getWordList().forEach((w) => {
+
+    const wordList = this.board.getWordList();
+    wordList.forEach((w) => {
       if (w.direction === "across") {
         this.acrossElement.innerHTML += this.clueFromWord(w);
       } else {
         this.downElement.innerHTML += this.clueFromWord(w);
       }
     });
+    this.countElement.textContent = wordList.length;
   }
 
   /**
