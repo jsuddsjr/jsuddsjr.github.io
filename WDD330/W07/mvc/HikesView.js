@@ -76,7 +76,6 @@ export default class HikesView {
         .filter((prop) => !filter.includes(prop))
         .map((prop) => this.renderHikeProperty(hike, prop))
         .join("") +
-        
       "</div>";
   }
 
@@ -86,7 +85,7 @@ export default class HikesView {
    * @param {String} property
    */
   renderHikeProperty(hike, property) {
-    if (!hike[property]) {
+    if (property.startsWith("img") || !hike[property]) {
       return "";
     }
     const propTitle = property[0].toUpperCase() + property.substr(1);
@@ -103,6 +102,7 @@ export default class HikesView {
     if (!hike.imgSrc) {
       throw new Error("Hike missing `imgSrc` property.");
     }
+    // TODO: Because the original media was too large.
     const src = hike.imgSrc.replace(/.jpg/, `-${size}.webp`);
     return /*html*/ `<div class="image"><img src="${this.imgBasePath}${src}" alt="${hike.imgAlt}"/></div>`;
   }

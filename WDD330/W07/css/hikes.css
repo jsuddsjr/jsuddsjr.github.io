@@ -7,13 +7,28 @@
 
 body {
   font-family: Tahoma, sans-serif;
-  color: #487928;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  color: rgba(0, 0, 0, 0.8);
+  display: -ms-grid;
+  display: grid;
+  padding-bottom: 5em;
 }
 
-main {
+@media screen and (min-width: 1440px) {
+  body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+h1 {
+  color: #46af00;
+}
+
+main,
+aside,
+section {
+  width: 100%;
   max-width: 96rem;
   margin: 0 auto;
 }
@@ -24,23 +39,25 @@ main {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  place-content: center;
   gap: 2em;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 2em;
 }
 
 #hikeList li {
   width: 24em;
-  border: 2px solid #93ce6c;
+  border: 2px solid rgba(70, 175, 0, 0.5);
   border-radius: 20px;
-  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 5px rgba(70, 175, 0, 0.2);
+          box-shadow: 5px 5px 5px rgba(70, 175, 0, 0.2);
   padding: 20px;
+  cursor: pointer;
 }
 
 #hikeList h3 {
-  color: #5f9f35;
+  color: rgba(70, 175, 0, 0.5);
 }
 
 #hikeList img {
@@ -91,14 +108,14 @@ div.property div:first-child {
   margin: 0 auto;
 }
 
-@media (min-width: 48rem) {
+@media screen and (min-width: 800px) {
   .hikeFull {
-    max-width: 50%;
+    max-width: 60%;
   }
 }
 
 .hikeFull div.property {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(70, 175, 0, 0.2);
   padding: 2px 5px;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -107,5 +124,115 @@ div.property div:first-child {
 
 .hikeFull div.property div {
   min-width: 30%;
+}
+
+.hikeFull button {
+  font-size: 1.5em;
+  color: #46af00;
+  -webkit-transition: -webkit-transform 100ms ease-in;
+  transition: -webkit-transform 100ms ease-in;
+  transition: transform 100ms ease-in;
+  transition: transform 100ms ease-in, -webkit-transform 100ms ease-in;
+}
+
+.hikeFull button:before {
+  content: "\2716";
+}
+
+.hikeFull button:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.comments h2 {
+  padding: 0.2em;
+  text-shadow: 0.2em 0.2em 0.2em rgba(70, 175, 0, 0.2);
+}
+
+@media screen and (min-width: 1440px) {
+  .comments {
+    max-width: 45ch;
+    margin: 0 auto;
+  }
+}
+
+.comment {
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid;
+  margin: 1em 0;
+}
+
+.comment * {
+  margin: 0;
+}
+
+.comment-title {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.comment-date {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.comment-body {
+  margin-top: 0.5em;
+  font-size: 1.2em;
+}
+
+#commentForm h3 {
+  text-shadow: 0.2em 0.2em 0.2em rgba(70, 175, 0, 0.2);
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  font-size: 1.8em;
+}
+
+#commentForm textarea {
+  display: block;
+  font-size: 2em;
+  border: 0;
+  max-width: 24ch;
+  background-color: #eee;
+}
+
+#commentForm button {
+  font-size: 1.5em;
+  padding: 0.2em 2em;
+  color: #46af00;
+  background-color: rgba(70, 175, 0, 0.2);
+  border: 0;
+  border-radius: 5px;
+  -webkit-transition: -webkit-box-shadow 100ms ease-in;
+  transition: -webkit-box-shadow 100ms ease-in;
+  transition: box-shadow 100ms ease-in;
+  transition: box-shadow 100ms ease-in, -webkit-box-shadow 100ms ease-in;
+}
+
+#commentForm button:hover, #commentForm button:focus {
+  outline: 0;
+  cursor: pointer;
+  -webkit-box-shadow: 5px 5px 5px rgba(70, 175, 0, 0.5);
+          box-shadow: 5px 5px 5px rgba(70, 175, 0, 0.5);
+}
+
+#hikeComments {
+  -webkit-columns: 2;
+          columns: 2;
+}
+
+@media screen and (min-width: 800px) {
+  #hikeComments {
+    -webkit-columns: 3;
+            columns: 3;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #hikeComments {
+    display: -ms-grid;
+    display: grid;
+  }
 }
 /*# sourceMappingURL=hikes.css.map */

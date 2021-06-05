@@ -1,5 +1,20 @@
-$green-100: rgb(147, 206, 108);
-$green-50: darken($green-100, 20);
+$color-full: rgb(70, 175, 0);
+$color-half: rgba($color-full, 0.5);
+$color-highlight: rgba($color-full, 0.2);
+
+$text-primary: rgba(black, 0.8);
+$text-secondary: rgba(black, 0.2);
+
+$mq-medium: 800px;
+$mq-large: 1440px;
+
+@mixin mq($min-width) {
+  @media screen and (min-width: $min-width) {
+    & {
+      @content;
+    }
+  }
+}
 
 *,
 *:before,
@@ -9,11 +24,23 @@ $green-50: darken($green-100, 20);
 
 body {
   font-family: Tahoma, sans-serif;
-  color: darken($green-50, 10);
-  display: flex;
+  color: $text-primary;
+  display: grid;
+  padding-bottom: 5em;
+
+  @include mq($mq-large) {
+    display: flex;
+  }
 }
 
-main {
+h1 {
+  color: $color-full;
+}
+
+main,
+aside,
+section {
+  width: 100%;
   max-width: 96rem;
   margin: 0 auto;
 }
@@ -21,22 +48,25 @@ main {
 #hikeList {
   display: flex;
   flex-wrap: wrap;
+  place-content: center;
   gap: 2em;
 
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 2em;
 
   li {
     width: 24em;
-    border: 2px solid $green-100;
+    border: 2px solid $color-half;
     border-radius: 20px;
-    box-shadow: 5px 5px 10px rgba(black, 0.5);
+    box-shadow: 5px 5px 5px $color-highlight;
     padding: 20px;
+
+    cursor: pointer;
   }
 
   h3 {
-    color: $green-50;
+    color: $color-half;
   }
 
   img {
@@ -75,17 +105,100 @@ div.property {
   max-width: 100%;
   margin: 0 auto;
 
-  @media (min-width: 48rem) {
-    max-width: 50%;
+  @include mq($mq-medium) {
+    max-width: 60%;
   }
 
   div.property {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $color-highlight;
     padding: 2px 5px;
     justify-content: flex-start;
 
     div {
       min-width: 30%;
     }
+  }
+
+  button {
+    font-size: 1.5em;
+    color: $color-full;
+    transition: transform 100ms ease-in;
+    &:before {
+      content: "\2716"; // multiplication symbol.
+    }
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.comments {
+  h2 {
+    padding: 0.2em;
+    text-shadow: 0.2em 0.2em 0.2em $color-highlight;
+  }
+  @include mq($mq-large) {
+    max-width: 45ch;
+    margin: 0 auto;
+  }
+}
+
+.comment {
+  break-inside: avoid;
+  margin: 1em 0;
+  * {
+    margin: 0;
+  }
+  &-title {
+    color: $text-primary;
+  }
+  &-date {
+    font-style: italic;
+    color: $text-secondary;
+  }
+  &-body {
+    margin-top: 0.5em;
+    font-size: 1.2em;
+  }
+}
+
+#commentForm {
+  h3 {
+    text-shadow: 0.2em 0.2em 0.2em $color-highlight;
+    transform: rotate(-5deg);
+    transform-origin: bottom left;
+    font-size: 1.8em;
+  }
+  textarea {
+    display: block;
+    font-size: 2em;
+    border: 0;
+    max-width: 24ch;
+    background-color: #eee;
+  }
+  button {
+    font-size: 1.5em;
+    padding: 0.2em 2em;
+    color: $color-full;
+    background-color: $color-highlight;
+    border: 0;
+    border-radius: 5px;
+    transition: box-shadow 100ms ease-in;
+    &:hover, &:focus {
+      outline: 0;
+      cursor: pointer;
+      box-shadow: 5px 5px 5px $color-half;
+    }
+  }
+}
+
+#hikeComments {
+  columns: 2;
+
+  @include mq($mq-medium) {
+    columns: 3;
+  }
+  @include mq($mq-large) {
+    display: grid;
   }
 }

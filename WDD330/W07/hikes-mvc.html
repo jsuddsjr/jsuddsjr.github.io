@@ -9,22 +9,27 @@
   </head>
 
   <body>
-    <main>
+    <section>
       <h1>Great Hikes</h1>
       <ul id="hikeList"></ul>
-      <div id="hikeComments"></div>
+    </section>
+    <aside class="comments">
       <form id="commentForm">
+        <h3>Leave a comment</h3>
         <textarea
           name="hikeComment"
           id="hikeComment"
           cols="30"
           rows="10"
           placeholder="Describe your hike experience."
+          minlength="10"
+          required
         ></textarea>
-
-        <button type="submit">Add comment</button>
+        <button type="submit">Post it!</button>
       </form>
-    </main>
+      <h2>What others have said...</h2>
+      <div id="hikeComments"></div>
+    </aside>
     <script src="mvc/index.js" type="module"></script>
   </body>
 </html>

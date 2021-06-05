@@ -49,8 +49,11 @@ export default class Comments {
    * @param {CommentModel} comment
    */
   addComment(hikeName, comment) {
-    this.comments.unshift(new CommentModel(hikeName, comment));
-    this.saveComments();
+    comment = comment.trim();
+    if (comment) {
+      this.comments.unshift(new CommentModel(hikeName, comment));
+      this.saveComments();
+    }
   }
 }
 
@@ -95,29 +98,22 @@ export class CommentListView {
     }
 
     this.data = data;
-    this.hideCommentForm();
+    this.showCommentForm();
 
     attachSubmitListener(this);
   }
 
   /**
    * Show form for current hike.
-   * @param {String} hikeName
+   * @param {String} [hikeName]
    */
   showCommentForm(hikeName) {
     if (hikeName) {
       this.form.dataset.hikeName = hikeName;
       this.form.style.display = "";
     } else {
-      this.hideCommentForm();
+      this.form.style.display = "none";
     }
-  }
-
-  /**
-   * Disable comments.
-   */
-  hideCommentForm() {
-    this.form.style.display = "none";
   }
 
   /**
@@ -152,7 +148,7 @@ function attachSubmitListener(listView) {
     const hikeName = listView.form.dataset.hikeName || "unknown";
     listView.data.addComment(hikeName, comment);
     listView.textarea.value = "";
-    listView.renderCommentList();
+    listView.renderCommentList(hikeName);
   });
 }
 
@@ -162,9 +158,9 @@ const COMMENT_BODY = 5;
 const commentTemplate = [
   '<div class="comment"> <h3 class="comment-title">',
   null,
-  '</h3> <h4 class="comment-date">',
+  '</h3> <p class="comment-date">',
   null,
-  '</h4> <div class="comment-body">',
+  '</p> <div class="comment-body">',
   null,
   "</div></div>",
 ];
