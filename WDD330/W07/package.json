@@ -1,0 +1,16 @@
+{
+  "name": "w07",
+  "version": "1.0.0",
+  "main": "hikes-mvc.html",
+  "type": "module",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --watch"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^27.0.4"
+  }
+}

@@ -1,4 +1,4 @@
-class CommentModel {
+export class CommentModel {
   constructor(hikeName, comment) {
     this.hikeName = hikeName;
     this.date = new Date();
@@ -7,21 +7,35 @@ class CommentModel {
 }
 
 export default class Comments {
-  constructor(type) {
+  /**
+   * Constructor.
+   * @param {String} type
+   * @param {CommentModel[]} [comments]
+   */
+  constructor(type, comments) {
     this.type = type;
 
     /** @type {CommentModel[]} */
-    this.comments = readLocal(this.type) || [];
+    this.comments = comments || readLocal(this.type) || [];
   }
 
   saveComments() {
     storeLocal(this.type, this.comments);
   }
 
+  /**
+   * Get all comments.
+   * @returns All comment objects.
+   */
   getAllComments() {
     return this.comments;
   }
 
+  /**
+   * Get comments for specified hike.
+   * @param {String} hikeName
+   * @returns All comment objects for hike.
+   */
   filterCommentsByName(hikeName) {
     return this.comments.filter((comment) => comment.hikeName === hikeName);
   }
@@ -48,37 +62,75 @@ export class CommentListView {
    */
   constructor(form, divSelector, data) {
     this.form = form;
-    this.divSelector = divSelector;
+
+    const container = document.querySelector(divSelector);
+    if (container instanceof HTMLDivElement) {
+      this.container = container;
+    } else {
+      throw new Error("Invalid DIV selector for comment list.");
+    }
 
     this.button = form.querySelector("button");
     this.textarea = form.querySelector("textarea");
-    this.hikeName = form.dataset.hikeName || "unknown";
-    this.attachListener();
+    if (!this.button || !this.textarea) {
+      throw new Error("Comment form must contain a textArea and button.");
+    }
 
-    this.commentData = data;
+    this.data = data;
+    this.attachListener();
+    this.hideCommentForm();
   }
 
   attachListener() {
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
       const comment = this.textarea.value;
-      this.commentData.addComment(this.hikeName, comment);
+      const hikeName = this.form.dataset.hikeName || "unknown";
+      this.data.addComment(hikeName, comment);
       this.textarea.value = "";
-      this.showCommentsList();
+      this.renderCommentList();
     });
   }
 
-  showCommentsList() {
-    const container = document.querySelector(this.divSelector);
-    this.commentData.getAllComments().forEach((model) => {
-      commentTemplate[1] = model.hikeName;
-      commentTemplate[3] = model.date.toLocaleDateString();
-      commentTemplate[5] = model.content.replace(/</g, "&lt;");
-      container.innerHTML = commentTemplate.join("");
+  /**
+   * Show form for current hike.
+   * @param {String} hikeName
+   */
+  showCommentForm(hikeName) {
+    this.form.dataset.hikeName = hikeName;
+    this.form.style.display = "";
+  }
+
+  /**
+   * Disable comments.
+   */
+  hideCommentForm() {
+    this.form.style.display = "none";
+  }
+
+  /**
+   * Render comments for hike, if specified.
+   * @param {String} [hikeName]
+   */
+  renderCommentList(hikeName) {
+    const comments = hikeName
+      ? this.data.filterCommentsByName(hikeName)
+      : this.data.getAllComments();
+
+    const html = comments.map((model) => {
+      commentTemplate[COMMENT_TITLE] = model.hikeName;
+      commentTemplate[COMMENT_DATE] = new Date(model.date).toLocaleDateString();
+      commentTemplate[COMMENT_BODY] = model.content.replace(/</g, "&lt;");
+      return commentTemplate.join("");
     });
+
+    this.container.innerHTML = html.join("");
   }
 }
 
+const COMMENT_TITLE = 1;
+const COMMENT_DATE = 3;
+const COMMENT_BODY = 5;
 const commentTemplate = [
   '<div class="comment"> <h3 class="comment-title">',
   null,

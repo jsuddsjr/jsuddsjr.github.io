@@ -1,5 +1,6 @@
 import HikeModel from "./HikeModel.js";
 import HikesView from "./HikesView.js";
+import Comments, { CommentListView } from "./Comments.js";
 
 /** @typedef {import("./HikeModel").Hike} Hike */
 
@@ -15,6 +16,13 @@ export default class HikesController {
     // this is how our controller will know about the model and view...we add them right into the class as members.
     this.hikeModel = new HikeModel();
     this.hikesView = new HikesView(parentId);
+
+    this.comments = new Comments("hike");
+    this.commentListView = new CommentListView(
+      document.forms["commentForm"],
+      "#hikeComments",
+      this.comments
+    );
   }
 
   /**
@@ -27,6 +35,7 @@ export default class HikesController {
       this.parentElement
     );
     this.addHikeListener();
+    this.commentListView.renderCommentList();
   }
 
   showOneHike(hikeName) {

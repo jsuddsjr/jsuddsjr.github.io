@@ -1,3 +1,4 @@
+import CommentListView from "./Comments.js";
 /** @typedef {import("./HikeModel").Hike} Hike */
 
 // Hike View handler
@@ -9,7 +10,16 @@ export default class HikesView {
   constructor(listElementId) {
     // you will need this
     this.imgBasePath = "images/";
-    this.listElementId = listElementId;
+
+    const listElement = document.getElementById(listElementId);
+    if (
+      listElement instanceof HTMLOListElement ||
+      listElement instanceof HTMLUListElement
+    ) {
+      this.listElement = listElement;
+    } else {
+      throw new Error("Invalid list element ID specified in HikesView.");
+    }
   }
 
   /**
@@ -19,13 +29,7 @@ export default class HikesView {
    * @param {HTMLOListElement | HTMLUListElement} [listElement]
    */
   renderHikeList(hikeList, listElement) {
-    listElement =
-      listElement ||
-      (this.listElementId && document.getElementById(this.listElementId));
-
-    if (!listElement) {
-      throw new Error("Can't render to missing `listElement`");
-    }
+    listElement = listElement || this.listElement;
 
     listElement.innerHTML =
       "<li>" +
@@ -98,7 +102,7 @@ export default class HikesView {
     if (!hike.imgSrc) {
       throw new Error("Hike missing `imgSrc` property.");
     }
-    const src = hike.imgSrc.replace(/.jpg/,`-${size}.webp`);
+    const src = hike.imgSrc.replace(/.jpg/, `-${size}.webp`);
     return /*html*/ `<div class="image"><img src="${this.imgBasePath}${src}" alt="${hike.imgAlt}"/></div>`;
   }
 }
