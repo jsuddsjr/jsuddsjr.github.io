@@ -53,7 +53,7 @@ section {
 
   list-style: none;
   padding: 0;
-  margin: 0 0 2em;
+  margin: 0 2em 2em 0;
 
   li {
     width: 24em;
@@ -133,8 +133,11 @@ div.property {
 }
 
 .comments {
+  max-width: 100%;
+
   h2 {
     padding: 0.2em;
+    padding-left: 0;
     text-shadow: 0.2em 0.2em 0.2em $color-highlight;
   }
   @include mq($mq-large) {
@@ -144,7 +147,12 @@ div.property {
 }
 
 .comment {
-  break-inside: avoid;
+  // Avoid wrapping in column layout.
+  display: inline-block;
+  word-break: break-word;
+  overflow: hidden;
+  max-width: 100%;
+
   margin: 1em 0;
   * {
     margin: 0;

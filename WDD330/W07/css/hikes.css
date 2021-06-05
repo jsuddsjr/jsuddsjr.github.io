@@ -43,7 +43,7 @@ section {
   gap: 2em;
   list-style: none;
   padding: 0;
-  margin: 0 0 2em;
+  margin: 0 2em 2em 0;
 }
 
 #hikeList li {
@@ -144,8 +144,13 @@ div.property div:first-child {
           transform: scale(1.2);
 }
 
+.comments {
+  max-width: 100%;
+}
+
 .comments h2 {
   padding: 0.2em;
+  padding-left: 0;
   text-shadow: 0.2em 0.2em 0.2em rgba(70, 175, 0, 0.2);
 }
 
@@ -157,8 +162,10 @@ div.property div:first-child {
 }
 
 .comment {
-  -webkit-column-break-inside: avoid;
-          break-inside: avoid;
+  display: inline-block;
+  word-break: break-word;
+  overflow: hidden;
+  max-width: 100%;
   margin: 1em 0;
 }
 
