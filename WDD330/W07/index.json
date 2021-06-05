@@ -25,6 +25,11 @@
       "url": "W07/js-lazy-def.html",
       "label": "JavaScript lazy definition pattern",
       "info": "You can call it a pattern, but it still feels like a hack. 💩"
+    },
+    {
+      "url": "W07/js-recursion.html",
+      "label": "JavaScript(JavaScript(JavaScript))",
+      "info": "Down the well."
     }
   ],
   "questions": [
