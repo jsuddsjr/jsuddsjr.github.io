@@ -24,6 +24,9 @@ export default class BoardView {
     this.subscribers = new Subscribers(this);
   }
 
+  /**
+   * @returns The active list of words.
+   */
   getWordList() {
     return this.wordList;
   }
@@ -73,6 +76,8 @@ export default class BoardView {
         cell.setNumber(-1);
       }
     }
+
+    this.subscribers.notify(LAYOUT_EVENT);
   }
 
   resetWordList() {
@@ -103,7 +108,7 @@ export default class BoardView {
       const cellsDown = [anchorCell];
       for (
         let i = this.size;
-        i < this.cells.length - index - 1;
+        i < this.cells.length - index;
         i += this.size
       ) {
         const cell = this.cells[index + i];
@@ -115,7 +120,7 @@ export default class BoardView {
   }
 
   /**
-   * Subscribe to save events.
+   * Subscribe to layout events.
    * @param {NotifyFunc} callback
    * @returns
    */

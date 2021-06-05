@@ -53,4 +53,20 @@ section {
   font-size: 0.5em;
   margin-left: 0.1em;
 }
+
+.clues {
+  -webkit-columns: 2;
+          columns: 2;
+  margin-top: 2em;
+}
+
+.clues h2 {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 0 0.5em;
+}
+
+.clues .across {
+  margin-bottom: 1em;
+}
 /*# sourceMappingURL=cross.css.map */

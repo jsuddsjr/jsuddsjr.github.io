@@ -13,7 +13,7 @@ export default class WordModel {
     this.length = cells.length;
     this.number = cells[0].numberElement.textContent;
     this.direction = direction;
-    this.word = ""
+    this.word = "";
 
     if (this.length < 3) {
       this.setState(ERROR_CLASS);
@@ -54,7 +54,9 @@ export default class WordModel {
   randomWord() {
     const word = [];
     for (let i = 0; i < this.length; i++) {
-      word[i] = String.fromCharCode(65 + Math.trunc(Math.random() * 26));
+      word[i] =
+        this.cells[i].cellElement.dataset.letter ||
+        String.fromCharCode(65 + Math.trunc(Math.random() * 26));
     }
     return word.join("");
   }
