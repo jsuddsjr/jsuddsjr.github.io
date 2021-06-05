@@ -8,13 +8,18 @@
     },
     {
       "url": "W07/js-call-apply.html",
-      "label": "JavaScript call &amp; apply",
+      "label": "JavaScript call &amp; apply (from Javascript: Novice to Ninja)",
       "info": "Another way to invoke methods."
     },
     {
       "url": "W07/js-memoization.html",
       "label": "JavaScript memoization",
       "info": "Leave me a memo."
+    },
+    {
+      "url": "W07/js-immediate.html",
+      "label": "JavaScript immediately invoked function expressions (IIFE)",
+      "info": "Not so <em>iffy</em> after all."
     }
   ],
   "questions": [

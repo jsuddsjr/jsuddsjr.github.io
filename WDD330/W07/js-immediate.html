@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Immediately Invoked Function Expressions</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Immediately Invoked Function Expressions</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script src="js/functions.js"></script>
+    <script>
+      runCode([
+        () => {
+          (function () {
+            const temp = "World";
+            log(`Hello ${temp}`);
+          })();
+        },
+
+        "// Variable defined inside the block are private.",
+        "a = 1;",
+        "b = 2;",
+        () => {
+          (() => {
+            const temp = a;
+            a = b;
+            b = temp;
+          })();
+        },
+        "a",
+        "b",
+        "temp",
+
+        "// Great for initialization code.",
+        () => {
+          (function () {
+            const name = "Peter Parker"; // This might be obtained from a cookie in reality
+            const days = [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ];
+            const date = new Date(),
+              today = days[date.getDay()];
+            log(`Welcome back ${name}. Today is ${today}`);
+          })();
+        },
+
+        "// IIFEs can be nested and not interfere with each other",
+        () => {
+          (function () {
+            // block A
+            const name = "Block A";
+            log(`Hello from ${name}`);
+          })();
+          (function () {
+            // block B
+            const name = "Block B";
+            log(`Hello from ${name}`);
+          })();
+        },
+      ]);
+    </script>
+  </body>
+</html>
