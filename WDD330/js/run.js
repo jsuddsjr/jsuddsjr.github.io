@@ -166,10 +166,12 @@ const runCode = (code) => {
 
       // Do we have a body?
       if (code.length > 2) {
-        const body = code
-          .splice(1, code.length - 2)
-          .join("\n")
-          .replace(/</g, "&lt;");
+        const body = trimFromAllLines(
+          code
+            .splice(1, code.length - 2)
+            .join("\n")
+            .replace(/</g, "&lt;")
+        );
         const functionName =
           line["title"] ||
           line.name

@@ -16,7 +16,32 @@
     <script src="../js/run.js"></script>
     <script src="js/functions.js"></script>
     <script>
-      runCode([() => square, "square(3)", "square(-11)", "square.cache"]);
+      const MAX_ITERS = 1000000;
+      function measure(method, ...args) {
+        let iters = MAX_ITERS;
+        method = method.bind(null, args);
+        const t0 = performance.now();
+        while (iters--) {
+          method();
+        }
+        const t1 = performance.now();
+        return `Took ${(t1 - t0).toFixed(4)} msec for ${MAX_ITERS} iterations.`;
+      }
+    </script>
+    <script>
+      runCode([
+        () => square,
+        "square(3)",
+        "square(-11)",
+        "square.cache",
+
+        "// This is supposed to make things faster",
+        () => measure,
+        "measure((x) => x * x, 4)",
+        "measure(square, 4)",
+
+        "// ... but only if you plan to see the same arguments many, many times."
+      ]);
     </script>
   </body>
 </html>
