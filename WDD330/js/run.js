@@ -148,9 +148,15 @@ const executeWithAsync = (fn, asyncLogKey) => {
     }
   })(
     (function (key) {
-      const div = document.getElementById(key);
-      return function (msg) {
-        div.innerHTML += toTypeString(msg) + "\n";
+      const logDiv = document.getElementById(key);
+      return function (msg, style) {
+        const parent = style
+          ? logDiv.appendChild(document.createElement("span"))
+          : logDiv;
+        if (style) {
+          parent.style = style;
+        }
+        parent.innerHTML += toTypeString(msg) + "\n";
       };
     })(asyncLogKey)
   );

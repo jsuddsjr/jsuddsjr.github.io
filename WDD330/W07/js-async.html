@@ -15,14 +15,14 @@
     </section>
     <script src="../js/run.js"></script>
     <script>
-      function test() {
+      function testAsync() {
         function wait(message, callback, seconds) {
           setTimeout(callback, seconds * 1000);
           log(message);
         }
 
         function selfDestruct() {
-          log("*** BOOOOM! ***");
+          log("*** BOOOOM! ***", "color: red; font-size: 3em");
         }
 
         wait(
@@ -33,11 +33,11 @@
 
         log("Hmmm, should I accept this mission or not ... ?");
       }
-      test.isAsync = true;
-      test.title = "Wait for it..."
+      testAsync.isAsync = true;
+      testAsync.title = "Wait for it..."
     </script>
     <script>
-      runCode([test]);
+      runCode([testAsync]);
     </script>
   </body>
 </html>
