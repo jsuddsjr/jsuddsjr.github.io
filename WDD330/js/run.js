@@ -141,11 +141,15 @@ const executeWithTry = (fn) => {
  * @param {String} asyncLogKey
  */
 const executeWithAsync = (fn, asyncLogKey) => {
-  (function (log) {
-    const result = eval(`"use strict";(${fn.toString()})`)();
-    if (result) {
-      log(result);
-    }
+  (function (asyncLog) {
+    setTimeout(() => {
+      const log = asyncLog;
+      // Re-evaluate in this new scope (includes async log);
+      const result = eval(`(${fn.toString()})`)();
+      if (result) {
+        log(result);
+      }
+    }, 0);
   })(
     (function (key) {
       const logDiv = document.getElementById(key);

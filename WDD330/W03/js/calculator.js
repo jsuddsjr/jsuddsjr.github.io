@@ -12,7 +12,7 @@ function testCalculator() {
     return result;
   }
 
-  let calculator = {
+  const calculator = {
     n1: 0,
     n2: 0,
     read: () => {
@@ -30,4 +30,9 @@ function testCalculator() {
   calculator.read();
   log(calculator.sum());
   log(calculator.mul());
+
+  // It works, but why aren't the values set?
+  log(calculator);
 }
+
+testCalculator.isAsync = true;
