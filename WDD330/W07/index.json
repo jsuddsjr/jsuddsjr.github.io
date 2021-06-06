@@ -7,6 +7,11 @@
       "info": "Leaving comments: Tell us what you think!"
     },
     {
+      "url": "syntax.html?W07/mvc/Comments.js",
+      "label": "Comments.js",
+      "info": "New code."
+    },
+    {
       "url": "W07/js-call-apply.html",
       "label": "JavaScript call &amp; apply (from Javascript: Novice to Ninja)",
       "info": "Another way to invoke methods."
@@ -30,6 +35,11 @@
       "url": "W07/js-recursion.html",
       "label": "JavaScript(JavaScript(JavaScript))",
       "info": "Down the well."
+    },
+    {
+      "url": "W07/js-async.html",
+      "label": "JavaScript asynchronosity",
+      "info": "Indeterminate programming."
     }
   ],
   "questions": [

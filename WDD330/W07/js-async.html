@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Recursion</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Recursion</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+    <script>
+      function wait(message, callback, seconds) {
+        setTimeout(callback, seconds * 1000);
+        log(message);
+      }
+      function selfDestruct() {
+        log("BOOOOM!");
+      }
+      function test() {
+        wait(
+          "This tape will self-destruct in five seconds ... ",
+          selfDestruct,
+          5
+        );
+        log("Hmmm, should I accept this mission or not ... ?");
+      }
+      test.isAsync = true;
+    </script>
+    <script>
+      runCode([() => wait, () => selfDestruct, test]);
+    </script>
+  </body>
+</html>

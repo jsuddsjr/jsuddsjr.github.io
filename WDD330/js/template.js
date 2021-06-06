@@ -1,9 +1,9 @@
-const KEY_MAX = parseInt("zzzz", 36);
-const KEY_MIN = parseInt("aaaa", 36);
-const KEY_RND_MAX = KEY_MAX - KEY_MIN;
-
-const newTemplateKey = () =>
-  Math.trunc((Math.random() * KEY_RND_MAX) + KEY_MIN).toString(36);
+export const generateKey = (function () {
+  const KEY_MAX = parseInt("zzzz", 36);
+  const KEY_MIN = parseInt("aaaa", 36);
+  const KEY_RND_MAX = KEY_MAX - KEY_MIN;
+  return () => Math.trunc(Math.random() * KEY_RND_MAX + KEY_MIN).toString(36);
+})();
 
 /**
  * Convert text to document fragment.
@@ -24,7 +24,7 @@ const asFragment = (text, key) => {
 const loadTemplate = async (el, template) => {
   const response = await fetch(`${template}.template.html`);
   const text = await response.text();
-  const key = newTemplateKey();
+  const key = generateKey();
 
   // Parse text as HTML
   const parser = new DOMParser();

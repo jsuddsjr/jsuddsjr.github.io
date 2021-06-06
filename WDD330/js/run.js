@@ -1,4 +1,14 @@
 /**
+ * Generate a random unique ID between "aaaa" and "zzzz".
+ */
+const generateKey = (function () {
+  const KEY_MAX = parseInt("zzzz", 36);
+  const KEY_MIN = parseInt("aaaa", 36);
+  const KEY_RND_MAX = KEY_MAX - KEY_MIN;
+  return () => Math.trunc(Math.random() * KEY_RND_MAX + KEY_MIN).toString(36);
+})();
+
+/**
  * @param {Object} obj
  * @returns Reported name of any object
  */
@@ -125,16 +135,39 @@ const executeWithTry = (fn) => {
   }
 };
 
+/**
+ *
+ * @param {Function} fn
+ * @param {String} asyncLogKey
+ */
+const executeWithAsync = (fn, asyncLogKey) => {
+  const log = (function startAsyncLog(key) {
+    const div = document.getElementById(key);
+    return function (msg) {
+      div.innerHTML += toTypeString(msg) + "\n";
+    };
+  })(asyncLogKey);
+  const result = eval(`(${fn.toString()})`)();
+  if (result) {
+    log(result);
+  }
+};
+
 /** @type {HTMLDivElement} Output region */
 const output =
   document.querySelector("#output") || document.createElement("div");
 
 /**
- * @param {Array<String>} html
+ * @param {String|String[]} html
  */
 const writeToOutput = (html) => {
+  if (Array.isArray(html)) {
+    const temp = html.join("");
+    html.length = 0;
+    html = temp;
+  }
   const div = document.createElement("div");
-  div.innerHTML += html.join("");
+  div.innerHTML += html;
   output.appendChild(div);
   html.length = 0;
 };
@@ -189,11 +222,17 @@ const runCode = (code) => {
         writeToOutput(html);
       }
 
-      startLog();
-      executeWithTry(line);
-      const result = globalLog.map(toTypeString).join("\n");
-      if (result) {
-        html.push(`<pre>${result}</pre>`);
+      if (line.isAsync) {
+        const logKey = generateKey();
+        writeToOutput(`<pre id="${logKey}"></pre>`);
+        executeWithAsync(line, logKey);
+      } else {
+        startLog();
+        executeWithTry(line);
+        const result = globalLog.map(toTypeString).join("\n");
+        if (result) {
+          html.push(`<pre>${result}</pre>`);
+        }
       }
     }
   }

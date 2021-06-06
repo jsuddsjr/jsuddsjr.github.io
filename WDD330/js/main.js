@@ -5,6 +5,7 @@ import { insertTemplate } from "./template.js";
  * @property {String} url     Relative path to resource
  * @property {String} label   Description of resource
  * @property {String} [info]    Optional HTML to explain link
+ * @property {LinkEntry[]} [code]  Optional links to code files
  */
 
 /**
@@ -152,7 +153,7 @@ Number.prototype.pad = function (size, char = "0") {
         const title = d.querySelector(".report-title");
         if (title) {
           title.innerHTML = report.title || `Report for ${week}`;
-          d.title = title.textContent + ' -- WDD330 Portfolio';
+          d.title = title.textContent + " -- WDD330 Portfolio";
         }
         return report;
       } catch (error) {
