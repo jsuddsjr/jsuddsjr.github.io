@@ -141,16 +141,19 @@ const executeWithTry = (fn) => {
  * @param {String} asyncLogKey
  */
 const executeWithAsync = (fn, asyncLogKey) => {
-  const log = (function startAsyncLog(key) {
-    const div = document.getElementById(key);
-    return function (msg) {
-      div.innerHTML += toTypeString(msg) + "\n";
-    };
-  })(asyncLogKey);
-  const result = eval(`(${fn.toString()})`)();
-  if (result) {
-    log(result);
-  }
+  (function (log) {
+    const result = eval(`"use strict";(${fn.toString()})`)();
+    if (result) {
+      log(result);
+    }
+  })(
+    (function (key) {
+      const div = document.getElementById(key);
+      return function (msg) {
+        div.innerHTML += toTypeString(msg) + "\n";
+      };
+    })(asyncLogKey)
+  );
 };
 
 /** @type {HTMLDivElement} Output region */

@@ -4,36 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Recursion</title>
+    <title>JavaScript Asynchronous Programming</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/common.css" />
   </head>
   <body>
     <section>
-      <h1>JavaScript Recursion</h1>
+      <h1>JavaScript Asynchronous Programming</h1>
       <div id="output"></div>
     </section>
     <script src="../js/run.js"></script>
     <script>
-      function wait(message, callback, seconds) {
-        setTimeout(callback, seconds * 1000);
-        log(message);
-      }
-      function selfDestruct() {
-        log("BOOOOM!");
-      }
       function test() {
+        function wait(message, callback, seconds) {
+          setTimeout(callback, seconds * 1000);
+          log(message);
+        }
+
+        function selfDestruct() {
+          log("*** BOOOOM! ***");
+        }
+
         wait(
-          "This tape will self-destruct in five seconds ... ",
+          "This tape will self-destruct in three seconds ... ",
           selfDestruct,
-          5
+          3
         );
+
         log("Hmmm, should I accept this mission or not ... ?");
       }
       test.isAsync = true;
+      test.title = "Wait for it..."
     </script>
     <script>
-      runCode([() => wait, () => selfDestruct, test]);
+      runCode([test]);
     </script>
   </body>
 </html>
