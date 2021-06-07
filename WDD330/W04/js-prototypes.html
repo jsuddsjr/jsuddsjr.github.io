@@ -40,6 +40,7 @@
         "raph.constructor.prototype",
         "Object.getPrototypeOf(raph)",
         "Turtle.prototype.isPrototypeOf(raph)",
+        "raph.constructor.prototype.isPrototypeOf(Turtle)",
         "raph.hasOwnProperty('name')",
         "raph.hasOwnProperty('weapon')",
 
@@ -64,9 +65,8 @@
 
         "Turtle.prototype.food = 'Pizza'",
         function () {
-          // TODO: Fix the indentation of this block.
           Turtle.prototype.eat = function () {
-            return "Mmm, this ${this.food} tastes great!";
+            return `Mmm, this ${this.food} tastes great!`;
           };
         },
 

@@ -1,6 +1,6 @@
 export const generateKey = (function () {
   const KEY_MAX = parseInt("zzzz", 36);
-  const KEY_MIN = parseInt("aaaa", 36);
+  const KEY_MIN = parseInt("a000", 36);
   const KEY_RND_MAX = KEY_MAX - KEY_MIN;
   return () => Math.trunc(Math.random() * KEY_RND_MAX + KEY_MIN).toString(36);
 })();
