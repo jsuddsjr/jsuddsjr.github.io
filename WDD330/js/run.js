@@ -33,11 +33,24 @@ const objectName = (obj) => {
  */
 const trimFromAllLines = (str) => {
   if (/\n/.test(str)) {
-    const lines = str.split("\n");
-    // Looking at the last line is the safest option.
-    if ((m = /^\s+/.exec(lines[lines.length - 1]))) {
-      const leadingMatch = new RegExp(`^${m[0]}`);
-      return lines.map((s) => s.replace(leadingMatch, "")).join("\n");
+    const lines = str.split(new RegExp("\r?\n"));
+    const lastLine = lines[lines.length - 1];
+    const leadingSpace = /^\s+/;
+    if (leadingSpace.test(lastLine)) {
+      const shortestSpace = lines.reduce(
+        (prev, next, index) =>
+          index != 0 &&
+          next.length > 0 &&
+          (m = leadingSpace.exec(next)) &&
+          (!prev || prev.length > m[0].length)
+            ? m[0]
+            : prev,
+        null
+      );
+      if (shortestSpace) {
+        const leadingMatch = new RegExp(`^${shortestSpace}`);
+        return lines.map((s) => s.replace(leadingMatch, "")).join("\n");
+      }
     }
   }
   return str.trimStart();
@@ -91,7 +104,7 @@ const toTypeString = (unknown) => {
   } else if (unknown instanceof HTMLCollection || unknown instanceof NodeList) {
     result = objectName(unknown) + toTypeString(Array.from(unknown));
   } else if (unknown instanceof Window) {
-    result = "a<i>Window</i> { ... }";
+    result = "<i>Window</i> { ... }";
   } else if (unknown instanceof Function) {
     result = trimFromAllLines(unknown.toString());
   } else if (typeof unknown === "object") {
@@ -154,6 +167,9 @@ const executeWithAsync = (fn, asyncLogKey) => {
     (function (key) {
       const logDiv = document.getElementById(key);
       return function (msg, style) {
+        if (!logDiv.firstChild) {
+          logDiv.innerHTML = "<h4>Output</h4>\n";
+        }
         const parent = style
           ? logDiv.appendChild(document.createElement("span"))
           : logDiv;
@@ -229,8 +245,7 @@ const runCode = (code) => {
           `<a id="${line.name}"></a><h4>${functionName}</h4><pre>${unHtml(
             body
           )}</pre>`,
-          line["associatedHtml"] || "",
-          "<h4>Output</h4>"
+          line["associatedHtml"] || ""
         );
         writeToOutput(html);
       }
@@ -244,7 +259,7 @@ const runCode = (code) => {
         executeWithTry(line);
         const result = globalLog.map(toTypeString).join("\n");
         if (result) {
-          html.push(`<pre>${result}</pre>`);
+          html.push(`<h4>Output</h4><pre>${result}</pre>`);
         }
       }
     }
