@@ -66,7 +66,7 @@ function testSetTimeoutError() {
       }, 1000);
     },
     speakLeet() {
-      console.log(`Lost reference to this says, "1337 15 4W350M3"`);
+      log(`Lost reference to this says, "1337 15 4W350M3"`);
     },
   };
 
@@ -80,6 +80,7 @@ testSetTimeoutError.title =
 testSetTimeoutError.associatedHtml = `
   <button class="timeoutButton">Do something later</button>
 `;
+testSetTimeoutError.isAsync = true;
 
 function testSetTimeoutCorrect() {
   const o = {
@@ -90,7 +91,7 @@ function testSetTimeoutCorrect() {
       }, 1000);
     },
     speakLeet() {
-      alert(`Reference to self says, "1337 15 4W350M3"`);
+      log(`Reference to self says, "1337 15 4W350M3"`);
     },
   };
 
@@ -103,6 +104,7 @@ testSetTimeoutCorrect.title = "Saving a reference to <code>this</code>";
 testSetTimeoutCorrect.associatedHtml = `
   <button class="timeoutWithRef">Do something later</button>
 `
+testSetTimeoutCorrect.isAsync = true;
 
 function testThisInArrowFunction() {
   const o = {
@@ -110,7 +112,7 @@ function testThisInArrowFunction() {
       setTimeout(() => this.speakLeet(), 1000);
     },
     speakLeet() {
-      alert(`Arrow Function says, "1337 15 4W350M3"`);
+      log(`Arrow Function says, "1337 15 4W350M3"`);
     },
   };
 
@@ -122,16 +124,17 @@ function testThisInArrowFunction() {
 testThisInArrowFunction.associatedHtml = `
 <button class="timeoutArrowFunc">Do something later</button>
 `
+testThisInArrowFunction.isAsync = true;
 
 function testThisInEventListener() {
   const button = document.querySelector(".eventButton");
 
   button.addEventListener("click", function () {
-    alert(this); // button
+    log(this); // button
   });
 
   button.addEventListener("click", () => {
-    alert(this); // Window
+    log(this); // Window
   });
 }
 
@@ -139,6 +142,7 @@ testThisInEventListener.title = "<code>this</code> in an event listener";
 testThisInEventListener.associatedHtml = `
   <button class="eventButton">Click me!</button>
 `;
+testThisInEventListener.isAsync = true;
 
 function testLeetSpeakerWithBoundThis() {
   function LeetSpeaker(elem) {
@@ -150,8 +154,9 @@ function testLeetSpeakerWithBoundThis() {
 
       speakLeet(e) {
         const elem = e.currentTarget;
-        alert(`1337 15 4W350M3`);
+        log(`1337 15 4W350M3`);
         elem.removeEventListener("click", this.listener);
+        log('Event listener removed.', 'color: lightgray')
       },
     };
   }
@@ -166,3 +171,4 @@ testLeetSpeakerWithBoundThis.title =
 testLeetSpeakerWithBoundThis.associatedHtml = `
   <button class="leetButton">Speak L33T</button>
 `;
+testLeetSpeakerWithBoundThis.isAsync = true;

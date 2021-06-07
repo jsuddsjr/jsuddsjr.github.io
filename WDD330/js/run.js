@@ -168,7 +168,7 @@ const executeWithAsync = (fn, asyncLogKey) => {
       const logDiv = document.getElementById(key);
       return function (msg, style) {
         if (!logDiv.firstChild) {
-          logDiv.innerHTML = "<h4>Output</h4>\n";
+          logDiv.innerHTML = "<h4>Output</h4>";
         }
         const parent = style
           ? logDiv.appendChild(document.createElement("span"))
