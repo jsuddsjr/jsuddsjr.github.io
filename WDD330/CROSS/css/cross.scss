@@ -44,9 +44,11 @@ section {
 }
 
 .board {
+  --board-size: 15;
+
   display: flex;
   flex-wrap: wrap;
-  width: calc((var(--box-size) * 15) + 1px);
+  width: calc((var(--box-size) * var(--board-size)) + 1px);
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   margin: 0 auto;

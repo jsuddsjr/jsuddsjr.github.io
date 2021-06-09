@@ -15,6 +15,8 @@ export default class BoardView {
     this.boardElement = boardElement;
     this.size = size;
 
+    this.boardElement.style.setProperty("--board-size", size);
+
     /** @type {CellModel[]} */
     this.cells = new Array(size * size);
 
@@ -106,11 +108,7 @@ export default class BoardView {
 
     if (down) {
       const cellsDown = [anchorCell];
-      for (
-        let i = this.size;
-        i < this.cells.length - index;
-        i += this.size
-      ) {
+      for (let i = this.size; i < this.cells.length - index; i += this.size) {
         const cell = this.cells[index + i];
         if (cell.blocked) break;
         cellsDown.push(cell);

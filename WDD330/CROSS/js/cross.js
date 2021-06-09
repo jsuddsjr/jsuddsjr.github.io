@@ -12,7 +12,7 @@ if (
   down instanceof HTMLElement &&
   count instanceof HTMLElement
 ) {
-  const boardView = new BoardView(board);
+  const boardView = new BoardView(board, 21);
   const wordListView = new WordListView(boardView, across, down, count);
   boardView.show();
 }
