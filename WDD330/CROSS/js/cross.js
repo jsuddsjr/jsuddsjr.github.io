@@ -1,6 +1,9 @@
 import BoardView from "./BoardView.js";
 import WordListView from "./WordListView.js";
 
+const params = new URLSearchParams(document.location.search);
+const boardSize = parseInt(params.get('size')) || 15;
+
 const board = document.querySelector(".board");
 const across = document.getElementById("across");
 const down = document.getElementById("down");
@@ -12,7 +15,7 @@ if (
   down instanceof HTMLElement &&
   count instanceof HTMLElement
 ) {
-  const boardView = new BoardView(board, 21);
+  const boardView = new BoardView(board, boardSize);
   const wordListView = new WordListView(boardView, across, down, count);
   boardView.show();
 }
