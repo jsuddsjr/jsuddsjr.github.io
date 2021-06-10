@@ -1,0 +1,37 @@
+*{font-family: sans-serif}
+
+h1 {text-align: center}
+
+main {
+  text-align: left;
+}
+
+div {
+    text-align: center;
+}
+
+button {
+    text-align: center;  
+}
+
+#modalBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  color: black;
+}
+
+#modalBody {
+  background-color: lightgray;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+#modalBody header {
+  text-align: right;
+}

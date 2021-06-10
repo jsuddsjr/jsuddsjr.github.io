@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/jsuddsjr/jsuddsjr.github.io#readme",
   "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
     "stylelint": "^13.9.0",
     "stylelint-config-recommended": "^3.0.0",
     "uncss": "^0.17.3"
