@@ -1,17 +1,21 @@
-*{font-family: sans-serif}
+:root {
+  font-family: sans-serif;
+}
 
-h1 {text-align: center}
+h1 {
+  text-align: center;
+}
 
 main {
   text-align: left;
 }
 
 div {
-    text-align: center;
+  text-align: center;
 }
 
 button {
-    text-align: center;  
+  text-align: center;
 }
 
 #modalBackground {
