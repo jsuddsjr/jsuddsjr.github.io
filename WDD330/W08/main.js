@@ -55,44 +55,30 @@
    * @param {string} url
    */
   async function getPersonData(url) {
-    const PAGE_SIZE = 10;
-    const page = url.split("page=")[1];
-    const pageNumber = parseInt(page) || 1;
-    const startNumber = (pageNumber - 1) * PAGE_SIZE + 1;
-
     /** @type {PersonData} */
-    const personData = await fetch(url).then(
-      (response) => response.json(),
-      (reason) => console.log(reason)
-    );
+    const personData = await fetchCached(url);
 
-    const main = d.querySelector("#main");
-    main.innerHTML = "";
+    if (personData) {
+      const PAGE_SIZE = 10;
+      const page = url.split("page=")[1];
+      const pageNumber = parseInt(page) || 1;
+      const startNumber = (pageNumber - 1) * PAGE_SIZE + 1;
 
-    const ol = main.appendChild(d.createElement("ol"));
+      const main = d.querySelector("#main");
+      main.innerHTML = "";
 
-    const listItems = personData.results.map((p) => `<li><a href="${p.url}">${p.name}</a></li>`);
+      const ol = main.appendChild(d.createElement("ol"));
 
-    ol.innerHTML = listItems.join("");
-    ol.start = startNumber;
+      const listItems = personData.results.map((p) => `<li><a href="${p.url}">${p.name}</a></li>`);
 
-    [...ol.querySelectorAll("a")].forEach((a) => a.addEventListener("click", personClick));
+      ol.innerHTML = listItems.join("");
+      ol.start = startNumber;
 
-    setNavigationUrl("next", personData.next);
-    setNavigationUrl("prev", personData.previous);
-  }
+      [...ol.querySelectorAll("a")].forEach((a) => a.addEventListener("click", personClick));
 
-  async function getPersonDetails(url) {
-    /** @type {PersonData} */
-    const person = await fetch(url).then((response) => response.json());
-
-    modal.style.display = "flex";
-
-    const body = modal.querySelector(".modal-body");
-    body.textContent = JSON.stringify(person);
-
-    const header = modal.querySelector(".modal-title h3");
-    header.textContent = person.name;
+      setNavigationUrl("next", personData.next);
+      setNavigationUrl("prev", personData.previous);
+    }
   }
 
   /**
@@ -103,6 +89,52 @@
     const anchor = event.target;
     event.preventDefault();
     getPersonDetails(anchor.href);
+  }
+
+  /**
+   *
+   * @param {String} url
+   */
+  async function getPersonDetails(url) {
+    /** @type {PersonData} */
+    const person = await fetchCached(url);
+    showModal(person.name, JSON.stringify(person));
+  }
+
+  /**
+   * Show modal dialog with the specified content.
+   * @param {String} title
+   * @param {String|HTMLElement} body
+   */
+  function showModal(title, body) {
+    modal.style.display = "flex";
+    const titleElement = modal.querySelector(".modal-title h3");
+    titleElement.textContent = title;
+    const bodyElement = modal.querySelector(".modal-body");
+    if (body instanceof HTMLElement) {
+      bodyElement.innerHTML = "";
+      bodyElement.appendChild(body);
+    } else {
+      bodyElement.textContent = String(body);
+    }
+  }
+  /**
+   * Read object from cache or URL.
+   * @param {String} url
+   * @returns Cached object, if it exists.
+   */
+  async function fetchCached(url) {
+    let data = JSON.parse(localStorage.getItem(url));
+    if (!data) {
+      data = await fetch(url).then(
+        (response) => response.json(),
+        (reason) => showModal("Fetch error", reason)
+      );
+      if (data) {
+        localStorage.setItem(url, JSON.stringify(data));
+      }
+    }
+    return data;
   }
 
   getPersonData(baseUrl);
