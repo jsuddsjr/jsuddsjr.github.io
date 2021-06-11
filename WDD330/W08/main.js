@@ -145,7 +145,12 @@
     let data = JSON.parse(localStorage.getItem(url));
     if (!data) {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          referrerPolicy: "no-referrer",
+        });
         if (response.ok) {
           data = await response.json();
         } else {
