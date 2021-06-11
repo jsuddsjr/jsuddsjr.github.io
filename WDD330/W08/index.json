@@ -2,11 +2,10 @@
   "title": "Week 8: TBD",
   "links": [
     {
-      "url": "W07/hikes-mvc.html",
-      "label": "Team Project (Great Hikes Revisited)",
-      "info": "Leaving comments: Tell us what you think!"
+      "url": "W08/index.html",
+      "label": "Team Project (Star Wars API)",
+      "info": "Navigating the Star Wars universe, one page at a time."
     }
   ],
-  "questions": [
-  ]
+  "questions": ["Looks like the SWAPI is failing when it's hosted from a website. [Needs Investigation]"]
 }
