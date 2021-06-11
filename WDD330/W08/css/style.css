@@ -90,3 +90,7 @@ button.close::before {
   padding: 1rem;
   word-break: break-all;
 }
+
+.modal-body img {
+  max-width: 100%;
+}
