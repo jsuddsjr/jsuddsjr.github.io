@@ -1,33 +1,11 @@
 /**
- * @typedef {Object} Person
- * @property {String} name
- * @property {String} height
- * @property {String} mass
- * @property {String} hair_color
- * @property {String} skin_color
- * @property {String} eye_color
- * @property {String} birth_year
- * @property {String} gender
- * @property {String} homeworld
- * @property {String[]} films
- * @property {String[]} species
- * @property {String[]} vehicles
- * @property {String[]} starships
- * @property {String} created
- * @property {String} edited
- * @property {String} url
+ * @typedef {Object} PokemonData
+ * @property {String} [next]
+ * @property {String} [previous]
+ * @property {}
  */
-
-/**
- * @typedef {Object} PersonData
- * @property {Number} count
- * @property {String} next
- * @property {String} previous
- * @property {Person[]} results
- */
-
 (function (d) {
-  const baseUrl = "https://swapi.dev/api/people";
+  const baseUrl = "https://pokeapi.co/api/v2";
   const modal = d.getElementById("modalBackground");
 
   // Set up click on close button and modal background to dismiss dialog.
@@ -150,6 +128,7 @@
             accept: "application/json",
           },
           referrerPolicy: "no-referrer",
+          cache: "default",
         });
         if (response.ok) {
           data = await response.json();
