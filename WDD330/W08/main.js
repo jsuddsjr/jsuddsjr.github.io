@@ -26,65 +26,81 @@
  * @property {Person[]} results
  */
 
-const baseUrl = "https://swapi.dev/api/people";
-getPersonData(baseUrl);
+(function (d) {
+  const baseUrl = "https://swapi.dev/api/people";
+  const modal = d.getElementById("modalBackground");
 
-function setButtonUrl(buttonId, url) {
-  /** @type {HTMLButtonElement} */
-  const button = document.getElementById(buttonId);
-  if (url) {
-    button.disabled = false;
-    button.onclick = () => getPersonData(url);
-  } else {
-    button.disabled = true;
+  [document.getElementById("close"), modal].forEach((el) =>
+    el.addEventListener("click", () => (modal.style.display = "none"))
+  );
+
+  [...modal.children].forEach(
+    // Clicks inside the modal do not trigger close.
+    (el) => el.addEventListener("click", (e) => e.stopImmediatePropagation())
+  );
+
+  function setNavigationUrl(buttonId, url) {
+    /** @type {HTMLButtonElement} */
+    const button = d.getElementById(buttonId);
+    if (url) {
+      button.disabled = false;
+      button.onclick = () => getPersonData(url);
+    } else {
+      button.disabled = true;
+    }
   }
-}
 
-/**
- * Get Star Wars info from API
- * @param {string} url
- */
-async function getPersonData(url) {
-  const PAGE_SIZE = 10;
-  const page = url.split("page=")[1];
-  const pageNumber = parseInt(page) || 1;
-  const startNumber = (pageNumber - 1) * PAGE_SIZE + 1;
+  /**
+   * Get Star Wars info from API
+   * @param {string} url
+   */
+  async function getPersonData(url) {
+    const PAGE_SIZE = 10;
+    const page = url.split("page=")[1];
+    const pageNumber = parseInt(page) || 1;
+    const startNumber = (pageNumber - 1) * PAGE_SIZE + 1;
 
-  /** @type {PersonData} */
-  const personData = await fetch(url).then((response) => response.json());
+    /** @type {PersonData} */
+    const personData = await fetch(url).then((response) => response.json());
 
-  const main = document.querySelector("#main");
-  main.innerHTML = "";
+    const main = d.querySelector("#main");
+    main.innerHTML = "";
 
-  const ol = main.appendChild(document.createElement("ol"));
+    const ol = main.appendChild(d.createElement("ol"));
 
-  const listItems = personData.results.map((p) => `<li><a href="${p.url}">${p.name}</a></li>`);
+    const listItems = personData.results.map((p) => `<li><a href="${p.url}">${p.name}</a></li>`);
 
-  ol.innerHTML = listItems.join("");
-  ol.start = startNumber;
+    ol.innerHTML = listItems.join("");
+    ol.start = startNumber;
 
-  [...ol.querySelectorAll("a")].forEach((a) => a.addEventListener("click", handleClick));
+    [...ol.querySelectorAll("a")].forEach((a) => a.addEventListener("click", personClick));
 
-  setButtonUrl("next", personData.next);
-  setButtonUrl("prev", personData.previous);
-}
+    setNavigationUrl("next", personData.next);
+    setNavigationUrl("prev", personData.previous);
+  }
 
-async function getPersonDetails(url) {
-  /** @type {PersonData} */
-  const person = await fetch(url).then((response) => response.json());
+  async function getPersonDetails(url) {
+    /** @type {PersonData} */
+    const person = await fetch(url).then((response) => response.json());
 
-  const modal = document.querySelector("#main");
-  main.innerHTML = "";
+    modal.style.display = "flex";
 
-  main.textContent = JSON.stringify(person);
-}
+    const body = modal.querySelector(".modal-body");
+    body.textContent = JSON.stringify(person);
 
-/**
- * @param {Event} event
- */
-function handleClick(event) {
-  /** @type {HTMLAnchorElement} */
-  const anchor = event.target;
-  event.preventDefault();
-  getPersonDetails(anchor.href);
-}
+    const header = modal.querySelector(".modal-title h3");
+    header.textContent = person.name;
+  }
+
+  /**
+   * @param {Event} event
+   */
+  function personClick(event) {
+    /** @type {HTMLAnchorElement} */
+    const anchor = event.target;
+    event.preventDefault();
+    getPersonDetails(anchor.href);
+  }
+
+  getPersonData(baseUrl);
+})(document);

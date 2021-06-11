@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>StarWars</title>
+    <title>Star Wars</title>
   </head>
   <body>
-    <h1>StarWars</h1>
+    <h1>Star Wars</h1>
 
     <main id="main"></main>
 
@@ -17,7 +17,15 @@
       <button id="next">Next</button>
     </div>
 
-    <div id="modal"></div>
+    <div id="modalBackground">
+      <div id="modal">
+        <div class="modal-title">
+          <h3>Person Details</h3>
+          <button id="close" class="close" title="Close"></button>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
 
     <script src="main.js"></script>
   </body>
