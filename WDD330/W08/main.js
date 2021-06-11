@@ -142,7 +142,7 @@
    * @returns Cached object, if it exists.
    */
   async function fetchCached(url) {
-    let data; // = JSON.parse(localStorage.getItem(url));
+    let data = JSON.parse(localStorage.getItem(url));
     if (!data) {
       try {
         const response = await fetch(url, {
