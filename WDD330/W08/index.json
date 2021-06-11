@@ -3,9 +3,11 @@
   "links": [
     {
       "url": "W08/index.html",
-      "label": "Team Project (Star Wars API)",
-      "info": "Navigating the Star Wars universe, one page at a time."
+      "label": "Team Project (Pokemon API)",
+      "info": "Navigating the Pokemon universe, one page at a time."
     }
   ],
-  "questions": ["Looks like the SWAPI is failing when it's hosted from a website. [Needs Investigation]"]
+  "questions": [
+    "Unfortunately, the Star Wars API is failing when it's hosted from a website due to new default security restrictions in Chromium. That's OK because the Pokemon API is much more interesting. "
+  ]
 }

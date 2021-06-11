@@ -70,7 +70,7 @@
      */
     async function getPokemonData(url) {
       /** @type {import('./pokemon.types.js').PokemonResponse} */
-      const pokemonList = await fetchCached(url);
+      const pokemonList = await fetchData(url);
 
       if (pokemonList) {
         const urlSegments = pokemonList.results[0].url.split("/");
@@ -112,7 +112,7 @@
      */
     async function getPokemonDetails(url, triggerElement) {
       /** @type {import('./pokemon.types.js').PokemonData} */
-      const pokemon = await fetchCached(url);
+      const pokemon = await fetchData(url);
       const div = document.createElement("div");
       div.className = "pokemon";
       div.innerHTML = `<img src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />`;
@@ -124,31 +124,42 @@
      * @param {String} url
      * @returns Cached object, if it exists.
      */
-    async function fetchCached(url) {
-      let data = JSON.parse(localStorage.getItem(url));
-      if (!data) {
-        try {
-          const response = await fetch(url, {
-            headers: {
-              accept: "application/json",
-            },
-            referrerPolicy: "no-referrer",
-            cache: "default",
-          });
-          if (response.ok) {
-            data = await response.json();
-          } else {
-            showModal("Response status", response.statusText);
-          }
-        } catch (error) {
-          showModal("Error", error);
-          return Promise.reject(error);
+    async function fetchData(url) {
+      try {
+        const response = await fetch(url, {
+          headers: {
+            accept: "application/json",
+          },
+          referrerPolicy: "no-referrer",
+        });
+        if (response.ok) {
+          const data = await response.json();
+          return Promise.resolve(data);
+        } else {
+          showModal("Response status", response.statusText);
         }
-        if (data) {
-          localStorage.setItem(url, JSON.stringify(data));
-        }
+      } catch (error) {
+        showModal("Error", error);
+        return Promise.reject(error);
       }
-      return Promise.resolve(data);
+    }
+
+    /**
+     * Cache data under key.
+     * @param {String} key
+     * @param {*} data
+     */
+    function cacheResults(key, data) {
+      localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    /**
+     * Get data associated with key.
+     * @param {String} key
+     * @returns An object.
+     */
+    function getCachedResults(key) {
+      return JSON.parse(localStorage.getItem(key));
     }
 
     getPokemonData(baseUrl);

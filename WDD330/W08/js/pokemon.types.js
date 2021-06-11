@@ -209,6 +209,7 @@
 
 /**
  * @typedef {Object} PokemonResponse
+ * @property {Number} count
  * @property {String} next
  * @property {String} previous
  * @property {LinkEntry[]} results

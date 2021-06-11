@@ -22,13 +22,14 @@ a {
   transition: all 200ms ease-in-out;
 }
 
+a:hover,
 a:focus {
   outline: 0;
-  border-bottom: 2px solid black;
+  text-decoration: dashed;
 }
 
 a:hover {
-  border-bottom: 2px solid blue;
+  color: black;
 }
 
 #modalBackground {
