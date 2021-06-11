@@ -61,7 +61,10 @@
     const startNumber = (pageNumber - 1) * PAGE_SIZE + 1;
 
     /** @type {PersonData} */
-    const personData = await fetch(url).then((response) => response.json());
+    const personData = await fetch(url).then(
+      (response) => response.json(),
+      (reason) => console.log(reason)
+    );
 
     const main = d.querySelector("#main");
     main.innerHTML = "";
