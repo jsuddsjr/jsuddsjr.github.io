@@ -11,16 +11,24 @@ h1 {
   text-align: center;
 }
 
-main {
-  text-align: left;
+main,
+nav {
+  display: flex;
+  place-content: center;
 }
 
-div {
-  text-align: center;
+a {
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
 }
 
-button {
-  text-align: center;
+a:focus {
+  outline: 0;
+  border-bottom: 2px solid black;
+}
+
+a:hover {
+  border-bottom: 2px solid blue;
 }
 
 #modalBackground {
@@ -31,16 +39,15 @@ button {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px) invert(100%);
 }
 
 #modal {
   background-color: lightgray;
   border-radius: 4px;
-  width: max(40ch, 33vw);
-  --border: 1px solid black;
-  box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.5);
+  width: max(min(40ch, 100%), 33vw);
+  box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.5);
   border-radius: 0.5em;
   overflow: hidden;
   margin: auto;
@@ -56,6 +63,8 @@ button {
 
 .modal-title h3 {
   margin: 0;
+  color: white;
+  text-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
 }
 
 button.close {

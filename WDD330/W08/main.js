@@ -30,14 +30,48 @@
   const baseUrl = "https://swapi.dev/api/people";
   const modal = d.getElementById("modalBackground");
 
-  [document.getElementById("close"), modal].forEach((el) =>
-    el.addEventListener("click", () => (modal.style.display = "none"))
-  );
+  // Set up click on close button and modal background to dismiss dialog.
+  [document.getElementById("close"), modal].forEach((el) => el.addEventListener("click", dismissModal));
 
   [...modal.children].forEach(
     // Clicks inside the modal do not trigger close.
     (el) => el.addEventListener("click", (e) => e.stopImmediatePropagation())
   );
+
+  /**
+   * Show modal dialog with the specified content.
+   * @param {String} title
+   * @param {String|HTMLElement} body
+   * @param {HTMLElement} [triggerElement]
+   */
+  function showModal(title, body, triggerElement) {
+    modal.style.display = "flex";
+    modal.triggerElement = triggerElement;
+
+    const titleElement = modal.querySelector(".modal-title h3");
+    const bodyElement = modal.querySelector(".modal-body");
+    const closeButton = modal.querySelector("button");
+
+    titleElement.textContent = title;
+    if (body instanceof HTMLElement) {
+      bodyElement.innerHTML = "";
+      bodyElement.appendChild(body);
+    } else {
+      bodyElement.textContent = String(body);
+    }
+
+    closeButton.focus();
+  }
+
+  /**
+   * Close dialog and return focus to prior element.
+   */
+  function dismissModal() {
+    modal.style.display = "none";
+    if (modal.triggerElement instanceof HTMLElement) {
+      modal.triggerElement.focus();
+    }
+  }
 
   function setNavigationUrl(buttonId, url) {
     /** @type {HTMLButtonElement} */
@@ -88,36 +122,20 @@
     /** @type {HTMLAnchorElement} */
     const anchor = event.target;
     event.preventDefault();
-    getPersonDetails(anchor.href);
+    getPersonDetails(anchor.href, anchor);
   }
 
   /**
    *
    * @param {String} url
+   * @param {HTMLElement} triggerElement
    */
-  async function getPersonDetails(url) {
+  async function getPersonDetails(url, triggerElement) {
     /** @type {PersonData} */
     const person = await fetchCached(url);
-    showModal(person.name, JSON.stringify(person));
+    showModal(person.name, JSON.stringify(person), triggerElement);
   }
 
-  /**
-   * Show modal dialog with the specified content.
-   * @param {String} title
-   * @param {String|HTMLElement} body
-   */
-  function showModal(title, body) {
-    modal.style.display = "flex";
-    const titleElement = modal.querySelector(".modal-title h3");
-    titleElement.textContent = title;
-    const bodyElement = modal.querySelector(".modal-body");
-    if (body instanceof HTMLElement) {
-      bodyElement.innerHTML = "";
-      bodyElement.appendChild(body);
-    } else {
-      bodyElement.textContent = String(body);
-    }
-  }
   /**
    * Read object from cache or URL.
    * @param {String} url
@@ -126,15 +144,22 @@
   async function fetchCached(url) {
     let data = JSON.parse(localStorage.getItem(url));
     if (!data) {
-      data = await fetch(url).then(
-        (response) => response.json(),
-        (reason) => showModal("Fetch error", reason)
-      );
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          showModal("Response status", response.statusText);
+        }
+      } catch (error) {
+        showModal("Error", error);
+        return Promise.reject(error);
+      }
       if (data) {
         localStorage.setItem(url, JSON.stringify(data));
       }
     }
-    return data;
+    return Promise.resolve(data);
   }
 
   getPersonData(baseUrl);
