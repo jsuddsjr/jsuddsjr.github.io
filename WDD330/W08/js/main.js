@@ -71,7 +71,25 @@ import Paginator from "./paginator.js";
 
       const div = document.createElement("div");
       div.className = "pokemon";
-      div.innerHTML = `<img src="${imageSrc}" alt="${pokemon.name}" />`;
+
+      const spinner = div.appendChild(document.createElement("div"));
+      spinner.className = "spinner";
+      spinner.style.display = "none";
+
+      const image = div.appendChild(new Image());
+      image.src = imageSrc;
+      image.alt = pokemon.name;
+
+      setTimeout(() => {
+        if (!image.complete) {
+          spinner.style.display = "block";
+          image.onload = (e) => {
+            spinner.style.display = "none";
+            image.onload = null;
+          };
+        }
+      }, 200);
+
       modal.show(pokemon.name, div, triggerElement);
     }
 

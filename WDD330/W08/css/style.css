@@ -9,10 +9,12 @@ body {
 
 h1 {
   text-align: center;
+  margin: 0;
 }
 
 main,
 nav {
+  position: relative;
   display: flex;
   place-content: center;
 }
@@ -37,10 +39,20 @@ a:hover {
 }
 
 .spinner {
-  height: 3rem;
-  width: 3rem;
-  background: url("../images/spinner.gif") left no-repeat;
+  position: absolute;
+  height: 3em;
+  width: 3em;
+  background: url("../images/pokeball.svg") left no-repeat;
   background-size: contain;
+  transform: rotate(0);
+
+  animation: spin linear infinite 1s;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #modalBackground {
@@ -103,6 +115,14 @@ button.close::before {
   word-break: break-all;
 }
 
+.pokemon {
+  display: flex;
+  place-content: center;
+  position: relative;
+  min-height: 300px;
+  margin: auto;
+}
+
 .pokemon img {
   display: block;
   max-width: 100%;
@@ -141,11 +161,11 @@ nav button {
 }
 
 button.previous::before {
-  content: "\23f4";
+  content: "\25c0";
 }
 
 button.next::before {
-  content: "\23f5";
+  content: "\25b6";
 }
 
 span.pageNumber {
@@ -185,4 +205,15 @@ span.pageNumber.current + span::before,
 span.pageNumber.current + span + span::before {
   content: attr(title);
   width: 3em;
+}
+
+/* Lighthouse wants big (48x48) touch targets. Me, no likee. */
+@media (pointer: coarse) {
+  a {
+    line-height: 1.5;
+  }
+
+  nav * {
+    min-height: 2em;
+  }
 }
