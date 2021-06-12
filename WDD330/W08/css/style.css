@@ -36,6 +36,13 @@ a:hover {
   color: black;
 }
 
+.spinner {
+  height: 3rem;
+  width: 3rem;
+  background: url("../images/spinner.gif") left no-repeat;
+  background-size: contain;
+}
+
 #modalBackground {
   display: none;
   place-content: center;

@@ -108,11 +108,10 @@ import Paginator from "./paginator.js";
           const data = await response.json();
           return Promise.resolve(data);
         } else {
-          showModal("Response status", response.statusText);
+          return Promise.reject(response.statusText);
         }
       } catch (error) {
-        showModal("Error", error);
-        return Promise.reject(error);
+        return Promise.reject(String(error));
       }
     }
 
@@ -134,6 +133,6 @@ import Paginator from "./paginator.js";
       return JSON.parse(localStorage.getItem(key));
     }
 
-    getPokemonData(baseUrl);
+    getPokemonData(baseUrl).catch((reason) => modal.show("Error", reason));
   }
 )(document);
