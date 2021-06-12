@@ -30,8 +30,10 @@ import Paginator from "./paginator.js";
       const pageSize = Number(urlParams.get("limit") || 20);
 
       /** @type {import('./pokemon.types.js').PokemonResponse} */
-      const pokemonList = await fetchData(url);
+      const pokemonList = getCachedResults(url) || (await fetchData(url));
       if (pokemonList) {
+        cacheResults(url, pokemonList);
+
         paginator.setPageParameters(pokemonList.count, pageSize);
 
         const listItems = pokemonList.results.map((p) => `<li><a href="${p.url}">${p.name}</a></li>`);
@@ -113,6 +115,24 @@ import Paginator from "./paginator.js";
       } catch (error) {
         return Promise.reject(String(error));
       }
+    }
+
+    /**
+     * Cache data under key.
+     * @param {String} key
+     * @param {*} data
+     */
+    function cacheResults(key, data) {
+      localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    /**
+     * Get data associated with key.
+     * @param {String} key
+     * @returns An object.
+     */
+    function getCachedResults(key) {
+      return JSON.parse(localStorage.getItem(key));
     }
 
     getPokemonData(baseUrl).catch((reason) => modal.show("Error", reason));

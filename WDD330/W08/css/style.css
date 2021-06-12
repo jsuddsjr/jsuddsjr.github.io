@@ -8,6 +8,12 @@
   font-family: sans-serif;
 }
 
+@media (max-width: 350px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -158,14 +164,18 @@ nav {
   justify-content: stretch;
   align-items: stretch;
   margin: 0 auto;
-  max-width: 50ch;
-  height: 2em;
+  max-width: 60ch;
   margin-bottom: 1.2em;
+}
+
+nav * {
+  height: 2em;
 }
 
 @media (max-width: 530px) {
   nav {
-    font-size: 9px;
+    font-size: 8px;
+    max-width: max(40ch, calc(100vw - 16px));
   }
 }
 
@@ -206,20 +216,30 @@ span.pageNumber::before {
   margin: auto;
 }
 
+/* Narrow screens, remove every other element. */
+@media (max-width: 530px) {
+  span.pageNumber:nth-child(2n + 1) {
+    display: none;
+  }
+}
+
 span.pageNumber.current {
   background-color: black;
   color: white;
   pointer-events: none;
 }
 
+/* Display first and last, plus 3 elements starting at current. */
 span.pageNumber:first-of-type,
 span.pageNumber:last-of-type,
 span.pageNumber.current,
 span.pageNumber.current + span,
 span.pageNumber.current + span + span {
+  display: inline-flex;
+  place-content: center;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  min-width: 2em;
+  min-width: 1.8em;
 }
 
 span.pageNumber:first-of-type::before,
@@ -231,17 +251,17 @@ span.pageNumber.current + span + span::before {
   font-variant-numeric: oldstyle-nums;
 }
 
-/* Lighthouse wants big (48x48) touch targets. Me, no likee. */
+/* Lighthouse wants big (48x48) touch targets. These are compromises. */
 @media (pointer: coarse) {
   a {
     line-height: 1.5;
   }
 
-  nav {
-    max-width: min(60ch, calc(100vw - 16px));
-  }
-
   nav * {
     height: 32px;
+  }
+
+  nav button {
+    min-width: 24px;
   }
 }
