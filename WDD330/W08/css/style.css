@@ -73,8 +73,20 @@ a:hover {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px) invert(100%);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@supports (backdrop-filter: blur()) {
+  #modalBackground {
+    backdrop-filter: blur(2px);
+  }
+}
+
+@supports (backdrop-filter: invert()) {
+  #modalBackground {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px) invert(100%);
+  }
 }
 
 #modal {
