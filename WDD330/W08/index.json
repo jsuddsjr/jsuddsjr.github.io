@@ -8,6 +8,6 @@
     }
   ],
   "questions": [
-    "Unfortunately, the Star Wars API is failing when it's hosted from a website due to new default security restrictions in Chromium. That's OK because the Pokemon API is much more interesting. "
+    "Unfortunately, <a href='W08/swapi/swapi.html' target='_blank' title='the instructor solution'>the Star Wars API is failing<a/> when it's hosted from a website due to new default security restrictions in Chromium. That's OK because the Pokemon API is much more interesting. "
   ]
 }
