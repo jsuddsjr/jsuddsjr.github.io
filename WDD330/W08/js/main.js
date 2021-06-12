@@ -1,10 +1,24 @@
 import Modal from "./modal.js";
+import Paginator from "./paginator.js";
 /** @type {import('./pokemon.types.js')} */
 
 (
   function (d) {
     const baseUrl = "https://pokeapi.co/api/v2/pokemon";
     const modal = new Modal("modalBackground");
+    const paginator = new Paginator("navigation", onPageClick);
+
+    function onPageClick(page, pageSize) {
+      if (page > 1) {
+        const urlParams = new URLSearchParams();
+        urlParams.set("offset", (page - 1) * pageSize);
+        urlParams.set("limit", pageSize);
+        getPokemonData(`${baseUrl}?${urlParams}`);
+      } else {
+        getPokemonData(baseUrl);
+      }
+    }
+
     /**
      *
      * @param {String} buttonId
@@ -26,14 +40,15 @@ import Modal from "./modal.js";
      * @param {string} url
      */
     async function getPokemonData(url) {
-      const urlParams = new URLSearchParams(url);
-      const startNumber = urlParams.get("offset") || 1;
-      const pageSize = urlParams.get("limit") || 20;
+      const search = url.split("?")[1];
+      const urlParams = new URLSearchParams(search);
+      const startNumber = Number(urlParams.get("offset") || 1);
+      const pageSize = Number(urlParams.get("limit") || 20);
 
       /** @type {import('./pokemon.types.js').PokemonResponse} */
       const pokemonList = await fetchData(url);
       if (pokemonList) {
-        const totalRecords = pokemonList.count;
+        paginator.setPageParameters(pokemonList.count, pageSize);
 
         const main = d.querySelector("#main");
         main.innerHTML = "";
@@ -48,9 +63,6 @@ import Modal from "./modal.js";
         [...ol.querySelectorAll("a")].forEach((a) =>
           a.addEventListener("click", openDetails.bind(null, getPokemonDetails))
         );
-
-        setNavigationUrl("next", pokemonList.next);
-        setNavigationUrl("prev", pokemonList.previous);
       }
     }
 
@@ -74,8 +86,12 @@ import Modal from "./modal.js";
       const pokemon = await fetchData(url);
       const div = document.createElement("div");
       div.className = "pokemon";
-      div.innerHTML = `<img src="${pokemon.sprites.other["official-artwork"].front_default}" alt="${pokemon.name}" />`;
-      modal.showModal(pokemon.name, div, triggerElement);
+
+      const imageSrc = pokemon.sprites.other["official-artwork"].front_default ||
+                       pokemon.sprites.front_default;
+                       
+      div.innerHTML = `<img src="${imageSrc}" alt="${pokemon.name}" />`;
+      modal.show(pokemon.name, div, triggerElement);
     }
 
     /**

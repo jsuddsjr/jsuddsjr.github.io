@@ -17,6 +17,10 @@ nav {
   place-content: center;
 }
 
+li::marker {
+  font-variant-numeric: oldstyle-nums;
+}
+
 a {
   text-decoration: none;
   transition: all 200ms ease-in-out;
@@ -92,6 +96,86 @@ button.close::before {
   word-break: break-all;
 }
 
-.modal-body img {
+.pokemon img {
+  display: block;
   max-width: 100%;
+  margin: 0 auto;
+}
+
+nav {
+  justify-content: stretch;
+  align-items: stretch;
+  margin: 0 auto;
+  max-width: 50ch;
+  height: 2em;
+}
+
+@media (max-width: 530px) {
+  nav {
+    font-size: 9px;
+  }
+}
+
+nav div {
+  width: 100%;
+  display: flex;
+}
+
+nav button {
+  border: 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1.05em;
+  padding: 0;
+  width: 2em;
+}
+
+button.previous::before {
+  content: "\23f4";
+}
+
+button.next::before {
+  content: "\23f5";
+}
+
+span.pageNumber {
+  font-variant-numeric: oldstyle-nums;
+  cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
+  line-height: 1.6;
+}
+
+span.pageNumber::before {
+  content: ".";
+}
+
+span.pageNumber.current {
+  background-color: black;
+  color: white;
+  pointer-events: none;
+}
+
+span.pageNumber:first-of-type,
+span.pageNumber:last-of-type,
+span.pageNumber.current,
+span.pageNumber.current + span,
+span.pageNumber.current + span + span {
+  display: inline-block;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  min-width: 2em;
+  padding: 2px 0;
+}
+
+span.pageNumber:first-of-type::before,
+span.pageNumber:last-of-type::before,
+span.pageNumber.current::before,
+span.pageNumber.current + span::before,
+span.pageNumber.current + span + span::before {
+  content: attr(title);
+  width: 3em;
 }

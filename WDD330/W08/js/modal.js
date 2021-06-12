@@ -13,7 +13,7 @@ export default class Modal {
     this.triggerElement = null;
 
     // Set up click on close button and modal background to dismiss dialog.
-    [this.closeButton, this.modal].forEach((el) => el.addEventListener("click", this.dismissModal.bind(this)));
+    [this.closeButton, this.modal].forEach((el) => el.addEventListener("click", this.dismiss.bind(this)));
 
     [...this.modal.children].forEach(
       // Clicks inside the modal do not trigger close.
@@ -27,7 +27,7 @@ export default class Modal {
    * @param {String|HTMLElement} body
    * @param {HTMLElement} [triggerElement]
    */
-  showModal(title, body, triggerElement) {
+  show(title, body, triggerElement) {
     this.modal.style.display = "flex";
     this.triggerElement = triggerElement;
 
@@ -45,8 +45,10 @@ export default class Modal {
   /**
    * Close dialog and return focus to prior element.
    */
-  dismissModal() {
+  dismiss() {
     this.modal.style.display = "none";
-    if (this.triggerElement) this.triggerElement.focus();
+    if (this.triggerElement) {
+      this.triggerElement.focus();
+    }
   }
 }
