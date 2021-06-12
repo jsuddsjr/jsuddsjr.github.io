@@ -88,7 +88,7 @@ import Paginator from "./paginator.js";
             image.onload = null;
           };
         }
-      }, 200);
+      }, 100);
 
       modal.show(pokemon.name, div, triggerElement);
     }

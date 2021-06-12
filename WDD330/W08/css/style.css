@@ -1,3 +1,9 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: sans-serif;
 }
@@ -54,6 +60,10 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+
+/**************
+  MODAL DIALOG
+  *************/
 
 #modalBackground {
   display: none;
@@ -129,6 +139,10 @@ button.close::before {
   margin: 0 auto;
 }
 
+/********************
+  PAGINATION CONTROL
+  *******************/
+
 nav {
   justify-content: stretch;
   align-items: stretch;
@@ -169,11 +183,8 @@ button.next::before {
 }
 
 span.pageNumber {
-  font-variant-numeric: oldstyle-nums;
   cursor: pointer;
   flex-grow: 1;
-  text-align: center;
-  line-height: 1.6;
 }
 
 span.pageNumber::before {
@@ -191,11 +202,11 @@ span.pageNumber:last-of-type,
 span.pageNumber.current,
 span.pageNumber.current + span,
 span.pageNumber.current + span + span {
-  display: inline-block;
+  display: inline-flex;
+  place-content: center;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   min-width: 2em;
-  padding: 2px 0;
 }
 
 span.pageNumber:first-of-type::before,
@@ -204,7 +215,8 @@ span.pageNumber.current::before,
 span.pageNumber.current + span::before,
 span.pageNumber.current + span + span::before {
   content: attr(title);
-  width: 3em;
+  font-variant-numeric: oldstyle-nums;
+  margin: auto;
 }
 
 /* Lighthouse wants big (48x48) touch targets. Me, no likee. */
@@ -214,6 +226,6 @@ span.pageNumber.current + span + span::before {
   }
 
   nav * {
-    min-height: 2em;
+    height: 24px;
   }
 }
