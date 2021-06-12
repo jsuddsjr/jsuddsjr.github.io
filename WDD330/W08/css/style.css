@@ -160,6 +160,7 @@ nav {
   margin: 0 auto;
   max-width: 50ch;
   height: 2em;
+  margin-bottom: 1.2em;
 }
 
 @media (max-width: 530px) {
@@ -194,12 +195,15 @@ button.next::before {
 }
 
 span.pageNumber {
+  display: inline-flex;
+  place-content: center;
   cursor: pointer;
   flex-grow: 1;
 }
 
 span.pageNumber::before {
   content: ".";
+  margin: auto;
 }
 
 span.pageNumber.current {
@@ -213,8 +217,6 @@ span.pageNumber:last-of-type,
 span.pageNumber.current,
 span.pageNumber.current + span,
 span.pageNumber.current + span + span {
-  display: inline-flex;
-  place-content: center;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   min-width: 2em;
@@ -227,7 +229,6 @@ span.pageNumber.current + span::before,
 span.pageNumber.current + span + span::before {
   content: attr(title);
   font-variant-numeric: oldstyle-nums;
-  margin: auto;
 }
 
 /* Lighthouse wants big (48x48) touch targets. Me, no likee. */
