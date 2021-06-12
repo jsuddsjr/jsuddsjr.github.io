@@ -20,22 +20,6 @@ import Paginator from "./paginator.js";
     }
 
     /**
-     *
-     * @param {String} buttonId
-     * @param {String} url
-     */
-    function setNavigationUrl(buttonId, url) {
-      /** @type {HTMLButtonElement} */
-      const button = d.getElementById(buttonId);
-      if (url) {
-        button.disabled = false;
-        button.onclick = () => getPokemonData(url);
-      } else {
-        button.disabled = true;
-      }
-    }
-
-    /**
      * Get Star Wars info from API
      * @param {string} url
      */
@@ -50,13 +34,11 @@ import Paginator from "./paginator.js";
       if (pokemonList) {
         paginator.setPageParameters(pokemonList.count, pageSize);
 
-        const main = d.querySelector("#main");
-        main.innerHTML = "";
-
-        const ol = main.appendChild(d.createElement("ol"));
-
         const listItems = pokemonList.results.map((p) => `<li><a href="${p.url}">${p.name}</a></li>`);
 
+        const main = d.querySelector("#main");
+        main.innerHTML = "";
+        const ol = main.appendChild(d.createElement("ol"));
         ol.innerHTML = listItems.join("");
         ol.start = startNumber;
 
@@ -67,6 +49,7 @@ import Paginator from "./paginator.js";
     }
 
     /**
+     * @param {function(string, HTMLElement): Promise<void>} cb
      * @param {Event} event
      */
     function openDetails(cb, event) {
@@ -77,18 +60,17 @@ import Paginator from "./paginator.js";
     }
 
     /**
-     *
+     * Fetch the details from selected url.
      * @param {String} url
      * @param {HTMLElement} triggerElement
      */
     async function getPokemonDetails(url, triggerElement) {
       /** @type {import('./pokemon.types.js').PokemonData} */
       const pokemon = await fetchData(url);
-      const div = document.createElement("div");
-      div.className = "pokemon";
-
       const imageSrc = pokemon.sprites.other["official-artwork"].front_default || pokemon.sprites.front_default;
 
+      const div = document.createElement("div");
+      div.className = "pokemon";
       div.innerHTML = `<img src="${imageSrc}" alt="${pokemon.name}" />`;
       modal.show(pokemon.name, div, triggerElement);
     }
@@ -113,24 +95,6 @@ import Paginator from "./paginator.js";
       } catch (error) {
         return Promise.reject(String(error));
       }
-    }
-
-    /**
-     * Cache data under key.
-     * @param {String} key
-     * @param {*} data
-     */
-    function cacheResults(key, data) {
-      localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    /**
-     * Get data associated with key.
-     * @param {String} key
-     * @returns An object.
-     */
-    function getCachedResults(key) {
-      return JSON.parse(localStorage.getItem(key));
     }
 
     getPokemonData(baseUrl).catch((reason) => modal.show("Error", reason));

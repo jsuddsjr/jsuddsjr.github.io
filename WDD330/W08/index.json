@@ -8,6 +8,7 @@
     }
   ],
   "questions": [
-    "Unfortunately, <a href='W08/swapi/swapi.html' target='_blank' title='the instructor solution'>the Star Wars API is failing<a/> when it's hosted from a website due to new default security restrictions in Chromium. That's OK because the Pokemon API is much more interesting. "
+    "For me, <a href='W08/swapi/swapi.html' target='_blank' title='the instructor solution'>the Star Wars API</a> was failing when it was hosted from a website due to new default security restrictions in Chromium. It turns out that might have been trying to be too restrictive on my fetch request. Apparently, factors such as referrer policy can make a difference to routing technology in the age of CORS. I switched over to the Pokemon API to see if it worked better, but ran afoul of similar issues until I sorted out my request syntax. ",
+    "Modal dialogs are trickier than simply displaying some UI. If you consider keyboard focus, it's important that the dialog get focus when it appears, and that the triggering element regains focus after the dialog is dismissed. Visit !!LINK 0!! to try it out. "
   ]
 }
