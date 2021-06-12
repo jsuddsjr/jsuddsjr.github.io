@@ -4,7 +4,7 @@ import Paginator from "./paginator.js";
 
 (
   function (d) {
-    const baseUrl = "https://pokeapi.co/api/v2/pokemon";
+    const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
     const modal = new Modal("modalBackground");
     const paginator = new Paginator("navigation", onPageClick);
 
@@ -87,9 +87,8 @@ import Paginator from "./paginator.js";
       const div = document.createElement("div");
       div.className = "pokemon";
 
-      const imageSrc = pokemon.sprites.other["official-artwork"].front_default ||
-                       pokemon.sprites.front_default;
-                       
+      const imageSrc = pokemon.sprites.other["official-artwork"].front_default || pokemon.sprites.front_default;
+
       div.innerHTML = `<img src="${imageSrc}" alt="${pokemon.name}" />`;
       modal.show(pokemon.name, div, triggerElement);
     }
@@ -105,7 +104,6 @@ import Paginator from "./paginator.js";
           headers: {
             accept: "application/json",
           },
-          referrerPolicy: "no-referrer",
         });
         if (response.ok) {
           const data = await response.json();
