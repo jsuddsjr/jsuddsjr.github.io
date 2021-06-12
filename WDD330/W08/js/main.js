@@ -101,9 +101,8 @@ import Paginator from "./paginator.js";
     async function fetchData(url) {
       try {
         const response = await fetch(url, {
-          headers: {
-            accept: "application/json",
-          },
+          method: "GET",
+          headers: { "Content-type": "application/json;charset=UTF-8" },
         });
         if (response.ok) {
           const data = await response.json();
