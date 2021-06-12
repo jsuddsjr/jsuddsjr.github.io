@@ -10,13 +10,11 @@
   font-size: 12px;
   height: 100vh;
 }
-
 @media screen and (min-width: 60em) {
   :root {
     font-size: 14px;
   }
 }
-
 @media screen and (min-width: 80em) {
   :root {
     font-size: 16px;
@@ -29,7 +27,6 @@ body {
   padding: 0;
   height: 100%;
 }
-
 body > section:last-of-type {
   padding-bottom: 5em;
 }
@@ -44,13 +41,11 @@ section {
   margin: 0 auto;
   padding: 1em;
 }
-
 @media screen and (min-width: 80em) {
   section {
     max-width: 80em;
   }
 }
-
 @media screen and (min-width: 96em) {
   section {
     max-width: 96em;
@@ -65,13 +60,11 @@ header {
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
 }
-
 header h1 {
   font-size: 2em;
   margin-bottom: 0;
   line-height: 1;
 }
-
 header p {
   line-height: 1.1;
 }
@@ -96,6 +89,10 @@ q {
   color: rgba(0, 0, 0, 0.6);
 }
 
+pre {
+  font-size: smaller;
+}
+
 a:not([id]) {
   color: #000050;
   background-color: rgba(0, 0, 80, 0.1);
@@ -105,7 +102,6 @@ a:not([id]) {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-
 a:not([id]):hover, a:not([id]):focus, a:not([id]):active {
   color: white;
   background-color: #000050;
@@ -119,7 +115,6 @@ footer {
   background-color: rgba(0, 0, 80, 0.8);
   width: 100%;
 }
-
 footer p {
   font-size: 0.8rem;
   text-align: right;

@@ -91,13 +91,17 @@ li {
 
 .spinner {
   height: 3rem;
-  background:  url("../images/spinner.gif") left no-repeat;
+  background: url("../images/spinner.gif") left no-repeat;
   background-size: contain;
 }
 
 q {
   font-style: italic;
   color: rgba(black, 0.6);
+}
+
+pre {
+  font-size: smaller;
 }
 
 a:not([id]) {
