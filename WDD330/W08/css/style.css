@@ -134,9 +134,8 @@ button.close::before {
 }
 
 .pokemon img {
-  display: block;
   max-width: 100%;
-  margin: 0 auto;
+  margin: auto;
 }
 
 /********************
@@ -226,6 +225,6 @@ span.pageNumber.current + span + span::before {
   }
 
   nav * {
-    height: 24px;
+    height: 28px;
   }
 }
