@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -87,16 +91,124 @@ h1 span {
   transition-property: transform;
   transition-duration: 0.4s;
   transition-timing-function: ease-out;
-  transition-delay: 50ms;
+  transition-delay: 500ms;
 }
 
 .test10:hover {
   transform: rotate(900deg);
 }
 
-.test10:before {
+.test10:before,
+.test11:before,
+.test12:before {
   content: "Hover me!";
   color: red;
   font-size: 48px;
   font-weight: bold;
+}
+
+.test11 {
+  animation-name: appearDisappear;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.test11:hover {
+  animation-play-state: running;
+}
+
+@keyframes appearDisappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.test12 {
+  animation-name: stingLikeABee;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate-reverse;
+  animation-play-state: paused;
+}
+
+.test12:hover {
+  animation-play-state: running;
+}
+
+@keyframes stingLikeABee {
+  0%,
+  50% {
+    transform: translateX(0) rotate(90deg);
+  }
+  25% {
+    transform: translateX(-50%) rotate(-10deg);
+  }
+  75% {
+    transform: translateX(50%) rotate(10deg);
+  }
+}
+
+.overflow-hidden {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+  background-image: linear-gradient(white, gray);
+  z-index: -1;
+}
+
+.test13 {
+  animation: ride 8s infinite linear;
+  position: absolute;
+  left: -90px;
+}
+
+@media (min-width: 48em) {
+  .test13 {
+    animation-duration: 12s;
+  }
+}
+
+@media (min-width: 96em) {
+  .test13 {
+    animation-duration: 15s;
+  }
+}
+
+.test13:after {
+  content: "";
+  width: 90px;
+  height: 92px;
+  background-image: url(../images/bike_sprite.png);
+  display: block;
+  margin: auto;
+
+  animation-name: bike;
+  animation-duration: 1s;
+  animation-timing-function: steps(4, end);
+  animation-iteration-count: infinite;
+}
+
+@keyframes bike {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -350px 0;
+  }
+}
+
+@keyframes ride {
+  from {
+    left: -90px;
+  }
+  to {
+    left: 100vw;
+  }
 }
