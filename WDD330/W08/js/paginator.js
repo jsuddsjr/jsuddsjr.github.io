@@ -37,7 +37,12 @@ export default class Paginator {
       const span = document.createElement("span");
       span.title = `${i + 1}`;
       span.className = "pageNumber";
+      span.tabIndex = "0";
+      span.setAttribute("role", "button");
       span.addEventListener("click", this.setCurrentPage.bind(this, i));
+      span.addEventListener("keypress", (e) => {
+        if (e.key === " " || e.key === "Enter") this.setCurrentPage(i);
+      });
       this.numbers.appendChild(span);
     }
 

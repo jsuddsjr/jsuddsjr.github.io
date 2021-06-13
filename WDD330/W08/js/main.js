@@ -1,5 +1,6 @@
 import Modal from "./modal.js";
 import Paginator from "./paginator.js";
+import Spinner from "./spinner.js";
 /** @type {import('./pokemon.types.js')} */
 
 (
@@ -24,6 +25,9 @@ import Paginator from "./paginator.js";
      * @param {string} url
      */
     async function getPokemonData(url) {
+      const main = d.querySelector("#main");
+      const spinner = new Spinner(main);
+
       const search = url.split("?")[1];
       const urlParams = new URLSearchParams(search);
       const startNumber = Number(urlParams.get("offset") || 1);
@@ -38,7 +42,6 @@ import Paginator from "./paginator.js";
 
         const listItems = pokemonList.results.map((p) => `<li><a href="${p.url}">${p.name}</a></li>`);
 
-        const main = d.querySelector("#main");
         main.innerHTML = "";
         const ol = main.appendChild(d.createElement("ol"));
         ol.innerHTML = listItems.join("");
@@ -74,19 +77,15 @@ import Paginator from "./paginator.js";
       const div = document.createElement("div");
       div.className = "pokemon";
 
-      const spinner = div.appendChild(document.createElement("div"));
-      spinner.className = "spinner";
-      spinner.style.display = "none";
-
       const image = div.appendChild(new Image());
       image.src = imageSrc;
       image.alt = pokemon.name;
 
       setTimeout(() => {
         if (!image.complete) {
-          spinner.style.display = "block";
+          const spinner = new Spinner(div);
           image.onload = (e) => {
-            spinner.style.display = "none";
+            spinner.hide();
             image.onload = null;
           };
         }

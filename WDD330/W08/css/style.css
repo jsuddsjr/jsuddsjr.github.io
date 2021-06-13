@@ -50,6 +50,10 @@ a:hover {
   color: black;
 }
 
+/*********
+  SPINNER
+  ********/
+
 .spinner {
   position: absolute;
   height: 3em;
