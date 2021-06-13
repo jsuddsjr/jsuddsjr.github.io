@@ -19,6 +19,12 @@ export default class Modal {
       // Clicks inside the modal do not trigger close.
       (el) => el.addEventListener("click", (e) => e.stopImmediatePropagation())
     );
+
+    this.modal.addEventListener("keyup", (e) => {
+      if (e.key === "Escape") {
+        this.dismiss();
+      }
+    });
   }
 
   /**

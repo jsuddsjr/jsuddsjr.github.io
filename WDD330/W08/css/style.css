@@ -79,7 +79,7 @@ a:hover {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 @supports (backdrop-filter: blur()) {
@@ -169,7 +169,7 @@ nav {
 }
 
 nav * {
-  height: 2em;
+  height: 2rem;
 }
 
 @media (max-width: 530px) {
@@ -191,7 +191,7 @@ nav button {
   border-radius: 0;
   background-color: transparent;
   cursor: pointer;
-  font-size: 1.05em;
+  /* font-size: 1.05em; */
   padding: 0;
   width: 2em;
 }
@@ -258,7 +258,7 @@ span.pageNumber.current + span + span::before {
   }
 
   nav * {
-    height: 32px;
+    min-height: 32px;
   }
 
   nav button {

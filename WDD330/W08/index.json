@@ -5,11 +5,16 @@
       "url": "W08/index.html",
       "label": "Team Project (Pokemon API)",
       "info": "Navigating the Pokemon universe, one page at a time."
+    },
+    {
+      "url": "W08/transforms.html",
+      "label": "CSS Transforms (from JavaScript: Novice to Ninja)",
+      "info": "<em>Put 'em up!</em>"
     }
   ],
   "questions": [
     "For me, <a href='W08/swapi/swapi.html' target='_blank' title='the instructor solution'>the Star Wars API</a> was failing due to security restrictions in Chromium. It turns out that I might have been too restrictive in my fetch requests. Apparently, factors such as referrer policy can make a difference to routing technology in the age of CORS. I switched over to the Pokemon API to see if it worked better, but ran afoul of similar issues until I sorted out my request syntax.<br/><code><pre>const response = await fetch(url, {\n  method: \"GET\",\n  headers: { \"Content-type\": \"application/json;charset=UTF-8\" },\n});  </pre></code><br />Unfortunately, sending a <code>'Content-Type'</code> header causes the browser to send a preflight OPTIONS request, which was denied. When I changed this to an <code>'Accept'</code> header, all was well. ",
     "Modal dialogs are trickier than simply displaying some UI. If you consider keyboard focus, it's important that the dialog gains focus when it appears, and that the triggering element regains focus after the dialog is dismissed. Visit !!LINK 0!! to try it out. ",
-    "Mobile UX is tricky, as you know. The !!LINK 0 team project!! adjusts layout based on <code>(pointer: coarse)</code> media query to provide a better touch experience. Additionally, the page has a spinner that appears during long downloads over slow networks."
+    "Mobile UX is tricky, as you know. This week's project adjusts layout based on <code>(pointer: coarse)</code> media query to provide a better touch experience. Additionally, the page has a spinner that appears during long downloads over slow networks."
   ]
 }

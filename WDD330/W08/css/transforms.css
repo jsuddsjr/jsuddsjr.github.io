@@ -1,0 +1,102 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4em;
+  gap: 6em;
+}
+
+h1 {
+  font-variant: small-caps;
+}
+
+h1 span {
+  display: inline-block;
+  color: #cf2f2f;
+  transform: translateY(-30px);
+}
+
+.image {
+  height: 141px;
+  width: 248px;
+  box-shadow: 0.5em 0.5em 1.5em rgba(0, 0, 0, 0.6);
+  background: no-repeat url("../images/test-image.png");
+  background-size: contain;
+}
+
+.image:before {
+  text-shadow: 0 0 6px black;
+}
+
+.test2 {
+  transform: translate(45px, -45px);
+}
+
+.test2:before {
+  content: "translate(45px, -45px);";
+}
+
+.test3 {
+  transform: scale(1.5, 0.9);
+}
+
+.test3:before {
+  content: "transform: scale(1.5, 0.9);";
+}
+
+.test4 {
+  transform: translateX(40px) scale(1.5);
+}
+
+.test4:before {
+  content: "transform: translateX(40px) scale(1.5);";
+}
+
+.test5 {
+  transform: rotate(10deg) translateX(40px) scale(1.5);
+}
+
+.test5:before {
+  content: "transform: rotate(10deg) translateX(40px) scale(1.5);";
+}
+
+.test6 {
+  transform: skew(15deg, 4deg);
+}
+
+.test6:before {
+  content: "transform: skew(15deg, 4deg);";
+}
+
+.test8 {
+  transform: rotate(20deg) translateX(150px);
+}
+
+.test8:before {
+  content: "transform: rotate(20deg) translateX(150px);";
+}
+
+.test9 {
+  transform: translateX(150px) rotate(20deg);
+}
+
+.test9:before {
+  content: "transform: translateX(150px) rotate(20deg);";
+}
+
+.test10 {
+  transition-property: transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+  transition-delay: 50ms;
+}
+
+.test10:hover {
+  transform: rotate(900deg);
+}
+
+.test10:before {
+  content: "Hover me!";
+  color: red;
+  font-size: 48px;
+  font-weight: bold;
+}
