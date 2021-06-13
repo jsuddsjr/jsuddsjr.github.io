@@ -2,6 +2,7 @@
  * @callback PageClickCallback
  * @param {Number} selectedPage
  * @param {Number} pageSize
+ * @returns {Void}
  */
 
 const CURRENT_CLASS = "current";
@@ -103,6 +104,5 @@ function createButton(className, eventHandler) {
   btn.addEventListener("click", eventHandler);
   btn.className = className;
   btn.title = className;
-  btn.setAttribute("role", "button");
   return btn;
 }

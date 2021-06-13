@@ -7,6 +7,22 @@
       "info": "Navigating the Pokemon universe, one page at a time."
     },
     {
+      "url": "syntax.html?W08/js/main.js",
+      "label": "main.js"
+    },
+    {
+      "url": "syntax.html?W08/js/modal.js",
+      "label": "modal.js"
+    },
+    {
+      "url": "syntax.html?W08/js/paginator.js",
+      "label": "paginator.js"
+    },
+    {
+      "url": "syntax.html?W08/js/spinner.js",
+      "label": "spinner.js"
+    },
+    {
       "url": "W08/transforms.html",
       "label": "CSS Transforms (from JavaScript: Novice to Ninja)",
       "info": "<em>Put 'em up!</em>"
