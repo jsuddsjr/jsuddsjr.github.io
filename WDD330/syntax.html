@@ -8,7 +8,8 @@
     <style>
       :root,
       body,
-      pre {
+      pre,
+      code {
         margin: 0;
         padding: 0;
         background-color: #272822;
@@ -17,25 +18,20 @@
     </style>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai.css"
-      integrity="sha384-73eWpPxnqQ/UqA0lQvi8sREZeujM6Zg+qo5TrX2xpWY6h327ijikhc2Fas5MWK8H"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css"
+      integrity="sha384-bVi32MzPMHhQQoX43XwbzyE2I2YlQETXzSzS0rnURpcv/pkxtPnZ8QpbAN9AzEu5"
       crossorigin="anonymous"
     />
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"
-      integrity="sha384-dSBu9vnTtiIBRG9l6/RbsNFx80ZZrQL7mX+/q/nBwaEPaZJkp9vBCWJq4ypEiqCt"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"
-      integrity="sha384-+ch8x/dgaV//v6Sa8m4v5+7KScnpCuxHqilN8njQ013CEKg3Fbd8Q3oN9tfpouLh"
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"
+      integrity="sha384-ebDmtzOyoZuq2QOXz6Vl9+fZW1dNVSNR3+gs8N2o3QCdPqe5ujyEEJlDOUXq5Lak"
       crossorigin="anonymous"
     ></script>
   </head>
   <body>
     <div class="highlight">
       <pre class="chroma external">
-        <code class="js external" id="external-code">
+        <code class="external" id="external-code">
         loading...
         </code>
       </pre>
@@ -43,12 +39,11 @@
 
     <script>
       const sourceFile = location.search.substr(1);
-      if (sourceFile && sourceFile.endsWith(".js")) {
+      if (sourceFile) {
         document.title = sourceFile;
         fetchAsync(sourceFile);
       } else {
-        document.querySelector(".highlight").innerText =
-          "No code file specified.";
+        document.querySelector(".highlight").innerText = "No code file specified.";
       }
 
       async function fetchAsync(url) {
