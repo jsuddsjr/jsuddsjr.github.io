@@ -2,7 +2,8 @@ import CellModel from "./CellModel.js";
 
 const ERROR_CLASS = "error";
 const WARNING_CLASS = "warning";
-const ALL_STATES = [ERROR_CLASS, WARNING_CLASS];
+const WORD_WARNING_CLASS = "word-warning";
+const ALL_STATES = [ERROR_CLASS, WARNING_CLASS, WORD_WARNING_CLASS];
 
 export default class WordModel {
   /**
@@ -24,6 +25,8 @@ export default class WordModel {
 
     // TODO: Testing
     this.setWord(this.randomWord());
+
+    if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
   }
 
   /**
@@ -34,6 +37,20 @@ export default class WordModel {
       c.cellElement.classList.remove(...ALL_STATES);
       // c.cellElement.dataset.letter = "";
     });
+  }
+
+  checkShape() {
+    const shapes = [0, 0];
+    for (let c of this.word) {
+      const index = Number(c);
+      const other = index ? 0 : 1;
+      shapes[index]++;
+      shapes[other] = 0;
+      if (shapes[index] > 4) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -60,7 +77,7 @@ export default class WordModel {
   randomWord() {
     const word = [];
     for (let i = 0; i < this.length; i++) {
-      word[i] = this.cells[i].cellElement.dataset.letter || (Math.random() > 0.6 ? "0" : "1");
+      word[i] = this.cells[i].cellElement.dataset.letter || (Math.random() > 0.55 ? "0" : "1");
       // String.fromCharCode(65 + Math.trunc(Math.random() * 26));
     }
     return word.join("");

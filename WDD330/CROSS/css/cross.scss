@@ -52,43 +52,46 @@ section {
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   margin: 0 auto;
-
-  .cell {
-    position: relative;
-    display: grid;
-    place-content: center;
-
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    width: var(--box-size);
-    height: var(--box-size);
-    background-color: white;
-
-    &:before {
-      content: attr(data-letter);
-      font-size: calc(var(--box-size) / 1.8);
-    }
-
-    &.blocked {
-      background-color: black;
-    }
-
-    &.warning {
-      background-color: rgba(yellow, 0.3);
-    }
-
-    &.error {
-      background-color: rgba(red, 0.3);
-    }
-
-    .number {
-      position: absolute;
-      font-size: 0.5em;
-      margin-left: 0.1em;
-    }
-  }
 }
 
+.word-warning {
+  color: red;
+}
+
+.cell {
+  position: relative;
+  display: grid;
+  place-content: center;
+
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  width: var(--box-size);
+  height: var(--box-size);
+  background-color: white;
+
+  &:before {
+    content: attr(data-letter);
+    font-size: calc(var(--box-size) / 1.8);
+  }
+
+  &.blocked {
+    background-color: black;
+  }
+
+  &.warning {
+    background-color: rgba(yellow, 0.3);
+  }
+
+  &.error {
+    background-color: rgba(red, 0.3);
+  }
+
+  .number {
+    position: absolute;
+    font-size: 0.5em;
+    margin-left: 0.1em;
+  }
+}
 .clues {
   margin-top: 2em;
 

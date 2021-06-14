@@ -1,7 +1,8 @@
 import CellModel from "./CellModel.js";
 import WordModel from "./WordModel.js";
+import WordIndex from "./WordIndex.js";
 import Subscribers from "./Subscribers.js";
-/** @typedef {import("./Subscribers").NotifyFunc} NotifyFunc */
+/** @typedef {import("./Subscribers").NotifyFunc} */
 
 const LAYOUT_EVENT = "layout";
 
@@ -22,6 +23,9 @@ export default class BoardView {
 
     /** @type {WordModel[]} */
     this.wordList = [];
+
+    this.index = new WordIndex();
+    this.index.onLoaded(this.reportWordMatches.bind(this));
 
     this.subscribers = new Subscribers(this);
   }
@@ -68,8 +72,7 @@ export default class BoardView {
       if (cell.blocked) continue;
 
       const cellAboveIndex = i - this.size;
-      const cellAbove =
-        cellAboveIndex < 0 || this.cells[cellAboveIndex].blocked;
+      const cellAbove = cellAboveIndex < 0 || this.cells[cellAboveIndex].blocked;
       const cellToLeft = i % this.size === 0 || this.cells[i - 1].blocked;
       if (cellAbove || cellToLeft) {
         cell.setNumber(currentNumber++);
@@ -79,6 +82,7 @@ export default class BoardView {
       }
     }
 
+    this.reportWordMatches();
     this.subscribers.notify(LAYOUT_EVENT);
   }
 
@@ -115,6 +119,17 @@ export default class BoardView {
       }
       this.wordList.push(new WordModel(cellsDown, "down"));
     }
+  }
+
+  reportWordMatches() {
+    const shapes = [];
+    for (let word of this.wordList) {
+      const dictionary = this.index.getWordsByShape(word.word) || [];
+      if (dictionary.length === 0) word.setState("error");
+      shapes.push({ n: dictionary.length, s: word.word });
+    }
+
+    console.log(shapes.sort((a, b) => a.n - b.n));
   }
 
   /**
