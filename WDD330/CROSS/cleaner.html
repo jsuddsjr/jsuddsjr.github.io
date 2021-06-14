@@ -28,7 +28,7 @@
         for (let input of inputFiles) {
           const response = await fetch(input);
           const text = await response.text();
-          for (let word of text.split(/\r?\n/g).map((w) => w.replace(nonWord, ""))) {
+          for (let word of text.split(/(?:\r?\n|\(|,| - )/g).map((w) => w.replace(nonWord, ""))) {
             if (word.length > 2 && word.length < 24) words.add(word.toLowerCase());
           }
         }
