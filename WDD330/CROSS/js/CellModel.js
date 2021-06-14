@@ -9,6 +9,7 @@ export default class CellModel {
     this.partnerCell = null;
     this.blocked = false;
     this.content = "";
+    this.shape = ".";
 
     cellElement.classList.add("cell");
 
