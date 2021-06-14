@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spyder</title>
+  </head>
+  <body>
+    <div id="fetch" style="display: none"></div>
+    <div><ul id="links"></ul></div>
+    <pre id="words" style="font-size: 12px"></pre>
+    <script>
+      const storageKey_Next = "__spyder_cache_next";
+      const storageKey_Visited = "__spyder_cache_visited";
+      const storageKey_Words = "__spyder_cache_words";
+
+      const baseUrl = "https://enchantedlearning.com";
+      const pathRoot = "/wordlist/";
+
+      const next = fetchData(storageKey_Next) || [pathRoot];
+      const visited = new Set(fetchData(storageKey_Visited));
+      const words = new Set(fetchData(storageKey_Words));
+      const div = document.getElementById("fetch");
+      const links = document.getElementById("links");
+
+      function displayLinks() {
+        links.innerHTML = next
+          .filter((url) => url.endsWith(".shtml"))
+          .map((url) => `<li><a href="$(url)">${url}</a></li>`);
+        [...links.querySelectorAll("a")].forEach((a) => a.addEventListener("click", visit));
+      }
+
+      async function visit(event) {
+        const url = event.target.href;
+        visited.add(url);
+
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/${baseUrl}${url}`);
+        div.innerHTML = await response.text();
+
+        for (let anchor of div.querySelectorAll("a")) {
+          console.log(anchor.href);
+          const target = new URL(anchor.href);
+          const path = target.pathname;
+          if (path.startsWith(pathRoot) && !visited.has(path)) {
+            next.push(path);
+          }
+        }
+
+        for (let item of div.querySelectorAll(".wordlist-item")) {
+          const content = item.textContent;
+          console.log(content);
+          words.add(content);
+        }
+
+        if (next.length) cacheData(storageKey_Next, next);
+        cacheData(storageKey_Visited, [...visited.values()]);
+        cacheData(storageKey_Words, [...words.values()]);
+      }
+
+      function cacheData(storageKey, data) {
+        localStorage.setItem(storageKey, JSON.stringify(data));
+      }
+
+      function fetchData(storageKey) {
+        JSON.parse(localStorage.getItem(storageKey));
+      }
+
+      const target = document.getElementById("words");
+      visit().then((words) => (target.textContent = [...words.values()].sort().join("\n")));
+    </script>
+  </body>
+</html>

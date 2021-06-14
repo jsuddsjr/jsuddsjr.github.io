@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cleaner</title>
+  </head>
+  <body>
+    <pre id="words" style="font-size: 10px"></pre>
+    <script>
+      async function clean(inputFiles) {
+        const nonWord = /[\W_]/g;
+        const words = new Set();
+        for (let input of inputFiles) {
+          const response = await fetch(input);
+          const text = await response.text();
+          for (let word of text.split(/\s+/g).map((w) => w.replace(nonWord, ""))) {
+            if (word.length > 2 && word.length < 16) words.add(word.toLowerCase());
+          }
+        }
+        return words;
+      }
+
+      function index(words) {
+        const vowel = /[aeiou]/;
+        const index = new Map();
+        for (let word of words.values()) {
+          const key = [...word].map((c) => (vowel.test(c) ? 0 : 1)).join("");
+          const arr = index.get(key) || [];
+          if (arr.length === 0) index.set(key, arr);
+          arr.push(word);
+        }
+        return index;
+      }
+
+      function keyValue(a, b) {
+        return a[0].length - b[0].length || a[0].localeCompare(b[0]);
+      }
+
+      const output = document.getElementById("words");
+      clean(["data/wordlist.txt"]).then(
+        (words) => (output.textContent = [...index(words).entries()].sort(keyValue).join("\n"))
+      );
+    </script>
+  </body>
+</html>
