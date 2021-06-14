@@ -5,10 +5,27 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "name": "vscode-jest-tests",
+      "request": "launch",
+      "program": "${workspaceFolder}/WDD330/CROSS/node_modules/.bin/jest",
+      "args": ["--runInBand", "--watchAll=false"],
+      "cwd": "${workspaceFolder}/WDD330/CROSS",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/WDD330/CROSS/node_modules/jest/bin/jest"
+      },
+      "env": {
+        "NODE_OPTIONS": "--experimental-vm-modules"
+      }
+    },
+    {
       "type": "edge",
       "request": "launch",
-      "name": "Launch Edge against localhost:5500",
-      "url": "http://localhost:56124/${relativeFile}",
+      "name": "Launch Edge for Live Server",
+      "url": "http://localhost:62966/${relativeFile}",
       "webRoot": "${workspaceFolder}"
     }
   ]

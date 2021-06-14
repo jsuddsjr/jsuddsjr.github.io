@@ -3,7 +3,6 @@
   "jest": {
     "testEnvironment": "jsdom",
     "transform": {},
-    "verbose": true,
     "collectCoverage": true,
     "coverageReporters": [
       "lcov",
