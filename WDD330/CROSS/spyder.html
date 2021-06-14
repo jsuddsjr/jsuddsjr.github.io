@@ -7,9 +7,11 @@
     <title>Spyder</title>
   </head>
   <body>
-    <div id="fetch" style="display: none"></div>
+    <div>WORD COUNT: <span class="count" style="font-weight: bold"></span></div>
+    <button onclick="save()">Download word list</button>
     <div><ul id="links"></ul></div>
-    <pre id="words" style="font-size: 12px"></pre>
+    <pre id="words" style="display: none"></pre>
+    <div id="fetch" style="display: none"></div>
     <script>
       const storageKey_Next = "__spyder_cache_next";
       const storageKey_Visited = "__spyder_cache_visited";
@@ -18,32 +20,55 @@
       const baseUrl = "https://enchantedlearning.com";
       const pathRoot = "/wordlist/";
 
-      const next = fetchData(storageKey_Next) || [pathRoot];
+      /** @type {Set<String>} */
+      const next = new Set(fetchData(storageKey_Next) || [pathRoot]);
       const visited = new Set(fetchData(storageKey_Visited));
       const words = new Set(fetchData(storageKey_Words));
       const div = document.getElementById("fetch");
       const links = document.getElementById("links");
 
       function displayLinks() {
-        links.innerHTML = next
-          .filter((url) => url.endsWith(".shtml"))
-          .map((url) => `<li><a href="$(url)">${url}</a></li>`);
+        links.innerHTML = [...next.values()]
+          .sort()
+          .map((url) => `<li><a href="javascript:void(0)">${url}</a></li>`)
+          .join("");
         [...links.querySelectorAll("a")].forEach((a) => a.addEventListener("click", visit));
+        document.querySelector("pre").textContent = [...words.values()].sort().join("\n");
+        document.querySelector(".count").textContent = words.size;
+      }
+
+      function save() {
+        var data = document.querySelector("pre").textContent;
+        var c = document.createElement("a");
+        c.download = "wordlist-full.txt";
+        var t = new Blob([data], {
+          type: "text/plain",
+        });
+        c.href = window.URL.createObjectURL(t);
+        c.click();
       }
 
       async function visit(event) {
-        const url = event.target.href;
+        event.preventDefault();
+
+        const url = event.target.textContent;
         visited.add(url);
 
-        const response = await fetch(`https://cors-anywhere.herokuapp.com/${baseUrl}${url}`);
-        div.innerHTML = await response.text();
+        try {
+          const response = await fetch(`https://cors-anywhere.herokuapp.com/${baseUrl}${url}`);
+          div.innerHTML = await response.text();
+        } catch (error) {
+          links.style.color = red;
+          alert(error);
+          return;
+        }
 
         for (let anchor of div.querySelectorAll("a")) {
           console.log(anchor.href);
           const target = new URL(anchor.href);
           const path = target.pathname;
           if (path.startsWith(pathRoot) && !visited.has(path)) {
-            next.push(path);
+            next.add(path);
           }
         }
 
@@ -53,9 +78,13 @@
           words.add(content);
         }
 
-        if (next.length) cacheData(storageKey_Next, next);
+        next.delete(url);
+
+        cacheData(storageKey_Next, [...next.values()]);
         cacheData(storageKey_Visited, [...visited.values()]);
         cacheData(storageKey_Words, [...words.values()]);
+
+        displayLinks();
       }
 
       function cacheData(storageKey, data) {
@@ -63,11 +92,10 @@
       }
 
       function fetchData(storageKey) {
-        JSON.parse(localStorage.getItem(storageKey));
+        return JSON.parse(localStorage.getItem(storageKey));
       }
 
-      const target = document.getElementById("words");
-      visit().then((words) => (target.textContent = [...words.values()].sort().join("\n")));
+      displayLinks();
     </script>
   </body>
 </html>

@@ -60,9 +60,8 @@ export default class WordModel {
   randomWord() {
     const word = [];
     for (let i = 0; i < this.length; i++) {
-      word[i] =
-        this.cells[i].cellElement.dataset.letter ||
-        String.fromCharCode(65 + Math.trunc(Math.random() * 26));
+      word[i] = this.cells[i].cellElement.dataset.letter || (Math.random() > 0.6 ? "0" : "1");
+      // String.fromCharCode(65 + Math.trunc(Math.random() * 26));
     }
     return word.join("");
   }

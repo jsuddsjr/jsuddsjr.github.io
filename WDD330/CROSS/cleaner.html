@@ -7,40 +7,70 @@
     <title>Cleaner</title>
   </head>
   <body>
+    <button onclick="save('wordshape.txt')">Download</button>
+    <div>Words: <span id="count-words"></span> Shapes: <span id="count-shapes"></span></div>
     <pre id="words" style="font-size: 10px"></pre>
     <script>
+      function save(fileName) {
+        var data = document.querySelector("pre").textContent;
+        var c = document.createElement("a");
+        c.download = fileName;
+        var t = new Blob([data], {
+          type: "text/plain",
+        });
+        c.href = window.URL.createObjectURL(t);
+        c.click();
+      }
+
       async function clean(inputFiles) {
-        const nonWord = /[\W_]/g;
+        const nonWord = /[\W0-9_]/g;
         const words = new Set();
         for (let input of inputFiles) {
           const response = await fetch(input);
           const text = await response.text();
-          for (let word of text.split(/\s+/g).map((w) => w.replace(nonWord, ""))) {
-            if (word.length > 2 && word.length < 16) words.add(word.toLowerCase());
+          for (let word of text.split(/\r?\n/g).map((w) => w.replace(nonWord, ""))) {
+            if (word.length > 2 && word.length < 24) words.add(word.toLowerCase());
           }
         }
+        document.getElementById("count-words").textContent = words.size;
         return words;
       }
 
       function index(words) {
-        const vowel = /[aeiou]/;
+        const vowels = new Set("aeiou");
         const index = new Map();
         for (let word of words.values()) {
-          const key = [...word].map((c) => (vowel.test(c) ? 0 : 1)).join("");
+          const key = [...word].map((c) => (vowels.has(c) ? 0 : 1)).join("");
           const arr = index.get(key) || [];
           if (arr.length === 0) index.set(key, arr);
           arr.push(word);
         }
+        document.getElementById("count-shapes").textContent = index.size;
+        setTimeout(() => stats(index), 10);
         return index;
       }
 
-      function keyValue(a, b) {
+      /**
+       * @param {Map<string, any>} index
+       */
+      function stats(index) {
+        let ones = 0,
+          total = 0;
+        for (let key of index.keys()) {
+          ones += key.replace(/0/g, "").length;
+          total += key.length;
+        }
+
+        alert(`Ratio ones = ${((ones * 100) / total).toFixed(2)}`);
+      }
+
+      function keySort(a, b) {
         return a[0].length - b[0].length || a[0].localeCompare(b[0]);
       }
 
       const output = document.getElementById("words");
-      clean(["data/wordlist.txt"]).then(
-        (words) => (output.textContent = [...index(words).entries()].sort(keyValue).join("\n"))
+      clean(["data/common.txt", "data/dict.txt", "data/wordlist.txt", "data/wordlist-full.txt"]).then(
+        (words) => (output.textContent = [...index(words).entries()].sort(keySort).join("\n"))
       );
     </script>
   </body>
