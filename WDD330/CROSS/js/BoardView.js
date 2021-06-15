@@ -14,9 +14,6 @@ export default class BoardView {
   constructor(boardElement, size = 15) {
     this.boardElement = boardElement;
     this.size = size;
-
-    this.boardElement.style.setProperty("--board-size", size);
-
     /** @type {CellModel[]} */
     this.cells = new Array(size * size);
 
@@ -24,6 +21,11 @@ export default class BoardView {
     this.wordList = [];
 
     this.index = new WordIndex().onLoaded(this.reportWordMatches.bind(this));
+
+    this.boardElement.style.setProperty("--board-size", size);
+    this.boardElement.addEventListener("keypress", () => {
+      this.reportWordMatches();
+    });
 
     this.subscribers = new Subscribers(this);
   }
@@ -85,8 +87,12 @@ export default class BoardView {
     this.subscribers.notify(LAYOUT_EVENT);
   }
 
+  clearAllStates() {
+    this.wordList.forEach((w) => w.clearAllStates());
+  }
+
   resetWordList() {
-    this.wordList.forEach((w) => w.clearStates());
+    this.clearAllStates();
     this.wordList = [];
   }
 
@@ -121,14 +127,14 @@ export default class BoardView {
   }
 
   reportWordMatches() {
-    const shapes = [];
-    for (let word of this.wordList) {
-      const dictionary = this.index.getWordsByShape(word.getShape()) || [];
-      if (dictionary.length === 0) word.setState("error");
-      shapes.push({ n: dictionary.length, s: word.getWord() });
+    if (this.index.isLoaded()) {
+      this.clearAllStates();
+      for (let word of this.wordList) {
+        const shape = word.getShape();
+        const words = this.index.getWordsByShape(shape);
+        if (words.length === 0) word.setState("error");
+      }
     }
-
-    console.log(shapes.sort((a, b) => a.n - b.n));
   }
 
   /**

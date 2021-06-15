@@ -41,20 +41,26 @@ export default class WordModel {
   }
 
   /**
-   * @param {WordModel} word
+   * Reset the state in all cells.
    */
-  clearStates() {
-    this.cells.forEach((c) => {
-      c.cellElement.classList.remove(...ALL_STATES);
-    });
+  clearAllStates() {
+    this.cells.forEach((c) => c.cellElement.classList.remove(...ALL_STATES));
   }
 
   /**
-   *
-   * @param {String} newState
+   * Add state to all cells.
+   * @param {String} state
    */
-  setState(newState) {
-    this.cells.forEach((c) => c.cellElement.classList.add(newState));
+  setState(state) {
+    this.cells.forEach((c) => c.cellElement.classList.add(state));
+  }
+
+  /**
+   * Remove state from all cells.
+   * @param {String} state
+   */
+  clearState(state) {
+    this.cells.forEach((c) => c.cellElement.classList.remove(state));
   }
 
   /**

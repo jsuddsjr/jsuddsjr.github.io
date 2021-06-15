@@ -82,6 +82,12 @@ section {
   font-size: 0.5em;
   margin-left: 0.1em;
 }
+.cell[data-shape="1"] {
+  border: 2px inset lawngreen;
+}
+.cell[data-shape="0"] {
+  border: 2px inset yellow;
+}
 
 .clues {
   margin-top: 2em;
