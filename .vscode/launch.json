@@ -25,7 +25,7 @@
       "type": "edge",
       "request": "launch",
       "name": "Launch Edge for Live Server",
-      "url": "http://localhost:62966/${relativeFile}",
+      "url": "http://localhost:5500/${relativeFile}",
       "webRoot": "${workspaceFolder}"
     }
   ]

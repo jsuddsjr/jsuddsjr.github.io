@@ -8,7 +8,10 @@
   </head>
   <body>
     <button onclick="save('wordshape.txt')">Download</button>
-    <div>Words: <span id="count-words"></span> Shapes: <span id="count-shapes"></span></div>
+    <div>
+      Words: <span id="count-words"></span> Shapes: <span id="count-shapes"></span> Consonant ratio:
+      <span id="ratio"></span>
+    </div>
     <pre id="words" style="font-size: 10px"></pre>
     <script>
       function save(fileName) {
@@ -24,6 +27,7 @@
 
       async function clean(inputFiles) {
         const nonWord = /[\W0-9_]/g;
+        /** @type {Set<String>} */
         const words = new Set();
         for (let input of inputFiles) {
           const response = await fetch(input);
@@ -38,6 +42,7 @@
 
       function index(words) {
         const vowels = new Set("aeiou");
+        /** @type {Map<string, string[]>} */
         const index = new Map();
         for (let word of words.values()) {
           const key = [...word].map((c) => (vowels.has(c) ? 0 : 1)).join("");
@@ -61,7 +66,7 @@
           total += key.length;
         }
 
-        alert(`Ratio ones = ${((ones * 100) / total).toFixed(2)}`);
+        document.getElementById("ratio").textContent = `${((ones * 100) / total).toFixed(2)}`;
       }
 
       function keySort(a, b) {
@@ -70,7 +75,11 @@
 
       const output = document.getElementById("words");
       clean(["data/common.txt", "data/dict.txt", "data/wordlist.txt", "data/wordlist-full.txt"]).then(
-        (words) => (output.textContent = [...index(words).entries()].sort(keySort).join("\n"))
+        (words) =>
+          (output.textContent = [...index(words).entries()]
+            .sort(keySort)
+            .map((entry) => [entry[0], ...entry[1].sort()])
+            .join("\n"))
       );
     </script>
   </body>
