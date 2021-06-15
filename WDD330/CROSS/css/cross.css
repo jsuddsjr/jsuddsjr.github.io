@@ -56,6 +56,7 @@ section {
   position: relative;
   display: grid;
   place-content: center;
+  pointer-events: all;
   border-top: 1px solid black;
   border-left: 1px solid black;
   width: var(--box-size);
@@ -64,6 +65,7 @@ section {
 }
 .cell:before {
   content: attr(data-letter);
+  font-variant: small-caps;
   font-size: calc(var(--box-size) / 1.8);
 }
 .cell.blocked {

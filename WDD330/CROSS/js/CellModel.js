@@ -3,19 +3,25 @@ import ShapeModel from "./ShapeModel.js";
 export default class CellModel {
   /**
    * Constructor.
-   * @param {HTMLElement} cellElement
    */
-  constructor(cellElement) {
-    this.cellElement = cellElement;
-    cellElement.classList.add("cell");
+  constructor() {
+    this.cellElement = document.createElement("div");
+    this.cellElement.maxLength = 1;
+    this.cellElement.className = "cell";
+    this.cellElement.tabIndex = 0;
 
     /** @type {CellModel?} */
     this.partnerCell = null;
     this.isBlocked = false;
-    this.shape = new ShapeModel(cellElement);
+    this.shape = new ShapeModel(this.cellElement);
 
     /** @type {HTMLElement} */
     this.numberElement = null;
+
+    this.cellElement.addEventListener("keydown", (e) => {
+      if (e.key.length === 1) this.shape.setContent(e.key.toLowerCase());
+      else if (e.key === "Delete" || e.key === "Backspace") this.shape.setContent();
+    });
   }
 
   /**

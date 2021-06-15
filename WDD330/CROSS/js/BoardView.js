@@ -40,13 +40,14 @@ export default class BoardView {
     const boardCount = this.cells.length;
 
     for (let i = 0; i < boardCount; i++) {
-      const div = document.createElement("div");
-      const cell = new CellModel(div);
-      div.addEventListener("click", (e) => {
-        cell.toggleBlocked();
-        this.renumber();
+      const cell = new CellModel();
+      cell.cellElement.addEventListener("click", (e) => {
+        if (e.ctrlKey) {
+          cell.toggleBlocked();
+          this.renumber();
+        }
       });
-      this.boardElement.appendChild(div);
+      this.boardElement.appendChild(cell.cellElement);
       this.cells[i] = cell;
     }
 
@@ -122,9 +123,9 @@ export default class BoardView {
   reportWordMatches() {
     const shapes = [];
     for (let word of this.wordList) {
-      const dictionary = this.index.getWordsByShape(word.word) || [];
+      const dictionary = this.index.getWordsByShape(word.getWord()) || [];
       if (dictionary.length === 0) word.setState("error");
-      shapes.push({ n: dictionary.length, s: word.word });
+      shapes.push({ n: dictionary.length, s: word.getWord() });
     }
 
     console.log(shapes.sort((a, b) => a.n - b.n));

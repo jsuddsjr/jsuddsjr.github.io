@@ -46,7 +46,6 @@ export default class WordModel {
   clearStates() {
     this.cells.forEach((c) => {
       c.cellElement.classList.remove(...ALL_STATES);
-      c.shape.setContent();
     });
   }
 
