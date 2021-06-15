@@ -76,9 +76,19 @@ section {
     font-size: calc(var(--box-size) / 1.8);
   }
 
+  &.no-solution::before {
+    content: "X";
+    color: red;
+    font-weight: bold;
+  }
+
   &.blocked {
     background-color: black;
   }
+
+  // &.blocked::before {
+  //   content: "";
+  // }
 
   &.warning {
     background-color: rgba(yellow, 0.3);

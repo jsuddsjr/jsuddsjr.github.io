@@ -116,7 +116,13 @@ async function loadIndex() {
   return true;
 }
 
+/**
+ * Combine list of words that match shape.
+ * @param {String} shape
+ * @returns
+ */
 function matchShapeSimple(shape) {
+  /** @type {String[]} */
   const results = [];
   const shapesByLen = indexSize.get(shape.length);
   if (shapesByLen) {

@@ -36,16 +36,10 @@ export default class WordListView {
    * @param {WordModel} word
    */
   clueFromWord(word) {
-    clueTemplate[1] = word.number;
+    clueTemplate[1] = word.getClueNumber();
     clueTemplate[3] = word.word;
     return clueTemplate.join("");
   }
 }
 
-const clueTemplate = [
-  '<li class="number" value="',
-  null,
-  '"><span class="clue">',
-  null,
-  "</span></li>",
-];
+const clueTemplate = ['<li class="number" value="', null, '"><span class="clue">', null, "</span></li>"];

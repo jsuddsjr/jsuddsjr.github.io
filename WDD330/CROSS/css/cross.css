@@ -68,6 +68,11 @@ section {
   font-variant: small-caps;
   font-size: calc(var(--box-size) / 1.8);
 }
+.cell.no-solution::before {
+  content: "X";
+  color: red;
+  font-weight: bold;
+}
 .cell.blocked {
   background-color: black;
 }

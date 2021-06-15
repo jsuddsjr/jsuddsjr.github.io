@@ -13,7 +13,6 @@ export default class WordModel {
   constructor(cells, direction = "across") {
     this.cells = cells;
     this.length = cells.length;
-    this.number = cells[0].numberElement.textContent;
     this.direction = direction;
 
     if (this.length < 3) {
@@ -22,8 +21,17 @@ export default class WordModel {
       this.setState(WARNING_CLASS);
     }
 
+    this.cells.forEach((c, i) => c.setWord(this, direction, i));
+
     // this.setWord(this.randomWord());
     // if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
+  }
+
+  /**
+   * @returns The number for this clue.
+   */
+  getClueNumber() {
+    return parseInt(this.cells[0].numberElement.textContent);
   }
 
   /**
@@ -64,10 +72,10 @@ export default class WordModel {
   }
 
   /**
-   *
+   * Set the content of the word.
    * @param {String} newWord
    */
-  setWord(newWord) {
+  setContent(newWord) {
     if (newWord.length !== this.length) {
       throw new Error("Word length does not match number of cells.");
     }

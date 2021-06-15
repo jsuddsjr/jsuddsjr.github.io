@@ -37,6 +37,9 @@ export default class BoardView {
     return this.wordList;
   }
 
+  /**
+   * Start a new board.
+   */
   show() {
     this.boardElement.innerHTML = "";
     const boardCount = this.cells.length;
