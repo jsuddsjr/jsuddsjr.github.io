@@ -18,7 +18,7 @@ export default class ShapeModel {
   }
 
   static isLetter(char) {
-    return char !== VOWEL && char !== CONSONANT && char != ANY_TYPE && char !== null;
+    return char && char !== VOWEL && char !== CONSONANT && char != ANY_TYPE;
   }
 
   static shapeMatch = SHAPE_MATCH;

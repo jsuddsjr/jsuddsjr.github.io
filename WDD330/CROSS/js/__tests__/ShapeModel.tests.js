@@ -10,6 +10,8 @@ describe("ShapeModel", () => {
 
     expect(ShapeModel.isShapeChar("0")).toBe(true);
     expect(ShapeModel.isShapeChar("a")).toBe(false);
+
+    expect(ShapeModel.isShapeChar(null)).toBe(false);
   });
 
   it("should work with uninitialized element", () => {
@@ -37,7 +39,7 @@ describe("ShapeModel", () => {
   });
 
   it("should allow null to reset", () => {
-    shape.setContent(null);
+    shape.setContent();
     expect(shape.getLetter()).toBe(" ");
     expect(shape.getShape()).toBe(".");
   });
