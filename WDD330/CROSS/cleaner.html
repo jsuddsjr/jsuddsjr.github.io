@@ -74,7 +74,13 @@
       }
 
       const output = document.getElementById("words");
-      clean(["data/common.txt", "data/dict.txt", "data/wordlist.txt", "data/wordlist-full.txt"]).then(
+      clean([
+        "data/common.txt",
+        "data/dict.txt",
+        "data/wordlist.txt",
+        "data/wordlist-full.txt",
+        "data/words_alpha.txt",
+      ]).then(
         (words) =>
           (output.textContent = [...index(words).entries()]
             .sort(keySort)
