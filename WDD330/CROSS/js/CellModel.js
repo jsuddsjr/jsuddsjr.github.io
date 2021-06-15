@@ -1,4 +1,4 @@
-import ShapeModel from "./ShapeModel";
+import ShapeModel from "./ShapeModel.js";
 
 export default class CellModel {
   /**

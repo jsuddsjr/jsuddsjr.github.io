@@ -67,11 +67,11 @@ export default class BoardView {
     let currentNumber = 1;
     for (let i = 0; i < this.cells.length; i++) {
       const cell = this.cells[i];
-      if (cell.blocked) continue;
+      if (cell.isBlocked) continue;
 
       const cellAboveIndex = i - this.size;
-      const cellAbove = cellAboveIndex < 0 || this.cells[cellAboveIndex].blocked;
-      const cellToLeft = i % this.size === 0 || this.cells[i - 1].blocked;
+      const cellAbove = cellAboveIndex < 0 || this.cells[cellAboveIndex].isBlocked;
+      const cellToLeft = i % this.size === 0 || this.cells[i - 1].isBlocked;
       if (cellAbove || cellToLeft) {
         cell.setClueNumber(currentNumber++);
         this.addCrossWords(cell, i, cellToLeft, cellAbove);
@@ -102,7 +102,7 @@ export default class BoardView {
       const remainingRow = this.size - (index % this.size);
       for (let i = 1; i < remainingRow; i++) {
         const cell = this.cells[index + i];
-        if (cell.blocked) break;
+        if (cell.isBlocked) break;
         cellsAcross.push(cell);
       }
       this.wordList.push(new WordModel(cellsAcross, "across"));
@@ -112,7 +112,7 @@ export default class BoardView {
       const cellsDown = [anchorCell];
       for (let i = this.size; i < this.cells.length - index; i += this.size) {
         const cell = this.cells[index + i];
-        if (cell.blocked) break;
+        if (cell.isBlocked) break;
         cellsDown.push(cell);
       }
       this.wordList.push(new WordModel(cellsDown, "down"));
