@@ -2,7 +2,6 @@ import CellModel from "./CellModel.js";
 import WordModel from "./WordModel.js";
 import WordIndex from "./WordIndex.js";
 import Subscribers from "./Subscribers.js";
-/** @typedef {import("./Subscribers").NotifyFunc} */
 
 const LAYOUT_EVENT = "layout";
 
@@ -24,8 +23,7 @@ export default class BoardView {
     /** @type {WordModel[]} */
     this.wordList = [];
 
-    this.index = new WordIndex();
-    this.index.onLoaded(this.reportWordMatches.bind(this));
+    this.index = new WordIndex().onLoaded(this.reportWordMatches.bind(this));
 
     this.subscribers = new Subscribers(this);
   }
@@ -54,7 +52,7 @@ export default class BoardView {
 
     // TODO: assume balanced layout.
     this.cells.forEach((el, index) => {
-      el.setPartner(this.cells[boardCount - index - 1]);
+      el.setPartnerCell(this.cells[boardCount - index - 1]);
     });
 
     this.renumber();
@@ -75,10 +73,10 @@ export default class BoardView {
       const cellAbove = cellAboveIndex < 0 || this.cells[cellAboveIndex].blocked;
       const cellToLeft = i % this.size === 0 || this.cells[i - 1].blocked;
       if (cellAbove || cellToLeft) {
-        cell.setNumber(currentNumber++);
+        cell.setClueNumber(currentNumber++);
         this.addCrossWords(cell, i, cellToLeft, cellAbove);
       } else {
-        cell.setNumber(-1);
+        cell.setClueNumber(-1);
       }
     }
 
@@ -134,8 +132,8 @@ export default class BoardView {
 
   /**
    * Subscribe to layout events.
-   * @param {NotifyFunc} callback
-   * @returns
+   * @param {import("./Subscribers.js").NotifyFunc} callback
+   * @returns this
    */
   onLayout(callback) {
     this.subscribers.subscribe(LAYOUT_EVENT, callback);

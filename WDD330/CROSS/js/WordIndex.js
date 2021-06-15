@@ -1,4 +1,5 @@
 import Subscribers from "./Subscribers.js";
+import ShapeModel from "./ShapeModel.js";
 
 /** @type {Map<string, string[]} */
 const index = new Map();
@@ -10,12 +11,6 @@ let loaded = false;
 const subscribers = new Subscribers(index);
 const LOADED_EVENT = "loaded";
 const FAILED_EVENT = "failed";
-
-const VOWEL = "0";
-const CONSONANT = "1";
-const ANY_TYPE = ".";
-const SHAPE_MATCH = new RegExp(`[${VOWEL}${CONSONANT}${ANY_TYPE}]`);
-const LETTER_MATCH = new RegExp(`[^${VOWEL}${CONSONANT}${ANY_TYPE}]`);
 
 export default class WordIndex {
   constructor() {
@@ -50,15 +45,15 @@ export default class WordIndex {
   getWordsByShape(shape) {
     const types = new Set(shape);
 
-    if (types.size > 3 || LETTER_MATCH.test(shape)) {
-      const wordMatch = new RegExp("^" + shape.replace(SHAPE_MATCH, "."));
-      const simpleShape = shape.replace(LETTER_MATCH, (sub) => {
+    if (types.size > 3 || ShapeModel.isLetter(shape)) {
+      const wordMatch = new RegExp("^" + shape.replace(ShapeModel.shapeMatch, "."));
+      const simpleShape = shape.replace(ShapeModel.letterMatch, (sub) => {
         return /[aeiou]/.test(sub) ? "0" : "1";
       });
       return matchShapeSimple(simpleShape).filter((w) => wordMatch.test(w));
     }
 
-    if (types.has(ANY_TYPE)) {
+    if (types.has(ShapeModel.anyType)) {
       return matchShapeSimple(shape);
     }
 

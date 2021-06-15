@@ -1,3 +1,5 @@
+import ShapeModel from "./ShapeModel";
+
 export default class CellModel {
   /**
    * Constructor.
@@ -8,8 +10,7 @@ export default class CellModel {
     /** @type {CellModel?} */
     this.partnerCell = null;
     this.blocked = false;
-    this.content = "";
-    this.shape = ".";
+    this.shape = new ShapeModel(cellElement);
 
     cellElement.classList.add("cell");
 
@@ -20,11 +21,27 @@ export default class CellModel {
     this.numberElement = div;
   }
 
-  setPartner(cell) {
+  /**
+   * Set the content of this cell.
+   * @param {String?} char
+   */
+  setLetter(char) {
+    if (char.length > 1) {
+      throw new Error("Rebus squares (more than single letter) are not supported.");
+    }
+    if (/[^01.]/.test()) this.dataset.letter = char;
+    this.shape = char;
+  }
+
+  setPartnerCell(cell) {
     if (cell !== this) this.partnerCell = cell;
   }
 
-  setNumber(num) {
+  /**
+   * Clue number, or -1 to remove.
+   * @param {Number} num
+   */
+  setClueNumber(num) {
     this.numberElement.textContent = num > 0 ? num : "";
   }
 

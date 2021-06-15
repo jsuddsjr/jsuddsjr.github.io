@@ -15,7 +15,6 @@ export default class WordModel {
     this.length = cells.length;
     this.number = cells[0].numberElement.textContent;
     this.direction = direction;
-    this.word = "";
 
     if (this.length < 3) {
       this.setState(ERROR_CLASS);
@@ -23,10 +22,22 @@ export default class WordModel {
       this.setState(WARNING_CLASS);
     }
 
-    // TODO: Testing
-    this.setWord(this.randomWord());
+    // this.setWord(this.randomWord());
+    // if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
+  }
 
-    if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
+  /**
+   * @returns Word from cells.
+   */
+  getWord() {
+    return this.cells.map((c) => c.content).join("");
+  }
+
+  /**
+   * @returns Shape from cells.
+   */
+  getShape() {
+    return this.cells.map((c) => c.shape).join("");
   }
 
   /**
@@ -66,11 +77,13 @@ export default class WordModel {
    * @param {String} newWord
    */
   setWord(newWord) {
-    if (newWord.length === this.length) {
-      this.word = newWord;
-      for (let i = 0; i < this.length; i++) {
-        this.cells[i].cellElement.dataset.letter = newWord[i];
-      }
+    if (newWord.length !== this.length) {
+      throw new Error("Word length does not match number of cells.");
+    }
+
+    this.cells.forEach((c, i) => c.setLetter);
+    for (let i = 0; i < this.length; i++) {
+      this.cells[i].setLetter(newWord[i]);
     }
   }
 
