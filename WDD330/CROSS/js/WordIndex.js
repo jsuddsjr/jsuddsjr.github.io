@@ -48,7 +48,7 @@ export default class WordIndex {
 
     if (types.size > 3 || ShapeModel.letterMatch.test(shape)) {
       const wordMatch = new RegExp("^" + shape.replace(ShapeModel.shapeMatch, "."));
-      const simpleShape = shape.replace(ShapeModel.letterMatch, (sub) => {
+      const simpleShape = shape.replace(new RegExp(ShapeModel.letterMatch, "g"), (sub) => {
         return /[aeiou]/.test(sub) ? "0" : "1";
       });
       return matchShapeSimple(simpleShape).filter((w) => wordMatch.test(w));

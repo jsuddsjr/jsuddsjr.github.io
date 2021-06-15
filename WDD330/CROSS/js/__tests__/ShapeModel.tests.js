@@ -25,13 +25,13 @@ describe("ShapeModel", () => {
     expect(shape.getShape()).toBe("l");
   });
 
-  it("should ignore shape chars", () => {
+  it("should accept shape chars", () => {
     shape.setContent("1");
     expect(shape.getLetter()).toBe(" ");
     expect(shape.getShape()).toBe("1");
   });
 
-  it("should throw if char is too big", () => {
+  it("should throw if set more than single char", () => {
     const test = () => {
       shape.setContent("word");
     };

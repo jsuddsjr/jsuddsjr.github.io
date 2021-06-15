@@ -41,4 +41,10 @@ describe("WordIndex", () => {
     const words = wi.getWordsByShape("   ");
     expect(words.length).toBe(9);
   });
+
+  it("should find specific words", () => {
+    const wi = new WordIndex();
+    const words = wi.getWordsByShape("zzz");
+    expect(words.length).toBe(1);
+  });
 });

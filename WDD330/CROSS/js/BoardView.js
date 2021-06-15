@@ -123,7 +123,7 @@ export default class BoardView {
   reportWordMatches() {
     const shapes = [];
     for (let word of this.wordList) {
-      const dictionary = this.index.getWordsByShape(word.getWord()) || [];
+      const dictionary = this.index.getWordsByShape(word.getShape()) || [];
       if (dictionary.length === 0) word.setState("error");
       shapes.push({ n: dictionary.length, s: word.getWord() });
     }
