@@ -75,11 +75,13 @@
 
       const output = document.getElementById("words");
       clean([
+        "data/tartan.txt",
         "data/common.txt",
         "data/dict.txt",
         "data/wordlist.txt",
         "data/wordlist-full.txt",
         "data/words_alpha.txt",
+        "data/en_US.txt",
       ]).then(
         (words) =>
           (output.textContent = [...index(words).entries()]
