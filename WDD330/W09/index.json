@@ -21,6 +21,11 @@
       "info": "WARNING: summoning ahead."
     },
     {
+      "url": "W09/factorizer.html",
+      "label": "Factorizer",
+      "info": "Working with web workers."
+    },
+    {
       "url": "CROSS/index.html",
       "label": "Crossword Generator (Sneak Peak)",
       "info": "Since I spent so much time on it this week, I thought I should at least share it."
