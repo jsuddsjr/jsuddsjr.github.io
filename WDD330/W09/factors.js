@@ -16,3 +16,13 @@ function factorsOf(n) {
   }
   return factors.sort((a, b) => a - b);
 }
+
+self.addEventListener(
+  "message",
+  (event) => {
+    const factors = String(factorsOf(Number(event.data)));
+    self.postMessage(factors);
+    self.close();
+  },
+  false
+);

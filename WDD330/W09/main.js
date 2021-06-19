@@ -13,14 +13,14 @@ function factorize(event) {
   event.preventDefault();
   const number = Number(form.number.value);
   if (window.Worker) {
-    document.getElementById("output").innerHTML = "<p>This could take a while ...</p>";
+    document.getElementById("output").innerHTML = "<p>ENJOY the rainbow. <small>This could take a while...</small></p>";
     const worker = new Worker("factors.js");
     if (worker) {
       worker.postMessage(number);
       worker.addEventListener(
         "message",
         (event) => {
-          document.getElementById("output").innerHTML = event.data;
+          document.getElementById("output").innerHTML = event.data.split(",").join(", ");
         },
         false
       );
