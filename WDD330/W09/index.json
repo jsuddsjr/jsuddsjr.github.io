@@ -3,8 +3,22 @@
   "links": [
     {
       "url": "W09/drums/index-START.html",
-      "label": "JS Drumk Kit (Team Project)",
+      "label": "JS Drum Kit (Team Project)",
       "info": "BOOM!"
+    },
+    {
+      "url": "W09/js-window.html?q=Meaning of life#Youvebeenhashed",
+      "label": "Window Object (from JavaScript: Novice to Ninja)"
+    },
+    {
+      "url": "W09/js-cookies.html",
+      "label": "Document Object",
+      "info": "Mmmmmm! Cookies... 🍪🍪🍪"
+    },
+    {
+      "url": "W09/js-intervals.html",
+      "label": "Set and clear intervals",
+      "info": "WARNING: summoning ahead."
     },
     {
       "url": "CROSS/index.html",

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Window object</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Window object</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+
+    <script>
+      console.log = log;
+
+      function testReadCookies() {
+        const cookies = document.cookie.split("; ");
+        for (crumb of cookies) {
+          const [key, value] = crumb.split("=");
+          console.log(`The value of ${key} is ${value}`);
+        }
+      }
+      function testSetExpiryDate() {
+        const dayInSeconds = 60 * 60 * 24;
+        console.log(dayInSeconds);
+
+        const expiryDate = new Date();
+        const tomorrow = expiryDate.getTime() + dayInSeconds * 1000;
+        expiryDate.setTime(tomorrow);
+        const expireDateUTC = expiryDate.toUTCString();
+        console.log(expireDateUTC);
+
+        document.cookie = `name=Superman; expires=${expireDateUTC}; secure`;
+        document.cookie = `city=Metropolis; max-age=${dayInSeconds}; domain=sitepoint.com`;
+      }
+    </script>
+    <script>
+      runCode([
+        "// Document.cookie",
+        "document.cookie = 'name=Superman'",
+        "document.cookie = 'hero=true'",
+        "document.cookie = 'city=Metropolis'",
+
+        "// ...wait, no...",
+        "document.cookie = 'name=Batman'",
+        "document.cookie = 'city=Gotham'",
+
+        testReadCookies,
+        testSetExpiryDate,
+        "document.cookie",
+      ]);
+    </script>
+  </body>
+</html>

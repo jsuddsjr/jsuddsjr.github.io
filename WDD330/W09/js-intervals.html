@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Window object</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Window object</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+
+    <script>
+      let summon = 0;
+
+      function testSummon() {
+        function chant() {
+          log("Beetlejuice!", "font-size: 2em; text-shadow: 0 0 3px red");
+        }
+
+        summon = setInterval(chant, 1000);
+      }
+      testSummon.title = "Don't say this out loud";
+      testSummon.isAsync = true;
+
+      function testClear() {
+        document.getElementById("myClearButton").onclick = () => {
+          window.clearInterval(summon);
+        };
+      }
+      testClear.title = "Press me, quick!";
+      testClear.associatedHtml = `<button id="myClearButton">Stop the Summoning!</button>`;
+    </script>
+    <script>
+      runCode([testSummon, testClear]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Window object</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <section>
+      <h1>JavaScript Window object</h1>
+      <div id="output"></div>
+    </section>
+    <script src="../js/run.js"></script>
+
+    <script>
+      function goBack() {
+        document.getElementById("myBackButton").onclick = () => {
+          window.history.go(-1);
+        };
+      }
+      goBack.title = "Click to return to the index page";
+      goBack.associatedHtml = `<button id="myBackButton">Go Back</button>`;
+
+      /** @type {Window} */
+      let popup = null;
+
+      function openWindow() {
+        document.getElementById("myOpenButton").onclick = () => {
+          popup = window.open("https://sitepoint.com", "SitePoint", "width=400,height=400,resizable=yes");
+        };
+      }
+      openWindow.title = "Click to open a popup window";
+      openWindow.associatedHtml = `<button id="myOpenButton">Open SitePoint</button>`;
+
+      function closeWindow() {
+        document.getElementById("myCloseButton").onclick = () => {
+          if (popup) {
+            popup.close();
+            popup = null;
+          }
+        };
+      }
+      closeWindow.title = "Click to close the popup window";
+      closeWindow.associatedHtml = `<button id="myCloseButton">Close SitePoint</button>`;
+    </script>
+    <script>
+      runCode([
+        "// Window.navigator",
+        "window.navigator.userAgent",
+
+        "// Window.location",
+        "window.location",
+
+        "// Window screen",
+        "window.screen.availWidth",
+        "window.screen.availHeight",
+
+        openWindow,
+        closeWindow,
+        goBack,
+      ]);
+    </script>
+  </body>
+</html>
