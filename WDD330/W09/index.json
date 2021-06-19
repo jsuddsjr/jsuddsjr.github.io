@@ -26,10 +26,17 @@
       "info": "Working with web workers."
     },
     {
+      "url": "W09/ninja/ninja.html",
+      "label": "Quiz Ninja",
+      "info": "Now with timer and scoreboard."
+    },
+    {
       "url": "CROSS/index.html",
       "label": "Crossword Generator (Sneak Peak)",
       "info": "Since I spent so much time on it this week, I thought I should at least share it."
     }
   ],
-  "questions": [""]
+  "questions": [
+    "How to set up a crossword matrix for <a href='https://en.wikipedia.org/wiki/Exact_cover' target='_blank'>exact cover</a> algorithm? <small>&lt;scratches head&gt;</small>"
+  ]
 }
