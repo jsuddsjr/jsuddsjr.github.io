@@ -18,9 +18,8 @@
         const key = keysMap.get(code);
         if (key) {
           key.classList.add("playing");
-          const hits = parseInt(key.dataset.hits) || 10;
-          hits = (hits + 10) % 110;
-          key.style.transform = `translateY(${hits}px)`;
+          const hits = ((parseInt(key.dataset.hits) || 0) + 1) % 10;
+          key.style.transform = `translateY(${hits * 10}px)`;
           key.dataset.hits = hits;
         }
       }, 10);
