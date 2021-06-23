@@ -1,130 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Touch Tic-Tac-Toe</title>
-    <meta name="description" content="A touch-enabled Tic-Tac-Toe game." />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="css/game.css" />
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "6zaabdgi52");
-    </script>
-  </head>
-  <body>
-    <section>
-      <header>
-        <h1><em>Touch-em</em> Tic-Tac-Toe</h1>
-        <p>(Pie vs. Cake Edition)</p>
-      </header>
-      <div class="score">
-        <div class="js-player-X skin" data-skin="X"></div>
-        <button class="js-skin-button" title="Switch it up!"></button>
-        <div class="js-player-X skin" data-skin="O"></div>
-        <div
-          class="js-player-X points"
-          data-points="0"
-          aria-label="points"
-        ></div>
-        <div
-          class="js-player-O points"
-          data-points="0"
-          aria-label="points"
-        ></div>
-      </div>
-      <p class="aria-announce" role="alert"></p>
-      <div class="board">
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="upper left"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="upper middle"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="upper right"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="middle left"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="middle middle"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="middle right"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="lower left"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="lower middle"
-        ></div>
-        <div
-          class="cell"
-          data-player=""
-          tabindex="0"
-          role="button"
-          aria-label="lower right"
-        ></div>
-      </div>
-      <p class="turn" role="alert">
-        It's your turn, <span class="js-active-player">X</span>
-      </p>
-      <div class="controls">
-        <button class="js-reset-button">Reset the score</button>
-        <label for="checkbox"
-          >Last player starts next round
-          <input
-            type="checkbox"
-            id="checkbox"
-            class="js-loser-starts-checkbox"
-          />
-        </label>
-      </div>
-    </section>
-    <script src="js/game.js" async></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Touch Tic-Tac-Toe</title>
+  <meta name="description" content="A touch-enabled Tic-Tac-Toe game." />
+  <!-- <link rel="stylesheet" href="../css/main.css" /> -->
+  <link rel="stylesheet" href="css/game.css" />
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "6zaabdgi52");
+  </script>
+</head>
+
+<body>
+  <section>
+    <header>
+      <h1><em>Touch-em</em> Tic-Tac-Toe</h1>
+      <p>(Pie vs. Cake Edition)</p>
+    </header>
+    <div class="score">
+      <div class="js-player-X skin" data-skin="X"></div>
+      <button class="js-skin-button" title="Switch it up!"></button>
+      <div class="js-player-X skin" data-skin="O"></div>
+      <div class="js-player-X points" data-points="0" aria-label="points"></div>
+      <div class="js-player-O points" data-points="0" aria-label="points"></div>
+    </div>
+    <p class="aria-announce" role="alert"></p>
+    <div class="board">
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="upper left"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="upper middle"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="upper right"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="middle left"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="middle middle"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="middle right"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="lower left"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="lower middle"></div>
+      <div class="cell" data-player="" tabindex="0" role="button" aria-label="lower right"></div>
+    </div>
+    <p class="turn" role="alert">
+      It's your turn, <span class="js-active-player">X</span>
+    </p>
+    <div class="controls">
+      <button class="js-reset-button">Reset the score</button>
+      <label for="checkbox">Last player starts next round
+        <input type="checkbox" id="checkbox" class="js-loser-starts-checkbox" />
+      </label>
+    </div>
+  </section>
+  <script src="js/game.js" async></script>
+</body>
+
 </html>

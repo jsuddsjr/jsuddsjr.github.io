@@ -53,12 +53,17 @@ section {
 }
 
 header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
   padding: 0.25em 1em;
   margin-bottom: 2rem;
   color: white;
   background-color: rgba(0, 0, 80, 0.8);
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
 }
 header h1 {
   font-size: 2em;
@@ -67,6 +72,9 @@ header h1 {
 }
 header p {
   line-height: 1.1;
+}
+header + * {
+  margin-top: 10em;
 }
 
 li {

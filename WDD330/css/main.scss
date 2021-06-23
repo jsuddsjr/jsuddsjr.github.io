@@ -63,11 +63,15 @@ section {
 }
 
 header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
   padding: 0.25em 1em;
   margin-bottom: 2rem;
   color: white;
   background-color: rgba($body-color, 0.8);
   box-shadow: 0 5px 15px rgba(black, 0.6);
+  backdrop-filter: blur(2px);
 
   h1 {
     font-size: 2em;
@@ -77,6 +81,10 @@ header {
 
   p {
     line-height: 1.1;
+  }
+
+  & + *  {
+    margin-top: 10em;
   }
 }
 
