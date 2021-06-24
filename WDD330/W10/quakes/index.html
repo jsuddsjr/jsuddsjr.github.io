@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Quakes</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        .classic-2 {
+            font-weight: bold;
+            font-family: monospace;
+            text-shadow:
+                0 0 0 rgb(255 0 0),
+                0 0 0 rgb(0 255 0),
+                0 0 0 rgb(0 0 255);
+            font-size: 30px;
+            transform-origin: 30%;
+            animation: c2 2s infinite cubic-bezier(0.5, -2000, 0.5, 2000);
+        }
+
+        .classic-2:before {
+            content: "Loading...";
+        }
+
+        @keyframes c2 {
+            from {
+                transform: rotate(-0.001deg)
+            }
+
+            7% {
+                transform: rotate(0.001deg);
+            }
+
+            14% {
+                transform: rotate(-0.003deg)
+            }
+
+            21% {
+                transform: rotate(0.01deg);
+            }
+
+            25%,
+            100% {
+                transform: rotate(0.01deg);
+                text-shadow: 0.03px -0.01px 0.01px rgb(255 0 0),
+                    0.02px 0.02px 0 rgb(0 255 0),
+                    -0.02px 0.02px 0 rgb(0 0 255);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <section>
+            <h1>Quake List</h1>
+            <p>This demo requires geolocation. Check your browser settings to allow location, or enter a location below.
+            </p>
+        </section>
+    </header>
+    <section>
+        <ul id="quakeList">
+            <div class="classic-2"></div>
+        </ul>
+
+    </section>
+    <script src="./index.js" type="module"></script>
+</body>
+
+</html>

@@ -2,12 +2,14 @@
   "title": "Week 10: Quakin' in my boots",
   "links": [
     {
-      "url": "W09/drums/index-START.html",
-      "label": "JS Drum Kit (Team Project)",
-      "info": "BOOM!"
+      "url": "W10/quakes",
+      "label": "Local Quakes (Team Project)",
+      "info": "Shakin' it up with the Geolocation API."
+    },
+    {
+      "url": "W10/js-form-validation.html",
+      "label": "Form validation"
     }
   ],
-  "questions": [
-    ""
-  ]
+  "questions": [""]
 }
