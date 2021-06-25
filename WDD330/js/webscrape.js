@@ -1,20 +1,20 @@
 let toUser = (el) => {
-  let email = el.querySelector("span.fontSizeMS")?.textContent;
   let name = el.querySelector("span.fontWeightSemiBold")?.textContent;
-  return [email, name];
+  let email = el.querySelector("span.fontSizeMS")?.textContent;
+  return [name, email];
 };
 
 let pageContent = document.querySelector(".page-content");
 let users = new Map([...pageContent.querySelectorAll("tbody a")].map(toUser));
 
-let target = document.querySelector(".bolt-page.v-scroll-auto");
+let target = document.querySelector(".bolt-details-panel .bolt-page.v-scroll-auto");
 let btn = document.createElement("button");
 btn.style = "position: fixed; color: black; background-color: yellow; z-index: 99";
-btn.innerText = "Download 0";
+btn.innerText = `Download ${users.size}`;
 pageContent.insertBefore(btn, pageContent.firstChild);
 
 btn.onclick = () => {
-  let data = [["Email", "Name"], ...users.entries()].map(([key, value]) => `"${key}","${value}"`).join("\n");
+  let data = [["Name", "Email"], ...users.entries()].map(([key, value]) => `"${key}","${value}"`).join("\n");
   var anchor = document.createElement("a");
   anchor.download = "data.csv";
   var dataBlob = new Blob([data], {
@@ -39,3 +39,13 @@ observer.observe(target, {
   childList: true,
   subtree: true,
 });
+
+let priorScrollTop = -1;
+let scroller = setInterval(() => {
+  if (target.scrollTop !== priorScrollTop) {
+    priorScrollTop = target.scrollTop;
+    target.scroll(0, target.scrollTop + target.clientHeight);
+  } else {
+    clearInterval(scroller);
+  }
+}, 100);
