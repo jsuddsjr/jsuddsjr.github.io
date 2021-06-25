@@ -1,33 +1,36 @@
 let toUser = (el) => {
-  let name = el.querySelector("span.fontWeightSemiBold")?.textContent;
-  let email = el.querySelector("span.fontSizeMS")?.textContent;
+  const name = el.querySelector("span.fontWeightSemiBold")?.textContent;
+  const email = el.querySelector("span.fontSizeMS")?.textContent;
   return [name, email];
 };
 
 let pageContent = document.querySelector(".page-content");
 let users = new Map([...pageContent.querySelectorAll("tbody a")].map(toUser));
 
-let target = document.querySelector(".bolt-details-panel .bolt-page.v-scroll-auto");
 let btn = document.createElement("button");
 btn.style = "position: fixed; color: black; background-color: yellow; z-index: 99";
 btn.innerText = `Download ${users.size}`;
 pageContent.insertBefore(btn, pageContent.firstChild);
 
 btn.onclick = () => {
-  let data = [["Name", "Email"], ...users.entries()].map(([key, value]) => `"${key}","${value}"`).join("\n");
-  var anchor = document.createElement("a");
+  const data = [["Name", "Email"], ...users.entries()].map(([key, value]) => `"${key}","${value}"`).join("\n");
+  const anchor = document.createElement("a");
   anchor.download = "data.csv";
-  var dataBlob = new Blob([data], {
+  const dataBlob = new Blob([data], {
     type: "application/vnd.ms-excel;charset=UTF-8",
   });
   anchor.href = window.URL.createObjectURL(dataBlob);
   anchor.click();
 };
 
-var observer = new MutationObserver(function (mutations) {
+let target = document.querySelector(".bolt-details-panel .bolt-page.v-scroll-auto");
+let observer = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
     if (mutation.addedNodes.length) {
-      let newUsers = [...mutation.addedNodes].filter((node) => node instanceof HTMLElement).map(toUser);
+      const newUsers = [...mutation.addedNodes]
+        .filter((node) => node instanceof HTMLElement)
+        .map(toUser)
+        .filter((u1) => !users.has(u1[0]));
       if (newUsers.length) {
         newUsers.forEach((u1) => users.set(...u1));
         btn.innerText = `Download ${users.size}`;
