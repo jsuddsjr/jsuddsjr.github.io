@@ -13,8 +13,8 @@ btn.innerText = `Download ${users.size}`;
 pageContent.insertBefore(btn, pageContent.firstChild);
 
 btn.onclick = () => {
-  let toFields = (arr) => arr.map((item) => `"${item && item.replace('"', '""')}"`).join(",");
-  let data = [["Name", "Email"], ...users.entries()].map(toFields).join("\n");
+  const toFields = (arr) => arr.map((item) => `"${item && item.replace('"', '""')}"`).join(",");
+  const data = [["Name", "Email"], ...users.entries()].map(toFields).join("\n");
   const anchor = document.createElement("a");
   anchor.download = "data.csv";
   const dataBlob = new Blob(["\ufeff", data], {
