@@ -1,0 +1,61 @@
+.loading {
+  font-weight: bold;
+  font-family: monospace;
+  text-shadow: 0 0 0 rgb(255 0 0), 0 0 0 rgb(0 255 0), 0 0 0 rgb(0 0 255);
+  font-size: 30px;
+  transform-origin: 30%;
+  animation: c2 2s infinite cubic-bezier(0.5, -2000, 0.5, 2000);
+}
+
+.loading:before {
+  content: "Loading...";
+}
+
+@keyframes c2 {
+  from {
+    transform: rotate(-0.001deg);
+  }
+
+  7% {
+    transform: rotate(0.001deg);
+  }
+
+  14% {
+    transform: rotate(-0.003deg);
+  }
+
+  21% {
+    transform: rotate(0.01deg);
+  }
+
+  25%,
+  100% {
+    transform: rotate(0.01deg);
+    text-shadow: 0.03px -0.01px 0.01px rgb(255 0 0), 0.02px 0.02px 0 rgb(0 255 0), -0.02px 0.02px 0 rgb(0 0 255);
+  }
+}
+
+form {
+  display: grid;
+  gap: 0.2em;
+  width: 80%;
+  margin: 1em auto;
+}
+
+form button {
+  width: 50%;
+  margin: auto;
+  border: 3px solid white;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+form button:hover {
+  border-color: red;
+  background-color: white;
+}
+
+input,
+select {
+  font-family: monospace;
+}

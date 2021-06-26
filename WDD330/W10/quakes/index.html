@@ -7,49 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Quakes</title>
     <link rel="stylesheet" href="../../css/main.css">
-    <style>
-        .classic-2 {
-            font-weight: bold;
-            font-family: monospace;
-            text-shadow:
-                0 0 0 rgb(255 0 0),
-                0 0 0 rgb(0 255 0),
-                0 0 0 rgb(0 0 255);
-            font-size: 30px;
-            transform-origin: 30%;
-            animation: c2 2s infinite cubic-bezier(0.5, -2000, 0.5, 2000);
-        }
-
-        .classic-2:before {
-            content: "Loading...";
-        }
-
-        @keyframes c2 {
-            from {
-                transform: rotate(-0.001deg)
-            }
-
-            7% {
-                transform: rotate(0.001deg);
-            }
-
-            14% {
-                transform: rotate(-0.003deg)
-            }
-
-            21% {
-                transform: rotate(0.01deg);
-            }
-
-            25%,
-            100% {
-                transform: rotate(0.01deg);
-                text-shadow: 0.03px -0.01px 0.01px rgb(255 0 0),
-                    0.02px 0.02px 0 rgb(0 255 0),
-                    -0.02px 0.02px 0 rgb(0 0 255);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -61,8 +19,30 @@
         </section>
     </header>
     <section>
+        <h2>Settings</h2>
+        <form id="settings">
+            <label for="radiusKm">Radius (KM)</label>
+            <select id="radiusKm">
+                <option>50</option>
+                <option selected>100</option>
+                <option>150</option>
+                <option>300</option>
+            </select>
+            <label for="startDate">Start Date Range</label>
+            <input type="date" id="startDate" />
+            <label for="endDate">End Date Range</label>
+            <input type="date" id="endDate">
+            <label for="location">Latitude, Longitude</label>
+            <input type="text" id="location" placeholder="47.60357° N, -122.32945° E" />
+
+            <button>Search</button>
+        </form>
+    </section>
+    <section>
+        <h2>Results</h2>
+        <p>Count: <span id="quakeCount">0</span>.</p>
         <ul id="quakeList">
-            <div class="classic-2"></div>
+            <div class="loading"></div>
         </ul>
 
     </section>
