@@ -44,14 +44,15 @@ form {
 
 form button {
   width: 50%;
-  margin: auto;
-  border: 3px solid white;
+  margin: 5px auto;
+  border: 0;
   border-radius: 15px;
   padding: 5px;
+  transition: all 200ms ease-in-out;
 }
 
 form button:hover {
-  border-color: red;
+  box-shadow: 6px -3px 3px rgba(255, 0, 0, 0.5), 6px 6px 0 rgba(0, 255, 0, 0.5), -6px 6px 0 rgba(0, 0, 255, 0.5);
   background-color: white;
 }
 
