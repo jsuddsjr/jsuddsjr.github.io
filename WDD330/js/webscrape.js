@@ -13,10 +13,11 @@ btn.innerText = `Download ${users.size}`;
 pageContent.insertBefore(btn, pageContent.firstChild);
 
 btn.onclick = () => {
-  const data = [["Name", "Email"], ...users.entries()].map(([key, value]) => `"${key}","${value}"`).join("\n");
+  let toFields = (arr) => arr.map((item) => `"${item && item.replace('"', '""')}"`).join(",");
+  let data = [["Name", "Email"], ...users.entries()].map(toFields).join("\n");
   const anchor = document.createElement("a");
   anchor.download = "data.csv";
-  const dataBlob = new Blob([data], {
+  const dataBlob = new Blob(["\ufeff", data], {
     type: "application/vnd.ms-excel;charset=UTF-8",
   });
   anchor.href = window.URL.createObjectURL(dataBlob);
