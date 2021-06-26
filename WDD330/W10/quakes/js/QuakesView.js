@@ -1,10 +1,29 @@
+import buildNavigation from "./routing.js";
+
 // Quake View handler
 export default class QuakesView {
+  constructor(detailController) {
+    this.controller = detailController;
+  }
+
   renderQuakeList(quakeList, listElement, resultsElement) {
     //build a list of the quakes...include the title and time of each quake then append the list to listElement. You should also add the id of the quake record as a data- property to the li. ie. <li data-id="">
-    listElement.innerHTML = quakeList.features
-      .map((quake) => `<li data-id="${quake.id}">${quake.properties.title}, ${new Date(quake.properties.time)}</li>`)
-      .join("");
+    // listElement.innerHTML = quakeList.features
+    //   .map((quake) => `<li data-id="${quake.id}">${quake.properties.title}, ${new Date(quake.properties.time)}</li>`)
+    //   .join("");
+
+    const file = "js/views/detail.html";
+
+    buildNavigation(
+      listElement,
+      quakeList.map((quake) => ({
+        file,
+        controller: this.controller,
+        label: `${quake.properties.title}, ${new Date(quake.properties.time)}`,
+        id: quake.id,
+      }))
+    );
+
     if (resultsElement) resultsElement.textContent = quakeList.features.length;
   }
 

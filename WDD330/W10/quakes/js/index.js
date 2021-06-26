@@ -15,6 +15,7 @@ settings.addEventListener("submit", async (e) => {
     quakes.setDateRange(start, end);
 
     const radius = parseInt(settings.elements.namedItem("radiusKm").value) || 100;
-    quakes.getQuakesByRadius(radius);
+    const minmagnitude = parseInt(settings.elements.namedItem("minmagnitude").value) || 0;
+    quakes.getQuakesByRadius(radius, minmagnitude);
   }
 });

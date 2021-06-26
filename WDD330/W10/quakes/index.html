@@ -28,6 +28,8 @@
                 <option>150</option>
                 <option>300</option>
             </select>
+            <label for="minMagnitude">Minimum magnitude</label>
+            <input type="number" id="minMagnitude" min="0" max="9" value="0" />
             <label for="startDate">Start Date Range</label>
             <input type="date" id="startDate" />
             <label for="endDate">End Date Range</label>
@@ -38,15 +40,10 @@
             <button>Search</button>
         </form>
     </section>
-    <section>
-        <h2>Results</h2>
-        <p>Count: <span id="quakeCount">0</span>.</p>
-        <ul id="quakeList">
-            <div class="loading"></div>
-        </ul>
-
+    <section id="content">
+        <!-- View content will load here. -->
     </section>
-    <script src="./index.js" type="module"></script>
+    <script src="./js/index.js" type="module"></script>
 </body>
 
 </html>

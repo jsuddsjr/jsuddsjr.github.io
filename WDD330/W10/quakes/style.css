@@ -35,6 +35,10 @@
   }
 }
 
+ul {
+  cursor: pointer;
+}
+
 form {
   display: grid;
   gap: 0.2em;

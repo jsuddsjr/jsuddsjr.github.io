@@ -11,15 +11,17 @@ export default class Quake {
     };
   }
 
-  async getEarthQuakesByRadius(position, radius = 100, dateRange = null) {
+  async getEarthQuakesByRadius(position, radius = 100, dateRange = null, minMagnitude = 0) {
     let url = this.baseUrl + `&latitude=${position.lat}&longitude=${position.lon}&maxradiuskm=${radius}`;
     if (dateRange) {
       url += `&starttime=${dateRange.start}&endtime=${dateRange.end}`;
     }
+    if (minMagnitude) {
+      url += `&minmagnitude=${minMagnitude}`;
+    }
 
     // use the getJSON function and the position provided to build out the correct URL to get the data we need.  Store it into this._quakes, then return it
-    const json = await getJSON(url);
-    this._quakes = json;
+    this._quakes = await getJSON(url);
     return this._quakes;
   }
 
