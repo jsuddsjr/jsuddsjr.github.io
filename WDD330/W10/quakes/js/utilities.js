@@ -38,3 +38,21 @@ export const getLocation = (options = {}) => {
 //     )
 //   );
 // })();
+
+// Generate DOM tree from a string
+export const createDiv = (id, xmlString) => {
+  let d = document.createElement("div");
+  d.id = id;
+  d.innerHTML = xmlString;
+  return d.firstChild;
+};
+
+// Helper function to create a link.
+export const createLink = (title, text, href) => {
+  let a = document.createElement("a");
+  let linkText = document.createTextNode(text);
+  a.appendChild(linkText);
+  a.title = title;
+  a.href = href;
+  return a;
+};

@@ -12,7 +12,7 @@ export default class QuakesView {
     //   .map((quake) => `<li data-id="${quake.id}">${quake.properties.title}, ${new Date(quake.properties.time)}</li>`)
     //   .join("");
 
-    const file = "js/views/detail.html";
+    const file = "views/detail.html";
 
     buildNavigation(
       listElement,
