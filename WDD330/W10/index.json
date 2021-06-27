@@ -30,11 +30,13 @@
 
     {
       "url": "W10/js-form-validation.html",
-      "label": "Form validation"
+      "label": "Form validation",
+      "info": "Fun with forms ✅❎"
     }
   ],
   "questions": [
     "What makes a good router? If I can't bookmark my position in the app, or scrape information from the URL, then is it really doing its job?",
-    "In the spirit of doing everything from scratch, I wrote !!LINK 1 a little router!! that can use regular expressions with named capture groups to pass information to the view."
+    "In the spirit of doing everything from scratch, I wrote !!LINK 1 a little router!! that can use regular expressions with named capture groups to pass information to the view.",
+    "Seattle is baking today! ☀️☀️☀️ High of 101 degrees... Too hot!"
   ]
 }
