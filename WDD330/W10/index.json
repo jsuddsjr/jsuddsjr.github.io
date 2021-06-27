@@ -7,9 +7,34 @@
       "info": "Shakin' it up with the Geolocation API."
     },
     {
+      "url": "syntax.html?W10/quakes/js/Router.js",
+      "label": "Router.js",
+      "info": "A home-made router, just for fun."
+    },
+    {
+      "url": "syntax.html?W10/quakes/js/Quake.js",
+      "label": "Quake.js (the model)"
+    },
+    {
+      "url": "syntax.html?W10/quakes/js/QuakesView.js",
+      "label": "QuakesView.js (the view)"
+    },
+    {
+      "url": "syntax.html?W10/quakes/js/QuakesController.js",
+      "label": "QuakesController.js (the controller)"
+    },
+    {
+      "url": "syntax.html?W10/quakes/js/index.js",
+      "label": "index.js (the app)"
+    },
+
+    {
       "url": "W10/js-form-validation.html",
       "label": "Form validation"
     }
   ],
-  "questions": [""]
+  "questions": [
+    "What makes a good router? If I can't bookmark my position in the app, or scrape information from the URL, then is it really doing its job?",
+    "In the spirit of doing everything from scratch, I wrote !!LINK 1 a little router!! that can use regular expressions with named capture groups to pass information to the view."
+  ]
 }
