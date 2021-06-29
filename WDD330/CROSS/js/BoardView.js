@@ -22,7 +22,7 @@ export default class BoardView {
 
     this.index = new WordIndex().onLoaded(this.reportWordMatches.bind(this));
 
-    this.boardElement.style.setProperty("--board-size", size);
+    this.boardElement.style.setProperty("--board-size", size.toString());
     this.boardElement.addEventListener("keypress", () => {
       this.reportWordMatches();
     });

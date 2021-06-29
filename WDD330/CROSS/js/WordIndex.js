@@ -59,7 +59,7 @@ export default class WordIndex {
     }
 
     // Just VOWEL and CONSONANT.
-    return index.get(shape);
+    return index.get(shape) || [];
   }
 
   /**
@@ -91,13 +91,18 @@ export default class WordIndex {
  * Fetch data from server. Can only be called once.
  */
 async function loadIndex() {
-  if (loading) return;
+  if (loading) {
+    throw new Error("LoadIndex called while loading in progress.")
+  }
+
   loading = true;
 
-  const response = await fetch("data/wordshape.txt").catch((reason) => {
-    console.log(reason);
+  const response = await fetch("data/wordShape.txt");
+
+  if (!response.ok) {
+    console.log(response);
     return false;
-  });
+  }
 
   const text = await response.text();
 
@@ -105,9 +110,12 @@ async function loadIndex() {
     const [key, ...words] = line.split(",");
     index.set(key, words);
 
+    // Index by size of key.
     const keyLen = key.length;
     const sizeArr = indexSize.get(keyLen) || [];
-    if (sizeArr.length === 0) indexSize.set(keyLen, sizeArr);
+    if (sizeArr.length === 0) {
+      indexSize.set(keyLen, sizeArr);
+    }
     sizeArr.push(key);
   }
 
