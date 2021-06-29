@@ -4,13 +4,16 @@ const ANY_TYPE = ".";
 const SHAPE_MATCH = new RegExp(`[${VOWEL}${CONSONANT}${ANY_TYPE}]`);
 const LETTER_MATCH = new RegExp(`[^${VOWEL}${CONSONANT}${ANY_TYPE}]`);
 
+/**
+ * Manage a cell's attributes. A shape of 0 for vowel and 1 for consonant.
+ */
 export default class ShapeModel {
   /**
    * Constructor.
    * @param {HTMLElement} cellElement
    */
   constructor(cellElement) {
-    this.cell = cellElement;
+    this.cellElement = cellElement;
   }
 
   static isShapeChar(char) {
@@ -32,18 +35,18 @@ export default class ShapeModel {
       throw new Error("Rebus squares (more than single letter) are not supported.");
     }
 
-    if (ShapeModel.isLetter(char)) this.cell.dataset.letter = char;
-    else this.cell.removeAttribute("data-letter");
+    if (ShapeModel.isLetter(char)) this.cellElement.dataset.letter = char;
+    else this.cellElement.removeAttribute("data-letter");
 
-    if (char) this.cell.dataset.shape = char;
-    else this.cell.removeAttribute("data-shape");
+    if (ShapeModel.isShapeChar(char)) this.cellElement.dataset.shape = char;
+    else this.cellElement.removeAttribute("data-shape");
   }
 
   getShape() {
-    return this.cell.dataset.shape || ANY_TYPE;
+    return this.cellElement.dataset.shape || ANY_TYPE;
   }
 
   getLetter() {
-    return this.cell.dataset.letter || " ";
+    return this.cellElement.dataset.letter || " ";
   }
 }

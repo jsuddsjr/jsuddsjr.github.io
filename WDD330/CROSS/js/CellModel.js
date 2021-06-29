@@ -18,22 +18,37 @@ export default class CellModel {
     this.shape = new ShapeModel(this.cellElement);
     this.available = new Set(ShapeModel.anyType);
 
+    /** @type {WordModel?} */
+    this.down = this.across = this.activeWord = null;
+
     /** @type {HTMLElement?} */
     this.numberElement = null;
 
     this.cellElement.addEventListener("keydown", (e) => {
-      if (e.key.length === 1) this.shape.setContent(e.key.toLowerCase());
-      else if (e.key === "Delete" || e.key === "Backspace") this.shape.setContent();
+      /** @type {1|-1} */
+      let direction = 1;
+      if (e.key.match(/^[a-z]$/i)) {
+        this.shape.setContent(e.key.toLowerCase());
+      }
+      else if (e.key === "Delete" || e.key === "Backspace") { this.shape.setContent(); return }
+      else if (e.key === "ArrowDown") { this.activeWord = this.down; direction = 1; }
+      else if (e.key === "ArrowUp") { this.activeWord = this.down; direction = -1; }
+      else if (e.key === "ArrowLeft") { this.activeWord = this.across; direction = -1; }
+      else if (e.key === "ArrowRight") { this.activeWord = this.across; direction = 1; }
+      else { return }
+
+      this.activeWord?.setActiveWord(this, direction);
     });
   }
 
   /**
-   * Connect the cell back to their word model.
+   * Connect the cell back to their word models.
    * @param {WordModel} word
    * @param {String} direction
    * @param {Number} index
    */
   setWord(word, direction, index) {
+    if (!this.activeWord) this.activeWord = word;
     this[direction] = word;
     this[direction + "_index"] = index;
   }
@@ -102,6 +117,7 @@ export default class CellModel {
     if (value == undefined || this.isBlocked !== value) {
       this.isBlocked = !this.isBlocked;
       this.cellElement.classList.toggle("blocked");
+      this.cellElement.classList.remove("active-cell");
       this.partnerCell?.toggleBlocked(this.isBlocked);
     }
   }
