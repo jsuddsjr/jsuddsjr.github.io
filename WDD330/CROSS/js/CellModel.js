@@ -5,9 +5,10 @@ const NO_SOLUTION_CLASS = "no-solution";
 export default class CellModel {
   /**
    * Constructor.
+   * @param {HTMLElement} [cellElement]
    */
-  constructor() {
-    this.cellElement = document.createElement("div");
+  constructor(cellElement) {
+    this.cellElement = cellElement || document.createElement("div");
     this.cellElement.className = "cell";
     this.cellElement.tabIndex = 0;
 
@@ -17,7 +18,7 @@ export default class CellModel {
     this.shape = new ShapeModel(this.cellElement);
     this.available = new Set(ShapeModel.anyType);
 
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement?} */
     this.numberElement = null;
 
     this.cellElement.addEventListener("keydown", (e) => {
@@ -80,11 +81,18 @@ export default class CellModel {
    * @param {Number} num
    */
   setClueNumber(num) {
-    if (!this.numberElement) {
-      this.numberElement = this.cellElement.appendChild(document.createElement("div"));
-      this.numberElement.className = "number";
+    if (num > 0) {
+      if (!this.numberElement) {
+        this.numberElement = this.cellElement.appendChild(document.createElement("div"));
+        this.numberElement.className = "number";
+      }
+      this.numberElement.textContent = num.toString();
     }
-    this.numberElement.textContent = num > 0 ? num : "";
+    else {
+      if (this.numberElement) {
+        this.numberElement.textContent = null;
+      }
+    }
   }
 
   /**
