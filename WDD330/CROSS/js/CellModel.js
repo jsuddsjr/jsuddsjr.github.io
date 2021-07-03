@@ -3,7 +3,9 @@ import WordModel from "./WordModel.js";
 import Subscribers from "./Subscribers.js";
 
 const NO_SOLUTION_CLASS = "no-solution";
-const UPDATED_EVENT = "updated";
+const BLOCKED_EVENT = "blocked";
+const CONTENT_EVENT = "content";
+
 export default class CellModel {
   /**
    * Constructor.
@@ -39,12 +41,12 @@ export default class CellModel {
       switch (e.key) {
         case " ":
           this.toggleBlocked();
-          this.subscribers.notify(UPDATED_EVENT);
+          this.subscribers.notify(BLOCKED_EVENT);
           e.preventDefault();
           break;
         case "Backspace":
           this.shape.setContent();
-          this.subscribers.notify(UPDATED_EVENT);
+          this.subscribers.notify(CONTENT_EVENT);
           direction = -1;
           break;
         case "ArrowDown":
@@ -64,7 +66,7 @@ export default class CellModel {
         default: {
           if (e.key.match(/^[a-z]$/i)) {
             this.shape.setContent(e.key.toLowerCase());
-            this.subscribers.notify(UPDATED_EVENT);
+            this.subscribers.notify(CONTENT_EVENT);
           } else return;
         }
       }
@@ -74,13 +76,20 @@ export default class CellModel {
   }
 
   /**
+   * Reset this cell to unassigned state.
+   */
+  clearAllStates() {
+    this.across = this.down = this.activeWord = null;
+  }
+
+  /**
    * Connect the cell back to their word models.
    * @param {WordModel} word
    * @param {String} direction
    * @param {Number} index
    */
   setWord(word, direction, index) {
-    if (!this.activeWord) this.activeWord = word;
+    this.activeWord = null;
     this[direction] = word;
     this[direction + "_index"] = index;
   }
@@ -154,12 +163,22 @@ export default class CellModel {
   }
 
   /**
-   * Subscribe to cell updates.
+   * Subscribe to cell blocking changes.
    * @param {import("./Subscribers.js").NotifyFunc} cb
    * @returns This
    */
-  onUpdated(cb) {
-    this.subscribers.subscribe(UPDATED_EVENT, cb);
+  onBlocked(cb) {
+    this.subscribers.subscribe(BLOCKED_EVENT, cb);
+    return this;
+  }
+
+  /**
+   * Subscribe to cell content changes.
+   * @param {import("./Subscribers.js").NotifyFunc} cb
+   * @returns This
+   */
+  onContentUpdated(cb) {
+    this.subscribers.subscribe(CONTENT_EVENT, cb);
     return this;
   }
 }

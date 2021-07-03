@@ -14,21 +14,39 @@ export default class WordListView {
     this.acrossElement = acrossElement;
     this.downElement = downElement;
     this.countElement = countElement;
+
+    /** @type {WordModel[]} */
+    this.across = this.down = null;
+
+    /** @type {Map<WordModel, String>} */
+    this.map = new Map();
   }
 
   update() {
-    this.acrossElement.innerHTML = "";
-    this.downElement.innerHTML = "";
+    this.map.clear();
+    this.across = [];
+    this.down = [];
 
     const wordList = this.board.getWordList();
-    wordList.forEach((w) => {
-      if (w.direction === "across") {
-        this.acrossElement.innerHTML += this.clueFromWord(w);
-      } else {
-        this.downElement.innerHTML += this.clueFromWord(w);
-      }
-    });
     this.countElement.textContent = wordList.length;
+
+    for (let w of wordList) {
+      this[w.direction].push(w);
+      this.map.set(w, this.clueFromWord(w));
+      w.onUpdated(this.updateWord.bind(this));
+    }
+
+    this.repaint();
+  }
+
+  updateWord(word) {
+    this.map.set(word, this.clueFromWord(word));
+    this.repaint();
+  }
+
+  repaint() {
+    this.acrossElement.innerHTML = this.across.map((w) => this.map.get(w)).join("");
+    this.downElement.innerHTML = this.down.map((w) => this.map.get(w)).join("");
   }
 
   /**

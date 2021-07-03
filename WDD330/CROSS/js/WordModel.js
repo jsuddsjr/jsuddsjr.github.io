@@ -1,4 +1,7 @@
 import CellModel from "./CellModel.js";
+import Subscribers from "./Subscribers.js";
+
+const UPDATED_EVENT = "updated";
 
 const ACTIVE_CLASS = "active";
 const ACTIVE_CELL_CLASS = "active-cell";
@@ -50,13 +53,18 @@ export default class WordModel {
     this.length = cells.length;
     this.direction = direction;
 
+    this.subscribers = new Subscribers(this);
+
     if (this.length < 3) {
       this.addStates(ERROR_CLASS);
     } else if (this.length > 8) {
       this.addStates(WARNING_CLASS);
     }
 
-    this.cells.forEach((c, i) => c.setWord(this, direction, i));
+    this.cells.forEach((c, i) => {
+      c.setWord(this, direction, i);
+      c.onContentUpdated((_) => this.subscribers.notify(UPDATED_EVENT));
+    });
 
     // this.setWord(this.randomWord());
     // if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
@@ -172,6 +180,16 @@ export default class WordModel {
    */
   getScrabbleValue() {
     return this.cells.map((c) => scrabblePoints.get(c.shape.getLetter())).reduce((p, c) => c + p);
+  }
+
+  /**
+   * Notify when cell changes occur.
+   * @param {import("./Subscribers.js").NotifyFunc} cb
+   * @returns This
+   */
+  onUpdated(cb) {
+    this.subscribers.subscribe(UPDATED_EVENT, cb);
+    return this;
   }
 
   TEST_checkShape() {

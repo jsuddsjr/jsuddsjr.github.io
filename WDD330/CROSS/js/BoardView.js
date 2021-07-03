@@ -46,7 +46,8 @@ export default class BoardView {
 
     for (let i = 0; i < boardCount; i++) {
       const cell = new CellModel();
-      cell.onUpdated((_) => this.renumber());
+      cell.onBlocked((_) => this.renumber());
+      cell.onContentUpdated((_) => this.reportWordMatches());
       this.boardElement.appendChild(cell.cellElement);
       this.cells[i] = cell;
     }
@@ -60,12 +61,13 @@ export default class BoardView {
   }
 
   /**
-   * Apply numbers across the board.
+   * Recalculate the words on the board.
    */
   renumber() {
-    this.resetWordList();
-
+    this.wordList = [];
+    this.cells.forEach((c) => c.clearAllStates());
     let currentNumber = 1;
+
     for (let i = 0; i < this.cells.length; i++) {
       const cell = this.cells[i];
       if (cell.isBlocked) continue;
@@ -85,17 +87,8 @@ export default class BoardView {
     this.subscribers.notify(LAYOUT_EVENT);
   }
 
-  clearAllStates() {
-    this.wordList.forEach((w) => w.clearAllStates());
-  }
-
-  resetWordList() {
-    this.clearAllStates();
-    this.wordList = [];
-  }
-
   /**
-   *
+   * Create words starting at this location.
    * @param {CellModel} anchorCell
    * @param {Number} index
    * @param {Boolean} across
@@ -124,9 +117,12 @@ export default class BoardView {
     }
   }
 
+  /**
+   * Find issues with dictionary matches.
+   */
   reportWordMatches() {
     if (this.index.isLoaded()) {
-      this.clearAllStates();
+      this.wordList.forEach((w) => w.clearAllStates());
       for (let word of this.wordList) {
         const shape = word.getShape();
         const words = this.index.getWordsByShape(shape);
