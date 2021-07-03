@@ -98,6 +98,14 @@ section {
     background-color: rgba(red, 0.3);
   }
 
+  &.active {
+    background-color: lightblue;
+  }
+
+  &.active-cell {
+    background-color: darken(lightblue, 30%);
+  }
+
   .number {
     position: absolute;
     font-size: 0.5em;
