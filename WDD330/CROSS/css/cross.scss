@@ -126,6 +126,11 @@ section {
     margin-bottom: 1em;
   }
 
+  span[data-score]:before {
+    content: "[" attr(data-score) "]";
+    font-size: 0.8em;
+  }
+
   @include mq($mq-medium) {
     columns: 2;
   }

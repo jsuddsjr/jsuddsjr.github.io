@@ -5,6 +5,36 @@ const WARNING_CLASS = "warning";
 const WORD_WARNING_CLASS = "word-warning";
 const ALL_STATES = [ERROR_CLASS, WARNING_CLASS, WORD_WARNING_CLASS];
 
+const scrabblePoints = new Map([
+  [" ", 0],
+  ["a", 1],
+  ["b", 3],
+  ["c", 3],
+  ["d", 2],
+  ["e", 1],
+  ["f", 4],
+  ["g", 2],
+  ["h", 4],
+  ["i", 1],
+  ["j", 8],
+  ["k", 5],
+  ["l", 1],
+  ["m", 3],
+  ["n", 1],
+  ["o", 1],
+  ["p", 3],
+  ["q", 10],
+  ["r", 1],
+  ["s", 1],
+  ["t", 1],
+  ["u", 1],
+  ["v", 4],
+  ["w", 4],
+  ["x", 8],
+  ["y", 4],
+  ["z", 10],
+]);
+
 export default class WordModel {
   /**
    * @param {CellModel[]} cells
@@ -80,6 +110,14 @@ export default class WordModel {
       throw new Error("Word length does not match number of cells.");
     }
     this.cells.forEach((c, i) => c.shape.setContent(newWord[i]));
+  }
+
+  /**
+   * Calculates Scrabble score for this word.
+   * @returns Point value
+   */
+  getScrabbleValue() {
+    return this.cells.map((c) => scrabblePoints.get(c.shape.getLetter())).reduce((p, c) => c + p);
   }
 
   TEST_checkShape() {

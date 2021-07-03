@@ -37,9 +37,18 @@ export default class WordListView {
    */
   clueFromWord(word) {
     clueTemplate[1] = word.getClueNumber();
-    clueTemplate[3] = word.word;
+    clueTemplate[3] = word.getWord();
+    clueTemplate[5] = word.getScrabbleValue();
     return clueTemplate.join("");
   }
 }
 
-const clueTemplate = ['<li class="number" value="', null, '"><span class="clue">', null, "</span></li>"];
+const clueTemplate = [
+  '<li class="number" value="',
+  null,
+  '"><span class="clue">',
+  null,
+  '</span> <span data-score="',
+  null,
+  '"></span></li>',
+];
