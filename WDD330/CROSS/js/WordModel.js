@@ -37,6 +37,9 @@ const scrabblePoints = new Map([
   ["z", 10],
 ]);
 
+/** @type {WordModel?} */
+let activeWord = null;
+
 export default class WordModel {
   /**
    * @param {CellModel[]} cells
@@ -48,9 +51,9 @@ export default class WordModel {
     this.direction = direction;
 
     if (this.length < 3) {
-      this.setStates(ERROR_CLASS);
+      this.addStates(ERROR_CLASS);
     } else if (this.length > 8) {
-      this.setStates(WARNING_CLASS);
+      this.addStates(WARNING_CLASS);
     }
 
     this.cells.forEach((c, i) => c.setWord(this, direction, i));
@@ -59,8 +62,31 @@ export default class WordModel {
     // if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
   }
 
-  /** @type {WordModel?} */
-  static activeWord = null;
+  /**
+   * @returns A simplified object suitable for storage.
+   */
+  asObject() {
+    return {
+      number: this.getClueNumber(),
+      direction: this.direction,
+      answer: this.getWord(),
+      shape: this.getShape(),
+      length: this.cells.length,
+    };
+  }
+
+  /**
+   * Initialize word from object.
+   * @param {*} obj Object from storage.
+   */
+  fromObject(obj) {
+    if (obj.length === this.cells.length && obj.number === this.getClueNumber()) {
+      this.setContent(obj.answer);
+      this.direction = obj.direction;
+    } else {
+      throw new Error("Unexpected answer number or size.");
+    }
+  }
 
   /**
    *
@@ -68,13 +94,12 @@ export default class WordModel {
    * @param {1|-1} direction
    */
   setActiveWord(activeCell, direction) {
-    if (WordModel.activeWord && WordModel.activeWord !== this) {
-      WordModel.activeWord?.clearStates(ACTIVE_CLASS, ACTIVE_CELL_CLASS);
-      this.setStates(ACTIVE_CLASS);
-      WordModel.activeWord = this;
-    }
-    else {
-      let cursorIndex = (this.cells.indexOf(activeCell) + direction);
+    if (activeWord !== this) {
+      if (activeWord) activeWord.removeStates(ACTIVE_CLASS, ACTIVE_CELL_CLASS);
+      this.addStates(ACTIVE_CLASS);
+      activeWord = this;
+    } else {
+      let cursorIndex = this.cells.indexOf(activeCell) + direction;
       if (cursorIndex < 0) cursorIndex = this.cells.length - 1;
       else if (cursorIndex >= this.cells.length) cursorIndex = 0;
 
@@ -89,7 +114,7 @@ export default class WordModel {
    */
   getClueNumber() {
     const number = this.cells[0].numberElement;
-    if (!number) throw new Error("Word is missing number element!")
+    if (!number) throw new Error("Word is missing number element!");
     return parseInt(number.textContent || "0");
   }
 
@@ -111,22 +136,22 @@ export default class WordModel {
    * Reset the state in all cells.
    */
   clearAllStates() {
-    this.clearStates(...ALL_STATES);
+    this.removeStates(ALL_STATES);
   }
 
   /**
    * Add state to all cells.
-   * @param {...String} states
+   * @param {String[]} states
    */
-  setStates(...states) {
+  addStates(...states) {
     this.cells.forEach((c) => c.cellElement.classList.add(...states));
   }
 
   /**
    * Remove state from all cells.
-   * @param {...String} states
+   * @param {String[]} states
    */
-  clearStates(...states) {
+  removeStates(...states) {
     this.cells.forEach((c) => c.cellElement.classList.remove(...states));
   }
 

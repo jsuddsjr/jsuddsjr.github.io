@@ -9,10 +9,7 @@
       "name": "vscode-jest-tests",
       "request": "launch",
       "program": "${workspaceFolder}/WDD330/CROSS/node_modules/.bin/jest",
-      "args": [
-        "--runInBand",
-        "--watchAll=false"
-      ],
+      "args": ["--runInBand", "--watchAll=false"],
       "cwd": "${workspaceFolder}/WDD330/CROSS",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
@@ -28,8 +25,10 @@
       "type": "edge",
       "request": "launch",
       "name": "Launch Edge for Live Server",
-      "url": "http://localhost:5500/${relativeFile}",
-      "webRoot": "${workspaceFolder}"
+      "url": "http://localhost:5658/${relativeFile}",
+      "webRoot": "${workspaceFolder}",
+      "port": 5600,
+      "timeout": 30000
     }
   ]
 }

@@ -46,12 +46,7 @@ export default class BoardView {
 
     for (let i = 0; i < boardCount; i++) {
       const cell = new CellModel();
-      cell.cellElement.addEventListener("click", (e) => {
-        if (e.ctrlKey) {
-          cell.toggleBlocked();
-          this.renumber();
-        }
-      });
+      cell.onUpdated((_) => this.renumber());
       this.boardElement.appendChild(cell.cellElement);
       this.cells[i] = cell;
     }
@@ -135,7 +130,7 @@ export default class BoardView {
       for (let word of this.wordList) {
         const shape = word.getShape();
         const words = this.index.getWordsByShape(shape);
-        if (words.length === 0) word.setState("error");
+        if (words.length === 0) word.addStates("error");
       }
     }
   }

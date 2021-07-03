@@ -82,42 +82,44 @@ section {
     font-weight: bold;
   }
 
-  &.blocked {
-    background-color: black;
-  }
-
-  // &.blocked::before {
-  //   content: "";
-  // }
-
-  &.warning {
-    background-color: rgba(yellow, 0.3);
-  }
-
-  &.error {
-    background-color: rgba(red, 0.3);
-  }
-
-  &.active {
-    background-color: lightblue;
-  }
-
-  &.active-cell {
-    background-color: darken(lightblue, 30%);
-  }
-
-  .number {
-    position: absolute;
-    font-size: 0.5em;
-    margin-left: 0.1em;
-  }
-
   &[data-shape="1"] {
     border: 2px inset lawngreen;
   }
 
   &[data-shape="0"] {
     border: 2px inset yellow;
+  }
+
+  // NOTE: Background colors -- order is important!
+
+  &.warning {
+    background-color: rgba(yellow, 0.3);
+  }
+
+  &.active {
+    background-color: lightblue;
+  }
+
+  &.error {
+    background-color: rgba(red, 0.3);
+  }
+
+  &.active-cell {
+    background-color: darken(lightblue, 30%);
+  }
+
+  &.blocked {
+    background-color: black;
+  }
+
+  &.blocked::before {
+    content: "";
+  }
+
+  .number {
+    position: absolute;
+    font-size: 0.5em;
+    margin-left: 0.1em;
   }
 }
 

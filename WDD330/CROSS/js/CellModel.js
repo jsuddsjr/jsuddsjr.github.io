@@ -1,7 +1,9 @@
 import ShapeModel from "./ShapeModel.js";
 import WordModel from "./WordModel.js";
+import Subscribers from "./Subscribers.js";
 
 const NO_SOLUTION_CLASS = "no-solution";
+const UPDATED_EVENT = "updated";
 export default class CellModel {
   /**
    * Constructor.
@@ -23,21 +25,51 @@ export default class CellModel {
 
     /** @type {HTMLElement?} */
     this.numberElement = null;
+    this.subscribers = new Subscribers(this);
+
+    this.cellElement.addEventListener("click", (e) => {
+      if (e.ctrlKey) {
+        this.toggleBlocked();
+      }
+    });
 
     this.cellElement.addEventListener("keydown", (e) => {
       /** @type {1|-1} */
       let direction = 1;
-      if (e.key.match(/^[a-z]$/i)) {
-        this.shape.setContent(e.key.toLowerCase());
+      switch (e.key) {
+        case " ":
+          this.toggleBlocked();
+          this.subscribers.notify(UPDATED_EVENT);
+          e.preventDefault();
+          break;
+        case "Backspace":
+          this.shape.setContent();
+          this.subscribers.notify(UPDATED_EVENT);
+          direction = -1;
+          break;
+        case "ArrowDown":
+          this.activeWord = this.down;
+          break;
+        case "ArrowUp":
+          this.activeWord = this.down;
+          direction = -1;
+          break;
+        case "ArrowLeft":
+          this.activeWord = this.across;
+          direction = -1;
+          break;
+        case "ArrowRight":
+          this.activeWord = this.across;
+          break;
+        default: {
+          if (e.key.match(/^[a-z]$/i)) {
+            this.shape.setContent(e.key.toLowerCase());
+            this.subscribers.notify(UPDATED_EVENT);
+          } else return;
+        }
       }
-      else if (e.key === "Delete" || e.key === "Backspace") { this.shape.setContent(); return }
-      else if (e.key === "ArrowDown") { this.activeWord = this.down; direction = 1; }
-      else if (e.key === "ArrowUp") { this.activeWord = this.down; direction = -1; }
-      else if (e.key === "ArrowLeft") { this.activeWord = this.across; direction = -1; }
-      else if (e.key === "ArrowRight") { this.activeWord = this.across; direction = 1; }
-      else { return }
 
-      this.activeWord?.setActiveWord(this, direction);
+      if (this.activeWord) this.activeWord.setActiveWord(this, direction);
     });
   }
 
@@ -102,8 +134,7 @@ export default class CellModel {
         this.numberElement.className = "number";
       }
       this.numberElement.textContent = num.toString();
-    }
-    else {
+    } else {
       if (this.numberElement) {
         this.numberElement.textContent = null;
       }
@@ -114,11 +145,21 @@ export default class CellModel {
    * @param {Boolean} [value]
    */
   toggleBlocked(value) {
-    if (value == undefined || this.isBlocked !== value) {
+    if (value === undefined || this.isBlocked !== value) {
       this.isBlocked = !this.isBlocked;
       this.cellElement.classList.toggle("blocked");
       this.cellElement.classList.remove("active-cell");
-      this.partnerCell?.toggleBlocked(this.isBlocked);
+      this.partnerCell.toggleBlocked(this.isBlocked);
     }
+  }
+
+  /**
+   * Subscribe to cell updates.
+   * @param {import("./Subscribers.js").NotifyFunc} cb
+   * @returns This
+   */
+  onUpdated(cb) {
+    this.subscribers.subscribe(UPDATED_EVENT, cb);
+    return this;
   }
 }
