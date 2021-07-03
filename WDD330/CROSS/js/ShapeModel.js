@@ -43,7 +43,7 @@ export default class ShapeModel {
   }
 
   getShape() {
-    return this.cellElement.dataset.shape || ANY_TYPE;
+    return this.cellElement.dataset.letter || this.cellElement.dataset.shape || ANY_TYPE;
   }
 
   getLetter() {

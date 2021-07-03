@@ -20,11 +20,11 @@ export default class BoardView {
     /** @type {WordModel[]} */
     this.wordList = [];
 
-    this.index = new WordIndex().onLoaded(this.reportWordMatches.bind(this));
+    this.index = new WordIndex().onLoaded(this.reportWordIssues.bind(this));
 
     this.boardElement.style.setProperty("--board-size", size.toString());
     this.boardElement.addEventListener("keypress", () => {
-      this.reportWordMatches();
+      this.reportWordIssues();
     });
 
     this.subscribers = new Subscribers(this);
@@ -47,7 +47,7 @@ export default class BoardView {
     for (let i = 0; i < boardCount; i++) {
       const cell = new CellModel();
       cell.onBlocked((_) => this.renumber());
-      cell.onContentUpdated((_) => this.reportWordMatches());
+      cell.onContentUpdated((_) => this.reportWordIssues());
       this.boardElement.appendChild(cell.cellElement);
       this.cells[i] = cell;
     }
@@ -83,7 +83,7 @@ export default class BoardView {
       }
     }
 
-    this.reportWordMatches();
+    this.reportWordIssues();
     this.subscribers.notify(LAYOUT_EVENT);
   }
 
@@ -120,13 +120,24 @@ export default class BoardView {
   /**
    * Find issues with dictionary matches.
    */
-  reportWordMatches() {
-    if (this.index.isLoaded()) {
-      this.wordList.forEach((w) => w.clearAllStates());
-      for (let word of this.wordList) {
-        const shape = word.getShape();
-        const words = this.index.getWordsByShape(shape);
-        if (words.length === 0) word.addStates("error");
+  reportWordIssues() {
+    this.wordList.forEach((w) => w.clearAllStates());
+    for (let word of this.wordList) {
+      if (word.length < 3) {
+        word.addStates(WordModel.ERROR_CLASS());
+        continue;
+      }
+
+      if (word.length > 10) {
+        word.addStates(WordModel.WARNING_CLASS());
+      }
+
+      if (this.index.isLoaded()) {
+        const wordShape = word.getShape();
+        const wordsFound = this.index.getWordsByShape(wordShape);
+        if (wordsFound.length === 0) {
+          word.addStates(WordModel.WORD_WARNING_CLASS());
+        }
       }
     }
   }

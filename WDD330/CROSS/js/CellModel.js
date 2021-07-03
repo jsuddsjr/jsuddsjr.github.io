@@ -32,6 +32,7 @@ export default class CellModel {
     this.cellElement.addEventListener("click", (e) => {
       if (e.ctrlKey) {
         this.toggleBlocked();
+        this.subscribers.notify(BLOCKED_EVENT);
       }
     });
 

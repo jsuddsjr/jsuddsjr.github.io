@@ -70,6 +70,12 @@ section {
   height: var(--box-size);
   background-color: white;
 
+  .number {
+    position: absolute;
+    font-size: 0.5em;
+    margin-left: 0.1em;
+  }
+
   &:before {
     content: attr(data-letter);
     font-variant: small-caps;
@@ -110,16 +116,15 @@ section {
 
   &.blocked {
     background-color: black;
-  }
+    color: black;
 
-  &.blocked::before {
-    content: "";
-  }
+    &::before {
+      content: "";
+    }
 
-  .number {
-    position: absolute;
-    font-size: 0.5em;
-    margin-left: 0.1em;
+    & .number {
+      display: none;
+    }
   }
 }
 

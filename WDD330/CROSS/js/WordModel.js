@@ -8,7 +8,7 @@ const ACTIVE_CELL_CLASS = "active-cell";
 const ERROR_CLASS = "error";
 const WARNING_CLASS = "warning";
 const WORD_WARNING_CLASS = "word-warning";
-const ALL_STATES = [ERROR_CLASS, WARNING_CLASS, WORD_WARNING_CLASS];
+const ALL_STATES = [ACTIVE_CELL_CLASS, ERROR_CLASS, WARNING_CLASS, WORD_WARNING_CLASS];
 
 const scrabblePoints = new Map([
   [" ", 0],
@@ -55,12 +55,6 @@ export default class WordModel {
 
     this.subscribers = new Subscribers(this);
 
-    if (this.length < 3) {
-      this.addStates(ERROR_CLASS);
-    } else if (this.length > 8) {
-      this.addStates(WARNING_CLASS);
-    }
-
     this.cells.forEach((c, i) => {
       c.setWord(this, direction, i);
       c.onContentUpdated((_) => this.subscribers.notify(UPDATED_EVENT));
@@ -68,6 +62,16 @@ export default class WordModel {
 
     // this.setWord(this.randomWord());
     // if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
+  }
+
+  static ERROR_CLASS() {
+    return ERROR_CLASS;
+  }
+  static WARNING_CLASS() {
+    return WARNING_CLASS;
+  }
+  static WORD_WARNING_CLASS() {
+    return WORD_WARNING_CLASS;
   }
 
   /**
@@ -144,7 +148,7 @@ export default class WordModel {
    * Reset the state in all cells.
    */
   clearAllStates() {
-    this.removeStates(ALL_STATES);
+    this.removeStates(...ALL_STATES);
   }
 
   /**

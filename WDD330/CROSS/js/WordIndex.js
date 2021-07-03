@@ -25,7 +25,9 @@ export default class WordIndex {
   /**
    * @returns True, if loaded.
    */
-  isLoaded = () => loaded;
+  isLoaded() {
+    return loaded;
+  }
 
   /**
    * JEST: reset global values.
@@ -92,7 +94,7 @@ export default class WordIndex {
  */
 async function loadIndex() {
   if (loading) {
-    throw new Error("LoadIndex called while loading in progress.")
+    throw new Error("LoadIndex called while loading in progress.");
   }
 
   loading = true;
