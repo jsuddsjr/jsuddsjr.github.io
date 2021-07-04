@@ -2,6 +2,7 @@ import CellModel from "./CellModel.js";
 import WordModel from "./WordModel.js";
 import WordIndex from "./WordIndex.js";
 import Subscribers from "./Subscribers.js";
+import ShapeModel from "./ShapeModel.js";
 
 const LAYOUT_EVENT = "layout";
 
@@ -13,6 +14,12 @@ export default class BoardView {
    */
   constructor(boardElement, size = 15) {
     this.boardElement = boardElement;
+
+    this.lastBoard = this.loadLastSaved();
+    if (this.lastBoard) {
+      size = Math.sqrt(this.lastBoard.length);
+    }
+
     this.size = size;
     /** @type {CellModel[]} */
     this.cells = new Array(size * size);
@@ -50,6 +57,15 @@ export default class BoardView {
       cell.onContentUpdated((_) => this.reportWordIssues());
       this.boardElement.appendChild(cell.cellElement);
       this.cells[i] = cell;
+
+      if (this.lastBoard) {
+        const shape = this.lastBoard[i];
+        if (shape === ShapeModel.blockedType) {
+          cell.toggleBlocked(true);
+        } else {
+          cell.shape.setContent(shape);
+        }
+      }
     }
 
     // TODO: assume balanced layout.
@@ -139,6 +155,27 @@ export default class BoardView {
           word.addStates(WordModel.WORD_WARNING_CLASS);
         }
       }
+    }
+  }
+
+  /**
+   * Save work.
+   * @param {String} name
+   */
+  save(name) {
+    const board = this.cells.map((c) => c.shape.getShape()).join("");
+    const boardKey = `crossword_${name}`;
+    localStorage.setItem(boardKey, board);
+    localStorage.setItem("crossword_lastSaved", boardKey);
+  }
+
+  /**
+   * @returns A string representing a saved board.
+   */
+  loadLastSaved() {
+    const boardKey = localStorage.getItem("crossword_lastSaved");
+    if (boardKey) {
+      return localStorage.getItem(boardKey);
     }
   }
 

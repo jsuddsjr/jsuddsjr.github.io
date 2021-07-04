@@ -35,7 +35,7 @@ export default class CellModel {
         this.subscribers.notify(BLOCKED_EVENT);
       } else {
         if (!this.activeWord) this.activeWord = this.across;
-        this.activeWord.setActiveWord(this);
+        if (this.activeWord) this.activeWord.setActiveWord(this);
       }
     });
 
@@ -167,7 +167,8 @@ export default class CellModel {
       this.isBlocked = !this.isBlocked;
       this.cellElement.classList.toggle("blocked");
       this.cellElement.classList.remove("active-cell");
-      this.partnerCell.toggleBlocked(this.isBlocked);
+      if (this.partnerCell) this.partnerCell.toggleBlocked(this.isBlocked);
+      this.shape.setContent(this.isBlocked ? ShapeModel.blockedType : ShapeModel.anyType);
     }
   }
 

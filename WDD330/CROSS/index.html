@@ -21,14 +21,34 @@
       crossorigin="anonymous"
     />
 
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="css/dist/cross.css" />
     <link rel="stylesheet" href="css/dist/modal.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="toolbar">
-        <div class="toolbar__item">
-          <h1>Crossword</h1>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-brand">Crossword Generator</div>
+        </div>
+        <div class="navbar-collapse">
+          <form class="navbar-form navbar-left" id="save-form">
+            <div class="input-group input-group-sm mb-3">
+              <input type="text" class="form-control" placeholder="Save your work" id="name" required />
+              <div class="input-group-append input-group-btn">
+                <button class="btn btn-outline-primary js-save-btn" title="Save">
+                  <i class="bi-save" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -42,8 +62,6 @@
       </section>
       <p class="total">Total: <span class="count"></span></p>
     </section>
-
-    <button>Save</button>
 
     <div id="modalBackground">
       <div id="modal">

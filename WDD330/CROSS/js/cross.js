@@ -10,7 +10,8 @@ const board = document.querySelector(".board");
 const across = document.getElementById("across");
 const down = document.getElementById("down");
 const count = document.querySelector("span.count");
-const saveBtn = document.querySelector("button");
+/** @type {HTMLButtonElement} */
+const saveBtn = document.querySelector(".js-save-btn");
 
 if (
   board instanceof HTMLElement &&
@@ -22,5 +23,15 @@ if (
   const wordListView = new WordListView(boardView, across, down, count);
   boardView.show();
 
-  saveBtn.onclick = () => new SaveDialog().show();
+  saveBtn.onclick = (e) => {
+    e.preventDefault();
+    const form = document.forms.namedItem("save-form");
+    /** @type {HTMLInputElement} */
+    const name = form.elements.namedItem("name");
+    if (name.validity.valueMissing) {
+      name.setCustomValidity("Enter a name for your crossword");
+    } else {
+      boardView.save(name.value);
+    }
+  };
 }
