@@ -33,12 +33,19 @@ export default class CellModel {
       if (e.ctrlKey) {
         this.toggleBlocked();
         this.subscribers.notify(BLOCKED_EVENT);
+      } else {
+        if (!this.activeWord) this.activeWord = this.across;
+        this.activeWord.setActiveWord(this);
       }
     });
 
     this.cellElement.addEventListener("keydown", (e) => {
       /** @type {1|-1} */
       let direction = 1;
+
+      if (!this.activeWord) this.activeWord = this.across;
+
+      console.log("Key", e.key);
       switch (e.key) {
         case " ":
           this.toggleBlocked();
@@ -80,6 +87,7 @@ export default class CellModel {
    * Reset this cell to unassigned state.
    */
   clearAllStates() {
+    this.cellElement.classList.remove(WordModel.ACTIVE_CELL_CLASS, WordModel.ACTIVE_CLASS);
     this.across = this.down = this.activeWord = null;
   }
 

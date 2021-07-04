@@ -5,11 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crossword Generator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="css/dist/cross.css" />
+    <link rel="stylesheet" href="css/dist/modal.css" />
   </head>
   <body>
+    <div class="container">
+      <div class="toolbar">
+        <div class="toolbar__item">
+          <h1>Crossword</h1>
+        </div>
+      </div>
+    </div>
     <section>
-      <h1>Crossword Generator</h1>
       <div class="board"></div>
       <section class="clues">
         <h2>Across</h2>
@@ -19,6 +42,33 @@
       </section>
       <p class="total">Total: <span class="count"></span></p>
     </section>
+
+    <button>Save</button>
+
+    <div id="modalBackground">
+      <div id="modal">
+        <div class="modal-title">
+          <h3>Modal Title</h3>
+          <button id="close" class="close" title="Close"></button>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="js/cross.js" type="module"></script>
   </body>
 </html>

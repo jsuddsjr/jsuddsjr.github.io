@@ -124,19 +124,19 @@ export default class BoardView {
     this.wordList.forEach((w) => w.clearAllStates());
     for (let word of this.wordList) {
       if (word.length < 3) {
-        word.addStates(WordModel.ERROR_CLASS());
+        word.addStates(WordModel.ERROR_CLASS);
         continue;
       }
 
       if (word.length > 10) {
-        word.addStates(WordModel.WARNING_CLASS());
+        word.addStates(WordModel.WARNING_CLASS);
       }
 
       if (this.index.isLoaded()) {
         const wordShape = word.getShape();
         const wordsFound = this.index.getWordsByShape(wordShape);
         if (wordsFound.length === 0) {
-          word.addStates(WordModel.WORD_WARNING_CLASS());
+          word.addStates(WordModel.WORD_WARNING_CLASS);
         }
       }
     }

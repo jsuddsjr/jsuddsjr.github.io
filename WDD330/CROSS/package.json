@@ -18,5 +18,8 @@
     "fetch-mock-jest": "^1.5.1",
     "jest": "^27.0.3",
     "sass": "^1.35.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.2"
   }
 }

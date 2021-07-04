@@ -64,14 +64,20 @@ export default class WordModel {
     // if (this.checkShape()) this.setState(WORD_WARNING_CLASS);
   }
 
-  static ERROR_CLASS() {
+  static get ERROR_CLASS() {
     return ERROR_CLASS;
   }
-  static WARNING_CLASS() {
+  static get WARNING_CLASS() {
     return WARNING_CLASS;
   }
-  static WORD_WARNING_CLASS() {
+  static get WORD_WARNING_CLASS() {
     return WORD_WARNING_CLASS;
+  }
+  static get ACTIVE_CLASS() {
+    return ACTIVE_CLASS;
+  }
+  static get ACTIVE_CELL_CLASS() {
+    return ACTIVE_CELL_CLASS;
   }
 
   /**
@@ -103,21 +109,24 @@ export default class WordModel {
   /**
    *
    * @param {CellModel} activeCell
-   * @param {1|-1} direction
+   * @param {1|0|-1} direction
    */
-  setActiveWord(activeCell, direction) {
+  setActiveWord(activeCell, direction = 0) {
+    console.log("setActiveWord", activeCell);
     if (activeWord !== this) {
       if (activeWord) activeWord.removeStates(ACTIVE_CLASS, ACTIVE_CELL_CLASS);
       this.addStates(ACTIVE_CLASS);
+      activeCell.cellElement.classList.add(ACTIVE_CELL_CLASS);
       activeWord = this;
     } else {
       let cursorIndex = this.cells.indexOf(activeCell) + direction;
       if (cursorIndex < 0) cursorIndex = this.cells.length - 1;
       else if (cursorIndex >= this.cells.length) cursorIndex = 0;
-
-      activeCell.cellElement.classList.remove(ACTIVE_CELL_CLASS);
-      this.cells[cursorIndex].cellElement.classList.add(ACTIVE_CELL_CLASS);
-      this.cells[cursorIndex].cellElement.focus();
+      this.removeStates(ACTIVE_CELL_CLASS);
+      activeCell = this.cells[cursorIndex];
+      activeCell.cellElement.classList.add(ACTIVE_CELL_CLASS);
+      activeCell.cellElement.focus();
+      activeCell.activeWord = this;
     }
   }
 
