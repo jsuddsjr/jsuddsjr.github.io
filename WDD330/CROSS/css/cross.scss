@@ -78,7 +78,26 @@ section {
     margin-left: 0.1em;
   }
 
-  &:before {
+  &[data-shape="1"] {
+    border: 2px inset lawngreen;
+  }
+
+  &[data-shape="0"] {
+    border: 2px inset yellow;
+  }
+
+  &[data-across]:before {
+    content: attr(data-across);
+    font-variant: small-caps;
+    font-size: 6px;
+  }
+
+  &[data-down]:after {
+    content: attr(data-down);
+    font-size: 6px;
+  }
+
+  &[data-letter]:before {
     content: attr(data-letter);
     font-variant: small-caps;
     font-size: calc(var(--box-size) / 1.8);
@@ -89,25 +108,6 @@ section {
     color: red;
     font-weight: bold;
   }
-
-  &[data-shape="1"] {
-    border: 2px inset lawngreen;
-  }
-
-  &[data-shape="0"] {
-    border: 2px inset yellow;
-  }
-
-  &[data-down]:before {
-    content: \9660 attr(data-down);
-    font-size: 6px;
-  }
-
-  &[data-across]:after {
-    content: \9654 attr(data-across);
-    font-size: 6px;
-  }
-
 
   // NOTE: Background colors -- order is important!
 

@@ -176,14 +176,19 @@ export default class BoardView {
           const cells = word.cells;
           const dir = word.direction;
           potentials.forEach((set, index) => {
-            if (set.size > 1 && set.size < 7) {
-              cells[index].cellElement.dataset[dir] = [...set.keys()].sort().join("");
-            } else {
-              cells[index].cellElement.removeAttribute(`data-${dir}`);
-              if (set.size === 1) {
+            const cell = cells[index];
+            if (set.size > 0) {
+              cell.cellElement.classList.remove("no-solution");
+              if (set.size > 1 && set.size < 7) {
+                cell.cellElement.dataset[dir] = [...set.keys()].sort().join("");
+              } else if (set.size === 1) {
                 const c = [...set.values()][0];
-                cells[index].shape.setContent(c);
+                cell.shape.setContent(c);
+              } else {
+                cell.cellElement.removeAttribute(`data-${dir}`);
               }
+            } else {
+              cell.cellElement.classList.add("no-solution");
             }
           });
         }
