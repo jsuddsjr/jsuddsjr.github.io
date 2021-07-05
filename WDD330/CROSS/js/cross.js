@@ -12,17 +12,19 @@ const across = document.getElementById("across");
 const down = document.getElementById("down");
 const count = document.querySelector("span.count");
 const saveBtn = document.querySelector(".js-save-btn");
+const clearBtn = document.querySelector(".js-clear-btn");
 
 if (
   board instanceof HTMLElement &&
   across instanceof HTMLElement &&
   down instanceof HTMLElement &&
   count instanceof HTMLElement &&
-  saveBtn instanceof HTMLButtonElement
+  saveBtn instanceof HTMLButtonElement &&
+  clearBtn instanceof HTMLButtonElement
 ) {
-  const boardView = new BoardView(board, boardSize, boardName);
+  const boardView = new BoardView(board, boardSize);
   const wordListView = new WordListView(boardView, across, down, count);
-  boardView.show();
+  boardView.load(boardName);
 
   boardView.onSaved(() => {
     const modal = new Modal("modalBackground");
@@ -39,5 +41,10 @@ if (
     } else {
       boardView.save(name.value);
     }
+  };
+
+  clearBtn.onclick = (e) => {
+    e.preventDefault();
+    boardView.clear();
   };
 }

@@ -62,21 +62,28 @@ export default class BoardView {
     this.subscribers.notify(SAVED_EVENT);
   }
 
-  /**
-   * Start a new board.
-   */
-  show() {
-    this.boardElement.innerHTML = "";
-
-    const data = this.store.loadBoard(this.title) || this.store.lastSaved;
+  load(name) {
+    const data = this.store.loadBoard(name) || this.store.lastSaved;
     if (data) {
       this.setSize(Math.trunc(Math.sqrt(data.cells.length)));
       this.cells = this.store.cellsFromBoard(data);
       this.title = data.name;
+      this.show();
     } else {
-      this.cells = Array.from({ length: this.size * this.size }, () => new CellModel());
+      this.clear();
     }
+  }
 
+  clear() {
+    this.cells = Array.from({ length: this.size * this.size }, () => new CellModel());
+    this.show();
+  }
+
+  /**
+   * Draw a new board.
+   */
+  show() {
+    this.boardElement.innerHTML = "";
     const boardCount = this.cells.length;
     this.cells.forEach((cell, index) => {
       this.boardElement.appendChild(cell.cellElement);
