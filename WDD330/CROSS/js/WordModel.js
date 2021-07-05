@@ -8,7 +8,7 @@ const ACTIVE_CELL_CLASS = "active-cell";
 const ERROR_CLASS = "error";
 const WARNING_CLASS = "warning";
 const WORD_WARNING_CLASS = "word-warning";
-const ALL_STATES = [ACTIVE_CELL_CLASS, ERROR_CLASS, WARNING_CLASS, WORD_WARNING_CLASS];
+const ALL_STATES = [ACTIVE_CELL_CLASS, ERROR_CLASS, WARNING_CLASS, WORD_WARNING_CLASS, "down", "across"];
 
 const scrabblePoints = new Map([
   [" ", 0],

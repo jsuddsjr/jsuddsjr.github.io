@@ -170,13 +170,14 @@ export default class BoardView {
         const wordShape = word.getShape();
         const wordsFound = this.index.getWordsByShape(wordShape);
         if (wordsFound.length === 0) {
-          word.addStates(WordModel.WORD_WARNING_CLASS);
+          word.addStates(WordModel.WORD_WARNING_CLASS, word.direction);
         } else {
           const potentials = this.index.getPotentialsByShape(wordShape);
           const cells = word.cells;
           const dir = word.direction;
           potentials.forEach((set, index) => {
             const cell = cells[index];
+            cell.cellElement.removeAttribute(`data-${dir}`);
             if (set.size > 0) {
               cell.cellElement.classList.remove("no-solution");
               if (set.size > 1 && set.size < 7) {
@@ -184,8 +185,6 @@ export default class BoardView {
               } else if (set.size === 1) {
                 const c = [...set.values()][0];
                 cell.shape.setContent(c);
-              } else {
-                cell.cellElement.removeAttribute(`data-${dir}`);
               }
             } else {
               cell.cellElement.classList.add("no-solution");
