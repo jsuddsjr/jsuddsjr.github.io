@@ -5,6 +5,13 @@ import ShapeModel from "./ShapeModel.js";
 const index = new Map();
 /** @type {Map<number, string[]} */
 const indexSize = new Map();
+
+/** @type {Map<string, string[]} */
+const shapeCache = new Map();
+
+/** @type {Map<string, Array<Set<string>>} */
+const potentialCache = new Map();
+
 let loading = false;
 let loaded = false;
 
@@ -39,28 +46,49 @@ export default class WordIndex {
   }
 
   /**
+   * Get map of available values for each position in the shape.
+   * @param {String} shape
+   * @returns
+   */
+  getPotentialsByShape(shape) {
+    if (potentialCache.has(shape)) return potentialCache.get(shape);
+    const maps = Array.from({ length: shape.length }, () => new Set());
+    this.getWordsByShape(shape).forEach((w) => [...w].map((c, i) => maps[i].add(c)));
+    return maps;
+  }
+
+  /**
    * Get words that match the specified shape.
    * Shape can contain 0/1 for vowel/cons, dot (.) for any or letter.
    * @param {String} shape
    * @returns
    */
   getWordsByShape(shape) {
-    shape = shape.replace(/\s/g, ".");
+    // Change spaces into ANY type.
+    // shape = shape.replace(/\s/g, ShapeModel.anyType);
+
+    if (shapeCache.has(shape)) return shapeCache.get(shape);
+
+    // Count the unique types in this shape.
     const types = new Set(shape);
 
+    // Convert letters into shapes and search.
     if (types.size > 3 || ShapeModel.letterMatch.test(shape)) {
-      const wordMatch = new RegExp("^" + shape.replace(ShapeModel.shapeMatch, "."));
+      // Convert shape into word match by removing shape characters.
+      const wordMatch = new RegExp("^" + shape.replace(ShapeModel.shapeMatch, ShapeModel.anyType));
+      // Convert to simple shape by converting letters into VOWEL and CONSONANT.
       const simpleShape = shape.replace(new RegExp(ShapeModel.letterMatch, "g"), (sub) => {
-        return /[aeiou]/.test(sub) ? "0" : "1";
+        return /[aeiou]/.test(sub) ? ShapeModel.vowelType : ShapeModel.consonantType;
       });
       return matchShapeSimple(simpleShape).filter((w) => wordMatch.test(w));
     }
 
+    // Multiple matches on shape.
     if (types.has(ShapeModel.anyType)) {
       return matchShapeSimple(shape);
     }
 
-    // Just VOWEL and CONSONANT.
+    // No ambiguity. Just VOWEL and CONSONANT.
     return index.get(shape) || [];
   }
 

@@ -98,6 +98,17 @@ section {
     border: 2px inset yellow;
   }
 
+  &[data-down]:before {
+    content: \9660 attr(data-down);
+    font-size: 6px;
+  }
+
+  &[data-across]:after {
+    content: \9654 attr(data-across);
+    font-size: 6px;
+  }
+
+
   // NOTE: Background colors -- order is important!
 
   &.warning {

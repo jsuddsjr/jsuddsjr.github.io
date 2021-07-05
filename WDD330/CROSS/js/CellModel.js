@@ -34,23 +34,29 @@ export default class CellModel {
         this.toggleBlocked();
         this.subscribers.notify(BLOCKED_EVENT);
       } else {
-        if (!this.activeWord) this.activeWord = this.across;
+        this.activeWord = this.activeWord ? (this.activeWord === this.across ? this.down : this.across) : this.across;
         if (this.activeWord) this.activeWord.setActiveWord(this);
       }
     });
 
     this.cellElement.addEventListener("keydown", (e) => {
+      if (e.ctrlKey || e.altKey) return;
+
       /** @type {1|-1} */
       let direction = 1;
 
       if (!this.activeWord) this.activeWord = this.across;
 
-      console.log("Key", e.key);
       switch (e.key) {
         case " ":
-          this.toggleBlocked();
-          this.subscribers.notify(BLOCKED_EVENT);
           e.preventDefault();
+          if (this.isBlocked || this.shape.getLetter() === " ") {
+            this.toggleBlocked();
+            this.subscribers.notify(BLOCKED_EVENT);
+          } else {
+            this.shape.setContent(" ");
+            this.subscribers.notify(CONTENT_EVENT);
+          }
           break;
         case "Backspace":
           this.shape.setContent();

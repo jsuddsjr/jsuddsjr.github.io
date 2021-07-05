@@ -5,16 +5,18 @@ import Subscribers from "./Subscribers.js";
 import GameStore from "./GameStore.js";
 
 const LAYOUT_EVENT = "layout";
+const SAVED_EVENT = "saved";
 
 export default class BoardView {
   /**
    * Constructor.
    * @param {HTMLElement} boardElement
    * @param {Number} size
+   * @param {String} title
    */
-  constructor(boardElement, size = 15) {
+  constructor(boardElement, size = 15, title = "") {
     this.boardElement = boardElement;
-    this.title = "";
+    this.title = title;
     this.size = size;
 
     /** @type {CellModel[]} */
@@ -55,7 +57,9 @@ export default class BoardView {
    * @param {String} name
    */
   save(name) {
+    this.title = name;
     this.store.saveBoard(this.cells, name);
+    this.subscribers.notify(SAVED_EVENT);
   }
 
   /**
@@ -64,9 +68,9 @@ export default class BoardView {
   show() {
     this.boardElement.innerHTML = "";
 
-    const data = this.store.lastSaved;
+    const data = this.store.loadBoard(this.title) || this.store.lastSaved;
     if (data) {
-      this.setSize(Math.trunc(Math.sqrt(this.cells.length)));
+      this.setSize(Math.trunc(Math.sqrt(data.cells.length)));
       this.cells = this.store.cellsFromBoard(data);
       this.title = data.name;
     } else {
@@ -167,6 +171,21 @@ export default class BoardView {
         const wordsFound = this.index.getWordsByShape(wordShape);
         if (wordsFound.length === 0) {
           word.addStates(WordModel.WORD_WARNING_CLASS);
+        } else {
+          const potentials = this.index.getPotentialsByShape(wordShape);
+          const cells = word.cells;
+          const dir = word.direction;
+          potentials.forEach((set, index) => {
+            if (set.size > 1 && set.size < 7) {
+              cells[index].cellElement.dataset[dir] = [...set.keys()].sort().join("");
+            } else {
+              cells[index].cellElement.removeAttribute(`data-${dir}`);
+              if (set.size === 1) {
+                const c = [...set.values()][0];
+                cells[index].shape.setContent(c);
+              }
+            }
+          });
         }
       }
     }
@@ -179,6 +198,16 @@ export default class BoardView {
    */
   onLayout(callback) {
     this.subscribers.subscribe(LAYOUT_EVENT, callback);
+    return this;
+  }
+
+  /**
+   * Subscribe to save events.
+   * @param {import("./Subscribers.js").NotifyFunc} callback
+   * @returns this
+   */
+  onSaved(callback) {
+    this.subscribers.subscribe(SAVED_EVENT, callback);
     return this;
   }
 }

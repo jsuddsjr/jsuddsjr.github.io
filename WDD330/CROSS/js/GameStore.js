@@ -50,6 +50,15 @@ export default class GameStore {
   }
 
   /**
+   * Load named board.
+   * @param {String} name
+   * @returns Board data, if found.
+   */
+  loadBoard(name) {
+    if (name) return readFromStorage(keyFromName(name));
+  }
+
+  /**
    * @param {GameData} board
    */
   cellsFromBoard(board) {
