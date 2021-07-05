@@ -2,7 +2,7 @@ import CellModel from "./CellModel.js";
 import WordModel from "./WordModel.js";
 import WordIndex from "./WordIndex.js";
 import Subscribers from "./Subscribers.js";
-import ShapeModel from "./ShapeModel.js";
+import GameStore from "./GameStore.js";
 
 const LAYOUT_EVENT = "layout";
 
@@ -14,27 +14,23 @@ export default class BoardView {
    */
   constructor(boardElement, size = 15) {
     this.boardElement = boardElement;
-
-    this.lastBoard = this.loadLastSaved();
-    if (this.lastBoard) {
-      size = Math.sqrt(this.lastBoard.length);
-    }
-
+    this.title = "";
     this.size = size;
+
     /** @type {CellModel[]} */
     this.cells = new Array(size * size);
-
     /** @type {WordModel[]} */
     this.wordList = [];
 
-    this.index = new WordIndex().onLoaded(this.reportWordIssues.bind(this));
+    this.setSize(size);
 
-    this.boardElement.style.setProperty("--board-size", size.toString());
     this.boardElement.addEventListener("keypress", () => {
       this.reportWordIssues();
     });
 
+    this.index = new WordIndex().onLoaded(this.reportWordIssues.bind(this));
     this.subscribers = new Subscribers(this);
+    this.store = new GameStore();
   }
 
   /**
@@ -45,32 +41,50 @@ export default class BoardView {
   }
 
   /**
+   * Sets the width and height of the board.
+   * Also resets the board contents.
+   * @param {Number} size
+   */
+  setSize(size) {
+    this.size = size;
+    this.boardElement.style.setProperty("--board-size", size.toString());
+  }
+
+  /**
+   * Save the current board with a title.
+   * @param {String} name
+   */
+  save(name) {
+    this.store.saveBoard(this.cells, name);
+  }
+
+  /**
    * Start a new board.
    */
   show() {
     this.boardElement.innerHTML = "";
-    const boardCount = this.cells.length;
 
-    for (let i = 0; i < boardCount; i++) {
-      const cell = new CellModel();
-      cell.onBlocked((_) => this.renumber());
-      cell.onContentUpdated((_) => this.reportWordIssues());
-      this.boardElement.appendChild(cell.cellElement);
-      this.cells[i] = cell;
-
-      if (this.lastBoard) {
-        const shape = this.lastBoard[i];
-        if (shape === ShapeModel.blockedType) {
-          cell.toggleBlocked(true);
-        } else {
-          cell.shape.setContent(shape);
-        }
-      }
+    const data = this.store.lastSaved;
+    if (data) {
+      this.setSize(Math.trunc(Math.sqrt(this.cells.length)));
+      this.cells = this.store.cellsFromBoard(data);
+      this.title = data.name;
+    } else {
+      this.cells = Array.from({ length: this.size * this.size }, () => new CellModel());
     }
 
-    // TODO: assume balanced layout.
-    this.cells.forEach((el, index) => {
-      el.setPartnerCell(this.cells[boardCount - index - 1]);
+    const boardCount = this.cells.length;
+    this.cells.forEach((cell, index) => {
+      this.boardElement.appendChild(cell.cellElement);
+      cell.setPartnerCell(this.cells[boardCount - index - 1]);
+      cell.onBlocked((_) => {
+        this.store.writeTempData(this.cells);
+        this.renumber();
+      });
+      cell.onContentUpdated((_) => {
+        this.store.writeTempData(this.cells);
+        this.reportWordIssues();
+      });
     });
 
     this.renumber();
@@ -155,27 +169,6 @@ export default class BoardView {
           word.addStates(WordModel.WORD_WARNING_CLASS);
         }
       }
-    }
-  }
-
-  /**
-   * Save work.
-   * @param {String} name
-   */
-  save(name) {
-    const board = this.cells.map((c) => c.shape.getShape()).join("");
-    const boardKey = `crossword_${name}`;
-    localStorage.setItem(boardKey, board);
-    localStorage.setItem("crossword_lastSaved", boardKey);
-  }
-
-  /**
-   * @returns A string representing a saved board.
-   */
-  loadLastSaved() {
-    const boardKey = localStorage.getItem("crossword_lastSaved");
-    if (boardKey) {
-      return localStorage.getItem(boardKey);
     }
   }
 

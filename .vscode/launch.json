@@ -27,7 +27,7 @@
       "name": "Launch Edge for Live Server",
       "url": "http://localhost:5658/${relativeFile}",
       "webRoot": "${workspaceFolder}",
-      "port": 5600,
+      "port": 55000,
       "timeout": 30000
     }
   ]
