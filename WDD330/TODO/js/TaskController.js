@@ -6,7 +6,7 @@ export default class TaskController {
   constructor() {
     this.taskList = new TaskListModel();
     this.taskView = new TaskView("div.tasks", this.taskList);
-    this.taskFooterView = new Task("div.footer", this.taskView);
+    this.taskFooterView = new TaskFooterView("div.footer", this.taskView);
   }
 
   run() {
@@ -16,7 +16,7 @@ export default class TaskController {
       e.preventDefault();
 
       /** @type {HTMLInputElement} */
-      const input = document.forms['entry'].elements['task'];
+      const input = document.forms.namedItem("entry").elements.namedItem("task");
       const desc = input.value.trim();
       if (desc) {
         const task = this.taskList.addTask(desc);
